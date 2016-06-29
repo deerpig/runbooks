@@ -289,6 +289,23 @@ $ cd ./org-mode
 $ make autoloads
 #+end_src
 
+
+** Getting ssh-agent to work properly
+
+You should have a script to autostart ssh-agent when you
+start a bash-shell.
+
+To get magit in emacs to stop prompting for the passphrase:
+
+#+begin_src 
+$ sudo emacs /etc/X11/Xsession.d
+#+end_src
+
+
+And comment out `ssh-agent' so X11 doesn't start it
+automatically when magit pushes.
+
+
 ** Copy dotfiles and emacs stuff
 ** Edit OpenBox RC Files
 ** Set up Colors & Themes 
