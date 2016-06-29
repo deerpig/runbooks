@@ -299,7 +299,7 @@ away when using Bash but X11 keeps autostarting it when you
 use Magit in Emacs.  Enough was enough.
 
 You should have the following script in your .bashrc (or
-possibly .bash_profileto autostart ssh-agent when you
+possibly .bash_profile to autostart ssh-agent when you
 start a bash-shell.
 
 #+begin_src 
