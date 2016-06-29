@@ -292,12 +292,11 @@ $ make autoloads
 
 ** Getting ssh-agent to work properly
 
-This is not a trivial thing to do -- but if you use git many
-times a day it's a major pain in the pass to have to keep
-entering your fucking ssh passphrase.  It's easy to run ssh
-agent so the problem goes away when using Bash but X11 keeps
-autostarting it when you use Magit in Emacs.  Enough was
-enough.
+If you use git many times a day as I now do it's a major
+pain in the pass to have to keep entering your fucking ssh
+passphrase.  It's easy to run ssh agent so the problem goes
+away when using Bash but X11 keeps autostarting it when you
+use Magit in Emacs.  Enough was enough.
 
 You should have the following script in your .bashrc (or
 possibly .bash_profileto autostart ssh-agent when you
