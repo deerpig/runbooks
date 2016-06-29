@@ -1,0 +1,89 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+TITLE: Creating a new Web Site
+#+AUTHOR: Brad Collins \<brad@chenla.la>
+#+DATE:
+#+STARTUP: showall
+#+INFOJS_OPT: view:info toc:t ltoc:t
+#+HTML_HEAD_EXTRA: <style>body {margin-left:50px; width:60%;}</style>
+  :PROPERTIES:
+  :Name: /home/deerpig/proj/deerpig/deerpig-install/jekyll-new-site.org
+  :Created: 2016-06-29T12:12@Wat Phnom (11.5733N17-104.925295W)
+  :ID: 33bde4be-47a5-4665-a2ce-ba85a59639df
+  :URL:
+  :END:
+
+* Create .ssh keypair
+
+cd ~
+mkdir .ssh
+mkdir ./.ssh/authorized_keys
+chmod 700 ./.ssh
+chmod 644 ./.ssh/authorized_keys
+cd ./.ssh/authorized_keys
+
+ssh-keygen -t rsa
+
+Now cat each file generated and save in your home folder on your local
+box, in .ssh directory with same permissions as above.
+
+* On Remote server
+
+mkdir ~/repos/site-www
+cd ./site-www
+git init --bare
+cd hooks
+emacs post-receive
+
+#!/bin/bash -l
+GIT_REPO=$HOME/repos/pnca-www
+TMP_GIT_CLONE=$HOME/tmp/pnca-www
+PUBLIC_WWW=/var/www/pnca/html
+
+git clone $GIT_REPO $TMP_GIT_CLONE
+jekyll build --source $TMP_GIT_CLONE --destination $PUBLIC_WWW
+rm -Rf $TMP_GIT_CLONE
+exit
+
+sudo chmod +x post-receive
+
+mkdir /var/www/site
+chown deerpig /var/www/site
+cd /var/www/site
+mkdir ./html
+
+* Set up Apache Virtual Host
+
+emacs /etc/httpd/conf/domains/site-www.conf
+
+<VirtualHost *:80>
+  ServerName site.kinto-cloud.com
+  DocumentRoot /var/www/pnca/html
+</VirtualHost>
+
+sudo systemctl restart httpd
+
+Go to Directnic and create A record pointing to site.
+
+* On Local Machine
+
+mkdir ~/blog/site
+cd ~/blog/site
+jekyll new site-www
+mkdir ./html
+cd ./site-www
+git init
+git add .
+git commit -m "added files"
+
+git remote add deploy deerpig@camby.kinto-cloud.com:~/repos/site-www
+
+----
+
+Now manage staging and commits in magit in emacs.  When you Push from
+Magit it will run the deployment script on the server which
+automatically invokes Jekyll and builds the site from git the Git repo.
+
+Alternately, you can deploy, (push changes and rebuild jekyll) using
+bash:
+
+    git push deploy master

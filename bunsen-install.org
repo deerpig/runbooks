@@ -1,0 +1,296 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+TITLE: 
+#+AUTHOR: Brad Collins \<brad@chenla.la>
+#+DATE: 
+#+STARTUP: showall
+#+INFOJS_OPT: view:info toc:t ltoc:t
+#+HTML_HEAD_EXTRA: <style>body {margin-left:50px; width:60%;}</style>
+  :PROPERTIES:
+  :Name: /home/deerpig/org/bunsen-install.org
+  :Created: 2016-06-13T12:52@Wat Phnom (11.5733N17-104.925295W)
+  :ID: 238cc479-376a-4040-9e06-750faf722dc7
+  :URL:
+  :END:
+
+** Bunsen Install
+
+Do generic install from Live USB
+
+** TODO  [0/13]
+- [ ] 
+- [ ] Emacs
+- [ ] Conkeror
+- [ ] Krusader
+- [ ] Google Chrome
+- [ ] kcolorchooser
+- [ ] Clementine, Audacious
+- [ ] Inkscape, Blender, Scribus
+- [ ] Jekyll
+- [ ] Lisps
+- [ ] owncloud
+- [ ] Skype
+- [ ] Viber
+
+** Install Some Tools
+#+begin_src 
+  $ sudo apt-get install wget surfraw openssh-server gdebi most xprintidle
+#+end_src
+** Install Emacs
+
+Install Git:
+
+#+begin_src 
+$ sudo apt-get install git-core
+#+end_src
+
+Install graphics and dev libs:
+
+#+begin_src
+$ sudo apt-get install libxaw7-dev libxpm-dev libpng12-dev libtiff5-dev libgif-dev libjpeg62-turbo-dev libgtk2.0-dev libncurses5-dev
+#+end_src
+
+Full install of texinfo, latex & tex and pandoc.  Texinfo is
+needed by emacs, this will also install pdflatex which is
+also needed by orgmode.
+
+This will take a while -- well over a gigabyte
+
+#+begin_src
+$ sudo apt-get install texinfo texlive-base texlive-bibtex-extra pandoc
+$ sudo apt-get install texlive-fonts-recommended texlive-fonts-extra
+$ sudo apt-get install texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-science
+#+end_src
+  
+Install GNU-Autotools
+
+#+begin_src
+$ sudo apt-get install autoconf automake
+#+end_src
+
+Install the dependencies specified on the emacs package
+
+#+begin_src
+$ sudo apt-get build-dep emacs
+#+end_src
+
+Download Emacs source code from Github.  Be sure to pass the "--depth
+1" flag to download just the more recent history of the files.
+
+#+begin_src
+$ git clone --depth 1 https://github.com/emacs-mirror/emacs.git
+$ cd emacs
+#+end_src
+
+Run the autogen and configure scripts. Note that with
+"--prefix" you pass the path in which you'll want the files to be
+installed.
+
+#+begin_src
+$ ./autogen.sh
+$ ./configure
+$ make
+#+end_src
+
+Make install as root
+
+#+begin_src
+$ sudo make install
+#+end_src
+
+Now link the binary to a place the PATH
+
+#+begin_src
+$ sudo ln -l 
+#+end_src
+
+** Install Conkeror Web Browser
+
+#+begin_src
+$ sudo apt-get install conkeror conkeror-spawn-process-helper
+#+end_src
+
+XULRunner has been booted out by Mozilla, so we need to use Firefox
+instead. 
+
+#+begin_src
+$ emacs ~/.bashrc_aliases
+#+end_src
+
+And add:
+
+#+begin_ascii
+alias conkeror='firefox -app /usr/share/conkeror/application.ini'
+#+end_ascii
+  
+** Install some Graphics Apps
+
+Install Gimp Inkscape Blender & Viewnoir
+
+#+begin_src
+$ sudo apt-get install gimp inkscape blender viewnoir
+#+end_src
+
+
+** Install some KDE Apps
+
+krusader, kcolorchooser (part of kdegraphics), okular, sane
+& calibre
+
+#+begin_src
+$ sudo apt-get install krusader kdegraphics okular sane
+#+end_src
+
+** Install PDF/Ebook Apps
+
+#+begin_src
+$ sudo apt-get install okular calibre djview4
+#+end_src
+
+** Install media Apps
+
+VLC is already installed, so install audacious for light
+weight, music playing and clementine for my 2TB collection.
+
+#+begin_src 
+$ sudu apt-get install clementine audacious
+#+end_src
+
+
+** Install Viber Desktop
+
+Install dependencies:
+
+#+begin_src
+$ sudo apt-get install libqt5gui5
+#+end_src
+
+  
+Go to:
+
+  https://www.viber.com/en/products/linux
+
+Click on "Viber Debian (64 bit) and save.
+
+#+begin_src
+$ sudo gdebi ~/Downloads/viber.deb
+#+end_src
+
+Now fix the weird path:
+
+#+begin_src
+$ ln -s /opt/viber/Viber /usr/local/bin/viber
+#+end_src
+
+Change the Exec & Path as:
+
+#+begin_src
+$ sudo emacs /usr/share/applications/viber.desktop
+#+end_src
+
+Change the following:
+
+#+begin_ascii
+  Exec=viber
+  Path=/opt/viber
+#+end_ascii
+
+When you open the app for the first time it will ask you for a
+telephone number and then a code that will be sent your phone.
+
+Fucking awful GUI....
+** Install Skype
+
+http//:skype.com
+
+Download Debian (multi architectures)
+
+#+begin_src 
+$ cd ~/Downloads
+$ sudo gdebi ./skype...
+#+end_src
+
+
+** Install Google Chrome
+
+ http://www.google.com/chrome/browser/desktop/index.html 
+
+ A dialog will pop up and prompt for install.
+
+ Run on the command line:
+
+ $ google-chrome
+
+** Add DuckDuck Go As Default
+
+ - Iceweasel: install Firefox DuckDuckGo Addon
+ - Chrome: go to https://www.duckduckgo.com 
+   right click on url, choose edit search engines
+   click to make DuckDuckGo the default.
+
+Make sure both Chrome & Iceweasel are set to restore tabs and settings
+when starting up.
+
+ 
+** Install Jekyll
+
+#+begin_src 
+$ sudo apt-get install ruby ruby-dev rubygems
+$ sudo gem install jekyll
+#+end_src
+
+** Set Wallpaper
+
+In the menu find 'choose wallpaper'  and add the following
+path:
+
+  /usr/share/images/bunsen/wallpapers/default/
+
+** Get Rid of the App Launcher
+
+Open
+
+  $ emacs ~/.config/tint2/tint2rc
+
+and comment out all of the 'launcher_item_app' entries.
+
+** Turn off screen lock
+
+Turning off the screen lock in the Power Management app
+doesn't work.  Screen blanking is controlled by X but the
+screen lock is controlled by light-locker.
+
+To disable the lock:
+
+#+begin_src 
+$ sudo emacs /etc/xdg/autostart/light-locker.desktop
+#+end_src
+
+and add the following:
+
+#+begin_ascii
+Exec=light-locker --lock-after-screensaver 0
+#+end_ascii
+
+`0' disables locking.
+
+** Possible Org-Mode Problems
+
+The version of orgmode is downloaded via git.  I was
+recently having a problem with timezones...
+
+If something doesn't work, redownload and install clearn
+version:
+
+#+begin_src
+$ cd ~/emacs-lisp
+$ mv -R ./org-mode ./org-mode.bak
+$ git clone git://orgmode.org/org-mode.git
+$ cd ./org-mode
+$ make autoloads
+#+end_src
+
+** Copy dotfiles and emacs stuff
+** Edit OpenBox RC Files
+** Set up Colors & Themes 
+ - set colors and fonts in Terminal app
+ - obconf
