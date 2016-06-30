@@ -283,7 +283,7 @@ version:
 
 #+begin_src
 $ cd ~/emacs-lisp
-$ mv -R ./org-mode ./org-mode.bak
+$ mv -R ./org-mode ./org-mode.bak./orf
 $ git clone git://orgmode.org/org-mode.git
 $ cd ./org-mode
 $ make autoloads
@@ -341,7 +341,7 @@ for Magit.
 To get magit in emacs to stop prompting for the passphrase:
 
 #+begin_src 
-$ sudo emacs /etc/X11/Xsession.d
+$ sudo emacs /etc/X11/Xsession.options
 #+end_src
 
 And comment out `ssh-agent' so X11 doesn't start it
