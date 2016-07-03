@@ -2,7 +2,7 @@
 #+TITLE: Creating a new Web Site
 #+AUTHOR: Brad Collins \<brad@chenla.la>
 #+DATE:
-#+STARTUP: showall
+#+STARTUP: content
 #+INFOJS_OPT: view:info toc:t ltoc:t
 #+HTML_HEAD_EXTRA: <style>body {margin-left:50px; width:60%;}</style>
   :PROPERTIES:
@@ -25,6 +25,19 @@ ssh-keygen -t rsa
 
 Now cat each file generated and save in your home folder on your local
 box, in .ssh directory with same permissions as above.
+
+* Set up Apache Virtual Host
+
+emacs /etc/httpd/conf/domains/site-www.conf
+
+<VirtualHost *:80>
+  ServerName site.kinto-cloud.com
+  DocumentRoot /var/www/pnca/html
+</VirtualHost>
+
+sudo systemctl restart httpd
+
+Go to Directnic and create A record pointing to site.
 
 * On Remote server
 
@@ -50,19 +63,6 @@ mkdir /var/www/site
 chown deerpig /var/www/site
 cd /var/www/site
 mkdir ./html
-
-* Set up Apache Virtual Host
-
-emacs /etc/httpd/conf/domains/site-www.conf
-
-<VirtualHost *:80>
-  ServerName site.kinto-cloud.com
-  DocumentRoot /var/www/pnca/html
-</VirtualHost>
-
-sudo systemctl restart httpd
-
-Go to Directnic and create A record pointing to site.
 
 * On Local Machine
 
