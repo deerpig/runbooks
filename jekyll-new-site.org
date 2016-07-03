@@ -39,7 +39,8 @@ sudo systemctl restart httpd
 
 Go to Directnic and create A record pointing to site.
 
-* On Remote server
+* 
+On Remote server
 
 mkdir ~/repos/site-www
 cd ./site-www
@@ -87,3 +88,5 @@ Alternately, you can deploy, (push changes and rebuild jekyll) using
 bash:
 
     git push deploy master
+
+
