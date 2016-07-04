@@ -33,7 +33,7 @@ Do generic install from Live USB
 
 ** Install Some Tools
 #+begin_src 
-  $ sudo apt-get install wget surfraw openssh-server gdebi most xprintidle
+  $ sudo apt-get install wget surfraw openssh-server gdebi most xprintidle lxrandr
 #+end_src
 ** Install Emacs
 
