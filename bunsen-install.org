@@ -392,7 +392,7 @@ change to START_DAEMON=yes
 ** Install ssmtp
 
 #+begin_src 
-$ sudo apt-get install fetchmail
+$ sudo apt-get install ssmtp mailutils
 #+end_src
 
 ** Edit OpenBox RC Files
