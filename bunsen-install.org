@@ -1,6 +1,6 @@
 #   -*- mode: org; fill-column: 60 -*-
 #+TITLE: 
-#+AUTHOR: Brad Collins \<brad@chenla.la>
+#+AUTHOR: Brad Collins <brad@chenla.la>
 #+DATE: 
 #+STARTUP: showall
 #+INFOJS_OPT: view:info toc:t ltoc:t
@@ -17,7 +17,6 @@
 Do generic install from Live USB
 
 ** TODO  [0/13]
-- [ ] 
 - [ ] Emacs
 - [ ] Conkeror
 - [ ] Krusader
@@ -146,7 +145,7 @@ VLC is already installed, so install audacious for light
 weight, music playing and clementine for my 2TB collection.
 
 #+begin_src 
-$ sudu apt-get install clementine audacious
+$ sudo apt-get install clementine audacious
 #+end_src
 
 
@@ -278,7 +277,7 @@ version:
 
 #+begin_src
 $ cd ~/emacs-lisp
-$ mv -R ./org-mode ./org-mode.bak
+$ mv -R ./org-mode ./org-mode.bak./orf
 $ git clone git://orgmode.org/org-mode.git
 $ cd ./org-mode
 $ make autoloads
@@ -345,6 +344,20 @@ $ sudo emacs /etc/X11/Xsession.options
 
 And comment out `ssh-agent' so X11 doesn't start it
 automatically when magit pushes.
+
+#+begin_src
+sudo emacs -nw  gnome-keyring-ssh.desktop 
+#+end_src
+
+and comment out:
+
+   `Exec=/usr/bin/gnome-keyring-daemon --start --components=ssh'
+
+
+try running the following:
+
+xfconf-query -c xfce-session -p /startup/ssh-agent/enabled -n -t bool -s false
+
 
 You may have to log out or reboot for all the settings to work.
 
