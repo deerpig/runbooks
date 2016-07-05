@@ -16,8 +16,8 @@
 
 cd ~
 mkdir .ssh
-mkdir ./.ssh/authorized_keys
 chmod 700 ./.ssh
+chmod 600 ./id_rsa
 chmod 644 ./.ssh/authorized_keys
 cd ./.ssh/authorized_keys
 

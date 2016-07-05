@@ -97,12 +97,6 @@ Make install as root
 $ sudo make install
 #+end_src
 
-Now link the binary to a place the PATH
-
-#+begin_src
-$ sudo ln -l 
-#+end_src
-
 ** Install Conkeror Web Browser
 
 #+begin_src
@@ -124,20 +118,20 @@ alias conkeror='firefox -app /usr/share/conkeror/application.ini'
   
 ** Install some Graphics Apps
 
-Install Gimp Inkscape Blender & Viewnoir
+Install Gimp Inkscape Blender & Viewnior
 
 #+begin_src
-$ sudo apt-get install gimp inkscape blender viewnoir
+$ sudo apt-get install gimp inkscape blender viewnior scribus
 #+end_src
 
 
 ** Install some KDE Apps
 
-krusader, kcolorchooser (part of kdegraphics), okular, sane
+krusader, kcolorchooser (part of kdegraphics), sane
 & calibre
 
 #+begin_src
-$ sudo apt-get install krusader kdegraphics okular sane
+$ sudo apt-get install krusader kdegraphics sane
 #+end_src
 
 ** Install PDF/Ebook Apps
@@ -209,12 +203,13 @@ $ cd ~/Downloads
 $ sudo gdebi ./skype...
 #+end_src
 
-
 ** Install Google Chrome
+
+ Use iceweasel, not Conkeror to open:
 
  http://www.google.com/chrome/browser/desktop/index.html 
 
- A dialog will pop up and prompt for install.
+and follow instructions.
 
  Run on the command line:
 
@@ -289,6 +284,10 @@ $ cd ./org-mode
 $ make autoloads
 #+end_src
 
+** Get SSH working
+
+
+
 
 ** Getting ssh-agent to work properly
 
@@ -341,7 +340,7 @@ for Magit.
 To get magit in emacs to stop prompting for the passphrase:
 
 #+begin_src 
-$ sudo emacs /etc/X11/Xsession.d
+$ sudo emacs /etc/X11/Xsession.options
 #+end_src
 
 And comment out `ssh-agent' so X11 doesn't start it
@@ -350,6 +349,52 @@ automatically when magit pushes.
 You may have to log out or reboot for all the settings to work.
 
 ** Copy dotfiles and emacs stuff
+
+#+begin_src 
+$ git clone deerpig@dev.chenla.org:/~repos/dotfiles
+$ mv ~/dotfiles ~/.dotfiles
+$ cd .dotfiles
+#+end_src
+
+Now remove the originals and link all the files in .files to
+~/
+
+#+begin_src 
+cd ~/
+ls ~/.dotfiles
+rm <filename>
+ln -s .dotfiles<filename> .<filename>
+#+end_src
+
+** Install fetchmail
+
+#+begin_src 
+$ sudo apt-get install fetchmail procmail
+#+end_src
+
+You should already have linked your fetchmailrc from
+.dotfiles now check the permissions
+
+#+begin_src 
+$ chmod 600 ~/.fetchmailrc
+#+end_src
+
+Set the daemon
+
+#+begin_src 
+$ sudo emacs /etc/default/fetchmail
+#+end_src
+
+change to START_DAEMON=yes
+
+
+
+** Install ssmtp
+
+#+begin_src 
+$ sudo apt-get install fetchmail
+#+end_src
+
 ** Edit OpenBox RC Files
 ** Set up Colors & Themes 
  - set colors and fonts in Terminal app
