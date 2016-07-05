@@ -151,7 +151,7 @@ VLC is already installed, so install audacious for light
 weight, music playing and clementine for my 2TB collection.
 
 #+begin_src 
-$ sudu apt-get install clementine audacious
+$ sudo apt-get install clementine audacious
 #+end_src
 
 
