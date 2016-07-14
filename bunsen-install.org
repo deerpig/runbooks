@@ -157,7 +157,6 @@ Install dependencies:
 $ sudo apt-get install libqt5gui5
 #+end_src
 
-  
 Go to:
 
   https://www.viber.com/en/products/linux
@@ -285,7 +284,11 @@ $ make autoloads
 
 ** Get SSH working
 
-
+cd ~
+mkdir .ssh
+chmod 700 ./.ssh
+chmod 600 ./id_rsa
+chmod 644 ./.ssh/authorized_keys
 
 
 ** Getting ssh-agent to work properly
@@ -353,7 +356,6 @@ and comment out:
 
    `Exec=/usr/bin/gnome-keyring-daemon --start --components=ssh'
 
-
 try running the following:
 
 xfconf-query -c xfce-session -p /startup/ssh-agent/enabled -n -t bool -s false
@@ -400,15 +402,53 @@ $ sudo emacs /etc/default/fetchmail
 
 change to START_DAEMON=yes
 
-
-
 ** Install ssmtp
 
 #+begin_src 
 $ sudo apt-get install ssmtp mailutils
 #+end_src
 
+Copy the ssmpt-conf file into place:
+
+/etc/ssmtp/ssmtp-conf
+
+#+begin_src 
+root=brad@chenla.la
+mailhub=smtp.gmail.com:587
+RewriteDomain=chenla.la
+FromLineOverride=YES
+UseSTARTTLS=YES
+TLS_CA_File=/etc/pki/tls/certs/ca-bundle.crt
+AuthUser=brad@chenla.la
+AuthPass=Twattering0fbardz
+#+end_src
+
+/etc/ssmtp/revaliases
+
+#+begin_src
+root:username@gmail.com:smtp.gmail.com:587
+mainuser:username@gmail.com:smtp.gmail.com:587
+#+end_src
+
+#+begin_src 
+$ chmod 640 /etc/ssmtp/ssmtp-conf
+#+end_src
+
+Now this is where things get weird -- it won't work.
+
+This is the workaround:
+
+Install postfix, which uninstalls ssmtp and mailutils
+
+then uninstall postfix and reinstall ssmtp and mailutils
+
+it should now work....  postfix sets up a lot of little
+stuff during the install, but leaves some in place when you
+uninstall that ssmtp seems to need to work.
+
+
 ** Edit OpenBox RC Files
 ** Set up Colors & Themes 
  - set colors and fonts in Terminal app
  - obconf
+
