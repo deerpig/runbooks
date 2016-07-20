@@ -45,7 +45,7 @@ $ sudo apt-get install git-core
 Install graphics and dev libs:
 
 #+begin_src
-$ sudo apt-get install libxaw7-dev libxpm-dev libpng12-dev libtiff5-dev libgif-dev libjpeg62-turbo-dev libgtk2.0-dev libncurses5-dev
+$ sudo apt-get install libxaw7-dev libxpm-dev libpng12-dev libtiff5-dev libgif-dev libjpeg62-turbo-dev libgtk2.0-dev libncurses5-dev libxml2 libxml2-dev
 #+end_src
 
 Full install of texinfo, latex & tex and pandoc.  Texinfo is
