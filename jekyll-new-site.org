@@ -19,7 +19,6 @@ mkdir .ssh
 chmod 700 ./.ssh
 chmod 600 ./id_rsa
 chmod 644 ./.ssh/authorized_keys
-cd ./.ssh/authorized_keys
 
 ssh-keygen -t rsa
 

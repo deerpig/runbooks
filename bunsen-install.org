@@ -1,5 +1,5 @@
 #   -*- mode: org; fill-column: 60 -*-
-#+TITLE: 
+#+TITLE: Bunsen Labs Linux Install Guide
 #+AUTHOR: Brad Collins <brad@chenla.la>
 #+DATE: 
 #+STARTUP: showall
@@ -12,23 +12,24 @@
   :URL:
   :END:
 
+I've refined this guide over six clean installs on laptop
+and desktop boxes.  It's still a work in progress, but it's
+getting to the point where it's reasonably stable.
+
+Set aside at least half a day to complete the basics -- a
+lot of this is just the time to download and install stuff.
+After the basic install and update you'll be installing
+several gig of files.  And let's not forget it takes the
+better part of an hour to config, make and make install
+emacs.
+
 ** Bunsen Install
 
-Do generic install from Live USB
-
-** TODO  [0/13]
-- [ ] Emacs
-- [ ] Conkeror
-- [ ] Krusader
-- [ ] Google Chrome
-- [ ] kcolorchooser
-- [ ] Clementine, Audacious
-- [ ] Inkscape, Blender, Scribus
-- [ ] Jekyll
-- [ ] Lisps
-- [ ] owncloud
-- [ ] Skype
-- [ ] Viber
+Do generic install from Live USB, when you reboot you'll get
+an install script -- don't install everything they suggest.
+Tried that once and it screwed things up, but use it to do
+an apt-get update, upgrade and add the alternate repos they
+suggest.
 
 ** Install Some Tools
 #+begin_src 
@@ -157,7 +158,6 @@ Install dependencies:
 $ sudo apt-get install libqt5gui5
 #+end_src
 
-  
 Go to:
 
   https://www.viber.com/en/products/linux
@@ -193,14 +193,14 @@ telephone number and then a code that will be sent your phone.
 Fucking awful GUI....
 ** Install Skype
 
-http//:skype.com
+The Skype client was suffering from serious bit rot.
+Thankfully MS has finally decide to port the latest version
+of Skype to Linux.  It's an alpha release (sigh) but
+sometimes you gotta take what you can get...
 
-Download Debian (multi architectures)
+Download and install the .deb file:
 
-#+begin_src 
-$ cd ~/Downloads
-$ sudo gdebi ./skype...
-#+end_src
+:url: https://community.skype.com/t5/Linux/bd-p/Linux
 
 ** Install Google Chrome
 
@@ -232,20 +232,14 @@ $ sudo apt-get install ruby ruby-dev rubygems
 $ sudo gem install jekyll
 #+end_src
 
+Then follow the guide in [[./jekyll-new-site.org]]
+
 ** Set Wallpaper
 
 In the menu find 'choose wallpaper'  and add the following
 path:
 
   /usr/share/images/bunsen/wallpapers/default/
-
-** Get Rid of the App Launcher
-
-Open
-
-  $ emacs ~/.config/tint2/tint2rc
-
-and comment out all of the 'launcher_item_app' entries.
 
 ** Turn off screen lock
 
@@ -285,7 +279,11 @@ $ make autoloads
 
 ** Get SSH working
 
-
+cd ~
+mkdir .ssh
+chmod 700 ./.ssh
+chmod 600 ./id_rsa
+chmod 644 ./.ssh/authorized_keys
 
 
 ** Getting ssh-agent to work properly
@@ -353,7 +351,6 @@ and comment out:
 
    `Exec=/usr/bin/gnome-keyring-daemon --start --components=ssh'
 
-
 try running the following:
 
 xfconf-query -c xfce-session -p /startup/ssh-agent/enabled -n -t bool -s false
@@ -400,15 +397,94 @@ $ sudo emacs /etc/default/fetchmail
 
 change to START_DAEMON=yes
 
-
-
 ** Install ssmtp
 
 #+begin_src 
 $ sudo apt-get install ssmtp mailutils
 #+end_src
 
+Copy the ssmpt-conf file into place, or edit the default
+config file to work like so
+
+/etc/ssmtp/ssmtp-conf
+
+#+begin_src 
+root=brad@chenla.la
+mailhub=smtp.gmail.com:587
+RewriteDomain=chenla.la
+FromLineOverride=YES
+UseSTARTTLS=YES
+TLS_CA_File=/etc/pki/tls/certs/ca-bundle.crt
+AuthUser=brad@chenla.la
+AuthPass=your-password
+#+end_src
+
+/etc/ssmtp/revaliases
+
+#+begin_src
+root:username@gmail.com:smtp.gmail.com:587
+mainuser:username@gmail.com:smtp.gmail.com:587
+#+end_src
+
+#+begin_src 
+$ chmod 640 /etc/ssmtp/ssmtp-conf
+#+end_src
+
+Now this is where things get weird -- it won't work.
+
+This is the workaround:
+
+Install postfix, which uninstalls ssmtp and mailutils
+
+then uninstall postfix and reinstall ssmtp and mailutils
+
+it should now work....  postfix sets up a lot of little
+stuff during the install, but leaves some in place when you
+uninstall that ssmtp seems to need to work.
+
+
 ** Edit OpenBox RC Files
+
+I had tried to put all the OpenBox config files in a Git
+repo -- but there are a number of variations required
+between different hardware configs -- and BL is under active
+development, so I've broken things by importing OpenBox
+scripts that were only a week old!  So until BL has made a
+first release, it's better to install whatever is the new
+default and tweak it to taste.
+
+:NOTE: Needs to be expanded.
+
+- autostart 
+  - set up screen resolution
+  - disable caps-lock key
+- rc.xml
+  - number of desktops & default desktop
+  - edit keyboard shortcuts to open apps
+  - edit menus
+- menus.xml
+- pipemenus
+
+** Get Rid of the App Launcher
+
+Open
+
+  $ emacs ~/.config/tint2/tint2rc
+
+and comment out all of the 'launcher_item_app' entries.
+
+
 ** Set up Colors & Themes 
  - set colors and fonts in Terminal app
  - obconf
+
+** Add User to Wheel Group
+
+It seems that BunsenLabs install scripts and kde sudo (used
+by at least one gui package manager) require users to be in
+the wheel group so....
+
+#+begin_src 
+$ sudo groupadd wheel
+$ sudo gpasswd -a deerpig wheel
+#+end_src
