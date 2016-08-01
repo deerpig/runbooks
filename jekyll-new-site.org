@@ -14,6 +14,7 @@
 
 * Create .ssh keypair
 
+#+begin_src 
 cd ~
 mkdir .ssh
 chmod 700 ./.ssh
@@ -21,32 +22,41 @@ chmod 600 ./id_rsa
 chmod 644 ./.ssh/authorized_keys
 
 ssh-keygen -t rsa
+#+end_src
 
 Now cat each file generated and save in your home folder on your local
 box, in .ssh directory with same permissions as above.
 
 * Set up Apache Virtual Host
 
+#+begin_src  
 emacs /etc/httpd/conf/domains/site-www.conf
+#+end_src
 
+#+begin_src
 <VirtualHost *:80>
   ServerName site.kinto-cloud.com
   DocumentRoot /var/www/pnca/html
 </VirtualHost>
+#+end_src
 
+#+begin_src 
 sudo systemctl restart httpd
+#+end_src
 
 Go to Directnic and create A record pointing to site.
 
-* 
-On Remote server
+* On Remote server
 
+#+begin_src
 mkdir ~/repos/site-www
 cd ./site-www
 git init --bare
 cd hooks
 emacs post-receive
+#+end_src
 
+#+begin_src
 #!/bin/bash -l
 GIT_REPO=$HOME/repos/pnca-www
 TMP_GIT_CLONE=$HOME/tmp/pnca-www
@@ -56,16 +66,22 @@ git clone $GIT_REPO $TMP_GIT_CLONE
 jekyll build --source $TMP_GIT_CLONE --destination $PUBLIC_WWW
 rm -Rf $TMP_GIT_CLONE
 exit
+#+end_src
 
+#+begin_src 
 sudo chmod +x post-receive
+#+end_src
 
+#+begin_src
 mkdir /var/www/site
 chown deerpig /var/www/site
 cd /var/www/site
 mkdir ./html
+#+end_src 
 
 * On Local Machine
 
+#+begin_src
 mkdir ~/blog/site
 cd ~/blog/site
 jekyll new site-www
@@ -76,6 +92,7 @@ git add .
 git commit -m "added files"
 
 git remote add deploy deerpig@camby.kinto-cloud.com:~/repos/site-www
+#+end_src
 
 ----
 
@@ -86,6 +103,7 @@ automatically invokes Jekyll and builds the site from git the Git repo.
 Alternately, you can deploy, (push changes and rebuild jekyll) using
 bash:
 
-    git push deploy master
-
+#+begin_src
+ git push deploy master
+#+end_src
 
