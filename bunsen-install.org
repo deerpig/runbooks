@@ -55,13 +55,15 @@ cd ~/Downloads
 sudo cp ./plantuml.jar /usr/local/bin/
 #+end_src
 
-** Install Emacs
+** Install Git
 
 Install Git:
 
 #+begin_src 
 $ sudo apt-get install git-core
 #+end_src
+
+** Install Emacs
 
 Install graphics and dev libs:
 
