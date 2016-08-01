@@ -33,8 +33,28 @@ suggest.
 
 ** Install Some Tools
 #+begin_src 
-  $ sudo apt-get install wget surfraw openssh-server gdebi most xprintidle lxrandr
+sudo apt-get install wget surfraw openssh-server gdebi most xprintidle lxrandr
 #+end_src
+
+** Install Graph Generators for Org Mode
+
+Install Ditaa, PlantUML and GraphViz which are used by Orgmode
+
+#+begin_src
+sudo apt-get install ditaa graphviz
+#+end_src
+
+Download the PlantUML jar file from:
+
+  :url: http://sourceforge.net/projects/plantuml/files/plantuml.jar/download
+
+And then copy it to a place that can be used system-wide:
+
+#+begin_src 
+cd ~/Downloads
+sudo cp ./plantuml.jar /usr/local/bin/
+#+end_src
+
 ** Install Emacs
 
 Install Git:
