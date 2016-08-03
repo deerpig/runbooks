@@ -1,6 +1,6 @@
 #   -*- mode: org; fill-column: 60 -*-
 #+TITLE: Creating a new Web Site
-#+AUTHOR: Brad Collins \<brad@chenla.la>
+#+AUTHOR: Brad Collins <brad@chenla.la>
 #+DATE:
 #+STARTUP: content
 #+INFOJS_OPT: view:info toc:t ltoc:t
@@ -29,26 +29,48 @@ box, in .ssh directory with same permissions as above.
 
 * Set up Apache Virtual Host
 
-#+begin_src  
+Create an Virtual Host in apache.
+
+We keep our apache directives in a separate directory to
+prevent apache from overwriting anything when we upgrade.
+
+#+begin_src  sh
 emacs /etc/httpd/conf/domains/site-www.conf
 #+end_src
 
-#+begin_src
+#+begin_example
 <VirtualHost *:80>
   ServerName site.kinto-cloud.com
-  DocumentRoot /var/www/pnca/html
+  DocumentRoot /var/www/path/name
 </VirtualHost>
-#+end_src
+#+end_example
 
-#+begin_src 
+Now restart apache.
+
+#+begin_src sh
 sudo systemctl restart httpd
 #+end_src
 
-Go to Directnic and create A record pointing to site.
+Go to Directnic and create A record for the subdomain that
+points to site.
+
+#+begin_example
+A  site.kinto-cloud.com   10.0.0.100  1
+#+end_example
+
 
 * On Remote server
 
-#+begin_src
+SHH into the remove server and create the directory for the
+new repo and then do a git init.  Then create a new file in
+./hooks called /post-receive/ which will either automatically build
+the website and move the files to =document root= using
+jekyll or, if the site has already been built, use =rsync=
+to copy the files to =document root=.
+
+
+#+begin_src sh
+ssh deerpig@dev.chenla.org
 mkdir ~/repos/site-www
 cd ./site-www
 git init --bare
@@ -56,32 +78,39 @@ cd hooks
 emacs post-receive
 #+end_src
 
-#+begin_src
+#+begin_src sh
 #!/bin/bash -l
 GIT_REPO=$HOME/repos/pnca-www
 TMP_GIT_CLONE=$HOME/tmp/pnca-www
 PUBLIC_WWW=/var/www/pnca/html
 
 git clone $GIT_REPO $TMP_GIT_CLONE
+
+# Use rsync to copy files to document root
+#rsync -avzh  $TMP_GIT_CLONE $PUBLIC_WWW
+
+# Use Jekyll to build the site and copy files to document root
 jekyll build --source $TMP_GIT_CLONE --destination $PUBLIC_WWW
+
+# Delete tmp files
 rm -Rf $TMP_GIT_CLONE
 exit
 #+end_src
 
-#+begin_src 
+#+begin_src sh
 sudo chmod +x post-receive
 #+end_src
 
-#+begin_src
-mkdir /var/www/site
-chown deerpig /var/www/site
+#+begin_src sh
+sudo mkdir -p /var/www/site/html
+sudo chown deerpig /var/www/site
 cd /var/www/site
 mkdir ./html
 #+end_src 
 
 * On Local Machine
 
-#+begin_src
+#+begin_src sh
 mkdir ~/blog/site
 cd ~/blog/site
 jekyll new site-www
@@ -103,7 +132,7 @@ automatically invokes Jekyll and builds the site from git the Git repo.
 Alternately, you can deploy, (push changes and rebuild jekyll) using
 bash:
 
-#+begin_src
+#+begin_src sh
  git push deploy master
 #+end_src
 
