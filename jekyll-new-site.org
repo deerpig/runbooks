@@ -12,20 +12,7 @@
   :URL:
   :END:
 
-* Create .ssh keypair
 
-#+begin_src 
-cd ~
-mkdir .ssh
-chmod 700 ./.ssh
-chmod 600 ./id_rsa
-chmod 644 ./.ssh/authorized_keys
-
-ssh-keygen -t rsa
-#+end_src
-
-Now cat each file generated and save in your home folder on your local
-box, in .ssh directory with same permissions as above.
 
 * Set up Apache Virtual Host
 

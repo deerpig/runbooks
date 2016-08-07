@@ -1,0 +1,220 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+TITLE: Setting Up A VM on Kinto Cloud Service
+#+AUTHOR: Brad Collins <brad@chenla.la>
+#+DATE: 
+#+STARTUP: showall
+#+INFOJS_OPT: view:info toc:t ltoc:t
+#+HTML_HEAD_EXTRA: <style>body {margin-left:50px; width:60%;}</style>
+  :PROPERTIES:
+  :Name: /home/deerpig/proj/deerpig/deerpig-install/kinto-vm-install.org
+  :Created: 2016-08-06T14:19@Wat Phnom (11.5733N17-104.925295W)
+  :ID: 6de8e89f-1bfb-44d1-8bd2-f68e1dc44109
+  :URL:
+  :END:
+
+* Introduction
+
+This document assumes that they are using a linux desktop
+environment.  If you are using OSx or Windows some of this
+will have to be adjusted for your OS.
+
+* Create .ssh key pair
+
+#+begin_src sh
+cd ~/
+mkdir .ssh
+cd ~/.ssh
+ssh-keygen -b 4096
+#+end_src
+
+This will create a 4096-bit RSA (and SHA256) which should be
+pretty solid for the forseeable future.
+
+You will be prompted for a location to save the keys, and
+for an optional passphrase.  The passphrase is a backup
+security measure so that if your private key is stolen, the
+attacker will need your passphrase to be able to use the
+key.
+
+Two files will be generated, =id_rsa= and =id_rsa.pub=.  
+
+Now double check that all permissions on the .ssh directory
+and keys are correct.
+
+#+begin_src sh
+chmod 700 ./.ssh
+chmod 600 ./id_rsa
+chmod 644 ./authorized_keys
+#+end_src
+
+** Further Reading
+
+The page on [[https://wiki.archlinux.org/index.php/SSH_keys][SSH Keys]] the Arch Linux Wiki is excellent,
+in-depth and fully referenced.
+
+:url: [[https://wiki.archlinux.org/index.php/SSH_keys][SSH Keys]]
+
+* Send Key & Username to Kinto
+
+Send a copy of the public key along with a preferred name
+for the machine to whoever is setting up your VM at Kinto.
+
+When the VM is ready you will get back an ip address,
+machine name, and possibly a domain name.
+
+* First Login
+
+SSH into the newly minted VM.
+
+The VM was created using the public key sumbited, but no
+user accounts are created, so a temporary account is created
+that contains your public key for the first login.  Kinto
+Cloud can not access your VM because that would require a
+copy of your public key which is the only way to access the
+VM.
+
+The stock username depends on the VM's distro:
+
+  - debian
+  - ubuntu
+  - centos
+
+#+begin_src 
+ssh <distroname>@192.0.2.25
+#+end_src
+
+*  Set up outgoing DNS
+
+Technically speaking, you really should create a new user
+and delete the install user first, but I prefer to make
+emacs available asap, and sadly before we can to that we
+will have to fix outgoing DNS so we can install emacs.
+
+At the time of writing there is a problem with VMs that are
+set up in new Open Stack Projects on Kinto.  Kinto has a DNS
+nameserver, but it is blocks VMs from using them from inside
+those projects.
+
+The work around is to edit =/etc/dhcp/dhclient.conf= and
+supersede the kinto nameserver with either the =OpenDNS= or
+=Google DNS= nameservers.
+
+Emacs is not part of the default server distros, but =vi=
+and =nano= are.
+
+#+begin_src sh
+sudo nano /etc/dhcp/dhclient.conf
+#+end_src
+
+Add one of the following lines.  If you are using =Debian=,
+put it below the line starting wih "#supersede".  If you are
+using =CentOS= put it where you like.
+
+For OpenDNS:
+
+#+begin_example
+supercede domain-name-servers 208.67.222.222, 298.67.220.220
+#+end_example
+
+For Google DNS:
+
+#+begin_example
+supercede domain-name-servers 8.8.8.8, 8.8.4.4
+#+end_example
+
+Save the file, reboot and ssh back in, and ping something to
+make sure it works.
+
+#+begin_src sh
+ping chenla.org
+#+end_src
+
+* Update Software
+
+Do a quick =yum= or =apt-get= update. 
+
+* Install Emacs
+
+Since these are servers, there is no need to install full
+blown versions of emacs which require you to install X and
+other stuff which has no business being installed on any 
+server, let alone a server in a public cloud server.
+
+The address this, there are =nox= (as in no X11)
+distributions of emacs which are small, light weight and
+very fast, while still having all that lovely emacs
+goodness.  They are designed to be plain-vanilla emacs, so
+you won't have fanccy stuff like =Helm= installed, but
+that's okay.  The only thing you should be doing on a server
+is editing config files.
+
+On =CentOS=:
+
+#+begin_src sh
+sudo yum install emacs-nox
+#+end_src
+
+On =Debian= & =Ubuntu=:
+
+#+begin_src sh
+sudo apt-get emacs24-nox
+#+end_src
+
+* Create new User
+
+Create the =wheel= group which is still used by some
+software packages.
+
+#+begin_src sh
+sudo groupadd wheel
+#+end_src
+
+Create the new user and include them in the =wheel= and
+=sudo= groups.
+
+#+begin_src sh
+sudo useradd -m -G wheel,sudo <username>
+#+end_src
+
+Set a password for the new account:
+
+#+begin_src sh
+sudo passwd <username>
+#+end_src
+
+Copy the ssh key that is in the default user directory to
+the new account.  Then change the ownership and group to the
+new user.
+
+#+begin_src sh
+sudo cp -r .ssh /home/<username>/
+sudo chown -R <username>:<username> /home/<username>/.ssh
+#+end_src
+
+Exit and ssh back into the machne as your new user.
+
+* Delete default user
+
+If everything seems to be working (sudo something) then
+delete the default user account and their home directory.
+
+#+begin_src sh
+sudo userdel -r <distroname>
+#+end_src
+
+* Install some useful stuff
+
+Use =apt-get= or =yum=, depending on the distro, to install
+wget, curl, git-core.
+
+#+begin_src sh
+sudo apt-get install wget curl git-core
+#+end_src
+
+* What Next?
+
+You now have a base plain-vanilla server.  From here you can
+install a LAMP stack, or whatever your heart desires....
+
+
+
