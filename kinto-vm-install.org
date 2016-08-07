@@ -170,17 +170,14 @@ sudo groupadd wheel
 #+end_src
 
 Create the new user and include them in the =wheel= and
-=sudo= groups.
+=sudo= groups.  You will be prompted to create a password.
 
 #+begin_src sh
-sudo useradd -m -G wheel,sudo <username>
+sudo adduser <username>
+sudo usermod -a -G sudo,wheel <username>
 #+end_src
 
-Set a password for the new account:
-
-#+begin_src sh
-sudo passwd <username>
-#+end_src
+* Copy .ssh key to new user 
 
 Copy the ssh key that is in the default user directory to
 the new account.  Then change the ownership and group to the
