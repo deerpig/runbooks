@@ -32,7 +32,7 @@ an apt-get update, upgrade and add the alternate repos they
 suggest.
 
 ** Install Some Tools
-#+begin_src 
+#+begin_src sh
 sudo apt-get install wget surfraw openssh-server gdebi most xprintidle lxrandr
 #+end_src
 
@@ -40,7 +40,7 @@ sudo apt-get install wget surfraw openssh-server gdebi most xprintidle lxrandr
 
 Install Ditaa, PlantUML and GraphViz which are used by Orgmode
 
-#+begin_src
+#+begin_src sh
 sudo apt-get install ditaa graphviz
 #+end_src
 
@@ -50,7 +50,7 @@ Download the PlantUML jar file from:
 
 And then copy it to a place that can be used system-wide:
 
-#+begin_src 
+#+begin_src  sh
 cd ~/Downloads
 sudo cp ./plantuml.jar /usr/local/bin/
 #+end_src
@@ -59,16 +59,16 @@ sudo cp ./plantuml.jar /usr/local/bin/
 
 Install Git:
 
-#+begin_src 
-$ sudo apt-get install git-core
+#+begin_src  sh
+sudo apt-get install git-core
 #+end_src
 
 ** Install Emacs
 
 Install graphics and dev libs:
 
-#+begin_src
-$ sudo apt-get install libxaw7-dev libxpm-dev libpng12-dev libtiff5-dev libgif-dev libjpeg62-turbo-dev libgtk2.0-dev libncurses5-dev libxml2 libxml2-dev
+#+begin_src sh
+sudo apt-get install libxaw7-dev libxpm-dev libpng12-dev libtiff5-dev libgif-dev libjpeg62-turbo-dev libgtk2.0-dev libncurses5-dev libxml2 libxml2-dev
 #+end_src
 
 Full install of texinfo, latex & tex and pandoc.  Texinfo is
@@ -77,59 +77,59 @@ also needed by orgmode.
 
 This will take a while -- well over a gigabyte
 
-#+begin_src
-$ sudo apt-get install texinfo texlive-base texlive-bibtex-extra pandoc
-$ sudo apt-get install texlive-fonts-recommended texlive-fonts-extra
-$ sudo apt-get install texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-science
+#+begin_src sh
+sudo apt-get install texinfo texlive-base texlive-bibtex-extra pandoc
+sudo apt-get install texlive-fonts-recommended texlive-fonts-extra
+sudo apt-get install texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-science
 #+end_src
   
 Install GNU-Autotools
 
-#+begin_src
-$ sudo apt-get install autoconf automake
+#+begin_src sh
+sudo apt-get install autoconf automake
 #+end_src
 
 Install the dependencies specified on the emacs package
 
-#+begin_src
-$ sudo apt-get build-dep emacs
+#+begin_src sh
+sudo apt-get build-dep emacs
 #+end_src
 
 Download Emacs source code from Github.  Be sure to pass the "--depth
 1" flag to download just the more recent history of the files.
 
-#+begin_src
-$ git clone --depth 1 https://github.com/emacs-mirror/emacs.git
-$ cd emacs
+#+begin_src sh
+git clone --depth 1 https://github.com/emacs-mirror/emacs.git
+cd emacs
 #+end_src
 
 Run the autogen and configure scripts. Note that with
 "--prefix" you pass the path in which you'll want the files to be
 installed.
 
-#+begin_src
-$ ./autogen.sh
-$ ./configure
-$ make
+#+begin_src sh
+./autogen.sh
+./configure
+make
 #+end_src
 
 Make install as root
 
-#+begin_src
-$ sudo make install
+#+begin_src sh
+sudo make install
 #+end_src
 
 ** Install Conkeror Web Browser
 
-#+begin_src
-$ sudo apt-get install conkeror conkeror-spawn-process-helper
+#+begin_src sh
+sudo apt-get install conkeror conkeror-spawn-process-helper
 #+end_src
 
 XULRunner has been booted out by Mozilla, so we need to use Firefox
 instead. 
 
 #+begin_src
-$ emacs ~/.bashrc_aliases
+emacs ~/.bashrc_aliases
 #+end_src
 
 And add:
@@ -142,8 +142,8 @@ alias conkeror='firefox -app /usr/share/conkeror/application.ini'
 
 Install Gimp Inkscape Blender & Viewnior
 
-#+begin_src
-$ sudo apt-get install gimp inkscape blender viewnior scribus
+#+begin_src sh
+sudo apt-get install gimp inkscape blender viewnior scribus
 #+end_src
 
 
@@ -152,14 +152,14 @@ $ sudo apt-get install gimp inkscape blender viewnior scribus
 krusader, kcolorchooser (part of kdegraphics), sane
 & calibre
 
-#+begin_src
-$ sudo apt-get install krusader kdegraphics sane
+#+begin_src sh
+sudo apt-get install krusader kdegraphics sane
 #+end_src
 
 ** Install PDF/Ebook Apps
 
-#+begin_src
-$ sudo apt-get install okular calibre djview4
+#+begin_src sh
+sudo apt-get install okular calibre djview4
 #+end_src
 
 ** Install media Apps
@@ -167,8 +167,8 @@ $ sudo apt-get install okular calibre djview4
 VLC is already installed, so install audacious for light
 weight, music playing and clementine for my 2TB collection.
 
-#+begin_src 
-$ sudo apt-get install clementine audacious
+#+begin_src sh
+sudo apt-get install clementine audacious
 #+end_src
 
 
@@ -176,8 +176,8 @@ $ sudo apt-get install clementine audacious
 
 Install dependencies:
 
-#+begin_src
-$ sudo apt-get install libqt5gui5
+#+begin_src sh
+sudo apt-get install libqt5gui5
 #+end_src
 
 Go to:
@@ -186,20 +186,20 @@ Go to:
 
 Click on "Viber Debian (64 bit) and save.
 
-#+begin_src
-$ sudo gdebi ~/Downloads/viber.deb
+#+begin_src sh
+sudo gdebi ~/Downloads/viber.deb
 #+end_src
 
 Now fix the weird path:
 
-#+begin_src
-$ ln -s /opt/viber/Viber /usr/local/bin/viber
+#+begin_src sh
+ln -s /opt/viber/Viber /usr/local/bin/viber
 #+end_src
 
 Change the Exec & Path as:
 
-#+begin_src
-$ sudo emacs /usr/share/applications/viber.desktop
+#+begin_src sh
+sudo emacs /usr/share/applications/viber.desktop
 #+end_src
 
 Change the following:
@@ -234,7 +234,7 @@ and follow instructions.
 
  Run on the command line:
 
- $ google-chrome
+ google-chrome
 
 ** Add DuckDuck Go As Default
 
@@ -249,9 +249,9 @@ when starting up.
  
 ** Install Jekyll
 
-#+begin_src 
-$ sudo apt-get install ruby ruby-dev rubygems
-$ sudo gem install jekyll
+#+begin_src sh
+sudo apt-get install ruby ruby-dev rubygems
+sudo gem install jekyll
 #+end_src
 
 Then follow the guide in [[./jekyll-new-site.org]]
@@ -271,8 +271,8 @@ screen lock is controlled by light-locker.
 
 To disable the lock:
 
-#+begin_src 
-$ sudo emacs /etc/xdg/autostart/light-locker.desktop
+#+begin_src  sh
+sudo emacs /etc/xdg/autostart/light-locker.desktop
 #+end_src
 
 and add the following:
@@ -291,22 +291,23 @@ recently having a problem with timezones...
 If something doesn't work, redownload and install clearn
 version:
 
-#+begin_src
-$ cd ~/emacs-lisp
-$ mv -R ./org-mode ./org-mode.bak./orf
-$ git clone git://orgmode.org/org-mode.git
-$ cd ./org-mode
-$ make autoloads
+#+begin_src sh
+cd ~/emacs-lisp
+mv -R ./org-mode ./org-mode.bak./orf
+git clone git://orgmode.org/org-mode.git
+cd ./org-mode
+make autoloads
 #+end_src
 
 ** Get SSH working
 
+#+begin_src sh
 cd ~
 mkdir .ssh
 chmod 700 ./.ssh
 chmod 600 ./id_rsa
 chmod 644 ./.ssh/authorized_keys
-
+#+end_src
 
 ** Getting ssh-agent to work properly
 
@@ -320,7 +321,7 @@ You should have the following script in your .bashrc (or
 possibly .bash_profile to autostart ssh-agent when you
 start a bash-shell.
 
-#+begin_src 
+#+begin_src sh
 SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {
@@ -337,13 +338,13 @@ function start_agent {
 if [ -f "${SSH_ENV}" ]; then
     . "${SSH_ENV}" > /dev/null
     #ps ${SSH_AGENT_PID} doesn't work under cywgin
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent> /dev/null || {
         start_agent;
     }
 else
     start_agent;
 fi
-#+end_src
+#+end_ascii
 
 
 Next install `exec-path-from-shell' from MELPA and add the
@@ -358,14 +359,14 @@ for Magit.
 
 To get magit in emacs to stop prompting for the passphrase:
 
-#+begin_src 
-$ sudo emacs /etc/X11/Xsession.options
+#+begin_src sh 
+sudo emacs /etc/X11/Xsession.options
 #+end_src
 
 And comment out `ssh-agent' so X11 doesn't start it
 automatically when magit pushes.
 
-#+begin_src
+#+begin_src sh
 sudo emacs -nw  gnome-keyring-ssh.desktop 
 #+end_src
 
@@ -382,16 +383,16 @@ You may have to log out or reboot for all the settings to work.
 
 ** Copy dotfiles and emacs stuff
 
-#+begin_src 
-$ git clone deerpig@dev.chenla.org:/~repos/dotfiles
-$ mv ~/dotfiles ~/.dotfiles
-$ cd .dotfiles
+#+begin_src sh
+git clone deerpig@dev.chenla.org:/~repos/dotfiles
+mv ~/dotfiles ~/.dotfiles
+cd .dotfiles
 #+end_src
 
 Now remove the originals and link all the files in .files to
 ~/
 
-#+begin_src 
+#+begin_src sh
 cd ~/
 ls ~/.dotfiles
 rm <filename>
@@ -400,29 +401,29 @@ ln -s .dotfiles<filename> .<filename>
 
 ** Install fetchmail
 
-#+begin_src 
-$ sudo apt-get install fetchmail procmail
+#+begin_src sh
+sudo apt-get install fetchmail procmail
 #+end_src
 
 You should already have linked your fetchmailrc from
 .dotfiles now check the permissions
 
-#+begin_src 
-$ chmod 600 ~/.fetchmailrc
+#+begin_src sh
+chmod 600 ~/.fetchmailrc
 #+end_src
 
 Set the daemon
 
-#+begin_src 
-$ sudo emacs /etc/default/fetchmail
+#+begin_src sh
+sudo emacs /etc/default/fetchmail
 #+end_src
 
 change to START_DAEMON=yes
 
 ** Install ssmtp
 
-#+begin_src 
-$ sudo apt-get install ssmtp mailutils
+#+begin_src sh
+sudo apt-get install ssmtp mailutils
 #+end_src
 
 Copy the ssmpt-conf file into place, or edit the default
@@ -430,7 +431,7 @@ config file to work like so
 
 /etc/ssmtp/ssmtp-conf
 
-#+begin_src 
+#+begin_src sh
 root=brad@chenla.la
 mailhub=smtp.gmail.com:587
 RewriteDomain=chenla.la
@@ -443,13 +444,13 @@ AuthPass=your-password
 
 /etc/ssmtp/revaliases
 
-#+begin_src
+#+begin_src sh
 root:username@gmail.com:smtp.gmail.com:587
 mainuser:username@gmail.com:smtp.gmail.com:587
 #+end_src
 
-#+begin_src 
-$ chmod 640 /etc/ssmtp/ssmtp-conf
+#+begin_src sh
+chmod 640 /etc/ssmtp/ssmtp-conf
 #+end_src
 
 Now this is where things get weird -- it won't work.
@@ -491,8 +492,10 @@ default and tweak it to taste.
 
 Open
 
-  $ emacs ~/.config/tint2/tint2rc
-
+#+begin_src sh
+emacs ~/.config/tint2/tint2rc
+#+end_src
+  
 and comment out all of the 'launcher_item_app' entries.
 
 
@@ -506,7 +509,7 @@ It seems that BunsenLabs install scripts and kde sudo (used
 by at least one gui package manager) require users to be in
 the wheel group so....
 
-#+begin_src 
-$ sudo groupadd wheel
-$ sudo gpasswd -a deerpig wheel
+#+begin_src sh
+sudo groupadd wheel
+sudo gpasswd -a deerpig wheel
 #+end_src
