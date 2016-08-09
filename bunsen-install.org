@@ -376,12 +376,38 @@ and comment out:
 
 try running the following:
 
+#+begin_src sh
 xfconf-query -c xfce-session -p /startup/ssh-agent/enabled -n -t bool -s false
+#+end_src
 
+Now restart ssh server.
 
-You may have to log out or reboot for all the settings to work.
+#+begin_src sh
+sudo service ssh restart
+#+end_src
 
 ** Copy dotfiles and emacs stuff
+
+I keep most of my config files in a git repo called
+/.dotfiles/ and then make a symbolic link from the files in
+the directory to ~/.
+
+I keep a copy of the repo on a private VM on Kinto and the
+first thing I do in the morning when I am in any office (my
+week is split between my part-time gig in Phnom Penh, my
+office at the College, another desktop in the Kinto-Cloud
+data center and the computer in my flat at home as well as
+my laptop.  They all share the same basic installation, and
+I sync all of the config files and my core org-mode files
+(which have all my tasks, project files, notes, journal and
+blog) between all of them.  As long as I sync in the morning, and
+then again before I go home the system works surprisingly
+well.
+
+I will eventually get my .emacs converted to a literate
+program and weed out all of the passwords so that I can put
+all of it up online for anyone to use.  But until then it
+will remain private.
 
 #+begin_src sh
 git clone deerpig@dev.chenla.org:/~repos/dotfiles
@@ -497,7 +523,6 @@ emacs ~/.config/tint2/tint2rc
 #+end_src
   
 and comment out all of the 'launcher_item_app' entries.
-
 
 ** Set up Colors & Themes 
  - set colors and fonts in Terminal app
