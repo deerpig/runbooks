@@ -344,7 +344,7 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
-#+end_ascii
+#+end_src
 
 
 Next install `exec-path-from-shell' from MELPA and add the
