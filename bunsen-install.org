@@ -128,7 +128,7 @@ sudo apt-get install conkeror conkeror-spawn-process-helper
 XULRunner has been booted out by Mozilla, so we need to use Firefox
 instead. 
 
-#+begin_src
+#+begin_src sh
 emacs ~/.bashrc_aliases
 #+end_src
 
@@ -376,12 +376,18 @@ and comment out:
 
 try running the following:
 
+#+begin_src sh
 xfconf-query -c xfce-session -p /startup/ssh-agent/enabled -n -t bool -s false
-
+#+end_src
 
 You may have to log out or reboot for all the settings to work.
 
 ** Copy dotfiles and emacs stuff
+
+I keep most of my config files in a directory called
+".dotfiles" and then create symbolic links to "~/".  The
+diectory is a git repo that I then use to sync between
+five different machines.
 
 #+begin_src sh
 git clone deerpig@dev.chenla.org:/~repos/dotfiles
@@ -390,7 +396,7 @@ cd .dotfiles
 #+end_src
 
 Now remove the originals and link all the files in .files to
-~/
+~/.
 
 #+begin_src sh
 cd ~/
