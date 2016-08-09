@@ -372,7 +372,10 @@ sudo emacs -nw  gnome-keyring-ssh.desktop
 
 and comment out:
 
-   `Exec=/usr/bin/gnome-keyring-daemon --start --components=ssh'
+#+begin_ascii
+Exec=/usr/bin/gnome-keyring-daemon --start --components=ssh
+#+end_ascii
+
 
 try running the following:
 
