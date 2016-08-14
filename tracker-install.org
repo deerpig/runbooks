@@ -158,7 +158,8 @@ sudo emacs /etc/fetchmailrc
 #+begin_ascii
 set syslog
 
-set daemon 240
+# check for new mail every five minutes
+set daemon 300
 
  poll imap.gmail.com
    with nodns,
@@ -171,15 +172,34 @@ set daemon 240
 
 #+begin_src sh
 sudo chmod 600 /etc/fetchmailrc
+sudo chown fetchmail /etc/fetchmailrc
 #+end_src
 
-** create cron job for fetchmail & roundup-mailgw
+** start fetchmail daemon
+
+Tell fetchmail to run in daemon mode
+
+#+begin_src sh
+sudo emacs /etc/default/fetchmail
+#+end_src
+
+Change "START DAEMON=no" to "yes".
+
+Enable and start the daemon.
+
+#+begin_src sh
+sudo systemctl enable fetchmail
+sudo systemctl start fetchmail
+#+end_src
+
+** create cron job for roundup-mailgw
+
+Create cron job to check for mail every five minutes as well.
 
 #+begin_src sh
 sudo crontab -e
 #+end_src
 
 #+begin_ascii
-0,10,20,30,40,50 * * * * fetchmail -f /etc/fetchmailrc
-0,10,20,30,40,50 * * * * /usr/local/bin/roundup-mailgw /opt/roundup/trackers/support mailbox /var/mail/support
+*/5 * * * * /usr/local/bin/roundup-mailgw /opt/roundup/trackers/support mailbox /var/mail/support
 #+end_ascii
