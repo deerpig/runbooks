@@ -1,0 +1,205 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+TITLE: Issue Tracker Install
+#+AUTHOR: Brad Collins <brad@chenla.la>
+#+DATE: 
+#+STARTUP: showall
+#+INFOJS_OPT: view:info toc:t ltoc:t
+#+HTML_HEAD_EXTRA: <style>body {margin-left:50px; width:60%;}</style>
+  :PROPERTIES:
+  :Name: /home/deerpig/proj/deerpig/deerpig-install/tracker-install.org
+  :Created: 2016-08-12T10:00@Wat Phnom (11.5733N17-104.925295W)
+  :ID: ef0c3444-5a94-4b83-887d-ab58279be736
+  :URL:
+  :END:
+
+
+I have put off setting up an issue tracker for some time. First, the
+most popular trackers were simply too big and complex and didn't fit
+my workflow.  I believe that email is a good way of doing issue
+resolution -- everyone has it, and there are a variety of ways of
+working with it.  It also needs a good web interface, but not over
+the top complex. Second, I have tried to install a couple of other
+trackers that supposedly were easy to install -- they weren't
+
+Finally I ran across /Roundup Tracker/, it had the features I wanted
+and made the claim that it could be installed in 30 minutes.  Oh Boy,
+was that ever wrong.  Getting all of the pieces to work together can
+take forever -- smtp, incoming email, mod_python, apache and databases
+was non-trivial.
+
+The documentation was good, but not always as explicit as it should
+be.  And because Roundup isn't that well known, there aren't a lot of
+people asking questions about it on StackOverflow.
+
+* Starting with a clean slate
+
+  - Create a new Debian Instance with Debian backports enabled.
+  - create subdomains /bugs/ & /issues/.
+
+* Install stuff
+
+  - install python >2.5
+  - install python-dev python-tz 
+  - install python-openssl python-pyme pthyon-sql-lite
+  - install sqlite
+  - install xapian*
+
+* Install mod_python 
+
+  - install mod_python
+
+#+begin_src sh
+sudo apt-get update
+sudo apt-get install libapache2-mod-python libapache2-mod-python-doc
+#+end_src
+
+#+begin_src sh
+sudo mkdir /var/www/py
+#+end_src
+
+
+#+begin_src sh
+sudo chown yourname:www-data /var/www/py
+#+end_src
+
+#+begin_src sh
+sudo /etc/apache2/sites-available/default
+#+end_src
+
+#+begin_ascii
+<Directory /var/www/py>
+  AddHandler mod_python .py
+  PythonHandler hello
+  PythonDebug On
+</Directory>
+#+end_ascii
+
+#+begin_src sh
+sudo /etc/init.d/apache2 restart
+sudo tail -f /var/log/apache2/error.log
+#+end_src
+
+
+* Download & install roundup
+
+  - wget roundup <url>
+  - tar zxvf <filename>
+  - cd <filename>
+  - python setup.py install
+
+* Create tracker
+
+  - sudo mkdir -p /opt/roundup/trackers
+
+#+begin_src sh
+sudo roundup-admin install
+#+end_src
+
+  - tracker home: /opt/roundup/trackers/support
+  - template    : classic
+  - database    : sqlite
+
+** edit config.ini
+
+Replace support/config.ini with  /this/ file and change the following:
+
+** set permissions on db
+
+#+begin_src sh
+sudo chown www-data /opt/roundup/trackers/support/db/db
+sudo chown www-data /opt/roundup/trackers/support/db
+sudo chmod g+sw db && sudo chgrp support db
+
+
+sudo chmod u+w+x,g+w+x /opt/roundup/trackers/support/db/db
+sudo chmod u+w+x,g+w+x /opt/roundup/trackers/support/db
+#+end_src
+
+This allows the group to write to the database, and any new files
+created in the database will be owned by the group.
+
+** Initialise tracker
+
+#+begin_src sh
+sudo roundup-admin initialise 
+#+end_src
+
+tracker home : /opt/roundup/trackers/support
+Password
+
+* Setup apache
+
+  - We are using Apache 2.4
+  - Copy <this> to /etc/apache2/
+  
+* Setup mailgw
+
+** create bugs@chenla.org account on google apps
+
+** install fetchmail & procmail
+
+#+begin_src sh
+sudo apt-get install fetchmail procmail
+
+#+end_src
+
+** create user account: support
+
+#+begin_src sh
+sudo useradd -r -s /bin/false -g support
+#+end_src
+
+** add .fetchmailrc file
+
+#+begin_src 
+sudo emacs /etc/fetchmailrc
+#+end_src
+
+#+begin_ascii
+set syslog
+
+# check for new mail every five minutes
+set daemon 300
+
+ poll imap.gmail.com
+   with nodns,
+   with protocol IMAP
+   user 'bugs@chenla.la' there is 'support' here,
+   with password '<password>',
+   with ssl, nofetchall
+   mda "/usr/bin/procmail -d %T";
+#+end_ascii
+
+#+begin_src sh
+sudo chmod 600 /etc/fetchmailrc
+sudo chown fetchmail /etc/fetchmailrc
+#+end_src
+
+** start fetchmail daemon
+
+Tell fetchmail to run in daemon mode
+
+#+begin_src sh
+sudo emacs /etc/default/fetchmail
+#+end_src
+
+Change "START DAEMON=no" to "yes".
+
+Enable and start the daemon.
+
+#+begin_src sh
+sudo systemctl enable fetchmail
+sudo systemctl start fetchmail
+#+end_src
+
+** create cron job for roundup-mailgw
+
+Create cron job to check for mail every five minutes as well.
+
+#+begin_src sh
+sudo crontab -e
+#+end_src
+
+#+begin_ascii
+*/5 * * * * /usr/local/bin/roundup-mailgw /opt/roundup/trackers/support mailbox /var/mail/support
+#+end_ascii
