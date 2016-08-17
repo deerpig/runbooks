@@ -159,7 +159,7 @@ sudo apt-get install krusader kdegraphics sane
 ** Install PDF/Ebook Apps
 
 #+begin_src sh
-sudo apt-get install okular calibre djview4
+sudo apt-get install okular okular-extra-backends calibre djview4
 #+end_src
 
 ** Install media Apps
