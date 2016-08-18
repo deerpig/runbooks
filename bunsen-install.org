@@ -134,9 +134,9 @@ emacs ~/.bashrc_aliases
 
 And add:
 
-#+begin_ascii
+#+begin_example
 alias conkeror='firefox -app /usr/share/conkeror/application.ini'
-#+end_ascii
+#+end_example
   
 ** Install some Graphics Apps
 
@@ -204,10 +204,10 @@ sudo emacs /usr/share/applications/viber.desktop
 
 Change the following:
 
-#+begin_ascii
+#+begin_example
   Exec=viber
   Path=/opt/viber
-#+end_ascii
+#+end_example
 
 When you open the app for the first time it will ask you for a
 telephone number and then a code that will be sent your phone.
@@ -278,9 +278,9 @@ sudo emacs /etc/xdg/autostart/light-locker.desktop
 
 and add the following:
 
-#+begin_ascii
+#+begin_example
 Exec=light-locker --lock-after-screensaver 0
-#+end_ascii
+#+end_example
 
 `0' disables locking.
 
@@ -373,9 +373,9 @@ sudo emacs -nw  gnome-keyring-ssh.desktop
 
 and comment out:
 
-#+begin_ascii
+#+begin_example
 Exec=/usr/bin/gnome-keyring-daemon --start --components=ssh
-#+end_ascii
+#+end_example
 
 
 try running the following:
@@ -541,8 +541,8 @@ ln -s ../mods-available/userdir.load userdir.conf
 
 I perfer using "htdocs" rather than "public_html", because
 it's shorter to type, and the "_html" looks like an ugly
-bump when looking at the directory.  Silly, but I am serious
-about it being shorter to type.
+bump when looking at the directory.  Seriously, it /is/
+shorter to type.
 
 #+begin_src sh
 sudo emacs -nw ./userdir.conf
@@ -550,7 +550,7 @@ sudo emacs -nw ./userdir.conf
 
 And change the two instances of "public_html" with "htdocs"
 
-#+begin_ascii
+#+begin_example
 <IfModule mod_userdir.c>
         UserDir htdocs
         UserDir disabled root
@@ -566,7 +566,7 @@ And change the two instances of "public_html" with "htdocs"
                 </LimitExcept>
         </Directory>
 </IfModule>
-#+end_ascii
+#+end_example
 
 Save, exit and restart apache.
 
