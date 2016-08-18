@@ -213,6 +213,7 @@ When you open the app for the first time it will ask you for a
 telephone number and then a code that will be sent your phone.
 
 Fucking awful GUI....
+
 ** Install Skype
 
 The Skype client was suffering from serious bit rot.
@@ -522,3 +523,57 @@ the wheel group so....
 sudo groupadd wheel
 sudo gpasswd -a deerpig wheel
 #+end_src
+** Set up apache2 & User Directories
+
+Install apache2
+
+#+begin_src sh
+sudo apt-get install apache2
+#+end_src
+
+Now let's activate user directories.
+
+#+begin_src sh
+cd /etc/apache2/mods-enabled
+ln -s ../mods-available/userdir.load userdir.load
+ln -s ../mods-available/userdir.load userdir.conf
+#+end_src
+
+I perfer using "htdocs" rather than "public_html", because
+it's shorter to type, and the "_html" looks like an ugly
+bump when looking at the directory.  Silly, but I am serious
+about it being shorter to type.
+
+#+begin_src sh
+sudo emacs -nw ./userdir.conf
+#+end_src
+
+And change the two instances of "public_html" with "htdocs"
+
+#+begin_ascii
+<IfModule mod_userdir.c>
+        UserDir htdocs
+        UserDir disabled root
+
+        <Directory /home/*/htdocs>
+                AllowOverride FileInfo AuthConfig Limit Indexes
+                Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+                <Limit GET POST OPTIONS>
+                        Require all granted
+                </Limit>
+                <LimitExcept GET POST OPTIONS>
+                        Require all denied
+                </LimitExcept>
+        </Directory>
+</IfModule>
+#+end_ascii
+
+Save, exit and restart apache.
+
+#+begin_src sh
+sudo /etc/init.d/apache2 restart
+#+end_src
+
+Files can now be accessed at http://localhost/~deerpig/  --
+remember to include the ~.
+
