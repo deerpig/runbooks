@@ -1,40 +1,5 @@
 * README
 
-This is a collection of documents that I personally use to:
-
-** Install new laptops & desktops for personal use.
-
-I use /Bunsen Labs Linux/ which used to be called /Crunchbang Linux/
-which is basically Debian Jessie that has been tweaked to run a very
-clean install of OpenBox.
-
-Most of my work is in Emacs and in particular Org Mode, so everything
-is designed to work together closely with Emacs and Org.
-
-These are very personal setups which reflect my workflow and the
-problems I have regularly encountered in installing Bunsen and Emacs.
-Your mileage may vary.  If there is anything useful here, you are
-welcome to use it but, you're responsible if anything goes wrong.
-
-If anyone has any suggestions on how to improve things, I would love
-to hear from you. 
-
-Eventually, all of my dot files and emacs config files will be lumped
-into another repo here, which will provide the other side of
-installing and setting up a new box.
-
-** Create new Jekyll & Bootstrap Websites
- 
-I maintain a number of web sites (for prototyping & production) that
-all use Jekyll, Bootstrap and Font Awesome.  They are /not/ hosted on
-GitHub, so the setup proceedures are a bit different from GitHub based
-Jekyll sites.
-
-I use Magit-mode in Emacs to do 99% of work with Git, so there isn't
-much discussion about Git commands.
-
-** Set up Servers on our OpenStack Cluster
-
-We maintain our own in-house OpenStack cluster, so I will eventually
-include install & setup instructions for setting up new VMs on the
-cluster, and common setup configurations and recipes.
+This is a collection of installation documents for personal use and
+work.  The web site generated from this repo can be found at
+[[http://deerpig.chenla.org][deerpig.chenla.org]]
