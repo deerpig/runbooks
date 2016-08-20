@@ -12,7 +12,7 @@
   :URL:
   :END:
 
-
+This document assumes that the site is being hosted on CentOS.
 
 * Set up Apache Virtual Host
 
@@ -22,13 +22,13 @@ We keep our apache directives in a separate directory to
 prevent apache from overwriting anything when we upgrade.
 
 #+begin_src  sh
-emacs /etc/httpd/conf/domains/site-www.conf
+sudo emacs /etc/httpd/conf/domains/site-www.conf
 #+end_src
 
 #+begin_example
 <VirtualHost *:80>
   ServerName site.kinto-cloud.com
-  DocumentRoot /var/www/path/name
+  DocumentRoot /var/www/site/
 </VirtualHost>
 #+end_example
 
@@ -67,9 +67,9 @@ emacs post-receive
 
 #+begin_src sh
 #!/bin/bash -l
-GIT_REPO=$HOME/repos/pnca-www
-TMP_GIT_CLONE=$HOME/tmp/pnca-www
-PUBLIC_WWW=/var/www/pnca/html
+GIT_REPO=$HOME/repos/site-www
+TMP_GIT_CLONE=$HOME/tmp/site-www
+PUBLIC_WWW=/var/www/site/html
 
 git clone $GIT_REPO $TMP_GIT_CLONE
 
@@ -91,8 +91,6 @@ sudo chmod +x post-receive
 #+begin_src sh
 sudo mkdir -p /var/www/site/html
 sudo chown deerpig /var/www/site
-cd /var/www/site
-mkdir ./html
 #+end_src 
 
 * On Local Machine
