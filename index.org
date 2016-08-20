@@ -1,0 +1,76 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+TITLE: Deerpig: The Installs & The Diatribes
+#+STARTUP: showall
+#+LANGUAGE: en
+#+OPTIONS: toc:nil num:nil h:4 html-postamble:nil html-preamble:t tex:t f:t d:nil
+#+OPTIONS: prop:("VERSION")
+#+HTML_DOCTYPE: <!DOCTYPE html>
+#+HTML_HEAD: <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
+#+HTML_HEAD: <link href="./css/style.css" rel="stylesheet" type="text/css" />
+#+HTML_HEAD: <link href="./css/index.css" rel="stylesheet" type="text/css" />
+#+LINK: gh    https://github.com/
+#+LINK: rfc   https://tools.ietf.org/html/
+#+LINK: wiki  https://en.wikipedia.org/wiki/
+
+  :PROPERTIES:
+  :Name: /home/deerpig/proj/deerpig/deerpig-install/index.org
+  :Created: 2016-08-20T16:40@Wat Phnom (11.5733N17-104.925295W)
+  :ID: 5995dc73-91da-4940-bae1-efb75ce040d4
+  :URL:
+  :END:
+
+#+HTML: <div class="outline-2" id="meta">
+| *Author*  | Brad Collins <brad@chenla.org>             |
+| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
+#+HTML: </div>
+
+#+TOC: headlines 4
+
+* About these pages
+
+#+begin_quote
+This page describes the various installation guides & documentation
+that I use personally and professionally.  Please be aware that I am a
+old-school Emacs user and Lisp hacker, and have a somewhat eclectic
+tool chain and work flow that revolves around emacs, orgmode, the
+bash shell and a browser.  I hope these pages are useful to others,
+but I'm not holding my breath.  You can find the source code for the
+site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
+#+end_quote
+
+** THESE PAGES ARE FOR YOU
+
+#+begin_quote
+The MIT License (MIT)
+
+Copyright (c) 2016 deerpig
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+#+end_quote
+
+* Feedback
+Please make a [[/#][merge request]] to suggest improvements or add
+clarifications. Please use [[/#][issues]] to ask questions.
+
+* Runbooks 
+  - Bunsen Labs Install
+  - Kinto Cloud New VM Install
+  - Jekyll Blog Setup
+  - Roundup Issue Tracker Install
+  - Mattermost & IRCD Hybrid Install
+  - GitoLite3 & CGit Install
+* Emacs & Orgmode Config
+  - Dot Emacs
+  - Orgmode Configuration
+* Colophon
+  - Toolchain & Workflow
+  - What is a Deerpig?

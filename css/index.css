@@ -1,0 +1,24 @@
+
+/* CSS for the Main Index */
+/* */
+
+h2 { font-size: 1.30em;
+     border-bottom: 0px;
+     padding-top: 0px;
+     padding-bottom: 0px;
+     margin-top: 0px;
+     margin-bottom: 0px;
+     }
+
+a:link { text-decoration: underline;
+         color: #8B0000;
+         background: #fff;}
+
+a:hover,
+a:visited,
+a:visited:hover,
+a:link:hover {
+      text-decoration: underline;
+      color: #6E0000;
+      background: #fff;                        
+                 }
