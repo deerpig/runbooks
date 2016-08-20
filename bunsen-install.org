@@ -377,7 +377,6 @@ and comment out:
 Exec=/usr/bin/gnome-keyring-daemon --start --components=ssh
 #+end_example
 
-
 try running the following:
 
 #+begin_src sh
@@ -577,3 +576,20 @@ sudo /etc/init.d/apache2 restart
 Files can now be accessed at http://localhost/~deerpig/  --
 remember to include the ~.
 
+** Fonts
+
+Copy fonts into any of the following directories:
+
+#+begin_example
+/usr/share/fonts
+/usr/share/X11/fonts
+/usr/local/share/fonts
+~/.fonts
+#+end_example
+
+
+And then make Debian aware of the new fonts.
+
+#+begin_src sh
+sudo fc-cache -f -v
+#+end_src
