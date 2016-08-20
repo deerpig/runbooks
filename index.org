@@ -38,7 +38,24 @@ but I'm not holding my breath.  You can find the source code for the
 site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
 #+end_quote
 
-** THESE PAGES ARE FOR YOU
+* Feedback
+Please make a [[/#][merge request]] to suggest improvements or add
+clarifications. Please use [[/#][issues]] to ask questions.
+
+* Runbooks 
+  - [[./bunsen-install.html][Bunsen Labs Install]]
+  - [[./kinto-vm-install.html][Kinto Cloud New VM Install]]
+  - [[./jekyll-new-site.html][Jekyll Blog Setup]]
+  - [[./tracker-install.html][Roundup Issue Tracker Install]]
+  - Mattermost & IRCD Hybrid Install
+  - GitoLite3 & CGit Install
+* Emacs & Orgmode Config
+  - Dot Emacs
+  - Orgmode Configuration
+* Colophon
+  - Toolchain & Workflow
+  - What is a Deerpig?
+* Licence
 
 #+begin_quote
 The MIT License (MIT)
@@ -56,21 +73,3 @@ the following conditions:
 The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 #+end_quote
-
-* Feedback
-Please make a [[/#][merge request]] to suggest improvements or add
-clarifications. Please use [[/#][issues]] to ask questions.
-
-* Runbooks 
-  - Bunsen Labs Install
-  - Kinto Cloud New VM Install
-  - Jekyll Blog Setup
-  - Roundup Issue Tracker Install
-  - Mattermost & IRCD Hybrid Install
-  - GitoLite3 & CGit Install
-* Emacs & Orgmode Config
-  - Dot Emacs
-  - Orgmode Configuration
-* Colophon
-  - Toolchain & Workflow
-  - What is a Deerpig?
