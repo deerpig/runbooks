@@ -29,7 +29,7 @@
   :END:
 
 
-** Status of This Document
+* Status of This Document
 
 #+HTML: <span>The lastest version of this document is: <em>
 #+BEGIN_SRC sh :exports results :results value html
@@ -67,8 +67,7 @@ this document.
 #+HTML: </ul>
 #+HTML: </div>
 
-
-
+* Introduction
 
 
 I've refined this guide over six clean installs on laptop
@@ -82,7 +81,7 @@ several gig of files.  And let's not forget it takes the
 better part of an hour to config, make and make install
 emacs.
 
-** Bunsen Install
+* Bunsen Install
 
 Do generic install from Live USB, when you reboot you'll get
 an install script -- don't install everything they suggest.
@@ -90,12 +89,12 @@ Tried that once and it screwed things up, but use it to do
 an apt-get update, upgrade and add the alternate repos they
 suggest.
 
-** Install Some Tools
+* Install Some Tools
 #+begin_src sh
 sudo apt-get install wget surfraw openssh-server gdebi most xprintidle lxrandr
 #+end_src
 
-** Install Graph Generators for Org Mode
+* Install Graph Generators for Org Mode
 
 Install Ditaa, PlantUML and GraphViz which are used by Orgmode
 
@@ -114,7 +113,7 @@ cd ~/Downloads
 sudo cp ./plantuml.jar /usr/local/bin/
 #+end_src
 
-** Install Git
+* Install Git
 
 Install Git:
 
@@ -122,7 +121,7 @@ Install Git:
 sudo apt-get install git-core
 #+end_src
 
-** Install Emacs
+* Install Emacs
 
 Install graphics and dev libs:
 
@@ -178,7 +177,7 @@ Make install as root
 sudo make install
 #+end_src
 
-** Install Conkeror Web Browser
+* Install Conkeror Web Browser
 
 #+begin_src sh
 sudo apt-get install conkeror conkeror-spawn-process-helper
@@ -197,7 +196,7 @@ And add:
 alias conkeror='firefox -app /usr/share/conkeror/application.ini'
 #+end_example
   
-** Install some Graphics Apps
+* Install some Graphics Apps
 
 Install Gimp Inkscape Blender & Viewnior
 
@@ -206,7 +205,7 @@ sudo apt-get install gimp inkscape blender viewnior scribus
 #+end_src
 
 
-** Install some KDE Apps
+* Install some KDE Apps
 
 krusader, kcolorchooser (part of kdegraphics), sane
 & calibre
@@ -215,13 +214,13 @@ krusader, kcolorchooser (part of kdegraphics), sane
 sudo apt-get install krusader kdegraphics sane
 #+end_src
 
-** Install PDF/Ebook Apps
+* Install PDF/Ebook Apps
 
 #+begin_src sh
 sudo apt-get install okular okular-extra-backends calibre djview4
 #+end_src
 
-** Install media Apps
+* Install media Apps
 
 VLC is already installed, so install audacious for light
 weight, music playing and clementine for my 2TB collection.
@@ -231,7 +230,7 @@ sudo apt-get install clementine audacious
 #+end_src
 
 
-** Install Viber Desktop
+* Install Viber Desktop
 
 Install dependencies:
 
@@ -273,7 +272,7 @@ telephone number and then a code that will be sent your phone.
 
 Fucking awful GUI....
 
-** Install Skype
+* Install Skype
 
 The Skype client was suffering from serious bit rot.
 Thankfully MS has finally decide to port the latest version
@@ -284,7 +283,7 @@ Download and install the .deb file:
 
 :url: https://community.skype.com/t5/Linux/bd-p/Linux
 
-** Install Google Chrome
+* Install Google Chrome
 
  Use iceweasel, not Conkeror to open:
 
@@ -296,7 +295,7 @@ and follow instructions.
 
  google-chrome
 
-** Add DuckDuck Go As Default
+* Add DuckDuck Go As Default
 
  - Iceweasel: install Firefox DuckDuckGo Addon
  - Chrome: go to https://www.duckduckgo.com 
@@ -307,7 +306,7 @@ Make sure both Chrome & Iceweasel are set to restore tabs and settings
 when starting up.
 
  
-** Install Jekyll
+* Install Jekyll
 
 #+begin_src sh
 sudo apt-get install ruby ruby-dev rubygems
@@ -316,14 +315,14 @@ sudo gem install jekyll
 
 Then follow the guide in [[./jekyll-new-site.org]]
 
-** Set Wallpaper
+* Set Wallpaper
 
 In the menu find 'choose wallpaper'  and add the following
 path:
 
   /usr/share/images/bunsen/wallpapers/default/
 
-** Turn off screen lock
+* Turn off screen lock
 
 Turning off the screen lock in the Power Management app
 doesn't work.  Screen blanking is controlled by X but the
@@ -343,7 +342,7 @@ Exec=light-locker --lock-after-screensaver 0
 
 `0' disables locking.
 
-** Possible Org-Mode Problems
+* Possible Org-Mode Problems
 
 The version of orgmode is downloaded via git.  I was
 recently having a problem with timezones...
@@ -359,7 +358,7 @@ cd ./org-mode
 make autoloads
 #+end_src
 
-** Get SSH working
+* Get SSH working
 
 #+begin_src sh
 cd ~
@@ -369,7 +368,7 @@ chmod 600 ./id_rsa
 chmod 644 ./.ssh/authorized_keys
 #+end_src
 
-** Getting ssh-agent to work properly
+* Getting ssh-agent to work properly
 
 If you use git many times a day as I now do it's a major
 pain in the pass to have to keep entering your fucking ssh
@@ -444,7 +443,7 @@ xfconf-query -c xfce-session -p /startup/ssh-agent/enabled -n -t bool -s false
 
 You may have to log out or reboot for all the settings to work.
 
-** Copy dotfiles and emacs stuff
+* Copy dotfiles and emacs stuff
 
 I keep most of my config files in a directory called
 ".dotfiles" and then create symbolic links to "~/".  The
@@ -467,7 +466,7 @@ rm <filename>
 ln -s .dotfiles<filename> .<filename>
 #+end_src
 
-** Install fetchmail
+* Install fetchmail
 
 #+begin_src sh
 sudo apt-get install fetchmail procmail
@@ -488,7 +487,7 @@ sudo emacs /etc/default/fetchmail
 
 change to START_DAEMON=yes
 
-** Install ssmtp
+* Install ssmtp
 
 #+begin_src sh
 sudo apt-get install ssmtp mailutils
@@ -534,7 +533,7 @@ stuff during the install, but leaves some in place when you
 uninstall that ssmtp seems to need to work.
 
 
-** Edit OpenBox RC Files
+* Edit OpenBox RC Files
 
 I had tried to put all the OpenBox config files in a Git
 repo -- but there are a number of variations required
@@ -556,7 +555,7 @@ default and tweak it to taste.
 - menus.xml
 - pipemenus
 
-** Get Rid of the App Launcher
+* Get Rid of the App Launcher
 
 Open
 
@@ -567,11 +566,11 @@ emacs ~/.config/tint2/tint2rc
 and comment out all of the 'launcher_item_app' entries.
 
 
-** Set up Colors & Themes 
+* Set up Colors & Themes 
  - set colors and fonts in Terminal app
  - obconf
 
-** Add User to Wheel Group
+* Add User to Wheel Group
 
 It seems that BunsenLabs install scripts and kde sudo (used
 by at least one gui package manager) require users to be in
@@ -581,7 +580,7 @@ the wheel group so....
 sudo groupadd wheel
 sudo gpasswd -a deerpig wheel
 #+end_src
-** Set up apache2 & User Directories
+* Set up apache2 & User Directories
 
 Install apache2
 
@@ -635,7 +634,7 @@ sudo /etc/init.d/apache2 restart
 Files can now be accessed at http://localhost/~deerpig/  --
 remember to include the ~.
 
-** Fonts
+* Fonts
 
 Copy fonts into any of the following directories:
 
