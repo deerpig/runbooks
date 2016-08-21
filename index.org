@@ -38,7 +38,18 @@ but I'm not holding my breath.  You can find the source code for the
 site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
 #+end_quote
 
+* Recent Activity
+
+#+BEGIN_SRC sh :exports results :results silent
+githubchart -u deerpig ./img/contrib.svg
+#+END_SRC
+
+#+RESULTS:
+
+[[./img/contrib.svg]]
+
 * Feedback
+
 Please make a [[/#][merge request]] to suggest improvements or add
 clarifications. Please use [[/#][issues]] to ask questions.
 

@@ -51,7 +51,7 @@ this document.
 #+HTML: <ul>
 
 #+BEGIN_SRC sh :exports results :results value html :var TAG="v00.03"
-  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- handbook.org`
+  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- bunsen-install.org`
   if [ -z $RES ]; then
     RES="<li>no changes</li>"
   fi
@@ -313,6 +313,21 @@ sudo gem install jekyll
 #+end_src
 
 Then follow the guide in [[./jekyll-new-site.org]]
+
+* Install githubchart
+
+Install github chart
+
+:url: https://github.com/akerl/githubchart
+
+#+begin_src sh
+sudo apt-get install libcurl3-dev
+#+end_src
+
+#+begin_src 
+sudo gem install githubchart
+#+end_src
+
 
 * Set Wallpaper
 
