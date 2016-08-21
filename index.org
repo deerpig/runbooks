@@ -40,6 +40,8 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
 
 * Recent Activity
 
+Recent change activity on http://github.com/deerpig/deerpig-install
+
 #+BEGIN_SRC sh :exports results :results silent
 githubchart -u deerpig ./img/contrib.svg
 #+END_SRC

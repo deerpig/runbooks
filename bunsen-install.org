@@ -50,7 +50,7 @@ this document.
 
 #+HTML: <ul>
 
-#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.03"
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01"
   RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- bunsen-install.org`
   if [ -z $RES ]; then
     RES="<li>no changes</li>"
