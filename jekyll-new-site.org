@@ -1,16 +1,71 @@
 #   -*- mode: org; fill-column: 60 -*-
-#+TITLE: Creating a new Web Site
-#+AUTHOR: Brad Collins <brad@chenla.la>
-#+DATE:
-#+STARTUP: content
-#+INFOJS_OPT: view:info toc:t ltoc:t
-#+HTML_HEAD_EXTRA: <style>body {margin-left:50px; width:60%;}</style>
+#+TITLE: Creating a new Jekyll
+#+STARTUP: showall
+#+LANGUAGE: en
+#+OPTIONS: toc:nil h:4 html-postamble:nil html-preamble:t tex:t f:t d:nil
+#+OPTIONS: prop:("VERSION")
+#+HTML_DOCTYPE: <!DOCTYPE html>
+#+HTML_HEAD: <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
+#+HTML_HEAD: <link href="./css/style.css" rel="stylesheet" type="text/css" />
+
+#+LINK: gh    https://github.com/
+#+LINK: rfc   https://tools.ietf.org/html/
+#+LINK: wiki  https://en.wikipedia.org/wiki/
+
+#+HTML: <div class="outline-2" id="meta">
+| *Author*  | Brad Collins <brad@chenla.org>             |
+| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
+#+HTML: </div>
+
+#+TOC: headlines 4
+
   :PROPERTIES:
   :Name: /home/deerpig/proj/deerpig/deerpig-install/jekyll-new-site.org
   :Created: 2016-06-29T12:12@Wat Phnom (11.5733N17-104.925295W)
   :ID: 33bde4be-47a5-4665-a2ce-ba85a59639df
   :URL:
   :END:
+
+
+* Status of This Document
+
+#+HTML: <span>The lastest version of this document is: <em>
+#+BEGIN_SRC sh :exports results :results value html
+git describe --abbrev=0 --tags
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+v00.01
+#+END_EXPORT
+#+HTML: </em></span>
+
+This section describes the status of this document at the
+time of its publication. Other documents *may supersede*
+this document.
+
+#+HTML: <div class="notice notice-info">
+*Changes since the last version*
+
+#+HTML: <ul>
+
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01"
+  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- jekyll-new-site.org`
+  if [ -z $RES ]; then
+    RES="<li>no changes</li>"
+  fi
+  echo $RES
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+<li>no changes</li>
+#+END_EXPORT
+
+#+HTML: </ul>
+#+HTML: </div>
+
+* Introduction
 
 This document assumes that the site is being hosted on CentOS.
 

@@ -22,3 +22,19 @@ a:link:hover {
       color: #6E0000;
       background: #fff;                        
                  }
+
+.contrib-legend{
+       float:right}
+
+.contrib-legend .legend{
+                         position:relative;
+                         bottom:-1px;
+                         display:inline-block;
+                         margin:0 5px;
+                         list-style:none}
+
+.contrib-legend .legend li{
+                            display:inline-block;
+                            width:10px;
+                            height:10px}
+

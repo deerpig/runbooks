@@ -68,7 +68,6 @@ this document.
 
 * Introduction
 
-
 I've refined this guide over six clean installs on laptop
 and desktop boxes.  It's still a work in progress, but it's
 getting to the point where it's reasonably stable.
