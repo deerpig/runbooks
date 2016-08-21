@@ -1,10 +1,25 @@
 #   -*- mode: org; fill-column: 60 -*-
 #+TITLE: Issue Tracker Install
-#+AUTHOR: Brad Collins <brad@chenla.la>
-#+DATE: 
 #+STARTUP: showall
-#+INFOJS_OPT: view:info toc:t ltoc:t
-#+HTML_HEAD_EXTRA: <style>body {margin-left:50px; width:60%;}</style>
+#+LANGUAGE: en
+#+OPTIONS: toc:nil h:4 html-postamble:nil html-preamble:t tex:t f:t d:nil
+#+OPTIONS: prop:("VERSION")
+#+HTML_DOCTYPE: <!DOCTYPE html>
+#+HTML_HEAD: <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
+#+HTML_HEAD: <link href="./css/style.css" rel="stylesheet" type="text/css" />
+
+#+LINK: gh    https://github.com/
+#+LINK: rfc   https://tools.ietf.org/html/
+#+LINK: wiki  https://en.wikipedia.org/wiki/
+
+
+#+HTML: <div class="outline-2" id="meta">
+| *Author*  | Brad Collins <brad@chenla.org>             |
+| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
+#+HTML: </div>
+
+#+TOC: headlines 4
+
   :PROPERTIES:
   :Name: /home/deerpig/proj/deerpig/deerpig-install/tracker-install.org
   :Created: 2016-08-12T10:00@Wat Phnom (11.5733N17-104.925295W)
@@ -13,23 +28,66 @@
   :END:
 
 
-I have put off setting up an issue tracker for some time. First, the
-most popular trackers were simply too big and complex and didn't fit
-my workflow.  I believe that email is a good way of doing issue
-resolution -- everyone has it, and there are a variety of ways of
-working with it.  It also needs a good web interface, but not over
-the top complex. Second, I have tried to install a couple of other
-trackers that supposedly were easy to install -- they weren't
+* Status of This Document
 
-Finally I ran across /Roundup Tracker/, it had the features I wanted
-and made the claim that it could be installed in 30 minutes.  Oh Boy,
-was that ever wrong.  Getting all of the pieces to work together can
-take forever -- smtp, incoming email, mod_python, apache and databases
-was non-trivial.
+#+HTML: <span>The lastest version of this document is: <em>
+#+BEGIN_SRC sh :exports results :results value html
+git describe --abbrev=0 --tags
+#+END_SRC
 
-The documentation was good, but not always as explicit as it should
-be.  And because Roundup isn't that well known, there aren't a lot of
-people asking questions about it on StackOverflow.
+#+RESULTS:
+#+BEGIN_EXPORT html
+v00.01
+#+END_EXPORT
+#+HTML: </em></span>
+
+This section describes the status of this document at the
+time of its publication. Other documents *may supersede*
+this document.
+
+#+HTML: <div class="notice notice-info">
+*Changes since the last version*
+
+#+HTML: <ul>
+
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01"
+  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- tracker-install.org`
+  if [ -z $RES ]; then
+    RES="<li>no changes</li>"
+  fi
+  echo $RES
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+<li>no changes</li>
+#+END_EXPORT
+
+#+HTML: </ul>
+#+HTML: </div>
+
+* Introduction
+
+I have put off setting up an issue tracker for some
+time. First, the most popular trackers were simply too big
+and complex and didn't fit my workflow.  I believe that
+email is a good way of doing issue resolution -- everyone
+has it, and there are a variety of ways of working with it.
+It also needs a good web interface, but not over the top
+complex. Second, I have tried to install a couple of other
+trackers that supposedly were easy to install -- they
+weren't
+
+Finally I ran across /Roundup Tracker/, it had the features
+I wanted and made the claim that it could be installed in 30
+minutes.  Oh Boy, was that ever wrong.  Getting all of the
+pieces to work together can take forever -- smtp, incoming
+email, mod_python, apache and databases was non-trivial.
+
+The documentation was good, but not always as explicit as it
+should be.  And because Roundup isn't that well known, there
+aren't a lot of people asking questions about it on
+StackOverflow.
 
 * Starting with a clean slate
 
