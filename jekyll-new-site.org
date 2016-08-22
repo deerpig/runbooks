@@ -1,5 +1,5 @@
 #   -*- mode: org; fill-column: 60 -*-
-#+TITLE: Creating a new Jekyll
+#+TITLE: Creating a new static website
 #+STARTUP: showall
 #+LANGUAGE: en
 #+OPTIONS: toc:nil h:4 html-postamble:nil html-preamble:t tex:t f:t d:nil
@@ -40,10 +40,6 @@ v00.01
 #+END_EXPORT
 #+HTML: </em></span>
 
-This section describes the status of this document at the
-time of its publication. Other documents *may supersede*
-this document.
-
 #+HTML: <div class="notice notice-info">
 *Changes since the last version*
 
@@ -67,7 +63,8 @@ this document.
 
 * Introduction
 
-This document assumes that the site is being hosted on CentOS.
+This document describes how to create a new static web site
+using either org-publish or jekyll on CentOS VM.
 
 * Set up Apache Virtual Host
 
