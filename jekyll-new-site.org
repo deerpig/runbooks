@@ -173,5 +173,68 @@ Alternately, you can deploy, (push changes and rebuild jekyll) using
 bash:
 
 #+begin_src sh
- git push deploy master
+git push deploy master
+#+end_src
+
+* Create Deploy Script
+
+The way I have things set up, it that each site has two
+repos -- one for the source files, and the other for the
+static site rendered by either org-publish or jekyll.
+
+Let's say you have a repo called =homer-org= for the org
+source files and then =homer-www= for the generated site.
+
+So you make changes to the site then commit do a git add and
+commit and push.  That saves the source files.  Then you
+want to regenerate the site and deploy it on the web server
+using either org-publish-project, or jekyll build.
+
+With our configuration, git will commit the static site
+locally, push the files to the server and then run a deploy
+command that clones the repo into the web server directory.
+
+On the local machine, this means that git commit will always
+just be /deploying/ the site -- there is no need to describe
+what changes have been made because this is already being
+taken care of in the source repo.
+
+So we write a script that builds the static ste locally then
+deploys using git add commit push.
+
+Instead of running jekyll build or org-publish-project, run
+this script and it should build and deploy to the server.
+
+#+begin_src sh
+cd ~/bin
+emacs <projectname>
+#+end_src
+
+And add the following:
+
+#+begin_src sh
+#!/bin/bash
+# adds stages and pushes files in directory
+
+# make sure the script is in the path
+export PATH=$PATH:/home/deerpig/bin/ ;
+
+cd ~/proj/deerpig/deerpig-www
+
+# Uncomment if this is a org publish site
+# All projects will be published
+/usr/local/bin/emacs --batch -l ~/.emacs -f org-publish-all
+
+# Uncomment if this is a Jekyll site
+#jekyll build .&&\
+
+# Run git add commit push
+git add . && \
+git add -u && \
+git commit -m "deploy" && \
+git push deploy master
+#+end_src
+
+#+begin_src sh
+chmod +x deploy.sh
 #+end_src
