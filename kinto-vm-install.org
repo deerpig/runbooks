@@ -40,10 +40,6 @@ v00.01
 #+END_EXPORT
 #+HTML: </em></span>
 
-This section describes the status of this document at the
-time of its publication. Other documents *may supersede*
-this document.
-
 #+HTML: <div class="notice notice-info">
 *Changes since the last version*
 
