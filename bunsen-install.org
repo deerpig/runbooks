@@ -12,6 +12,13 @@
 #+LINK: rfc   https://tools.ietf.org/html/
 #+LINK: wiki  https://en.wikipedia.org/wiki/
 
+#+HTML: <div class="crumbs-left">
+#+HTML: <ul id="crumbs">
+#+HTML: <li><a href="http://deerpig.chenla.org">Home</a></li>
+#+HTML: <li>Bunsen Labs Desktop Installaton Notes</li>
+#+HTML: </ul>
+#+HTML: </div>
+
 
 #+HTML: <div class="outline-2" id="meta">
 | *Author*  | Brad Collins <brad@chenla.org>             |

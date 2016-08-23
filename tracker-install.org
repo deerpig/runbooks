@@ -1,5 +1,5 @@
 #   -*- mode: org; fill-column: 60 -*-
-#+TITLE: Issue Tracker Install
+#+TITLE: Roundup Issue Tracker Install
 #+STARTUP: showall
 #+LANGUAGE: en
 #+OPTIONS: toc:nil h:4 html-postamble:nil html-preamble:t tex:t f:t d:nil
@@ -11,6 +11,13 @@
 #+LINK: gh    https://github.com/
 #+LINK: rfc   https://tools.ietf.org/html/
 #+LINK: wiki  https://en.wikipedia.org/wiki/
+
+#+HTML: <div class="crumbs-left">
+#+HTML: <ul id="crumbs">
+#+HTML: <li><a href="http://deerpig.chenla.org">Home</a></li>
+#+HTML: <li>Issue Tracker Install</li>
+#+HTML: </ul>
+#+HTML: </div>
 
 
 #+HTML: <div class="outline-2" id="meta">
