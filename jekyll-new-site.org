@@ -12,6 +12,12 @@
 #+LINK: rfc   https://tools.ietf.org/html/
 #+LINK: wiki  https://en.wikipedia.org/wiki/
 
+
+#+HTML: <ul id="crumbs">
+#+HTML: <li><a href="#">Home</a></li>
+#+HTML: <li>Creating a new static website</li>
+#+HTML: </ul>
+
 #+HTML: <div class="outline-2" id="meta">
 | *Author*  | Brad Collins <brad@chenla.org>             |
 | *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
