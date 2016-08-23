@@ -216,11 +216,11 @@ And add the following:
 # make sure the script is in the path
 export PATH=$PATH:/home/deerpig/bin/ ;
 
-cd ~/proj/deerpig/deerpig-www
+cd ~/proj/deerpig/deerpig-www ;
 
 # Uncomment if this is a org publish site
 # All projects will be published
-/usr/local/bin/emacs --batch -l ~/.emacs -f org-publish-all
+/usr/local/bin/emacs --batch -l ~/.emacs -f org-publish-all && \
 
 # Uncomment if this is a Jekyll site
 #jekyll build .&&\
@@ -234,4 +234,13 @@ git push deploy master
 
 #+begin_src sh
 chmod +x deploy.sh
+#+end_src
+
+I keep all the deploy scripts in my =.dotfiles= directory
+which is synced between all the machines I use and then
+create symbolic links to ~/bin/.
+
+#+begin_src sh
+cd ~/bin/
+ln -s ../.dotfiles/deploy.sh deploy-<site>
 #+end_src

@@ -472,7 +472,7 @@ Now remove the originals and link all the files in .files to
 cd ~/
 ls ~/.dotfiles
 rm <filename>
-ln -s .dotfiles<filename> .<filename>
+ln -s .dotfiles/<filename> .<filename>
 #+end_src
 
 * Install fetchmail
