@@ -1,5 +1,5 @@
 #   -*- mode: org; fill-column: 60 -*-
-#+TITLE: Deerpig: The Installs & The Diatribes
+#+TITLE: Deerpig: The Runbooks & The Diatribes
 #+STARTUP: showall
 #+LANGUAGE: en
 #+OPTIONS: toc:nil num:nil h:4 html-postamble:nil html-preamble:t tex:t f:t d:nil
