@@ -137,7 +137,7 @@ The stock username depends on the VM's distro:
   - ubuntu
   - centos
 
-#+begin_src 
+#+begin_src sh
 ssh <distroname>@192.0.2.25
 #+end_src
 
@@ -170,15 +170,15 @@ using =CentOS= put it where you like.
 
 For OpenDNS:
 
-#+begin_example
+#+begin_src sh
 supercede domain-name-servers 208.67.222.222, 298.67.220.220
-#+end_example
+#+end_src sh
 
 For Google DNS:
 
-#+begin_example
+#+begin_src sh
 supercede domain-name-servers 8.8.8.8, 8.8.4.4
-#+end_example
+#+end_src
 
 Save the file, reboot and ssh back in, and ping something to
 make sure it works.
@@ -270,6 +270,4 @@ sudo apt-get install wget curl git-core
 
 You now have a base plain-vanilla server.  From here you can
 install a LAMP stack, or whatever your heart desires....
-
-
 
