@@ -193,9 +193,9 @@ emacs ~/.bashrc_aliases
 
 And add:
 
-#+begin_example
+#+begin_src sh
 alias conkeror='firefox -app /usr/share/conkeror/application.ini'
-#+end_example
+#+end_src 
   
 * Install some Graphics Apps
 
@@ -263,10 +263,10 @@ sudo emacs /usr/share/applications/viber.desktop
 
 Change the following:
 
-#+begin_example
+#+begin_src sh
   Exec=viber
   Path=/opt/viber
-#+end_example
+#+end_src
 
 When you open the app for the first time it will ask you for a
 telephone number and then a code that will be sent your phone.
@@ -320,13 +320,13 @@ Then follow the guide in [[./jekyll-new-site.org]]
 
 Install github chart
 
-:url: https://github.com/akerl/githubchart
+Home: https://github.com/akerl/githubchart
 
 #+begin_src sh
 sudo apt-get install libcurl3-dev
 #+end_src
 
-#+begin_src 
+#+begin_src sh
 sudo gem install githubchart
 #+end_src
 
@@ -352,9 +352,9 @@ sudo emacs /etc/xdg/autostart/light-locker.desktop
 
 and add the following:
 
-#+begin_example
+#+begin_src sh
 Exec=light-locker --lock-after-screensaver 0
-#+end_example
+#+end_src sh
 
 `0' disables locking.
 
@@ -426,7 +426,7 @@ Next install `exec-path-from-shell' from MELPA and add the
 following in your .emacs.  I put it just above the settings
 for Magit.
 
-#+begin_src 
+#+begin_src sh 
 (require 'exec-path-from-shell)
 (exec-path-from-shell-copy-env "SSH_AGENT_PID")
 (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
@@ -447,9 +447,9 @@ sudo emacs -nw  gnome-keyring-ssh.desktop
 
 and comment out:
 
-#+begin_example
+#+begin_src sh
 Exec=/usr/bin/gnome-keyring-daemon --start --components=ssh
-#+end_example
+#+end_src sh
 
 try running the following:
 
@@ -623,7 +623,7 @@ sudo emacs -nw ./userdir.conf
 
 And change the two instances of "public_html" with "htdocs"
 
-#+begin_example
+#+begin_src sh
 <IfModule mod_userdir.c>
         UserDir htdocs
         UserDir disabled root
@@ -639,7 +639,7 @@ And change the two instances of "public_html" with "htdocs"
                 </LimitExcept>
         </Directory>
 </IfModule>
-#+end_example
+#+end_src
 
 Save, exit and restart apache.
 
@@ -654,12 +654,12 @@ remember to include the ~.
 
 Copy fonts into any of the following directories:
 
-#+begin_example
+#+begin_src sh
 /usr/share/fonts
 /usr/share/X11/fonts
 /usr/local/share/fonts
 ~/.fonts
-#+end_example
+#+end_src
 
 
 And then make Debian aware of the new fonts.
