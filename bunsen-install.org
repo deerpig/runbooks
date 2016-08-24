@@ -608,8 +608,8 @@ Now let's activate user directories.
 
 #+begin_src sh
 cd /etc/apache2/mods-enabled
-ln -s ../mods-available/userdir.load userdir.load
-ln -s ../mods-available/userdir.load userdir.conf
+sudo ln -s ../mods-available/userdir.load userdir.load
+sudo ln -s ../mods-available/userdir.conf userdir.conf
 #+end_src
 
 I perfer using "htdocs" rather than "public_html", because
