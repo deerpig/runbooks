@@ -64,14 +64,14 @@ githubchart -u deerpig ./img/contrib.svg
 
 * Feedback
 
-Please make a [[/#][merge request]] to suggest improvements or add
-clarifications. Please use [[/#][issues]] to ask questions.
+Please make a [[https://github.com/deerpig/deerpig-install][pull request]] on Github to suggest improvements or add
+clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue tracker]] to ask questions.
 
 * Runbooks 
-  - [[./bunsen-install.html][Bunsen Labs Install]]
-  - [[./kinto-vm-install.html][Kinto Cloud New VM Install]]
-  - [[./jekyll-new-site.html][Jekyll Blog Setup]]
-  - [[./tracker-install.html][Roundup Issue Tracker Install]]
+  - [[./bunsen-install.html][Bunsen Labs install]]
+  - [[./kinto-vm-install.html][Kinto Cloud new vm install]]
+  - [[./jekyll-new-site.html][Creating a new static website]]
+  - [[./tracker-install.html][Roundup Issue Tracker install]]
   - Mattermost & IRCD Hybrid Install
   - GitoLite3 & CGit Install
 * Emacs & Orgmode Config
