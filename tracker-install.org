@@ -127,13 +127,13 @@ sudo chown yourname:www-data /var/www/py
 sudo /etc/apache2/sites-available/default
 #+end_src
 
-#+begin_ascii
+#+begin_src sh
 <Directory /var/www/py>
   AddHandler mod_python .py
   PythonHandler hello
   PythonDebug On
 </Directory>
-#+end_ascii
+#+end_src
 
 #+begin_src sh
 sudo /etc/init.d/apache2 restart
@@ -216,7 +216,7 @@ sudo useradd -r -s /bin/false -g support
 sudo emacs /etc/fetchmailrc
 #+end_src
 
-#+begin_ascii
+#+begin_src sh
 set syslog
 
 # check for new mail every five minutes
@@ -229,7 +229,7 @@ set daemon 300
    with password '<password>',
    with ssl, nofetchall
    mda "/usr/bin/procmail -d %T";
-#+end_ascii
+#+end_src
 
 #+begin_src sh
 sudo chmod 600 /etc/fetchmailrc
@@ -261,6 +261,6 @@ Create cron job to check for mail every five minutes as well.
 sudo crontab -e
 #+end_src
 
-#+begin_ascii
+#+begin_src sh
 */5 * * * * /usr/local/bin/roundup-mailgw /opt/roundup/trackers/support mailbox /var/mail/support
-#+end_ascii
+#+end_src
