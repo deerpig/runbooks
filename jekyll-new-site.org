@@ -84,12 +84,12 @@ prevent apache from overwriting anything when we upgrade.
 sudo emacs /etc/httpd/conf/domains/site-www.conf
 #+end_src
 
-#+begin_example
+#+begin_src sh
 <VirtualHost *:80>
   ServerName site.kinto-cloud.com
   DocumentRoot /var/www/site/
 </VirtualHost>
-#+end_example
+#+end_src
 
 Now restart apache.
 
@@ -100,9 +100,9 @@ sudo systemctl restart httpd
 Go to Directnic and create A record for the subdomain that
 points to site.
 
-#+begin_example
+#+begin_src sh
 A  site.kinto-cloud.com   10.0.0.100  1
-#+end_example
+#+end_src
 
 
 * On Remote server
