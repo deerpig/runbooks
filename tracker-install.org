@@ -212,7 +212,7 @@ sudo useradd -r -s /bin/false -g support
 
 ** add .fetchmailrc file
 
-#+begin_src 
+#+begin_src sh
 sudo emacs /etc/fetchmailrc
 #+end_src
 
