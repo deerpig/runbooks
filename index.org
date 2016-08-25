@@ -77,6 +77,13 @@ clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue t
 * Emacs & Orgmode Config
   - Dot Emacs
   - Orgmode Configuration
+* Toolchains & Workflow
+  - Task & Project Planning: Chrono-Kanban & Org-Tracker
+  - Publishing: Web-Info, La-PDF
+  - Asynchronous Communications: Chat, News, Mail
+  - Citations: Annotations, Glosses, Scholia, & References
+  - Collaboration: Critic Markup
+  - Versioning: 
 * Colophon
   - Toolchain & Workflow
   - What is a Deerpig?
