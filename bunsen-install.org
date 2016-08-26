@@ -1,23 +1,18 @@
 #   -*- mode: org; fill-column: 60 -*-
 #+TITLE: Bunsen Labs Desktop Installaton Notes
 #+STARTUP: showall
-#+LANGUAGE: en
-#+OPTIONS: toc:nil h:6 html-postamble:nil html-preamble:t tex:t f:t d:nil
-#+OPTIONS: prop:("VERSION")
-#+HTML_DOCTYPE: <!DOCTYPE html>
-#+HTML_HEAD: <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
-#+HTML_HEAD: <link href="./css/style.css" rel="stylesheet" type="text/css" />
+#+PROPERTY: filename 'bunsen-install.org'
+  :PROPERTIES:
+  :Name: /home/deerpig/org/bunsen-install.org
+  :Created: 2016-06-13T12:52@Wat Phnom (11.5733N17-104.925295W)
+  :ID: 238cc479-376a-4040-9e06-750faf722dc7
+  :URL:
+  :END:
+#+INCLUDE: ./inc/head.org
+#+INCLUDE: ./inc/macros.org
+#+INCLUDE: ./inc/links.org
 
-#+LINK: gh    https://github.com/
-#+LINK: rfc   https://tools.ietf.org/html/
-#+LINK: wiki  https://en.wikipedia.org/wiki/
-
-#+HTML: <div class="crumbs-left">
-#+HTML: <ul id="crumbs">
-#+HTML: <li><a href="http://deerpig.chenla.org">Home</a></li>
-#+HTML: <li>Bunsen Labs Desktop Installaton Notes</li>
-#+HTML: </ul>
-#+HTML: </div>
+{{{breadcrumbs}}}
 
 #+HTML: <div class="outline-2" id="meta">
 | *Author*  | Brad Collins <brad@chenla.org>             |
@@ -26,25 +21,11 @@
 
 #+TOC: headlines 6
 
-  :PROPERTIES:
-  :Name: /home/deerpig/org/bunsen-install.org
-  :Created: 2016-06-13T12:52@Wat Phnom (11.5733N17-104.925295W)
-  :ID: 238cc479-376a-4040-9e06-750faf722dc7
-  :URL:
-  :END:
-
 * Status of This Document
 
-#+HTML: <span>The lastest version of this document is: <em>
-#+BEGIN_SRC sh :exports results :results value html
-git describe --abbrev=0 --tags
-#+END_SRC
+The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
 
-#+RESULTS:
-#+BEGIN_EXPORT html
-v00.01
-#+END_EXPORT
-#+HTML: </em></span>
+{{{property(filename)}}}
 
 #+HTML: <div class="notice notice-info">
 *Changes since the last version*

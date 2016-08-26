@@ -1,0 +1,9 @@
+#+HTML: <div class="crumbs-left">
+#+HTML: <ul id="crumbs">
+#+HTML: <li><a href="http://deerpig.chenla.org">Home</a></li>
+#+HTML: <li>{{{title}}}
+#+HTML: </li>
+#+HTML: </ul>
+#+HTML: </div>
+
+
