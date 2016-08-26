@@ -25,8 +25,6 @@
 
 The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
 
-{{{property(filename)}}}
-
 #+HTML: <div class="notice notice-info">
 *Changes since the last version*
 
