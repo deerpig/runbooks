@@ -1,23 +1,19 @@
 #   -*- mode: org; fill-column: 60 -*-
 #+TITLE: Deerpig: The Runbooks & The Diatribes
 #+STARTUP: showall
-#+LANGUAGE: en
-#+OPTIONS: toc:nil num:nil h:4 html-postamble:nil html-preamble:t tex:t f:t d:nil
-#+OPTIONS: prop:("VERSION")
-#+HTML_DOCTYPE: <!DOCTYPE html>
-#+HTML_HEAD: <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
-#+HTML_HEAD: <link href="./css/style.css" rel="stylesheet" type="text/css" />
+#+PROPERTY: filename 
+#+INCLUDE: ./inc/head.org
 #+HTML_HEAD: <link href="./css/index.css" rel="stylesheet" type="text/css" />
-#+LINK: gh    https://github.com/
-#+LINK: rfc   https://tools.ietf.org/html/
-#+LINK: wiki  https://en.wikipedia.org/wiki/
-
   :PROPERTIES:
   :Name: /home/deerpig/proj/deerpig/deerpig-install/index.org
   :Created: 2016-08-20T16:40@Wat Phnom (11.5733N17-104.925295W)
   :ID: 5995dc73-91da-4940-bae1-efb75ce040d4
   :URL:
   :END:
+#+INCLUDE: ./inc/macros.org
+#+INCLUDE: ./inc/links.org
+
+{{{breadcrumbs}}}
 
 #+HTML: <div class="outline-2" id="meta">
 | *Author*  | Brad Collins <brad@chenla.org>             |
@@ -82,7 +78,7 @@ clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue t
   - Publishing: Web-Info, La-PDF
   - Asynchronous Communications: Chat, News, Mail
   - Citations: Annotations, Glosses, Scholia, & References
-  - Collaboration: Critic Markup
+  - [[./collaboration.org][Collaboration]]: Critic Markup
   - Versioning: 
 * Colophon
   - Toolchain & Workflow
