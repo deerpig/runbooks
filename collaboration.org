@@ -1,5 +1,5 @@
 #   -*- mode: org; fill-column: 60 -*-
-#+TITLE: Collaboration
+#+TITLE: Chenla Collaboration Team Handbook
 #+STARTUP: showall
 #+PROPERTY: filename collaboration.org
   :PROPERTIES:
@@ -48,41 +48,54 @@ The latest version of this document is: src_sh[:results value]{git describe --ab
 
 * Introduction
 
+This will be the /Chenla Collaboration Team Handbook/
 
+For now, all of the material that will eventually become the chenla
+team handbook, and all of the workflow & toolchain material will go
+into this file until there is enough material to break into separate
+files.
 
+* Collaboration
 
+** Introduction
 
+Chenla Documentation is structured in a simular way that Org's
+=Worg=.  All documentation is written in =literate orgmode= and
+maintained in a Git repository on the team =gitolite= server.  But it
+is also mirrored in a public repo on [[gh:deerpig][GitHub]].  The website, code and
+documention for the project is generated from this repo and deployed
+on the project web server.  Anyone can clone a copy of the repo, make
+changes and contributions and then put in a pull request to have them
+integrated into the main trunk.
 
+Git version control is obviously an important part of this process,
+but Git is not a very good way of multiple people editing the same
+text.  But this we use CriticMarkup.  If you edit an existing piece of
+text, use CriticMarkup using =cm-mode= in emacs or criticmarkup support
+in a number of other editors and then commit the the marked up file to
+be reviewed and the changes intregrated into the site.
 
-
-
-
-
-* Chelpa: Chenla Elpa Mirror Repository
+** Chelpa: Chenla Elpa Mirror Repository
 
 To keep everyone's emacs in sync, so that there are no problems with
 deployment, or with dependencies, we run our own Elpa Mirror =CHELPA=.
 
  https://github.com/redguardtoo/elpa-mirror
 
-* UsePackage
+** UsePackage
 
 The team maintains an init file named =.emacs-chenla= that includes
 usepackage statements that point to all of the packages that are
 needed to create, build and export.
 
-* GitoLite
-
-* Git
-* Magit
-
-
-
-* Critic Markup
+** GitoLite
+** Git
+** Magit
+** Critic Markup
 
 http://criticmarkup.com/
 
-** Install CriticMarkup Mode
+*** Install CriticMarkup Mode
 
 #+begin_src emacs-lisp
 (use-package cm-mode
@@ -90,7 +103,7 @@ http://criticmarkup.com/
   :pin chelpa)
 #+end_src
 
-** Markup
+*** Markup
 
 - Addition ={++ ++}=
 - Deletion ={-- --}=
@@ -98,7 +111,7 @@ http://criticmarkup.com/
 - Comment ={>> <<}=
 - Highlight ={== ==}{>> <<}=
 
-** Key bindings
+*** Key bindings
 
   | key-binging | description                             |
   |-------------+-----------------------------------------|
@@ -115,3 +128,22 @@ http://criticmarkup.com/
   | C-c * F     | activate follow changes mode            |
   
 
+* Project Documentation
+** Code Header and Copyright Notice
+
+** Version Numbers
+
+Use Semantic Versioning http://semver.org/
+
+** Required Files
+
+*** README
+*** LICENCE
+*** INSTALL
+*** Changelog
+
+http://keepachangelog.com/en/0.3.0/
+** Directory naming conventions
+
+  - all lower case
+  - short
