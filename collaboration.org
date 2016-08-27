@@ -58,6 +58,23 @@ The latest version of this document is: src_sh[:results value]{git describe --ab
 
 
 
+* Chelpa: Chenla Elpa Mirror Repository
+
+To keep everyone's emacs in sync, so that there are no problems with
+deployment, or with dependencies, we run our own Elpa Mirror =CHELPA=.
+
+ https://github.com/redguardtoo/elpa-mirror
+
+* UsePackage
+
+The team maintains an init file named =.emacs-chenla= that includes
+usepackage statements that point to all of the packages that are
+needed to create, build and export.
+
+* GitoLite
+
+* Git
+* Magit
 
 
 
@@ -67,7 +84,11 @@ http://criticmarkup.com/
 
 ** Install CriticMarkup Mode
 
-(require package)
+#+begin_src emacs-lisp
+(use-package cm-mode
+  :ensure t
+  :pin chelpa)
+#+end_src
 
 ** Markup
 
