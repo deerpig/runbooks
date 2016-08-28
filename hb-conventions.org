@@ -53,7 +53,7 @@ Conventions used for specification, documentation, and code.
 * Conventions
 ** Keywords
 
-|                    | MUST | SHOULD | OPTIONAL |
+|                    | Must | Should | Optional |
 |--------------------+------+--------+----------|
 | Specifications     | ✔    | ❌     | ❌       |
 | User Documentation | ❌   | ❌     | ❌       |
@@ -62,6 +62,9 @@ Conventions used for specification, documentation, and code.
 | Cookbooks          | ❌   | ❌     | ❌       |
 | Source Code        | ❌   | ❌     | ❌       |
 
+
+Documents using the Keywords section *MUST* use include the
+following text in it's own section named /Keywords/.
 
 #+begin_quote
 The key words *MUST*, *MUST NOT*, *REQUIRED*, *SHOULD*,
@@ -145,10 +148,10 @@ This example could be any of, 10 January 1910, 10 January
 The matter of Version numbers for software and documentation comprise
 no small amount of [[https://en.wikipedia.org/wiki/Weeping_and_gnashing_of_teeth][weeping and knashing of teeth]] so let's make this
 clear and simple.  All Version numbers *MUST* conform to the Semantic
-Versioning =[[http://semver.org/spec/v2.0.0.html][v2.0.0]]= specification.  From the [[http://semver.org/spec/v2.0.0.html][spec]]:
+Versioning [[http://semver.org/spec/v2.0.0.html][v2.0.0]] specification.  From the [[http://semver.org/spec/v2.0.0.html][spec]]:
 
 #+begin_quote
-Given a version number *MAJOR*.*MINOR*.*PATCH*, increment the:
+Given a version number *MAJOR.MINOR.PATCH*, increment the:
 
  - *MAJOR* version when you make incompatible API changes,
  - *MINOR* version when you add functionality in a backwards-compatible
@@ -156,13 +159,13 @@ Given a version number *MAJOR*.*MINOR*.*PATCH*, increment the:
  - *PATCH* version when you make backwards-compatible bug fixes.
 
 Additional labels for pre-release and build metadata are available as
-extensions to the *MAJOR*.*MINOR*.*PATCH* format.
+extensions to the *MAJOR.MINOR.PATCH* format.
 #+end_quote
 
 Version numbers *SHOULD* append a lower case letter v to version
 numbers unless there is a sound reason to do otherwise.
 
-The EBNF definition for Semantic Version Numbers:
+The =EBNF= definition for Semantic Version Numbers:
 
 #+begin_src ebnf
 digit ::= 0 |1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 
