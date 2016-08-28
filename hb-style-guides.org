@@ -60,7 +60,25 @@ We want to ensure that colors used across the project are:
   - consistent :: provides a uniform color scheme
   - aesthetic  :: is pleasant to look at -- good design
   - informative :: uses color to convey meaning
-  - color-blind friendly :: 
+  - color-blind friendly :: this is a much larger audience
+       than you might expect
+
+** Normative Color Palette
+
+If this was Bebop, our color Palette would be a theme that
+you continually repeat, but never quite the same way twice,
+riffing and pushing the envelope, but still staying within
+the theme.  If you look at the source code for the diagrams
+on the site you'll see that the base colors are within the
+palette, but there are gradients another riffs on the colors
+that bring them to life.
+
+[[./img/color-palette-black.png]]
+
+[[./img/color-palette-gray.png]]
+
+
+
 
 ** Color-blind friendly colors
 
@@ -117,3 +135,43 @@ Quote from Beatrice...
 
 
 
+* Line Lengths
+
+Believe it or not this is /very/ important on a number of
+fronts:
+
+  - avoid fatigue :: the brain has to strain reading lines
+       with more tha 14 or so words.
+  - keep plain text readable ::
+* Indentation: Tabs vs Spaces 
+
+Another contentious, topic
+
+Basically, our stance is -- no tabs.  A long justification
+will follow.
+
+The same will go for data files, no Tab Separated Values --
+use commas and get over having to escape them.
+
+* Spaces between sentences
+
+The typewriter 2-space, vs 1 space flame-war. Yet another
+long justification will follow.
+
+* Whitespace
+
+The concept of whitespace being significant or not.
+
+* Line Breaks 
+
+Use Unix -- not Windows....
+
+* Prose Lists
+
+A comma after the last item before 'and' -- more flame bait
+:(
+
+* English Spelling & Vocabulary
+
+American or English -- when to use, and if not when to
+gloss.
