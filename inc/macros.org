@@ -1,34 +1,4 @@
 
-# -*- mode: org; -*-
-
-#+MACRO: bgcolor @@html:<div style="background-color: $1;">$2</div>@@
-
-#+MACRO: color @@html:<span style="color: $1">$2</span>@@@@latex:\textcolor{$1}{$2}@@@@odt:<text:span text:style-name="$1">$2</text:span>@@
-
-#+MACRO: fixme @@html:<span class="fixme">FIXME</span>@@
-
-#+MACRO: highlight @@html:<span style="background-color: $1;">$2</span>@@
-
-#+MACRO: hl {{{highlight(#FFFF00,$1)}}}
-
-#+MACRO: newline @@latex:\\@@ @@html:<br>@@
-
-#+MACRO: kbd @@html:<kbd>@@$1@@html:</kdb>@@
-
-#+MACRO: style (eval (concat "#+HTML_HEAD_EXTRA: <style></style>"))
-
-#+name: version-history
-#+begin_src sh :exports none :results silent :colnames '(Version Date Author Comment)
-git log --pretty=format:"%h%x09%ad%x09%an%x09%s" --date=short | head -n 5
-#+end_src
-
-#+name: version-history
-#+begin_src shell :exports none :results silent :colnames '(Version Date Author Comment)
-git log --pretty=format:"%h%x09%ad%x09%an%x09%s" --date=short | head -n 5
-#+end_src
-
-#+MACRO: version-history call_version-history[:eval yes]()[:eval yes :results table :colnames '(Version Date Author Comment)]
-
 #+MACRO: begin_warning @@html:<div class="warning"><p>@@
 #+MACRO: end_warning @@html:</p></div>@@
 

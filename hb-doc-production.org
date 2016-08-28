@@ -1,5 +1,5 @@
 #   -*- mode: org; fill-column: 60 -*-
-#+TITLE: Documentation Production Handbook
+#+TITLE: Document Production Handbook
 #+STARTUP: showall
 #+PROPERTY: filename collaboration.org
   :PROPERTIES:
@@ -12,12 +12,11 @@
 #+INCLUDE: ./inc/macros.org
 #+INCLUDE: ./inc/links.org
 
-
 {{{breadcrumbs}}}
 
 
 #+HTML: <div class="outline-2" id="meta">
-| *Author*  | Brad Collins <brad.collins@pathmazing.com> |
+| *Author*  | Brad Collins <brad@chenla.org>             |
 | *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
 #+HTML: </div>
 
@@ -92,25 +91,26 @@ is tightly bound together with many aspects of the
 document.  The workflow is a dance between git and org-mode
 that goes something like this:
 
-
-#+BEGIN_SRC dot :noweb yes :file ./img/org-git-workflow.png :exports results
-digraph o {
+#+BEGIN_SRC dot :file ./img/org-git-workflow.png :noweb yes :exports results
+digraph h {
   <<dot-style>>
-  
-  node    [fillcolor="#8EC9E9" shape=ellipse,fontsize=14]
-  clone   [label="git clone"]
-  edit    [label="org edit"]
-  commit  [label="git commit"]
-  tag     [label="git tag"]
-  publish [label="org publish"]
-  push    [label="git push"]
-  pull    [label="git pull"]
+
+  node    [fillcolor="#56B4E9:0.5:#8EC9E9",gradientangle=60,fontcolor="#FFFFFF",shape=oval]
+  clone   [label="git\nclone"]
+  edit    [label="org\nedit"]
+  comit   [label="git\ncomit"]
+  publish [label="org\npublish"]
+  push    [label="git\npush"]
+  pull    [label="git\npull"]
+
+  rankdir=LR; 
 
   clone -> edit ; 
-  edit -> commit ;
-  commit -> edit;
-  commit -> tag -> publish -> push;
-  pull -> edit;
+  edit -> comit ;
+  comit -> edit ;
+  comit -> publish -> push ;
+  pull -> edit ;
+  push -> edit ;
 }
 #+END_SRC
 
@@ -237,21 +237,21 @@ you want.
 (require 'ox-publish)
 (setq org-publish-project-alist
       '(
-	;; ORG.AI 
-	("orgai-docs"
+	;; CHENLA 
+	("chenla-docs"
 	 ;; Path to your org files.
-	 :base-directory "~/proj/path/ERP-Doc/org/"
+	 :base-directory "~/proj/deerpig/deerpig-install/org/"
 	 :base-extension "org"
    
 	 ;; Path to your Jekyll project.
-	 :publishing-directory "~/proj/path/ERP-Doc/"
+	 :publishing-directory "~/proj/deerpig/deerpig-install/"
 	 :recursive t
 	 :publishing-function org-html-publish-to-html
 	 :headline-levels 6
 	 :html-extension "html"
 	 :auto-preamble t ;; Only export section between <body> </body>
 	 )
-	("orgai" :components ("orgai-docs"))
+	("chenla" :components ("chenla-docs"))
 	
       ))
 #+end_src
@@ -268,7 +268,8 @@ you want.
 
 * Diagram definitions                                              :noexport:
 ** Global GraphViz styles
+
 #+BEGIN_SRC dot :noweb-ref dot-style :exports none
-  node[style="filled",fontname="Dejavu Sans",fontcolor="black",fontsize=11];
+  node[style="filled",fontname="Dejavu Sans",fontcolor="black",fontsize=14];
   edge[fontname="Dejavu Sans",fontsize=9];
 #+END_SRC
