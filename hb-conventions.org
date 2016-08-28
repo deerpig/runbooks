@@ -165,6 +165,8 @@ extensions to the *MAJOR.MINOR.PATCH* format.
 Version numbers *SHOULD* append a lower case letter v to version
 numbers unless there is a sound reason to do otherwise.
 
+*** EBNF Definition
+
 The =EBNF= definition for Semantic Version Numbers:
 
 #+begin_src ebnf
