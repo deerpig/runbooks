@@ -1,5 +1,5 @@
 #   -*- mode: org; fill-column: 60 -*-
-#+TITLE: Bunsen Labs Desktop Installaton Notes
+#+TITLE: Conventions Handbook
 #+STARTUP: showall
 #+PROPERTY: filename 'bunsen-install.org'
   :PROPERTIES:
@@ -50,8 +50,8 @@ The latest version of this document is: src_sh[:results value]{git describe --ab
 
 Conventions used for specification, documentation, and code.
 
-* Conventions
-** Keywords
+
+* Keywords
 
 |                    | Must | Should | Optional |
 |--------------------+------+--------+----------|
@@ -78,14 +78,14 @@ briefly explains some of them.
 #+end_quote
 
 
-** Notation
+* Notation
 
 Formal grammers are given in this specification using a
 simple Extended Backus-Naur Form (EBNF) notation described
 in [[rfc:4234][RFC4234]]. Further information and links can be found in
 the Wikipedia article [[wiki:Extended_Backus–Naur_Form][Extended Backus–Naur Form]].
 
-*** EBNF Syntax Highlighting in Emacs
+** EBNF Syntax Highlighting in Emacs
 
 The following [[http://stackoverflow.com/a/1804038][code]] was in a comment on Stack Overflow:
 
@@ -107,15 +107,15 @@ The following [[http://stackoverflow.com/a/1804038][code]] was in a comment on S
 #+end_src
 
 
-*** Nomative References
+** Nomative References
 - [[rfc:4234][RFC4234]]
 
-*** Informative References
+** Informative References
 - Wikipedia: [[wiki:Extended_Backus–Naur_Form][Extended Backus–Naur Form]]
 - [[http://www.cs.utsa.edu/~wagner/CS3723/grammar/examples2.html][BNF Examples]]
 - http://condor.depaul.edu/ichu/csc447/notes/wk3/BNF.pdf
 - http://www.ics.uci.edu/~pattis/ICS-33/lectures/ebnf.pdf
-** Date formats
+* Date formats
 
 All dates *SHOULD* be written using [[https://en.wikipedia.org/wiki/ISO_8601][ISO8601]] format, unless a
 good reason to do otherwise.  When using another date format
@@ -142,8 +142,8 @@ This example could be any of, 10 January 1910, 10 January
 
 
 
-** Code Header and Copyright Notice
-** Version Numbers
+* Code Header and Copyright Notice
+* Version Numbers
 
 The matter of Version numbers for software and documentation comprise
 no small amount of [[https://en.wikipedia.org/wiki/Weeping_and_gnashing_of_teeth][weeping and knashing of teeth]] so let's make this
@@ -165,7 +165,7 @@ extensions to the *MAJOR.MINOR.PATCH* format.
 Version numbers *SHOULD* append a lower case letter v to version
 numbers unless there is a sound reason to do otherwise.
 
-*** EBNF Definition
+** EBNF Definition
 
 The =EBNF= definition for Semantic Version Numbers:
 
@@ -178,7 +178,7 @@ patch ::= <digit>+
 semantic-version ::=  v<major>.<minor>.<patch>   
 #+end_src
 
-*** Usage
+* Usage
 
 #+begin_quote
 These rules are based on but not necessarily limited to pre-existing
@@ -199,18 +199,18 @@ code and what has been modified from one version to the next.
 #+end_quote
 
 
-** Required Files
+* Required Files
 
 - software
 - documentation
 
-*** README
-*** LICENCE
-*** INSTALL
-*** Changelog
+** README
+** LICENCE
+** INSTALL
+** Changelog
 
 http://keepachangelog.com/en/0.3.0/
-** Directory naming conventions
+* Directory naming conventions
 
   - all lower case
   - short

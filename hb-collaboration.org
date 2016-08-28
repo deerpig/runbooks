@@ -50,14 +50,9 @@ The latest version of this document is: src_sh[:results value]{git describe --ab
 
 This will be the /Chenla Collaboration Team Handbook/
 
-For now, all of the material that will eventually become the chenla
-team handbook, and all of the workflow & toolchain material will go
-into this file until there is enough material to break into separate
-files.
 
-* Collaboration
 
-** Introduction
+* Introduction
 
 Chenla Documentation is structured in a simular way that Org's
 =Worg=.  All documentation is written in =literate orgmode= and
@@ -75,27 +70,27 @@ text, use CriticMarkup using =cm-mode= in emacs or criticmarkup support
 in a number of other editors and then commit the the marked up file to
 be reviewed and the changes intregrated into the site.
 
-** Chelpa: Chenla Elpa Mirror Repository
+* Chelpa: Chenla Elpa Mirror Repository
 
 To keep everyone's emacs in sync, so that there are no problems with
 deployment, or with dependencies, we run our own Elpa Mirror =CHELPA=.
 
  https://github.com/redguardtoo/elpa-mirror
 
-** UsePackage
+* UsePackage
 
 The team maintains an init file named =.emacs-chenla= that includes
 usepackage statements that point to all of the packages that are
 needed to create, build and export.
 
-** GitoLite
-** Git
-** Magit
-** Critic Markup
+* GitoLite
+* Git
+* Magit
+* Critic Markup
 
 http://criticmarkup.com/
 
-*** Install CriticMarkup Mode
+** Install CriticMarkup Mode
 
 #+begin_src emacs-lisp
 (use-package cm-mode
@@ -103,7 +98,7 @@ http://criticmarkup.com/
   :pin chelpa)
 #+end_src
 
-*** Markup
+** Markup
 
 - Addition ={++ ++}=
 - Deletion ={-- --}=
@@ -111,7 +106,7 @@ http://criticmarkup.com/
 - Comment ={>> <<}=
 - Highlight ={== ==}{>> <<}=
 
-*** Key bindings
+** Key bindings
 
   | key-binging | description                             |
   |-------------+-----------------------------------------|
@@ -127,72 +122,5 @@ http://criticmarkup.com/
   | C-c * C     | set author                              |
   | C-c * F     | activate follow changes mode            |
   
-
-* Style Guides
-
-Typographic, colors and layout
-
-** Colors in Charts, Graphs & Diagrams
-
-Define color palettes for graphic materials
-
-We want to ensure that colors used across the project are:
-
-  - consistent :: provides a uniform color scheme
-  - aesthetic  :: is pleasant to look at -- good design
-  - informative :: uses color to convey meaning
-  - color-blind friendly :: 
-
-*** Color-blind friendly colors
-
-These are both /very/ good links that will give you more
-information about thinking about color schemes than you will
-/ever/ want to know.
-
-- http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
-- http://jfly.iam.u-tokyo.ac.jp/color/
-
-#+begin_src
-# The palette with grey:
-cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
-
-# The palette with black:
-cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
-
-# To use for fills, add
-  scale_fill_manual(values=cbPalette)
-
-# To use for line and point colors, add
-  scale_colour_manual(values=cbPalette)
-#+end_src
-
-
-*** Informative References
-
-- http://www.perceptualedge.com/articles/visual_business_intelligence/rules_for_using_color.pdf
-- http://www.ibm.com/developerworks/data/library/cognos/infrastructure/cognos_specific/page571.html
-
-** Display of text
-
- - Headings
-
- - links
- - visited links
- - hover
- - mouse-over
-
- - keyboard
- - example
-
- - warning text
- - comment text
- - informative notes
-
-** Font families
-
-Quote from Beatrice... 
-
-  - /monospace fonts/ for text screen displays
-  - /proportional fonts/ for web and print
 
 
