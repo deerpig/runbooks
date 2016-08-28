@@ -21,13 +21,6 @@
 #+HTML: </div>
 
 #+TOC: headlines 4
-  :PROPERTIES:
-  :Name: /home/deerpig/proj/path/ERP-Doc/org/doc-handbook.org
-  :Created: 2016-08-15T13:52@Wat Phnom (11.5733N17-104.925295W)
-  :ID: 72eabec6-b130-4928-bcff-525ca4a11e9a
-  :URL:
-  :END:
-
 
 * Status of This Document
 
@@ -91,31 +84,36 @@ is tightly bound together with many aspects of the
 document.  The workflow is a dance between git and org-mode
 that goes something like this:
 
-#+BEGIN_SRC dot :file ./img/org-git-workflow.png :noweb yes :exports results
+#+BEGIN_SRC dot :file img/org-git-workflow.png :noweb yes :exports results
 digraph h {
   <<dot-style>>
-
+  rankdir=LR; 
   node    [fillcolor="#56B4E9:0.5:#8EC9E9",gradientangle=60,fontcolor="#FFFFFF",shape=oval]
   clone   [label="git\nclone"]
   edit    [label="org\nedit"]
   comit   [label="git\ncomit"]
+  deploy  [label="deploy\n.sh"]
   publish [label="org\npublish"]
+  jekyll  [label="jekyll\nbuild"]
   push    [label="git\npush"]
   pull    [label="git\npull"]
-
-  rankdir=LR; 
 
   clone -> edit ; 
   edit -> comit ;
   comit -> edit ;
-  comit -> publish -> push ;
+  comit -> deploy ;
   pull -> edit ;
-  push -> edit ;
+  deploy -> edit ;
+  deploy -> publish ;
+  deploy -> jekyll ;
+  jekyll -> push ;
+  publish -> push ;
 }
 #+END_SRC
 
 #+RESULTS:
-[[file:./img/org-git-workflow.png]]
+[[file:img/org-git-workflow.png]]
+
 
 * Required Packages
 
