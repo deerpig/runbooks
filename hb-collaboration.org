@@ -1,5 +1,5 @@
 #   -*- mode: org; fill-column: 60 -*-
-#+TITLE: Chenla Collaboration Team Handbook
+#+TITLE: Collaboration Handbook
 #+STARTUP: showall
 #+PROPERTY: filename collaboration.org
   :PROPERTIES:
@@ -127,7 +127,58 @@ http://criticmarkup.com/
   | C-c * C     | set author                              |
   | C-c * F     | activate follow changes mode            |
   
+* Style Guides
 
+Typographic, colors and layout
+
+** Colors in Charts, Graphs & Diagrams
+
+Define color palettes for graphic materials
+
+We want to ensure that colors used across the project are:
+
+  - consistent :: provides a uniform color scheme
+  - aesthetic  :: is pleasant to look at -- good design
+  - informative :: uses color to convey meaning
+  - color-blind friendly :: 
+
+*** Color-blind friendly colors
+
+These are both /very/ good links that will give you more
+information about thinking about color schemes than you will
+/ever/ want to know.
+
+- http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
+- http://jfly.iam.u-tokyo.ac.jp/color/
+
+
+*** Informative References
+
+- http://www.perceptualedge.com/articles/visual_business_intelligence/rules_for_using_color.pdf
+- http://www.ibm.com/developerworks/data/library/cognos/infrastructure/cognos_specific/page571.html
+
+** Display of text
+
+ - Headings
+
+ - links
+ - visited links
+ - hover
+ - mouse-over
+
+ - keyboard
+ - example
+
+ - warning text
+ - comment text
+ - informative notes
+
+** Font families
+
+Quote from Beatrice... 
+
+  - /monospace fonts/ for text screen displays
+  - /proportional fonts/ for web and print
 
 * Conventions
 ** Keywords
