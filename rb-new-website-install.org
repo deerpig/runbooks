@@ -30,8 +30,8 @@ The latest version of this document is: src_sh[:results value]{git describe --ab
 
 #+HTML: <ul>
 
-#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01"
-  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- jekyll-new-site.org`
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
+  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- rb-new-website-install.org`
   if [ -z $RES ]; then
     RES="<li>no changes</li>"
   fi
