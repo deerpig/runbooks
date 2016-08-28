@@ -68,10 +68,10 @@ Please make a [[https://github.com/deerpig/deerpig-install][pull request]] on Gi
 clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue tracker]] to ask questions.
 
 * Runbooks 
-  - [[./bunsen-install.html][Bunsen Labs install]]
-  - [[./kinto-vm-install.html][Kinto Cloud new vm install]]
-  - [[./jekyll-new-site.html][Creating a new static website]]
-  - [[./tracker-install.html][Roundup Issue Tracker install]]
+  - [[./rb-desktop-install.html][Desktop Install]]
+  - [[./rb-new-vm-install.html][New Virtual Machine Install]]
+  - [[./rb-new-website-install.html][New Website Install]]
+  - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
   - Mattermost & IRCD Hybrid Install
   - GitoLite3 & CGit Install
 * Emacs & Orgmode Config
