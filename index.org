@@ -34,6 +34,10 @@ but I'm not holding my breath.  You can find the source code for the
 site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
 #+end_quote
 
+*NOTE*: 2016-8-28 -- This site is quickly diverging from its original
+pupose of being a bunch of personal =runbooks= for my work.  I will
+break out all non-deerpig material into a new repo and website soon.
+
 * Recent Activity
 
 Recent change activity on http://github.com/deerpig/deerpig-install
@@ -73,15 +77,26 @@ clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue t
 * Emacs & Orgmode Config
   - Dot Emacs
   - Orgmode Configuration
-* Toolchains & Workflow
-  - Task & Project Planning: Chrono-Kanban & Org-Tracker
-  - Publishing: Web-Info, La-PDF
-  - Asynchronous Communications: Chat, News, Mail
-  - Citations: Annotations, Glosses, Scholia, & References
-  - [[./collaboration.org][Collaboration]]: Critic Markup
-  - Versioning: 
+* Handbooks
+This section will be split off to become:
+
+#+begin_quote
+/The Scopic Library: Handbooks, Specifications, Conventions & Best
+Practices/ which will be part of Chenla's /Primer/.
+#+end_quote
+
+  - Team
+  - Engineering
+  - Task & Project Planning
+  - Publishing
+  - Communications
+  - Citations
+  - [[./hb-collaboration.org][Collaboration]]
+  - [[./hb-conventions.org][Conventions]]
+  - Version Control
+  - [[./hb-doc-production.org][Documentation Production]]
 * Colophon
-  - Toolchain & Workflow
+  - Making this document
   - What is a Deerpig?
 * Licence
 
