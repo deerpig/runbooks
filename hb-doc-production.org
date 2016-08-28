@@ -92,7 +92,7 @@ that goes something like this:
 digraph o {
   <<dot-style>>
   
-  node    [fillcolor="#82AAAA" shape=ellipse,fontsize=14]
+  node    [fillcolor="#56B4E9" shape=ellipse,fontsize=14]
   clone   [label="git clone"]
   edit    [label="org edit"]
   commit  [label="git commit"]
@@ -110,22 +110,7 @@ digraph o {
 #+END_SRC
 
 #+RESULTS:
-[[file:/home/deerpig/proj/path/ERP-Doc/img/org-git-workflow.png]]
-
-
-* Version Numbering for this Document
-
-The version scheme for this document is in the format:
-
-#+begin_example
-v01.23
-#+end_example
-
-#+BEGIN_COMMENT
-In order for the changelog to work, please change the =tag= variable
-for the code block below to the git tag of your last
-published version.
-#+END_COMMENT
+[[file:./img/org-git-workflow.png]]
 
 * Required Packages
 

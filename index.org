@@ -93,6 +93,7 @@ Practices/ which will be part of Chenla's /Primer/.
   - Citations
   - [[./hb-collaboration.org][Collaboration]]
   - [[./hb-conventions.org][Conventions]]
+  - [[./hb-style-guides.org][Style Guides]]
   - Version Control
   - [[./hb-doc-production.org][Documentation Production]]
 * Colophon
