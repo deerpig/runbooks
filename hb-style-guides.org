@@ -175,3 +175,13 @@ A comma after the last item before 'and' -- more flame bait
 
 American or English -- when to use, and if not when to
 gloss.
+
+* Punctuation
+
+For headings, proper names etc.
+
+* Footnotes
+* Bibliograpies
+
+  - Normative
+  - Informative
