@@ -12,6 +12,10 @@
 #+INCLUDE: ./inc/macros.org
 #+INCLUDE: ./inc/links.org
 
+
+{{{breadcrumbs}}}
+
+
 #+HTML: <div class="outline-2" id="meta">
 | *Author*  | Brad Collins <brad.collins@pathmazing.com> |
 | *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
@@ -24,6 +28,7 @@
   :ID: 72eabec6-b130-4928-bcff-525ca4a11e9a
   :URL:
   :END:
+
 
 * Status of This Document
 
@@ -80,7 +85,7 @@ We will cover how to install software needed to produce and manage
 documentation, how documents are structured, edited and built into
 either an html web page or pdf document.
 
-* Workflow for editing building this document
+* Workflow for document production
 
 This document is also maintained as a =git= repository, which
 is tightly bound together with many aspects of the
@@ -92,7 +97,7 @@ that goes something like this:
 digraph o {
   <<dot-style>>
   
-  node    [fillcolor="#56B4E9" shape=ellipse,fontsize=14]
+  node    [fillcolor="#8EC9E9" shape=ellipse,fontsize=14]
   clone   [label="git clone"]
   edit    [label="org edit"]
   commit  [label="git commit"]
