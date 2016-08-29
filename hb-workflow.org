@@ -1,0 +1,98 @@
+
+
+
+* Agile Manifesto
+* Remote Manifesto
+
+* The Waterfall
+
+#+BEGIN_SRC dot :file img/waterfall.png :noweb yes :exports results
+digraph h {
+  <<dot-style>>
+
+  rankdir=LR;
+  concentrate=true;
+  ratio=compress;
+  size="24,1000";
+  splines=ortho;
+
+  node      [fixedsize="true",height=".60",width="1.7",fillcolor="#56B4E9:0.5:#8EC9E9",gradientangle=60,fontcolor="#FFFFFF",shape=box]
+  req       [label="requirements",rank="source"]
+  design    [label="design",rank="same"]
+  implement [label="implementation"]
+  verify    [label="verification"]
+  maint     [label="maintainence"]
+
+ { rank=same; req;}
+ { rank=same; design;}
+ { rank=same; implement; }
+ { rank=same; verify; }
+ { rank=same; maint; }
+
+  req    -> design;
+  design -> implement ;
+  implement -> verify ;
+  verify -> maint ;
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:img/waterfall.png]]
+
+* Teams
+
+Teams are made up of 2-8 people, with the average being closer to
+4-6.  In a Scopic organization, a Team is called a =shop= and is a
+formal designation of a holon with an identity of it's own.  For this
+reason =shops= must be registered (self-registered) that will
+establish a unique identity, a bramble, and ruleset that will be used
+to manage it.  Teams are persistent, they can be created, but once
+created they are part of the blockchain -- so they can be disbanded,
+suspended, disolved, fractured, absorbed, merged or even abandoned,
+but they can not be unmade.
+
+Shops can be legal entities in their own right, shops can own
+property, generate revenue, disperse funds, hire services, purchase
+goods.  Shops, and the holons that own the shop are also accountable, 
+legally, ethically and morally.
+
+** Shop Sizes
+
+There are limits on shop sizes -- they must conform to the =human
+scale group pattern=
+
+** 
+
+For larger issues or issues that contain many different moving parts,
+you'll be likely working in a team. This team will typically consist
+of a =backend developer=, a =frontend developer=, a =UX designer= and a
+=product manager=.
+
+   - Teams have a shared responsibility to ship the issue in the
+     planned release.
+      - If the team suspects that they might not be
+        able to ship something in time, the team should escalate /
+        inform others as soon as possible. A good start is informing
+        your lead.
+      - It's generally preferable to ship a smaller
+        iteration of an issue, than ship something a release later.
+    - Consider starting a Slack channel for a new team, but remember
+      to write all relevant information in the related issue(s). You
+      don't want to have to read up on two threads, rather than only
+      one, and Slack channels are not open to the greater GitLab
+      community.
+
+
+
+
+
+* Working & Prioritizing
+* Overflow
+
+* Diagram definitions                                              :noexport:
+** Global GraphViz styles
+
+#+BEGIN_SRC dot :noweb-ref dot-style :exports none
+  node[style="filled",fontname="Dejavu Sans",fontcolor="black",fontsize=14];
+  edge[fontname="Dejavu Sans",fontsize=9];
+#+END_SRC

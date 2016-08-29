@@ -142,24 +142,25 @@ and =nano= are.
 sudo nano /etc/dhcp/dhclient.conf
 #+end_src
 
-Add one of the following lines.  If you are using =Debian=,
-put it below the line starting wih "#supersede".  If you are
-using =CentOS= put it where you like.
+Add one of the following lines at the /top/ of the file.
 
 For OpenDNS:
 
 #+begin_src sh
-supercede domain-name-servers 208.67.222.222, 298.67.220.220
+supersede domain-name-servers 208.67.222.222, 298.67.220.220;
 #+end_src sh
 
 For Google DNS:
 
 #+begin_src sh
-supercede domain-name-servers 8.8.8.8, 8.8.4.4
+supersede domain-name-servers 8.8.8.8, 8.8.4.4;
 #+end_src
 
-Save the file, reboot and ssh back in, and ping something to
-make sure it works.
+Save the file and restart networking:
+
+#+begin_src sh
+sudo /etc/init.d/networking restart
+#+end_src
 
 #+begin_src sh
 ping chenla.org
@@ -224,7 +225,7 @@ sudo cp -r .ssh /home/<username>/
 sudo chown -R <username>:<username> /home/<username>/.ssh
 #+end_src
 
-Exit and ssh back into the machne as your new user.
+Exit and ssh back into the machine as your new user.
 
 * Delete default user
 
