@@ -1,0 +1,3 @@
+#+LINK: gh    https://github.com/
+#+LINK: rfc   https://tools.ietf.org/html/
+#+LINK: wiki  https://en.wikipedia.org/wiki/

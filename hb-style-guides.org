@@ -1,0 +1,187 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+TITLE: Style Guide Handbook
+#+STARTUP: showall
+#+PROPERTY: filename collaboration.org
+  :PROPERTIES:
+  :Name: /home/deerpig/proj/deerpig/deerpig-install/hb-style-guides.org
+  :Created: 2016-08-28T19:23@Wat Phnom (11.5733N17-104.925295W)
+  :ID: 1e3f1ff5-1201-4b49-bad7-749b3dfd2009
+  :URL:
+  :END:
+#+INCLUDE: ./inc/head.org
+#+INCLUDE: ./inc/macros.org
+#+INCLUDE: ./inc/links.org
+
+{{{breadcrumbs}}}
+
+#+HTML: <div class="outline-2" id="meta">
+| *Author*  | Brad Collins <brad@chenla.org>             |
+| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
+#+HTML: </div>
+
+#+TOC: headlines 6
+
+* Status of This Document
+
+The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
+
+#+HTML: <div class="notice notice-info">
+*Changes since the last version*
+
+#+HTML: <ul>
+
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
+  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- hb-style-guides.org`
+  if [ -z $RES ]; then
+    RES="<li>no changes</li>"
+  fi
+  echo $RES
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+<li>no changes</li>
+#+END_EXPORT
+
+#+HTML: </ul>
+#+HTML: </div>
+
+* Introduction
+
+Typographic, colors and layout for code, web, texinfo and dead tree
+publication.
+
+* Colors in Charts, Graphs & Diagrams
+
+Define color palettes for graphic materials
+
+We want to ensure that colors used across the project are:
+
+  - consistent :: provides a uniform color scheme
+  - aesthetic  :: is pleasant to look at -- good design
+  - informative :: uses color to convey meaning
+  - color-blind friendly :: this is a much larger audience
+       than you might expect
+
+** Normative Color Palette
+
+If this was Bebop, our color Palette would be a theme that
+you continually repeat, but never quite the same way twice,
+riffing and pushing the envelope, but still staying within
+the theme.  If you look at the source code for the diagrams
+on the site you'll see that the base colors are within the
+palette, but there are gradients another riffs on the colors
+that bring them to life.
+
+[[./img/color-palette-black.png]]
+
+[[./img/color-palette-gray.png]]
+
+
+
+
+** Color-blind friendly colors
+
+These are both /very/ good links that will give you more
+information about thinking about color schemes than you will
+/ever/ want to know.
+
+- http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
+- http://jfly.iam.u-tokyo.ac.jp/color/
+
+#+begin_src
+# The palette with grey:
+cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
+# The palette with black:
+cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
+# To use for fills, add
+  scale_fill_manual(values=cbPalette)
+
+# To use for line and point colors, add
+  scale_colour_manual(values=cbPalette)
+#+end_src
+
+
+** Informative References
+
+- http://www.perceptualedge.com/articles/visual_business_intelligence/rules_for_using_color.pdf
+- http://www.ibm.com/developerworks/data/library/cognos/infrastructure/cognos_specific/page571.html
+
+* Display of text
+
+ - Headings
+
+ - links
+ - visited links
+ - hover
+ - mouse-over
+
+ - keyboard
+ - example
+
+ - warning text
+ - comment text
+ - informative notes
+
+* Font families
+
+Quote from Beatrice... 
+
+  - /monospace fonts/ for text screen displays
+  - /proportional fonts/ for web and print
+
+
+
+
+* Line Lengths
+
+Believe it or not this is /very/ important on a number of
+fronts:
+
+  - avoid fatigue :: the brain has to strain reading lines
+       with more tha 14 or so words.
+  - keep plain text readable ::
+* Indentation: Tabs vs Spaces 
+
+Another contentious, topic
+
+Basically, our stance is -- no tabs.  A long justification
+will follow.
+
+The same will go for data files, no Tab Separated Values --
+use commas and get over having to escape them.
+
+* Spaces between sentences
+
+The typewriter 2-space, vs 1 space flame-war. Yet another
+long justification will follow.
+
+* Whitespace
+
+The concept of whitespace being significant or not.
+
+* Line Breaks 
+
+Use Unix -- not Windows....
+
+* Prose Lists
+
+A comma after the last item before 'and' -- more flame bait
+:(
+
+* English Spelling & Vocabulary
+
+American or English -- when to use, and if not when to
+gloss.
+
+* Punctuation
+
+For headings, proper names etc.
+
+* Footnotes
+* Bibliograpies
+
+  - Normative
+  - Informative

@@ -1,23 +1,19 @@
 #   -*- mode: org; fill-column: 60 -*-
 #+TITLE: Deerpig: The Runbooks & The Diatribes
 #+STARTUP: showall
-#+LANGUAGE: en
-#+OPTIONS: toc:nil num:nil h:4 html-postamble:nil html-preamble:t tex:t f:t d:nil
-#+OPTIONS: prop:("VERSION")
-#+HTML_DOCTYPE: <!DOCTYPE html>
-#+HTML_HEAD: <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
-#+HTML_HEAD: <link href="./css/style.css" rel="stylesheet" type="text/css" />
+#+PROPERTY: filename 
+#+INCLUDE: ./inc/head.org
 #+HTML_HEAD: <link href="./css/index.css" rel="stylesheet" type="text/css" />
-#+LINK: gh    https://github.com/
-#+LINK: rfc   https://tools.ietf.org/html/
-#+LINK: wiki  https://en.wikipedia.org/wiki/
-
   :PROPERTIES:
   :Name: /home/deerpig/proj/deerpig/deerpig-install/index.org
   :Created: 2016-08-20T16:40@Wat Phnom (11.5733N17-104.925295W)
   :ID: 5995dc73-91da-4940-bae1-efb75ce040d4
   :URL:
   :END:
+#+INCLUDE: ./inc/macros.org
+#+INCLUDE: ./inc/links.org
+
+{{{breadcrumbs}}}
 
 #+HTML: <div class="outline-2" id="meta">
 | *Author*  | Brad Collins <brad@chenla.org>             |
@@ -37,6 +33,10 @@ bash shell and a browser.  I hope these pages are useful to others,
 but I'm not holding my breath.  You can find the source code for the
 site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
 #+end_quote
+
+*NOTE*: 2016-8-28 -- This site is quickly diverging from its original
+pupose of being a bunch of personal =runbooks= for my work.  I will
+break out all non-deerpig material into a new repo and website soon.
 
 * Recent Activity
 
@@ -68,17 +68,36 @@ Please make a [[https://github.com/deerpig/deerpig-install][pull request]] on Gi
 clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue tracker]] to ask questions.
 
 * Runbooks 
-  - [[./bunsen-install.html][Bunsen Labs install]]
-  - [[./kinto-vm-install.html][Kinto Cloud new vm install]]
-  - [[./jekyll-new-site.html][Creating a new static website]]
-  - [[./tracker-install.html][Roundup Issue Tracker install]]
+  - [[./rb-desktop-install.html][Desktop Install]]
+  - [[./rb-new-vm-install.html][New Virtual Machine Install]]
+  - [[./rb-new-website-install.html][New Website Install]]
+  - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
   - Mattermost & IRCD Hybrid Install
   - GitoLite3 & CGit Install
 * Emacs & Orgmode Config
   - Dot Emacs
   - Orgmode Configuration
+* Handbooks
+This section will be split off to become:
+
+#+begin_quote
+/The Scopic Library: Handbooks, Specifications, Conventions & Best
+Practices/ which will be part of Chenla's /Primer/.
+#+end_quote
+
+  - Team
+  - Engineering
+  - Task & Project Planning
+  - Publishing
+  - Communications
+  - Citations
+  - [[./hb-collaboration.org][Collaboration]]
+  - [[./hb-conventions.org][Conventions]]
+  - [[./hb-style-guides.org][Style Guides]]
+  - Version Control
+  - [[./hb-doc-production.org][Documentation Production]]
 * Colophon
-  - Toolchain & Workflow
+  - Making this document
   - What is a Deerpig?
 * Licence
 

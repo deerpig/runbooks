@@ -1,24 +1,18 @@
 #   -*- mode: org; fill-column: 60 -*-
 #+TITLE: Setting Up A VM on Kinto Cloud Service
 #+STARTUP: showall
-#+LANGUAGE: en
-#+OPTIONS: toc:nil h:4 html-postamble:nil html-preamble:t tex:t f:t d:nil
-#+OPTIONS: prop:("VERSION")
-#+HTML_DOCTYPE: <!DOCTYPE html>
-#+HTML_HEAD: <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
-#+HTML_HEAD: <link href="./css/style.css" rel="stylesheet" type="text/css" />
+#+PROPERTY: filename 
+  :PROPERTIES:
+  :Name: /home/deerpig/proj/deerpig/deerpig-install/kinto-vm-install.org
+  :Created: 2016-08-06T14:19@Wat Phnom (11.5733N17-104.925295W)
+  :ID: 6de8e89f-1bfb-44d1-8bd2-f68e1dc44109
+  :URL:
+  :END:
+#+INCLUDE: ./inc/head.org
+#+INCLUDE: ./inc/macros.org
+#+INCLUDE: ./inc/links.org
 
-#+LINK: gh    https://github.com/
-#+LINK: rfc   https://tools.ietf.org/html/
-#+LINK: wiki  https://en.wikipedia.org/wiki/
-
-#+HTML: <div class="crumbs-left">
-#+HTML: <ul id="crumbs">
-#+HTML: <li><a href="http://deerpig.chenla.org">Home</a></li>
-#+HTML: <li>Setting Up A VM on Kinto Cloud Service</li>
-#+HTML: </ul>
-#+HTML: </div>
-
+{{{breadcrumbs}}}
 
 #+HTML: <div class="outline-2" id="meta">
 | *Author*  | Brad Collins <brad@chenla.org>             |
@@ -27,33 +21,17 @@
 
 #+TOC: headlines 4
 
-  :PROPERTIES:
-  :Name: /home/deerpig/proj/deerpig/deerpig-install/kinto-vm-install.org
-  :Created: 2016-08-06T14:19@Wat Phnom (11.5733N17-104.925295W)
-  :ID: 6de8e89f-1bfb-44d1-8bd2-f68e1dc44109
-  :URL:
-  :END:
-
 * Status of This Document
 
-#+HTML: <span>The lastest version of this document is: <em>
-#+BEGIN_SRC sh :exports results :results value html
-git describe --abbrev=0 --tags
-#+END_SRC
-
-#+RESULTS:
-#+BEGIN_EXPORT html
-v00.01
-#+END_EXPORT
-#+HTML: </em></span>
+The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
 
 #+HTML: <div class="notice notice-info">
 *Changes since the last version*
 
 #+HTML: <ul>
 
-#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01"
-  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- kinto-vm--install.org`
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
+  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- rb-new-vm-install.org`
   if [ -z $RES ]; then
     RES="<li>no changes</li>"
   fi

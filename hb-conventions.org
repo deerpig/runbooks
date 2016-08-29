@@ -1,0 +1,216 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+TITLE: Conventions Handbook
+#+STARTUP: showall
+#+PROPERTY: filename 'bunsen-install.org'
+  :PROPERTIES:
+  :Name: /home/deerpig/proj/deerpig/deerpig-install/hr-collaboration.org
+  :Created: 2016-08-28T13:35@Wat Phnom (11.5733N17-104.925295W)
+  :ID: e5d965a5-35d3-42ca-8845-637334bdcfa7
+  :URL:
+  :END:
+#+INCLUDE: ./inc/head.org
+#+INCLUDE: ./inc/macros.org
+#+INCLUDE: ./inc/links.org
+
+{{{breadcrumbs}}}
+
+#+HTML: <div class="outline-2" id="meta">
+| *Author*  | Brad Collins <brad@chenla.org>             |
+| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
+#+HTML: </div>
+
+#+TOC: headlines 6
+
+* Status of This Document
+
+The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
+
+#+HTML: <div class="notice notice-info">
+*Changes since the last version*
+
+#+HTML: <ul>
+
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
+  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- hb-conventions.org`
+  if [ -z $RES ]; then
+    RES="<li>no changes</li>"
+  fi
+  echo $RES
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+<li>no changes</li>
+#+END_EXPORT
+
+#+HTML: </ul>
+#+HTML: </div>
+
+* Introduction
+
+Conventions used for specification, documentation, and code.
+
+
+* Keywords
+
+|                    | Must | Should | Optional |
+|--------------------+------+--------+----------|
+| Specifications     | ✔    | ❌     | ❌       |
+| User Documentation | ❌   | ❌     | ❌       |
+| Handbooks          | ✔    | ✔      | ❌       |
+| Runbooks           | ❌   | ❌     | ✔        |
+| Cookbooks          | ❌   | ❌     | ❌       |
+| Source Code        | ❌   | ❌     | ❌       |
+
+
+Documents using the Keywords section *MUST* use include the
+following text in it's own section named /Keywords/.
+
+#+begin_quote
+The key words *MUST*, *MUST NOT*, *REQUIRED*, *SHOULD*,
+*SHOULD NOT*, *RECOMMENDED*, *MAY*, and *OPTIONAL* in this
+specification are to be interpreted as described in [[rfc:2119][RFC2119]].
+
+Since a document and project of this nature deals with a
+large number of technologies, each with their own set of
+acronyms, please refer to the glossary in Appendix A, which
+briefly explains some of them.
+#+end_quote
+
+
+* Notation
+
+Formal grammers are given in this specification using a
+simple Extended Backus-Naur Form (EBNF) notation described
+in [[rfc:4234][RFC4234]]. Further information and links can be found in
+the Wikipedia article [[wiki:Extended_Backus–Naur_Form][Extended Backus–Naur Form]].
+
+** EBNF Syntax Highlighting in Emacs
+
+The following [[http://stackoverflow.com/a/1804038][code]] was in a comment on Stack Overflow:
+
+#+begin_src emacs-lisp
+(define-generic-mode 'bnf-mode
+  () ;; comment char: inapplicable because # must be at start of line
+  nil ;; keywords
+  '(
+    ("^#.*" . 'font-lock-comment-face) ;; comments at start of line
+    ("^<.*?>" . 'font-lock-function-name-face) ;; LHS nonterminals
+    ("<.*?>" . 'font-lock-builtin-face) ;; other nonterminals
+    ("::=" . 'font-lock-const-face) ;; "goes-to" symbol
+    ("\|" . 'font-lock-warning-face) ;; "OR" symbol
+    ("\{:\\|:\}" . 'font-lock-keyword-face) ;; special pybnf delimiters
+   )
+  '("\\.bnf\\'" "\\.pybnf\\'") ;; filename suffixes
+  nil ;; extra function hooks
+  "Major mode for BNF highlighting.")
+#+end_src
+
+
+** Nomative References
+- [[rfc:4234][RFC4234]]
+
+** Informative References
+- Wikipedia: [[wiki:Extended_Backus–Naur_Form][Extended Backus–Naur Form]]
+- [[http://www.cs.utsa.edu/~wagner/CS3723/grammar/examples2.html][BNF Examples]]
+- http://condor.depaul.edu/ichu/csc447/notes/wk3/BNF.pdf
+- http://www.ics.uci.edu/~pattis/ICS-33/lectures/ebnf.pdf
+* Date formats
+
+All dates *SHOULD* be written using [[https://en.wikipedia.org/wiki/ISO_8601][ISO8601]] format, unless a
+good reason to do otherwise.  When using another date format
+the date must be unambigious.
+
+Date formats are one of the oldest and thorniest problems in
+computing.
+
+
+ISO8601 format is as follows:
+
+#+begin_example
+YYYY-MM-DD
+#+end_example
+
+Compare this to the American convention:
+
+#+begin_example
+10-10-10
+#+end_example
+
+This example could be any of, 10 January 1910, 10 January
+2010, 10 October, 1910 or 10 October 2010.
+
+
+
+* Code Header and Copyright Notice
+* Version Numbers
+
+The matter of Version numbers for software and documentation comprise
+no small amount of [[https://en.wikipedia.org/wiki/Weeping_and_gnashing_of_teeth][weeping and knashing of teeth]] so let's make this
+clear and simple.  All Version numbers *MUST* conform to the Semantic
+Versioning [[http://semver.org/spec/v2.0.0.html][v2.0.0]] specification.  From the [[http://semver.org/spec/v2.0.0.html][spec]]:
+
+#+begin_quote
+Given a version number *MAJOR.MINOR.PATCH*, increment the:
+
+ - *MAJOR* version when you make incompatible API changes,
+ - *MINOR* version when you add functionality in a backwards-compatible
+   manner, and
+ - *PATCH* version when you make backwards-compatible bug fixes.
+
+Additional labels for pre-release and build metadata are available as
+extensions to the *MAJOR.MINOR.PATCH* format.
+#+end_quote
+
+Version numbers *SHOULD* append a lower case letter v to version
+numbers unless there is a sound reason to do otherwise.
+
+** EBNF Definition
+
+The =EBNF= definition for Semantic Version Numbers:
+
+#+begin_src ebnf
+digit ::= 0 |1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 
+major ::= <digit>+
+minor ::= <digit>+
+patch ::= <digit>+
+
+semantic-version ::=  v<major>.<minor>.<patch>   
+#+end_src
+
+* Usage
+
+#+begin_quote
+These rules are based on but not necessarily limited to pre-existing
+widespread common practices in use in both closed and open-source
+software. For this system to work, you first need to declare a public
+API. This may consist of documentation or be enforced by the code
+itself. Regardless, it is important that this API be clear and
+precise. Once you identify your public API, you communicate changes to
+it with specific increments to your version number. Consider a version
+format of X.Y.Z (Major.Minor.Patch). Bug fixes not affecting the API
+increment the patch version, backwards compatible API
+additions/changes increment the minor version, and backwards
+incompatible API changes increment the major version.
+
+I call this system “Semantic Versioning.” Under this scheme, version
+numbers and the way they change convey meaning about the underlying
+code and what has been modified from one version to the next.
+#+end_quote
+
+
+* Required Files
+
+- software
+- documentation
+
+** README
+** LICENCE
+** INSTALL
+** Changelog
+
+http://keepachangelog.com/en/0.3.0/
+* Directory naming conventions
+
+  - all lower case
+  - short

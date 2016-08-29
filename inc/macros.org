@@ -1,0 +1,7 @@
+
+#+MACRO: begin_warning @@html:<div class="warning"><p>@@
+#+MACRO: end_warning @@html:</p></div>@@
+
+#+MACRO: twitter-share-link-button @@html:<script src="http://platform.twitter.com/widgets.js"></script><a href="https://twitter.com/share" class="twitter-share-button" data-via="$1">Tweet</a>@@
+
+#+MACRO: breadcrumbs @@html:<div class="crumbs-left"><ul id="crumbs"><li><a href="http://deerpig.chenla.org">Home</a></li><li>@@ {{{title}}} @@html:</li></ul></div>@@
