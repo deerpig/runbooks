@@ -11,33 +11,34 @@ digraph h {
   <<dot-style>>
 
   rankdir=LR;
-  concentrate=true;
-  ratio=compress;
-  size="24,1000";
   splines=ortho;
 
-  node      [fixedsize="true",height=".60",width="1.7",fillcolor="#56B4E9:0.5:#8EC9E9",gradientangle=60,fontcolor="#FFFFFF",shape=box]
-  req       [label="requirements",rank="source"]
-  design    [label="design",rank="same"]
-  implement [label="implementation"]
+  node      [fixedsize="true",height=".60",width="1.7",fillcolor="#56B4E9:0.5:#8EC9E9",gradientangle=90,fontcolor="#FFFFFF",shape=box]
+  req       [label="requirements"]
+  design    [label="design", pos="30,30"]
+  imp       [label="implementation"]
   verify    [label="verification"]
   maint     [label="maintainence"]
 
- { rank=same; req;}
- { rank=same; design;}
- { rank=same; implement; }
- { rank=same; verify; }
- { rank=same; maint; }
+ { rank=min; req;}
+ { rank=sink; design;}
+ { rank=min; imp; }
+ { rank=sink; verify; }
+ { rank=min; maint; }
 
   req    -> design;
-  design -> implement ;
-  implement -> verify ;
+  design -> imp ;
+  imp    -> verify ;
   verify -> maint ;
 }
 #+END_SRC
 
 #+RESULTS:
 [[file:img/waterfall.png]]
+
+
+** Normative References
+:url: https://en.wikipedia.org/wiki/Waterfall_model
 
 * Teams
 
@@ -88,6 +89,94 @@ of a =backend developer=, a =frontend developer=, a =UX designer= and a
 
 * Working & Prioritizing
 * Overflow
+
+
+* Daily Scrum Meeting
+
+*NOTE:* 2016-08-30 Obviously we have not started doing this, but I
+came across the [[https://wiki.openmrs.org/display/RES/Daily+Scrum+Meeting][OpenMRS daily scrum meeting]] and thought that this is a
+good fit with what I hope to do. The text in this section is using the
+OpenMRS page as a starting point from which we'll slowly adapt.  I've
+taken part in the weekly meetings held on IRC for One Laptop Per
+Child, and they seem to work well.
+
+The daily scrum meeting is a focused, 15-minute meeting for people
+contributing to the core development of Chenla Saltmine to come
+together and provide updates in the development process.
+
+** What to Report in the Scrum:
+
+Each developer answers the following questions:
+
+  - What did you accomplish since the last meeting?
+  - What do you plan to accomplish before the next meeting?
+  - What are your blockers?
+  - Discussion points - Items that are not blockers but need a group
+    decision on after the daily scrum is completed
+
+** Where to meet
+
+The bi-weekly Chenla Forum takes place on the #chenla channel on
+freenode -- the public is welcome to join this meeting where new
+features and progress on the project as a whole will be discussed.
+
+The daily team scrum meeting will be on irc.chenla.org and
+mm.chenla.org in #scrum.
+
+** Meeting schedule
+
+The daily scrum meeting occurs at . 
+
+Be sure to add the correct days and times into your calendars with a
+10-minute reminder prior to each meeting, so you have time to prepare
+your daily report.
+
+  | UTC Meeting Times |
+  |-------------------|
+  | time time time    |
+ 
+** Email Reminder
+
+If you wish to recieve an email reminder of meetings -- sent about 1
+hour before the meetings begin please email mailto:brad@chenla.org and
+put in the subject something to the effect "remind me about scrum
+meetings" or "remind me about forum meetings"
+
+[[http://www.timeanddate.com/worldclock/converter.html][Time Zone Converter]]
+
+** Making the meeting efficient
+
+ - Be available at the proper start time.
+ - Write your update 10 minutes before the daily scrum meeting.
+    - Set your calendar reminder alarm for 10 minutes before the daily
+      scrum meeting. When the alarm occurs, write up your work and
+      prepare for the meeting.
+    - The update should be a summary of the following:
+      - What you worked on during the previous day
+      - What you are currently working on today
+      - What you will continue to work on after the meeting has
+        finished
+      - A list of any blockers, or items that are slowing down your
+        progress
+  - Stay focused on the IRC channel window.
+      - If the daily scrum meeting were in person, we'd all be
+        standing up. That's not easy to do on IRC, so it's important
+        to pay attention.
+      - The biggest delay in the meeting occurs when we focus on other
+        windows on our computer. Either close or minimize those
+        windows before the meeting.
+  - Save all problem solving for the end of the meeting.
+      - Updates, output, blockers, and change-of directions will go
+        out quickly during the scrum from each individual. Afterwards,
+        the group will go over problem-solving for the blockers that
+        need to be resolved.
+  - Be honest about blockers!
+      - Blockers are issues that are getting in the way of doing other
+        work, or challenging issues that are taking up a lot of time.
+        The main reason for the daily scrum meeting is to share
+        information about blockers and resolve them together.  If you
+        have worked on the same problem for more than 1 hour (even if
+        you think you know the solution!) state it as a blocker.
 
 * Diagram definitions                                              :noexport:
 ** Global GraphViz styles
