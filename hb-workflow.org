@@ -178,6 +178,41 @@ meetings" or "remind me about forum meetings"
         have worked on the same problem for more than 1 hour (even if
         you think you know the solution!) state it as a blocker.
 
+
+* Chenla Mailing Lists
+
+Will dig these up -- clean out the spam and get things restarted
+again.
+
+* Chenla IRC & MatterMost
+
+Server will be http://irc.chenla.org and http://mm.chenla.org
+respectively.
+
+* Chenla Pastebin
+
+Will install [[http://sayakb.github.io/sticky-notes/pages/home/][Sticky Notes]] and the server will be: http://paste.chenla.org
+
+* Remote Kanban Board
+
+I am a big believer in the power of physical kanban boards -- I've
+tried a number of electronic ones and they just don't have the emotive
+power of a punch of colored pieces of paper taped to a board!
+
+However, we are a distributed project -- so an idea I have at the
+moment is to set up a webcam with a motion sensor of the kanban board
+at the office at prekleap once an hour and keep a feed of the camera 
+onm a web page.
+
+We can then create a simple way of notifiying whoever is the person
+(KanBan Keeper?) to move things around as needed.
+
+The idea is that during scrum meetings, everyone should have a feed of
+the board running next to their irc client so that we can make
+collective updates during meetings.
+
+It might turn out to be a dumb idea -- but I'd like to give it a try.
+
 * Diagram definitions                                              :noexport:
 ** Global GraphViz styles
 
