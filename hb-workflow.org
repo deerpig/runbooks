@@ -40,6 +40,57 @@ digraph h {
 ** Normative References
 :url: https://en.wikipedia.org/wiki/Waterfall_model
 
+* The Chicken and the Pig
+
+/Learning Agile/ Andrew Stellman & Jennifer Greene
+2015 O'Reilly Media
+
+#+begin_quote
+A Pig and a Chicken are walking down the road.
+
+The Chicken says: “Hey Pig, I was thinking we should open a restaurant!”
+
+Pig replies: “Hm, maybe; what would we call it?”
+
+The Chicken responds: “How about ‘ham-n-eggs’?”
+
+The Pig thinks for a moment and says: “No, thanks. I’d be committed,
+but you’d only be involved!”[4]
+
+
+[4] Just to be clear: a committed “pig” cares about the project’s
+success more than he cares about anything else in his professional
+life. There are a lot of other things in his personal life -- like his
+family, for example -- that he usually cares more about. If that’s not
+the case, it’s actually a problem with the team’s mindset, and it will
+interfere with sustainable pace.
+
+ -- p97
+#+end_quote
+
+* Iterative vs Incemental
+
+#+begin_quote
+An iterative process is one that makes progress through successive
+refinement. A development team takes a first cut at a system, knowing
+it is incomplete or weak in some (perhaps many) areas. They then
+iteratively refine those areas until the product is satisfactory. With
+each iteration the software is improved through the addition of
+greater detail.
+
+An incremental process is one in which software is built and delivered
+in pieces. Each piece, or increment, represents a complete subset of
+functionality. The increment may be either small or large, perhaps
+ranging from just a system’s login screen on the small end to a highly
+flexible set of data management screens. Each increment is fully coded
+and tested, and the common expectation is that the work of an
+iteration will not need to be revisited.
+
+-- Mike Cohn, /User Stories Applied: For Agile Software Development/
+   Pearson Education, 2004.
+#+end_quote
+
+
 * Teams
 
 Teams are made up of 2-8 people, with the average being closer to
