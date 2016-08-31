@@ -68,7 +68,7 @@ interfere with sustainable pace.
  -- p97
 #+end_quote
 
-* Iterative vs Incemental
+* Iterative vs Incremental
 
 #+begin_quote
 An iterative process is one that makes progress through successive
@@ -141,6 +141,8 @@ of a =backend developer=, a =frontend developer=, a =UX designer= and a
 * Working & Prioritizing
 * Overflow
 
+Tasks that aren't completed in a sprint and /overflow/ into the next
+sprint.
 
 * Daily Scrum Meeting
 
@@ -239,6 +241,8 @@ again.
 
 Server will be http://irc.chenla.org and http://mm.chenla.org
 respectively.
+
+http://wwww.irchelp.org/irchelp/irctutorial.html
 
 * Chenla Pastebin
 
