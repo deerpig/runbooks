@@ -144,6 +144,101 @@ of a =backend developer=, a =frontend developer=, a =UX designer= and a
 Tasks that aren't completed in a sprint and /overflow/ into the next
 sprint.
 
+
+* Keywords/Tags/Labels
+
+In orgmode they are called tags, in the roundup tracker they are call
+keywords, in GitLab they are called labels (though we don't use
+GitLab), on Twitter they're called hashtags, but they all amount to
+the same thing.
+
+Tags (hey, I'm an emacs guy) are useful in many different contexts,
+but they become a lot more useful when used consistently.  GitLab
+breaks down tags into three groups; team, subject, and type.
+
+Tags *MUST* be unique strings that are formally /defined/ in the
+Chenla =topicspace=.
+-- so that eventually, they will become machine understandable and can
+be linked to their definition.
+
+** Format
+
+Tags *MUST* adhere to the =gracefully degrade= pattern and work both
+in monochrome plain text displays as well as in graphical color
+displays.
+
+
+  | @place  | .team/org/proj | #subject/type |
+  |---------+----------------+---------------|
+  | @pnca   | .backend       | #A            |
+  | @office | .frontend      | #bug          |
+  | @home   | .infra         | #feature      |
+  | @hk     | .kinto         | #backlog      |
+  | @bulma  | .google        | #NEXT         |
+  | @hard   | .moe           | #WORK         |
+
+** Colors
+
+Colors *SHOULD* always be used to convey semantic, contextual meaning.
+
+[[./img/bootstrap-colors.jpg]]
+
+#+begin_src html
+<span class="label">Default</span>
+<span class="label label-success">Success</span>
+<span class="label label-warning">Warning</span>
+<span class="label label-important">Important</span>
+<span class="label label-info">Info</span>
+<span class="label label-default">Default</span>
+#+end_src
+
+** Place
+
+Places can be either a physical location, an organization or a machine
+name.
+
+*** Place name
+
+*** Machine name
+  
+** Team, Organizations, Projects
+  
+*** Teams
+
+.backend, .frontend, .infra, .ui, .wetlab, .softlab, .hardlab
+
+*** Organization
+
+.chenla, .studyhall, .repozit, .moe, .google
+
+*** Projects
+
+.saltmine, 
+
+** Subject, Type, Priority
+
+*** Workflow
+
+#NEXT, #WORK, #TODO, #PLAN
+
+*** Type
+
+#bug, #feature, 
+
+*** Priority 
+
+Items that are marked with a priority are to be completed before other
+items.  For this reason they are to be used sparingly -- but when they
+are used they need to be taken seriously.  Priorities should be
+discussed before being assigned.
+
+ - #A: Critical. Must be given priority over any other issue except
+   other #A level priority issues.  
+ - #B: Must. Must be finished within the current sprint, milestone or
+   release.
+ - #C: Should. Takes priority over other non critical features, tasks
+   or goals.
+
 * Daily Scrum Meeting
 
 *NOTE:* 2016-08-30 Obviously we have not started doing this, but I
