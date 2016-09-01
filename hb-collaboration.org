@@ -177,8 +177,40 @@ each issue.
      someone on the project, that needs to be discussed.  If
      accepted it will then be upgraded to a /feature/.
 
-
 ** Mail Interface
+
+*NOTE*: this section is copied from the [[http://www.roundup-tracker.org/docs/user_guide.html#subject-line-information][roundup manual]] --
+needs to be rewritten to reflect the gotchas I've
+experienced.
+
+The e-mail interface also provides a simple way to set
+properties on items. At the end of the subject line,
+propname=value pairs can be specified in square brackets,
+using the same conventions as for the roundup set shell
+command.
+
+For example:
+
+Set the priority of an issue:
+
+   Subject: Re: [issue2] the coffee machine is broken! [priority=urgent]
+
+Add yourself to a nosy list:
+
+   Subject: Re: [issue2] we're out of widgets [nosy=+richard]
+
+Set the nosy list to just you and cliff:
+
+    Subject: Re: [issue2] we're out of widgets [nosy=richard,cliff]
+
+Removing yourself from a nosy list and setting the priority:
+
+    Subject: Re: [issue2] we're out of widgets [nosy=-richard;priority=bug]
+
+In all cases, the message relates to issue 2. The Re: prefix is stripped off.
+
+
+
 
 * Critic Markup
 
