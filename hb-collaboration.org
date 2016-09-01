@@ -111,26 +111,44 @@ each issue.
 
 ** Status
 
-- unread ::
+- unread :: the default status when a new issue has been
+     created.
 
-- deferred :: 
+- deferred :: the issue has been discussed, but it will not
+     be acted on at this time.  A reason should be given for
+     the deferral, and if the issue will be deferred
+     indefinitely, the deferred status should be maintained
+     long enough to get feedback from all stakeholders
+     before closing the issue.
 
-- chatting ::
+- chatting :: the issue is being discussed, all parties who
+     are impacted by the issue are being brought into the
+     discussion and possible solutions considered.
 
 - need-eg :: /need example/ ("eg" is derived from "e.g.")
   Useful if the developers can't reproduce a bug and need
   instructions how to do this or an example document showing the
   bug. [1]
 
-- in-progress :: 
+- in-progress :: someone has been assigned the issue, and it
+     is actively being dealt with.
 
-- testing :: 
+- testing :: a resolution has been completed and is either
+     being tested before being deployed or is open for
+     comment from stakeholders before deploying the
+     resolution and closing the issue.
 
 - done-cbb :: /done, could be better/
   It is kind of resolved, but the solution isn't very nice or
   efficient.[1]
 
-- resolved ::
+- resolved ::  the issue has been resolved or completed. But
+     please do not do this lightly.  Ensure that you have
+     brought everyone into the discussion, gone through all
+     of the steps of resolution, gotten feedback and then
+     provide an explicit explanation of why the issue is
+     being closed.  Do not close something until it has been
+     tested and merged.
 
 
 [1] See: https://sourceforge.net/p/roundup/mailman/message/12295746/
