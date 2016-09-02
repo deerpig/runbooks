@@ -10,7 +10,6 @@
   :END:
 #+INCLUDE: ./inc/head.org
 #+INCLUDE: ./inc/macros.org
-#+INCLUDE: ./inc/links.org
 
 {{{breadcrumbs}}}
 
@@ -47,4 +46,40 @@ The latest version of this document is: src_sh[:results value]{git describe --ab
 #+HTML: </div>
 
 * Introduction
+
+This runbook describes how to install ircd-Hybrid and Anope
+IRC services.
+
+This assumes that the install is being made on a clean
+instance of Debian Server 8.5 Jessie.
+
+* Install dependencies
+
+#+begin_src sh
+sudo apt-get install build-essential cmake openssl libssl-dev
+#+end_src
+
+* Install ircd-hybrid
+
+#+begin_src sh
+sudo apt-get install ircd-hybrid
+#+end_src
+
+Use mkpasswd to generate an encrypted password for the
+configuration files. The password is used by the
+administrator to gain operator privileges and by hybserv to
+add bots.
+
+#+begin_src sh
+mkpasswd <newpassword>
+0HB28ImENQ7mc
+#+end_src
+
+Open the IRC server configuration and adjust to suit your
+needs. The following contains the minimum configuration
+required, feel free to change anything else as needed:
+
+#+begin_src sh
+sudo emacs /etc/ircd-hybrid/ircd.conf
+#+end_src
 
