@@ -183,6 +183,8 @@ each issue.
 needs to be rewritten to reflect the gotchas I've
 experienced.
 
+---
+
 The e-mail interface also provides a simple way to set
 properties on items. At the end of the subject line,
 propname=value pairs can be specified in square brackets,

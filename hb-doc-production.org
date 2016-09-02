@@ -227,6 +227,29 @@ you want.
 (setq org-confirm-babel-evaluate nil)
 #+end_src
 
+** Link abbreviations
+
+Set up global link abbreviations:
+
+#+begin_src org
+ ,[[linkword:tag][description]]
+#+end_src
+
+For example:
+
+#+begin_src org
+ ,[[bug:22][#22]]
+#+end_src
+
+#+begin_src emacs-lisp
+;; Abbreviations
+  (setq org-link-abbrev-alist
+       '(("bug"  . "http://bugs.chenla.org/support/issue")
+         ("gh"   . "https://github.com/")
+         ("wiki" . "http://en.wikipedia.org/wiki/")
+         ("rfc"  . "http://tools.ietf.org/html/")))
+#+end_src
+
 ** Set up project publishing
 
 #+begin_src emacs-lisp 
@@ -253,6 +276,7 @@ you want.
 	
       ))
 #+end_src
+
 
 
 * Templates
