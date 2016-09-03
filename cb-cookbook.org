@@ -1,0 +1,111 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+TITLE: Cookbook
+#+STARTUP: showall
+#+PROPERTY: filename 
+  :PROPERTIES:
+  :Name: /home/deerpig/proj/deerpig/deerpig-install/cb-cookbook.org
+  :Created: 2016-09-03T16:29@Wat Phnom (11.5733N17-104.925295W)
+  :ID: b1da031d-42cf-4a53-8ae9-9b45875773e2
+  :URL:
+  :END:
+#+INCLUDE: ./inc/head.org
+#+INCLUDE: ./inc/macros.org
+
+{{{breadcrumbs}}}
+
+#+HTML: <div class="outline-2" id="meta">
+| *Author*  | Brad Collins <brad@chenla.org>             |
+| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
+#+HTML: </div>
+
+#+TOC: headlines 4
+
+* Status of This Document
+
+The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
+
+#+HTML: <div class="notice notice-info">
+*Changes since the last version*
+
+#+HTML: <ul>
+
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
+  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- cb-cookbook.org`
+  if [ -z $RES ]; then
+    RES="<li>no changes</li>"
+  fi
+  echo $RES
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+<li>no changes</li>
+#+END_EXPORT
+
+#+HTML: </ul>
+#+HTML: </div>
+
+* Introduction
+
+Our fist cookbook.  I have a lot of snippets squirelled away
+in my notes, but I've never collected or organized them into
+one place.  /THIS IS THAT PLACE/.
+
+This will eventually get split into different files.
+
+* BASH
+
+** USB Drive read-only file-system
+
+#+begin_src
+sudo mount -o remount,rw '/media/deerpig/disk-label'
+#+end_src
+
+* Emacs 
+
+* Org Mode
+
+** Ignore headings
+
+I first read about excluding headings [[http://www.clarkdonley.com/blog/2015-08-30-org-mode-and-writing-papers-selective-export-tips.html][from this post ]]but it didn't
+work for me.  But [[http://emacs.stackexchange.com/questions/9492/is-it-possible-to-export-content-of-subtrees-without-their-headings/17677#17677][this question]] on stack overflow showed me the path
+to ignoring bliss!
+
+Add the following to your .emacs file:
+
+#+begin_src 
+    (require 'ox-extra)
+    (ox-extras-activate '(ignore-headlines))
+#+end_src
+
+Use the ignore :tag: on headlines you'd like to have ignored
+(while not ignoring their content)
+** Escaping Org Examples in Org
+
+#+BEGIN_SRC org
+  ,#+BEGIN_SRC org
+  ,* A heading
+  ,** Subhead
+     With a bunch of other stuff
+  ,#+END_SRC
+#+END_SRC
+
+  - Wrap the example in a #+BEGIN_SRC org
+  - Wrap that in a #+BEGIN_SRC org
+  - Escape each line with a , so it won't be processed by
+    org.
+
+Source: [[http://irreal.org/blog/?p=5503][Irreal: Escaping Org Examples in Org]]
+
+* BibTex
+
+** BibTex format for citing articles
+
+#+begin_src bibtex
+  @misc{nameYEARtitle,
+    author       = {},
+    title        = {{Page Title --- Site Name},
+    year         = {},
+    howpublished = {\url{http://}},
+    note         = {Accessed: 2016-08-01}
+#+end_src

@@ -77,6 +77,8 @@ clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue t
 * Emacs & Orgmode Config
   - Dot Emacs
   - Orgmode Configuration
+* Cookbooks
+  - [[./cb-cookbook.org][Our First Cookbook]]
 * Handbooks
 This section will be split off to become:
 
