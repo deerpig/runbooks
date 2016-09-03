@@ -47,7 +47,7 @@ The latest version of this document is: src_sh[:results value]{git describe --ab
 
 * Introduction
 
-Our fist cookbook.  I have a lot of snippets squirelled away
+Our first cookbook.  I have a lot of snippets squirelled away
 in my notes, but I've never collected or organized them into
 one place.  /THIS IS THAT PLACE/.
 
@@ -57,7 +57,7 @@ This will eventually get split into different files.
 
 ** USB Drive read-only file-system
 
-#+begin_src
+#+begin_src sh
 sudo mount -o remount,rw '/media/deerpig/disk-label'
 #+end_src
 
@@ -73,7 +73,7 @@ to ignoring bliss!
 
 Add the following to your .emacs file:
 
-#+begin_src 
+#+begin_src emacs-lisp
     (require 'ox-extra)
     (ox-extras-activate '(ignore-headlines))
 #+end_src
@@ -82,16 +82,21 @@ Use the ignore :tag: on headlines you'd like to have ignored
 (while not ignoring their content)
 ** Escaping Org Examples in Org
 
-#+BEGIN_SRC org
-  ,#+BEGIN_SRC org
-  ,* A heading
-  ,** Subhead
-     With a bunch of other stuff
-  ,#+END_SRC
+*NOTE:* This is not working -- not sure what's happening.
+
+
+#+BEGIN_SRC ascii
+ #+BEGIN_SRC org
+   #+BEGIN_SRC org
+   * A heading
+   ** Subhead
+      With a bunch of other stuff
+   #+END_SRC
+ #+END_SRC
 #+END_SRC
 
-  - Wrap the example in a #+BEGIN_SRC org
-  - Wrap that in a #+BEGIN_SRC org
+  - Wrap the example in a =#+BEGIN_SRC= org
+  - Wrap that in a =#+BEGIN_SRC= org
   - Escape each line with a , so it won't be processed by
     org.
 
