@@ -78,7 +78,7 @@ find a better place to install them and wanted to make sure
 that I didn't forget. 
 
 #+begin_src sh
-sudo apt-get install wget git-core surfraw openssh-server gdebi most xprintidle lxrandr
+sudo apt-get install wget git-core surfraw openssh-server gdebi most xprintidle lxrandr dnsutils irssi
 #+end_src
 
 * Emacs

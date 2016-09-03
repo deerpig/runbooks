@@ -77,7 +77,7 @@ mkpasswd <newpassword>
 
 Open the IRC server configuration and adjust to suit your
 needs. The following contains the minimum configuration
-required, feel free to change anything else as needed:
+required:
 
 #+begin_src sh
 sudo emacs /etc/ircd-hybrid/ircd.conf
