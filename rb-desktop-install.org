@@ -595,6 +595,18 @@ Test to see if it's working:
 VBoxManage --version
 #+end_src
 
+
+** Running Vagrant in VirtualBox
+
+- create dir
+- kitchen init
+- kitchen create
+- kitchen list
+- kitchen login
+- kitchen destroy
+
+
+
 * Configure Desktop
 ** xrandr
 
