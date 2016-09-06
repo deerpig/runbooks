@@ -548,6 +548,53 @@ then uninstall postfix and reinstall ssmtp and mailutils
 it should now work....  postfix sets up a lot of little
 stuff during the install, but leaves some in place when you
 uninstall that ssmtp seems to need to work.
+* Chef Dev Toolchain
+
+Install chef, virtualbox and vagrant so that we can spin up
+virtual machines as a sandbox for writing and testing chef
+recipes.  It's not as painful as it sounds :)
+
+** Install VirtualBox
+If you haven't done so before, add the "contrib" component
+to /etc/apt/sources.list, for example:
+
+#+begin_src sh
+# Debian 8 "Jessie"
+deb http://httpredir.debian.org/debian/ jessie main contrib
+#+end_src
+
+Now install via apt-get:
+
+#+begin_src sh
+sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') virtualbox
+#+end_src
+
+** Install Vagrant
+
+#+begin_src sh
+wget https://releases.hashicorp.com/vagrant/1.8.5/vagrant_1.8.5_x86_64.deb
+sudo dpkg -i vagrant_1.8.5_x86_64.deb
+#+end_src
+
+Test to see if it's working:
+
+#+begin_src sh
+vagrant --version
+#+end_src
+
+** Install Chef Development Kit
+
+#+begin_src sh
+wget https://packages.chef.io/stable/debian/8/chefdk_0.17.17-1_amd64.deb
+sudo dpkg -i chefdk_0.17.17-1_amd64.deb
+#+end_src
+
+Test to see if it's working:
+
+#+begin_src sh
+VBoxManage --version
+#+end_src
+
 * Configure Desktop
 ** xrandr
 
