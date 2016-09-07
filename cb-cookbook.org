@@ -139,7 +139,25 @@ Source: [[http://irreal.org/blog/?p=5503][Irreal: Escaping Org Examples in Org]]
  - exit
  - kitchen destroy
 
-** Chef generate <recipename>
+
+** Knife
+
+For some reason, =chef generate cookbook= is completely
+fucking up for me.  I think it's because I need ruby 2.2 and
+I have ruby 2.1 installed on Boris.
+
+So we'll use knife to create cookbooks
+
+  - knife cookbook create <name> --cookbook-path .
+
+  - cd <name>
+  - kitchen init --create-gemfile
+  - bundle install
+
+  - emacs -nw .kitchen.yml
+  - kitchen list
+
+And all should be good.
 
 
 
