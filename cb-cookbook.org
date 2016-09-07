@@ -114,3 +114,54 @@ Source: [[http://irreal.org/blog/?p=5503][Irreal: Escaping Org Examples in Org]]
     howpublished = {\url{http://}},
     note         = {Accessed: 2016-08-01}
 #+end_src
+* Chef
+
+** Kitchen
+
+  - mkdir project
+  - cd project
+  - kitchen init --create-gemfile  
+    
+    The "--create-gemfile" is required otherwise it will try
+    to install system-wide gems instead of local ones and
+    you'll get an error.
+
+ - install bundle
+
+ - kitchen list   #see if it's all there
+ - emacs -nw .kitchen.yml
+
+   at minimum edit the platforms.
+
+ - kitchen create
+ - kitchen login
+ - kitchen setup
+ - exit
+ - kitchen destroy
+
+** Chef generate <recipename>
+
+
+
+** Bento
+
+Default boxes are published under the Bento organization on
+[[https://atlas.hashicorp.com/bento][Atlas]] such as:
+
+#+begin_src yml
+---
+platforms:
+  - name: ubuntu-12.04
+  - name: ubuntu-14.04
+  - name: centos-5.11
+  - name: centos-6.7
+  - name: centos-7.2
+  - name: debian-7.9
+  - name: debian-8.3
+  - name: fedora-22
+  - name: fedora-23
+  - name: freebsd-9.3
+  - name: freebsd-10.2
+#+end_src
+
+:url: https://atlas.hashicorp.com/bento
