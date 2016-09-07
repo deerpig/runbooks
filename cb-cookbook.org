@@ -144,7 +144,9 @@ Source: [[http://irreal.org/blog/?p=5503][Irreal: Escaping Org Examples in Org]]
 
 For some reason, =chef generate cookbook= is completely
 fucking up for me.  I think it's because I need ruby 2.2 and
-I have ruby 2.1 installed on Boris.
+I have ruby 2.1 installed on Boris.  In fact it looks like
+it isn't worth getting into this at all -- Berkfile will
+have to wait until I've mastered the basics....
 
 So we'll use knife to create cookbooks
 
@@ -159,7 +161,11 @@ So we'll use knife to create cookbooks
 
 And all should be good.
 
+** Chef Run
 
+Create your recipes
+
+ - kitchen converge default-debian-83
 
 ** Bento
 
