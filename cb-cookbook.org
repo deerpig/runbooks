@@ -116,7 +116,6 @@ Source: [[http://irreal.org/blog/?p=5503][Irreal: Escaping Org Examples in Org]]
 * Chef
 ** Kitchen
 
-
 Kitchen is typically used with a VM, be sure that
 virtualization is turned on in the bios, or 64bit OSs will
 likely not run...
@@ -148,14 +147,20 @@ likely not run...
  - exit
  - kitchen destroy
 
-** Knife
-For some reason, =chef generate cookbook= is completely
-fucking up for me.  I think it's because I need ruby 2.2 and
-I have ruby 2.1 installed on Boris.  In fact it looks like
-it isn't worth getting into this at all -- Berkfile will
-have to wait until I've mastered the basics....
+** Chef generate cookbook
 
-So we'll use knife to create cookbooks
+Use chef generate to create a cookbook.
+
+  - chef generate cookbook <cookbook>
+
+  - cd <cookbook>
+  - emacs -nw .kitchen.yml
+  - kitchen list
+
+And all should be good.
+
+** Knife
+Use knife to create cookbooks
 
   - knife cookbook create <name> --cookbook-path .
 
@@ -182,7 +187,7 @@ at Bayon yesterday, I was finally able to get CentOS to work
 with VirtualBox, Vagrant and Chef.  Here's how:
 
   - edit .kitchen.yml
-  - kitchen create default-centos-83
+  - kitchen create default-centos-72
 
     This will download the image, but when it tries to boot
     it replaces an /insecure key/ with a more secure key
@@ -191,7 +196,7 @@ with VirtualBox, Vagrant and Chef.  Here's how:
 
     When it finally gives up:
 
-  - kitchen destroy default-centos-83
+  - kitchen destroy default-centos-72
 
     Now edit the Vagrant file in ~/.vagrant.d/boxes/bento-....
 
@@ -204,15 +209,16 @@ Vagrant.configure("2") do |config|
 end
 #+end_src
 
-  - kitchen create default-centos-83
+  - kitchen create default-centos-72
   - kitchen list
 
     should show that it's been created.
 
   - kitchen login
 
-This is a work around for doing local chef development -- it
-is insecure and MUST NOT be used in a production environent.
+This is a work around for doing local chef cookbook
+development -- it is insecure and MUST NOT be used in a
+production environent.
 
 ** Bento
 Default boxes are published under the Bento organization on
