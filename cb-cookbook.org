@@ -115,6 +115,12 @@ Source: [[http://irreal.org/blog/?p=5503][Irreal: Escaping Org Examples in Org]]
 #+end_src
 * Chef
 ** Kitchen
+
+
+Kitchen is typically used with a VM, be sure that
+virtualization is turned on in the bios, or 64bit OSs will
+likely not run...
+
   - mkdir project
   - cd project
   - kitchen init --create-gemfile  
@@ -166,6 +172,47 @@ And all should be good.
 Create your recipes
 
  - kitchen converge default-debian-83
+
+
+
+** CentoOS Bento
+
+After a day and a half of banging my head against the table
+at Bayon yesterday, I was finally able to get CentOS to work
+with VirtualBox, Vagrant and Chef.  Here's how:
+
+  - edit .kitchen.yml
+  - kitchen create default-centos-83
+
+    This will download the image, but when it tries to boot
+    it replaces an /insecure key/ with a more secure key
+    which doesn't exist and then goes into a loop trying to
+    connect but not authenticating.  Not good.
+
+    When it finally gives up:
+
+  - kitchen destroy default-centos-83
+
+    Now edit the Vagrant file in ~/.vagrant.d/boxes/bento-....
+
+    so it looks like this:
+
+#+begin_src ruby
+Vagrant.configure("2") do |config|
+  config.vm.base_mac = "080027B1F844"
+  config.ssh.insert_key = false
+end
+#+end_src
+
+  - kitchen create default-centos-83
+  - kitchen list
+
+    should show that it's been created.
+
+  - kitchen login
+
+This is a work around for doing local chef development -- it
+is insecure and MUST NOT be used in a production environent.
 
 ** Bento
 Default boxes are published under the Bento organization on

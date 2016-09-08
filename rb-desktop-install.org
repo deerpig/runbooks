@@ -554,6 +554,11 @@ Install chef, virtualbox and vagrant so that we can spin up
 virtual machines as a sandbox for writing and testing chef
 recipes.  It's not as painful as it sounds :)
 
+
+Before you begin -- reboot the machine and have a look in
+the bios and ensure that Virtualization is turned on.  This
+has caught me two times -- it's better to check and be sure.
+
 ** Install VirtualBox
 If you haven't done so before, add the "contrib" component
 to /etc/apt/sources.list, for example:
