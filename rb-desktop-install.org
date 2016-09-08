@@ -595,7 +595,34 @@ wget https://packages.chef.io/stable/debian/8/chefdk_0.17.17-1_amd64.deb
 sudo dpkg -i chefdk_0.17.17-1_amd64.deb
 #+end_src
 
+Use the Chef Dev Kit =shell-init= command to modify the
+current shell environment to use these paths the /opt paths
+it installed into.
 
+#+begin_src sh
+echo 'eval "$(chef shell-init bash)"' >> ~/.bash_profile
+#+end_src
+
+#+RESULTS:
+
+Reload
+
+#+begin_src sh :results silent
+source $HOME/.bash_profile
+#+end_src
+
+#+RESULTS:
+
+Now check to see if the new paths are working.
+
+#+begin_src sh
+which ruby
+#+end_src
+
+#+RESULTS:
+: /usr/bin/ruby
+
+You should see /opt/chefdk/embedded/bin/ruby
 
 ** Running Vagrant in VirtualBox
 
@@ -605,8 +632,6 @@ sudo dpkg -i chefdk_0.17.17-1_amd64.deb
 - kitchen list
 - kitchen login
 - kitchen destroy
-
-
 
 * Configure Desktop
 ** xrandr

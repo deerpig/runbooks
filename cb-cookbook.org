@@ -103,7 +103,6 @@ Use the ignore :tag: on headlines you'd like to have ignored
 Source: [[http://irreal.org/blog/?p=5503][Irreal: Escaping Org Examples in Org]]
 
 * BibTex
-
 ** BibTex format for citing articles
 
 #+begin_src bibtex
@@ -115,9 +114,7 @@ Source: [[http://irreal.org/blog/?p=5503][Irreal: Escaping Org Examples in Org]]
     note         = {Accessed: 2016-08-01}
 #+end_src
 * Chef
-
 ** Kitchen
-
   - mkdir project
   - cd project
   - kitchen init --create-gemfile  
@@ -126,7 +123,7 @@ Source: [[http://irreal.org/blog/?p=5503][Irreal: Escaping Org Examples in Org]]
     to install system-wide gems instead of local ones and
     you'll get an error.
 
- - install bundle
+ - bundle install
 
  - kitchen list   #see if it's all there
  - emacs -nw .kitchen.yml
@@ -134,14 +131,18 @@ Source: [[http://irreal.org/blog/?p=5503][Irreal: Escaping Org Examples in Org]]
    at minimum edit the platforms.
 
  - kitchen create
+
+   downloads bundleboxes for each platform listed in .kitchen.yml
+
  - kitchen login
  - kitchen setup
+
+   installs chef client on VM
+
  - exit
  - kitchen destroy
 
-
 ** Knife
-
 For some reason, =chef generate cookbook= is completely
 fucking up for me.  I think it's because I need ruby 2.2 and
 I have ruby 2.1 installed on Boris.  In fact it looks like
@@ -162,13 +163,11 @@ So we'll use knife to create cookbooks
 And all should be good.
 
 ** Chef Run
-
 Create your recipes
 
  - kitchen converge default-debian-83
 
 ** Bento
-
 Default boxes are published under the Bento organization on
 [[https://atlas.hashicorp.com/bento][Atlas]] such as:
 
