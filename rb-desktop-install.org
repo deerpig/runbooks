@@ -569,6 +569,12 @@ Now install via apt-get:
 sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') virtualbox
 #+end_src
 
+Test to see if it's working:
+
+#+begin_src sh
+VBoxManage --version
+#+end_src
+
 ** Install Vagrant
 
 #+begin_src sh
@@ -589,11 +595,6 @@ wget https://packages.chef.io/stable/debian/8/chefdk_0.17.17-1_amd64.deb
 sudo dpkg -i chefdk_0.17.17-1_amd64.deb
 #+end_src
 
-Test to see if it's working:
-
-#+begin_src sh
-VBoxManage --version
-#+end_src
 
 
 ** Running Vagrant in VirtualBox
