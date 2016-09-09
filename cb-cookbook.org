@@ -241,3 +241,27 @@ platforms:
 #+end_src
 
 :url: https://atlas.hashicorp.com/bento
+
+** cli ascii pack cookbook
+
+The goal is to turn this section into a cookbook
+
+  - install figlet toilet toilet-fonts cowsay fortune
+  - download fonts
+  - unzip them
+  - install in /usr/share/figlet
+  - test
+
+
+#+begin_src sh
+sudo apt-get install figlet toilet toilet-fonts cowsay \
+fortune cmatrix libaa-bin 
+#+end_src
+
+Font directory: /usr/share/figlet
+
+
+*** Links
+  - [[http://www.jave.de/figlet/fonts.html][figlet font library]]
+  - [[https://www.linux.com/learn/linux-tips-fun-figlet-and-toilet-commands][Fun with figlet and toilet commands]] 
+  - [[http://www.cyberciti.biz/faq/create-large-colorful-text-banner-on-screen/][Linux: Display Large Colourful Text Banner On Screen]]
