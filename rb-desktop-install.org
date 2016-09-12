@@ -638,6 +638,26 @@ You should see /opt/chefdk/embedded/bin/ruby
 - kitchen login
 - kitchen destroy
 
+* Cucumber Install
+
+Create a Gemfile:
+
+#+begin_src ruby
+source  'http://rubygems.org'
+
+group :test do
+  gem 'gherkin'
+  gem 'cucumber'
+  gem 'rspec-expectations'
+end
+#+end_src
+
+and then while in that directory run 
+
+#+begin_src sh
+bundle install
+#+end_src
+
 * Configure Desktop
 ** xrandr
 
