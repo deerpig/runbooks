@@ -178,8 +178,6 @@ Create your recipes
 
  - kitchen converge default-debian-83
 
-
-
 ** CentoOS Bento
 
 After a day and a half of banging my head against the table
@@ -251,7 +249,6 @@ The goal is to turn this section into a cookbook
   - unzip them
   - install in /usr/share/figlet
   - test
-
 
 #+begin_src sh
 sudo apt-get install figlet toilet toilet-fonts cowsay \
