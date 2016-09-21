@@ -215,7 +215,7 @@ name.
   
 *** Teams
 
-.backend, .frontend, .infra, .ui, .wetlab, .softlab, .hardlab
+.Backend, .Frontend, .Infra, .Ui, .Wetlab, .Softlab, .Hardlab
 
 *** Organization
 
@@ -233,7 +233,7 @@ name.
 
 *** Type
 
-#bug, #feature, 
+#bug, #feature, #request, #wish, #moonshot
 
 *** Priority 
 
@@ -344,10 +344,19 @@ again.
 
 * Chenla IRC & MatterMost
 
-Server will be http://irc.chenla.org and http://mm.chenla.org
-respectively.
+** IRC
 
-http://wwww.irchelp.org/irchelp/irctutorial.html
+Our irc server is http://irc.chenla.org
+
+  - #chenla :: general discussion
+
+** Mattermost
+
+Our mattermost server will be at http://mm.chenla.org
+
+** Informative References
+
+ - http://wwww.irchelp.org/irchelp/irctutorial.html
 
 * Chenla Pastebin
 
