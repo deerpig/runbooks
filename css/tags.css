@@ -1,0 +1,27 @@
+/* Colors for org tags -- should match keywords in issue tracker */
+
+/* When org exports tags they are wrapped in a span which has the .tag */
+/* class, which is wrapped in a span with a class named after itself */
+/* If there is a @ in the tag name, it is replaced by a _ */
+
+/* Teams --------------------------*/
+
+.tag span.Backend,
+.tag span.Frontend,
+.tag span.Infra {
+    background: #5CB85C;
+}
+
+/* Priorities ---------------------*/
+
+.tag span.Critical {
+    background: #f04444;
+}
+
+.tag span.Bug {
+    background: #D9534F;
+}
+
+.tag span.Feature {
+    background: #337AB7;
+}
