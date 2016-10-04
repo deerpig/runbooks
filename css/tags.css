@@ -13,40 +13,34 @@
 .tag span.Hardlab,
 .tag span.Softlab  { background: #5CB85C; }
 
+/* Projects ------------------------------*/
+.tag span.Map,
+.tag span.Primer,
+.tag span.Rabbit,
+.tag span.Saltmine,
+.tag span.Studyhall { background: #5843AD;}
+
 /* Type ----------------------------------*/
 .tag span.Critical { background: #f04444; }
 .tag span.Bug      { background: #F0AD4E; }
 .tag span.Feature  { background: #337AB7; }
 .tag span.Wish     { background: #ec84f5; }
+.tag span.Request  { background: #ec84f5; }
+.tag span.Info     { background: #5BC0DE; }
 .tag span.Moonshot { background: #34495E; }
 
 /* Workflow-Kanban -----------------------*/
-.tag span.PLAN     { background: #A8D695; }
+.tag span.PLAN     { background: #5F9EA0; }
 .tag span.NEXT     { background: #0033CC; }
-.tag span.WORK     { background: #BFCC00; }
-.tag span.DONE     { background: #69D100; }
+.tag span.WORK     { background: #FA7C00; }
+.tag span.DONE     { background: #7BD300; }
 
 /* Priority ------------------------------*/
 .tag span.A        { background: #f04444; }
 .tag span.B        { background: #F0AD4E; }
-.tag span.C        { background: #5BC0DE; }
+.tag span.C        { background: #337AB7; }
 
 /* Organization --------------------------*/
+.tag span.chenla,
+.tag span.pnca     { background: #8470FF;}
 
-/* Projects ------------------------------*/
-
-
-background: #D9534F; /*Danger*/
-background: #5BC0DE; /*Info*/
-background: #F0AD4E; /*Warning*/
-background: #5CB85C; /*Teams*/
-background: #5843AD; /*Info*/
-background: #69D100; /*DONE*/
-background: #ec84f5; /*Wish*/
-background: #34495E; /*Moonshot*/
-
-
-.tag span.    { background: ;}
-.tag span.    { background: ;}
-.tag span.    { background: ;}
-.tag span.    { background: ;}
