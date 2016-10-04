@@ -1,0 +1,49 @@
+/* Colors For Org Tags ---------------------------- */
+/*                                                  */
+/* Should match keywords in issue tracker           */
+/*                                                  */
+/* When org exports tags they are wrapped in a span */
+/* which has the .tag class, which is wrapped in a  */
+/* span with a class named after itself If there is */
+/* a @ in the tag name, it is replaced by a _       */
+
+/* Teams ---------------------------------*/
+.tag span.Backend,
+.tag span.Frontend,
+.tag span.UI,
+.tag span.Infra,
+.tag span.Wetlab,
+.tag span.Hardlab,
+.tag span.Softlab  { background: #5CB85C; }
+
+/* Projects ------------------------------*/
+.tag span.Map,
+.tag span.Primer,
+.tag span.Rabbit,
+.tag span.Saltmine,
+.tag span.Studyhall { background: #5843AD;}
+
+/* Type ----------------------------------*/
+.tag span.Critical { background: #f04444; }
+.tag span.Bug      { background: #F0AD4E; }
+.tag span.Feature  { background: #337AB7; }
+.tag span.Wish     { background: #ec84f5; }
+.tag span.Request  { background: #ec84f5; }
+.tag span.Info     { background: #5BC0DE; }
+.tag span.Moonshot { background: #34495E; }
+
+/* Workflow-Kanban -----------------------*/
+.tag span.PLAN     { background: #5F9EA0; }
+.tag span.NEXT     { background: #0033CC; }
+.tag span.WORK     { background: #FA7C00; }
+.tag span.DONE     { background: #7BD300; }
+
+/* Priority ------------------------------*/
+.tag span.A        { background: #f04444; }
+.tag span.B        { background: #F0AD4E; }
+.tag span.C        { background: #337AB7; }
+
+/* Organization --------------------------*/
+.tag span.chenla,
+.tag span.pnca     { background: #8470FF;}
+

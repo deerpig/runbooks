@@ -324,7 +324,7 @@ div.figure {
     font-weight: normal;
     float: right;
     margin-top: 1em;
-    background: transparent;
+    /* background: transparent; */
 }
 
 .tag span {

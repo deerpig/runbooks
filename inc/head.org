@@ -4,3 +4,4 @@
 #+HTML_DOCTYPE: <!DOCTYPE html>
 #+HTML_HEAD: <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
 #+HTML_HEAD: <link href="./css/style.css" rel="stylesheet" type="text/css" />
+#+HTML_HEAD: <link href="./css/tags.css" rel="stylesheet" type="text/css" />
