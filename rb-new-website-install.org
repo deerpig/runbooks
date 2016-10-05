@@ -127,7 +127,7 @@ sudo chmod +x post-receive
 
 #+begin_src sh
 sudo mkdir -p /var/www/site/html
-sudo chown deerpig /var/www/site
+sudo chown -R deerpig /var/www/site
 #+end_src 
 
 * On Local Machine
