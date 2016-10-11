@@ -64,8 +64,8 @@ sudo emacs /etc/httpd/conf/domains/site-www.conf
 
 #+begin_src sh
 <VirtualHost *:80>
-  ServerName site.kinto-cloud.com
-  DocumentRoot /var/www/site/
+  ServerName site.chenla.org
+  DocumentRoot /var/www/site-www/html
 </VirtualHost>
 #+end_src
 
@@ -106,7 +106,9 @@ emacs post-receive
 #!/bin/bash -l
 GIT_REPO=$HOME/repos/site-www
 TMP_GIT_CLONE=$HOME/tmp/site-www
-PUBLIC_WWW=/var/www/site/html
+# For Jekyll site, use site-www/html
+# For rsync site, ise  site-www/site-www
+PUBLIC_WWW=/var/www/site-www/html
 
 git clone $GIT_REPO $TMP_GIT_CLONE
 
@@ -201,7 +203,7 @@ And add the following:
 # make sure the script is in the path
 export PATH=$PATH:/home/deerpig/bin/ ;
 
-cd ~/proj/deerpig/deerpig-www ;
+cd ~/proj/deerpig/site-www ;
 
 # Uncomment if this is a org publish site
 # All projects will be published
@@ -229,3 +231,26 @@ create symbolic links to ~/bin/.
 cd ~/bin/
 ln -s ../.dotfiles/deploy.sh deploy-<site>
 #+end_src
+
+
+** Create Emacs Deploy Function
+
+#+begin_quote emacs-lisp
+;; Deploy projects
+(defun deploy (name)
+  "Build and deploy local websites using shell script to call
+   orgmode and git.  Scripts are kept in ~/.dotfiles/ and
+   linked to ~/bin/"
+  (interactive "cdeploy: (c)ore (l)a (d)eerpig")
+  (shell-command     (cond ((equal name ?c) "cored")
+			   ((equal name ?l) "betad")
+			   ((equal name ?d) "deerd"))))
+#+end_quote
+
+* Workflow
+
+ - Magit-Status
+ - Stage/Commit
+ - Push deploy (if Jekyll then you're done)
+ - M-x deploy (to run the deploy shell script for the site).
+
