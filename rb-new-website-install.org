@@ -199,24 +199,34 @@ And add the following:
 #+begin_src sh
 #!/bin/bash
 # adds stages and pushes files in directory
+SITE_SRC=$HOME/proj/dir/proj-src
+SITE_BUILD=$HOME/proj/dir/proj-html
 
 # make sure the script is in the path
 export PATH=$PATH:/home/deerpig/bin/ ;
 
-cd ~/proj/deerpig/site-www ;
+# change to build dir and fetch any changes from
+# any deployment from other boxes
+cd $SITE_BUILD && \
+git pull deploy master && \
+
+# Change to the src directory and build the site
+# using org-publish or jekyll build
+cd $SITE_SRC && \
 
 # Uncomment if this is a org publish site
 # All projects will be published
-/usr/local/bin/emacs --batch -l ~/.emacs -f org-publish-all && \
-
+#/usr/local/bin/emacs --batch -l ~/.emacs -f org-publish-all && \
 # Uncomment if this is a Jekyll site
-#jekyll build .&&\
+jekyll build  && \
 
-# Run git add commit push
+# Change back to the build dir and push to the server
+cd $SITE_BUILD && \
 git add . && \
 git add -u && \
 git commit -m "deploy" && \
 git push deploy master
+exit
 #+end_src
 
 #+begin_src sh
