@@ -164,12 +164,13 @@ git push deploy master
 
 The way I have things set up, it that each site has two
 repos -- one for the source files, and the other for the
-static site rendered by either org-publish or jekyll.
+build file (the static site rendered by either org-publish
+or jekyll).
 
 Let's say you have a repo called =homer-org= for the org
 source files and then =homer-www= for the generated site.
 
-So you make changes to the site then commit do a git add and
+So you make changes to the site then commit, do a git add and
 commit and push.  That saves the source files.  Then you
 want to regenerate the site and deploy it on the web server
 using either org-publish-project, or jekyll build.
@@ -183,11 +184,8 @@ just be /deploying/ the site -- there is no need to describe
 what changes have been made because this is already being
 taken care of in the source repo.
 
-So we write a script that builds the static ste locally then
+So we write a script that builds the static site locally then
 deploys using git add commit push.
-
-Instead of running jekyll build or org-publish-project, run
-this script and it should build and deploy to the server.
 
 #+begin_src sh
 cd ~/bin
@@ -242,8 +240,17 @@ cd ~/bin/
 ln -s ../.dotfiles/deploy.sh deploy-<site>
 #+end_src
 
-
 ** Create Emacs Deploy Function
+
+You can run the deploy scripts from any bash prompt, but
+then we would have to leave emacs to do that.  Admit it,
+that really is not acceptable, it breaks some kind of
+natural law or something.
+
+So let's write a short function to bring up an interactive
+menu so you can choose which site to deploy...
+
+Put this somewhere in your .emacs or init file.
 
 #+begin_quote emacs-lisp
 ;; Deploy projects
@@ -259,7 +266,10 @@ ln -s ../.dotfiles/deploy.sh deploy-<site>
 
 * Workflow
 
- - Magit-Status
+Putting it all together, we get the following workflow:
+
+ - Edit files, save
+ - Magit-status
  - Stage/Commit
  - Push deploy (if Jekyll then you're done)
  - M-x deploy (to run the deploy shell script for the site).
