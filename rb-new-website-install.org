@@ -271,6 +271,11 @@ Putting it all together, we get the following workflow:
  - Edit files, save
  - Magit-status
  - Stage/Commit
- - Push deploy (if Jekyll then you're done)
+ - Push deploy 
+
+If you are running Jekyll on the server to build the site
+then you're done.  But if you are using org-publish or are
+using jekyll build locally, then:
+
  - M-x deploy (to run the deploy shell script for the site).
 
