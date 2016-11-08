@@ -139,9 +139,13 @@ Run the autogen and configure scripts. Note that with
 "--prefix" you pass the path in which you'll want the files to be
 installed.
 
+I tried installing with Cario support but fonts got screwed
+up as well as introducing window resdrawing problems when
+frames were resized.
+
 #+begin_src sh
 ./autogen.sh
-./configure --with-modules --with-cairo --with-xwidgets
+./configure --with-modules --without-cairo --with-xwidgets
 make
 #+end_src
 
@@ -555,6 +559,118 @@ then uninstall postfix and reinstall ssmtp and mailutils
 it should now work....  postfix sets up a lot of little
 stuff during the install, but leaves some in place when you
 uninstall that ssmtp seems to need to work.
+
+** Install Mu & Mu4e
+
+Install dependencies
+
+#+begin_src sh
+sudo apt-get install libgmime-2.6-dev libxapian-dev gnutls-bin \\
+guile-2.0-dev html2text xdg-utils
+#+end_src
+
+Now download and install mu (which includes mu4e.
+
+#+begin_src sh
+cd ~/tmp
+git clone https://github.com/djcb/mu.git
+cd ./mu
+autoreconf -i && ./configure && make
+sudo make install
+#+end_src
+
+
+
+
+
+** Install isync
+
+#+begin_src sh
+sudo apt-get install isync
+sudo apt-get install ca-certificates
+#+end_src
+
+Create a file called ~/.mbsyncrc
+
+
+#+begin_src sh
+# ACCOUNT INFORMATION
+IMAPAccount gmail
+Host imap.gmail.com
+User MYEMAIL@gmail.com
+PassCmd "security find-generic-password -s mbsync-gmail-password -w"
+# UseIMAPS yes
+# AuthMechs LOGIN
+AuthMechs PLAIN
+SSLType IMAPS
+# SSLVersions SSLv3
+CertificateFile /usr/local/etc/openssl/certs/gmail.crt
+CertificateFile /usr/local/etc/openssl/certs/google.crt
+CertificateFile /usr/local/etc/openssl/certs/Equifax.crt
+
+# THEN WE SPECIFY THE LOCAL AND REMOTE STORAGE
+# - THE REMOTE STORAGE IS WHERE WE GET THE MAIL FROM (E.G., THE
+#   SPECIFICATION OF AN IMAP ACCOUNT)
+# - THE LOCAL STORAGE IS WHERE WE STORE THE EMAIL ON OUR COMPUTER
+
+# REMOTE STORAGE (USE THE IMAP ACCOUNT SPECIFIED ABOVE)
+IMAPStore gmail-remote
+Account gmail
+
+# LOCAL STORAGE (CREATE DIRECTORIES with mkdir -p Maildir/gmail)
+MaildirStore gmail-local
+Path ~/Maildir/gmail/
+Inbox ~/Maildir/gmail/inbox
+
+# CONNECTIONS SPECIFY LINKS BETWEEN REMOTE AND LOCAL FOLDERS
+#
+# CONNECTIONS ARE SPECIFIED USING PATTERNS, WHICH MATCH REMOTE MAIl
+# FOLDERS. SOME COMMONLY USED PATTERS INCLUDE:
+#
+# 1 "*" TO MATCH EVERYTHING
+# 2 "!DIR" TO EXCLUDE "DIR"
+# 3 "DIR" TO MATCH DIR
+#
+# FOR INSTANCE IN THE SPECIFICATION BELOW:
+#
+# gmail-inbox gets the folder INBOX, ARCHIVE, and everything under "ARCHIVE*"
+# gmail-trash gets only the "[Gmail]/Trash" folder and stores it to the local "trash" folder
+
+Channel gmail-inbox
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "INBOX" "Arch*"
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-trash
+Master :gmail-remote:"[Gmail]/Trash"
+Slave :gmail-local:trash
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+Slave :gmail-local:sent
+Create Both
+Expunge Both
+SyncState *
+
+# GROUPS PUT TOGETHER CHANNELS, SO THAT WE CAN INVOKE
+# MBSYNC ON A GROUP TO SYNC ALL CHANNELS
+#
+# FOR INSTANCE: "mbsync gmail" GETS MAIL FROM 
+# "gmail-inbox", "gmail-sent", and "gmail-trash"
+#
+Group gmail
+Channel gmail-inbox
+Channel gmail-sent
+Channel gmail-trash
+#+end_src
+
+
 * Chef Dev Toolchain
 
 Install chef, virtualbox and vagrant so that we can spin up
