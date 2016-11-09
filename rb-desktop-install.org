@@ -533,7 +533,7 @@ sudo apt-get install ssmtp mailutils
 Copy the ssmpt-conf file into place, or edit the default
 config file to work like so
 
-/etc/ssmtp/ssmtp.conf
+sudo emacs -nw /etc/ssmtp/ssmtp.conf
 
 #+begin_src sh
 root=brad@chenla.la
@@ -544,13 +544,18 @@ UseSTARTTLS=YES
 TLS_CA_File=/etc/pki/tls/certs/ca-bundle.crt
 AuthUser=brad@chenla.la
 AuthPass=your-password
+#Debug=YES
 #+end_src
 
-/etc/ssmtp/revaliases
+NOTE: be careful that there is new line or other text after
+the password.  If the files ends at the end of the password
+line you will get an authentication error.
+
+sudo emacs -nw /etc/ssmtp/revaliases
 
 #+begin_src sh
-root:username@gmail.com:smtp.gmail.com:587
-mainuser:username@gmail.com:smtp.gmail.com:587
+root::brad@chenla.la:smtp.gmail.com:587
+deerpig::brad@chenla.la:smtp.gmail.com:587
 #+end_src
 
 #+begin_src sh
