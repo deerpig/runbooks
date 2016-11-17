@@ -63,7 +63,6 @@ sudo mount -o remount,rw '/media/deerpig/disk-label'
 #+end_src
 
 * Emacs 
-
 * Org Mode
 
 ** Ignore headings

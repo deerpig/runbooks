@@ -798,9 +798,34 @@ bundle install
 #+end_src
 
 * Configure Desktop
-** xrandr
+** Xrandr Display Settings
 
-If you are using multiple screens
+If you are running multiple desktops, including something
+like this in your ~/.config/openbox/autostart file.
+
+#+begin_src sh
+## Video Setup
+  xrandr --output HDMI-1 --mode 1920x1080
+  xrandr --output VGA-1  --mode 1280x1024
+  xrandr --output VGA-1  --right-of HDMI-1
+#+end_src
+
+This file is /not/ in the .dotfiles git repo.  I had tried
+to do this will the openbox config files but there were too
+many small hardware differences between different computers
+I am running.
+
+** Disable Caps Lock
+
+If you aren't rebinding the caps lock key to do something
+useful in emacs, it can be a major pain in the ass.  Turn it
+off in ~/.config/openbox/autostart file until you find a
+better use for it.
+
+#+begin_src 
+## disable
+setxkbmap -option caps:none
+#+end_src
 
 ** Set Wallpaper
 
@@ -809,7 +834,7 @@ path:
 
   /usr/share/images/bunsen/wallpapers/default/
 
-** Turn off screen lock
+** Turn Off Screen Lock
 
 Turning off the screen lock in the Power Management app
 doesn't work.  Screen blanking is controlled by X but the
