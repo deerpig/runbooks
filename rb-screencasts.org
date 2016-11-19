@@ -1,0 +1,84 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+TITLE: Screencasting
+#+STARTUP: showall
+#+PROPERTY: filename
+:PROPERTIES:
+:Name: /home/deerpig/proj/deerpig/deerpig-install/rb-screencasting.org
+:Created: 2016-11-19T11:39@Prek Leap (11.642600N-104.919210W)
+:ID: 5fde9f0b-5fd7-4144-87a0-b6e8a3c21224
+:URL:
+:END:
+#+INCLUDE: ./inc/head.org
+#+INCLUDE: ./inc/macros.org
+
+{{{breadcrumbs}}}
+
+#+HTML: <div class="outline-2" id="meta">
+| *Author*  | Brad Collins <brad@chenla.org>             |
+| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
+#+HTML: </div>
+
+#+TOC: headlines 4
+
+* Status of This Document
+
+The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
+
+#+HTML: <div class="notice notice-info">
+*Changes since the last version*
+
+#+HTML: <ul>
+
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
+RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- rb-screencasting.org`
+if [ -z $RES ]; then
+RES="<li>no changes</li>"
+fi
+echo $RES
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+<li>no changes</li>
+#+END_EXPORT
+
+#+HTML: </ul>
+#+HTML: </div>
+
+* Introduction
+
+This page will describe how to create screencasts using a bunsen labs
+(openbox) desktop.
+
+Features:
+
+  - Video and Audio Recording of desktop
+  - Desktop webcam video
+  - Keystroke monitor
+
+* webcam
+
+* microphone
+
+* ffmpeg
+
+http://ubuntuguides.org/wiki/Screencasts 
+
+* video
+
+https://wiki.gnome.org/Apps/Cheese
+
+* keystoke overlap app
+
+https://code.google.com/archive/p/key-mon/ 
+
+theme: oblivian
+size : 1.8
+
+* editing
+
+Adding opening credits and titles
+
+* upload to video
+
+* embbed in blog post
