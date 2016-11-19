@@ -151,3 +151,20 @@ Adding opening credits and titles
 * upload to video
 
 * embbed in blog post
+
+
+* Stopwatch
+
+It would be very useful to have a stopwatch and countdown
+time as well that could be kept in another window during the
+screencast or presentation.
+
+There are gnome and kde apps that do such things, but what
+we really need is to do this in emacs!
+
+Ivan Kanis wrote a simple emacs stopwatch named,
+stopwatch.el
+
+But to be useful it would be good to be able to make the
+text bigger, provide presets and add a countdown timer that
+could run beside the stopwatch.
