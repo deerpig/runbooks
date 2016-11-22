@@ -261,7 +261,7 @@ sudo apt-get install python3-pip
 
 Now use pip3 to install Jupyter:
 
-#+begin_src s
+#+begin_src sh
 sudo pip3 install jupyter
 #+end_src
 
