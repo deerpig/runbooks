@@ -250,6 +250,22 @@ The list of plugins I'm presently using are:
        of Firefox.
   - Video DownloadHelper :: obvious as well.
 
+
+* Install Jupyter
+
+First install pip3 the python package installer:
+
+#+begin_src sh
+sudo apt-get install python3-pip
+#+end_src
+
+Now use pip3 to install Jupyter:
+
+#+begin_src s
+sudo pip3 install jupyter
+#+end_src
+
+
 * Desktop Apps  
 ** Install some Graphics Apps
 
