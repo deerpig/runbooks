@@ -1,0 +1,170 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+TITLE: Screencasting
+#+STARTUP: showall
+#+PROPERTY: filename
+:PROPERTIES:
+:Name: /home/deerpig/proj/deerpig/deerpig-install/rb-screencasting.org
+:Created: 2016-11-19T11:39@Prek Leap (11.642600N-104.919210W)
+:ID: 5fde9f0b-5fd7-4144-87a0-b6e8a3c21224
+:URL:
+:END:
+#+INCLUDE: ./inc/head.org
+#+INCLUDE: ./inc/macros.org
+
+{{{breadcrumbs}}}
+
+#+HTML: <div class="outline-2" id="meta">
+| *Author*  | Brad Collins <brad@chenla.org>             |
+| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
+#+HTML: </div>
+
+#+TOC: headlines 4
+
+* Status of This Document
+
+The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
+
+#+HTML: <div class="notice notice-info">
+*Changes since the last version*
+
+#+HTML: <ul>
+
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
+RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- rb-screencasting.org`
+if [ -z $RES ]; then
+RES="<li>no changes</li>"
+fi
+echo $RES
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+<li>no changes</li>
+#+END_EXPORT
+
+#+HTML: </ul>
+#+HTML: </div>
+
+* Introduction
+
+This page will describe how to create screencasts using a bunsen labs
+(openbox) desktop.
+
+Features:
+
+  - Video and Audio Recording of desktop
+  - Desktop webcam video
+  - Keystroke monitor
+
+** Future
+
+Once we get screencasts figured out, we will move on to
+doing podcasts with interviews of people in /studio/ on
+campus at b>i as well as via something like Skype.
+
+* webcam
+
+* microphone
+
+* ffmpeg
+
+http://ubuntuguides.org/wiki/Screencasts 
+
+* video
+
+https://wiki.gnome.org/Apps/Cheese
+
+* keystoke overlap app
+
+There are two applications for displaying keystrokes as you
+type on linux, =screenkey= and =keymon=.  Keymon shows mouse
+clicks and modifer keys while screenkey shows everything
+being types in a bar at the bottom of the screen.
+
+From watching different screencasts using both, I tend to
+think that screenkey is the better solution.
+
+** screenkey
+
+There is an ancient version of screenkey that can be
+installed being apt-get but it is very primitive.  Better to
+install one of the forks on github which turned it into a
+useful tool.
+
+https://github.com/wavexx/screenkey
+
+First install dependencies for Debian.
+
+#+begin_src sh
+sudo apt-get install python-gtk2 python-setuptools\\ 
+python-setuptools-git python-distutils-extra
+#+end_src
+
+#+begin_src sh
+git clone https://github.com/wavexx/screenkey.git
+cd ./screenkey
+sudo ./setup.py install
+#+end_src
+
+There is no manual, except the README page on Github, but
+all options are listed when you run:
+
+#+begin_src sh
+screenkey --help
+#+end_src
+
+Now run screenkey with a few settings.
+
+  - Make the screen persistent.
+  - Change the key-modifers to match emacs conventions.
+  - Show multiple keypresses as a counter.
+  - Indicate which screen you want screenkey to display in
+    (this is important when using multiple monitors and for
+    presentations).
+
+#+begin_src sh
+screenkey --persist --mods-mode emacs --compr-cnt 4 -scr 1
+#+end_src
+
+As far as I can tell, there is no way to quit the program
+without killing the process.  =killall screenkey= should do
+the trick.
+
+
+** key-mon
+
+https://code.google.com/archive/p/key-mon/ 
+
+#+begin_src sh
+sudo apt-get install key-mon
+#+end_src
+
+In setting, I set:
+
+ - theme: oblivian
+ - size : 1.8
+
+* editing
+
+Adding opening credits and titles
+
+* upload to video
+
+* embbed in blog post
+
+
+* Stopwatch
+
+It would be very useful to have a stopwatch and countdown
+time as well that could be kept in another window during the
+screencast or presentation.
+
+There are gnome and kde apps that do such things, but what
+we really need is to do this in emacs!
+
+Ivan Kanis wrote a simple emacs stopwatch named,
+stopwatch.el
+
+But to be useful it would be good to be able to make the
+text bigger, provide presets and add a countdown timer that
+could run beside the stopwatch.
