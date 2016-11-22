@@ -74,6 +74,11 @@ http://ubuntuguides.org/wiki/Screencasts
 
 https://wiki.gnome.org/Apps/Cheese
 
+#+begin_src sh
+sudo apt-get install cheese
+#+end_src
+
+
 * keystoke overlap app
 
 There are two applications for displaying keystrokes as you
