@@ -814,10 +814,16 @@ bundle install
 #+end_src
 
 * Configure Desktop
-** Xrandr Display Settings
 
 If you are running multiple desktops, including something
 like this in your ~/.config/openbox/autostart file.
+
+This file is /not/ in the .dotfiles git repo.  I had tried
+to include autostart other openbox config files in the
+.dotfile repo but there were too many small hardware
+differences between different computers I am running.
+
+** Xrandr Display Settings
 
 #+begin_src sh
 ## Video Setup
@@ -826,21 +832,36 @@ like this in your ~/.config/openbox/autostart file.
   xrandr --output VGA-1  --right-of HDMI-1
 #+end_src
 
-This file is /not/ in the .dotfiles git repo.  I had tried
-to do this will the openbox config files but there were too
-many small hardware differences between different computers
-I am running.
+** Keymappings
 
-** Disable Caps Lock
+*** Remap CapLock to Ctrl
 
-If you aren't rebinding the caps lock key to do something
-useful in emacs, it can be a major pain in the ass.  Turn it
-off in ~/.config/openbox/autostart file until you find a
-better use for it.
+Yes, I know this is a popular thing to do, and I have done
+it several times over the past decade or more, but I've
+never managed to actually /use/ it...  I should get around
+to swapping and retraining my fingers, but not today.
 
-#+begin_src 
-## disable
-setxkbmap -option caps:none
+*** Disable CapLock and Insert Keys
+
+Different keyboards require different tweaks -- at the
+moment I disable capslock everywhere and on full keyboards I
+also disable the insert key which I seem to accidently hit
+ten times a day....
+
+#+begin_src sh
+## disable various keys
+setxkbmap -option caps:none -option insert:none
+#+end_src
+
+*** Remap R-Ctrl to Menu
+
+I have one keyboard that doesn't have a <menu> key which I map
+to helm-command-prefix in emacs.  Since I don't use the
+right ctrl or alt keys when I type, remap the right ctrl:
+
+#+begin_src sh
+## on keyboards without a <menu> key remap right ctrl to menu 
+xmodmap -e "keycode 105 = Menu"
 #+end_src
 
 ** Set Wallpaper
