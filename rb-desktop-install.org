@@ -834,12 +834,15 @@ differences between different computers I am running.
 
 ** Keymappings
 
+ :url: /usr/share/X11/xkb/rules/base.lst
+
+
 *** Remap CapLock to Ctrl
 
 Yes, I know this is a popular thing to do, and I have done
 it several times over the past decade or more, but I've
 never managed to actually /use/ it...  I should get around
-to swapping and retraining my fingers, but not today.
+to sqwapping and retraining my fingers, but not today.
 
 *** Disable CapLock and Insert Keys
 
@@ -849,8 +852,10 @@ also disable the insert key which I seem to accidently hit
 ten times a day....
 
 #+begin_src sh
-## disable various keys
-setxkbmap -option caps:none -option insert:none
+## disable capslock -- keycode 105
+setxkbmap -option caps:none
+## disable insert key
+xmodmap -e "keycode 118 ="
 #+end_src
 
 *** Remap R-Ctrl to Menu
