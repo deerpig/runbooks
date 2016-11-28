@@ -844,7 +844,7 @@ it several times over the past decade or more, but I've
 never managed to actually /use/ it...  I should get around
 to sqwapping and retraining my fingers, but not today.
 
-*** Disable CapLock and Insert Keys
+*** Disable Caps Lock and Insert Keys
 
 Different keyboards require different tweaks -- at the
 moment I disable capslock everywhere and on full keyboards I
@@ -871,7 +871,7 @@ xmodmap -e "keycode 105 = Menu"
 
 ** Turn off touchpad on laptops
 
-I don't think this works any more -- need find out the best
+I don't think this works any more -- need to find out the best
 way of doing this without having to install another gui
 config tool.
 
