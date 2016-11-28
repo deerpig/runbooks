@@ -869,6 +869,17 @@ right ctrl or alt keys when I type, remap the right ctrl:
 xmodmap -e "keycode 105 = Menu"
 #+end_src
 
+** Turn off touchpad on laptops
+
+I don't think this works any more -- need find out the best
+way of doing this without having to install another gui
+config tool.
+
+#+begin_src sh
+## Configure touchpad. See 'man synaptics' for more info.
+synclient VertEdgeScroll=1 HorizEdgeScroll=1 TapButton1=1 2>/dev/null
+#+end_src
+
 ** Set Wallpaper
 
 In the menu find 'choose wallpaper'  and add the following
