@@ -595,6 +595,71 @@ uninstall that ssmtp seems to need to work.
 I had to do this a couple of times on the latest machine I
 set up on, but eventually it works.
 
+
+** Install recoll & helm-recoll
+
+I use recoll to index all of my pdfs, and act as a text
+search for my org and project files.  This works very well
+with helm-recoll in emacs.
+
+First install recoll
+
+#+begin_src sh
+sudo apt-get install recoll
+#+end_src
+
+You can then start recoll from the command line and get a
+nice gui and index everything from there.  But it's better
+to have a bit more fine grained control over what we are
+searching.  I keep a library of files that are mostly pdf in
+one directory, then keep my org files in another and use
+another directory for projects, which are git repos that
+include code and other bits.  So we will create separate
+indexes for each.
+
+:SEE: https://bitbucket.org/medoc/recoll/wiki/MultipleIndexes
+
+Now create the index directories and the recoll.config file
+for each index.
+
+#+begin_src sh
+mkdir ~/.recoll/{doc,proj,org}
+touch ~/.recoll/doc/recoll.conf
+touch ~/.recoll/proj/recoll.conf
+touch ~/.recoll/org/recoll.conf
+#+end_src
+
+#+begin_src sh
+echo "topdirs = /home/deerpig/org" > ~/.recoll/org/recoll.conf
+echo "topdirs = /home/deerpig/proj" > ~/.recoll/proj/recoll.conf
+echo "topdirs = /media/deerpig/Transcend/htdocs" > ~/.recoll/doc/recoll.conf
+#+end_src
+
+Now to initial indexing, htdocs has one is 188GB and pushing
+30k of files, so it might need to run overnight.
+
+#+begin_src sh
+recollindex -c ~/.recoll/org
+recollindex -c ~/.recoll/proj
+recollindex -c ~/.recoll/doc
+#+end_src
+
+Create cronjob to reindex each directory, five minutes apart
+starting at 2:05am every day.
+
+#+begin_src sh
+crontab -e
+#+end_src
+
+#+begin_src sh
+5 2 * * *  recollindex -c ~/.recoll/org
+10 2 * * * recollindex -c ~/.recoll/proj
+15 2 * * * recollindex -c ~/.recoll/doc
+#+end_src
+
+See the helm-recoll section of .emacs-helm for setting up
+helm-recoll.
+
 ** Install Mu & Mu4e
 
 Install dependencies
@@ -615,7 +680,7 @@ sudo make install
 #+end_src
 
 
-** Install isync
+** Install mbsync
 
 #+begin_src sh
 sudo apt-get install isync
