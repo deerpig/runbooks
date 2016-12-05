@@ -101,8 +101,7 @@ https://github.com/wavexx/screenkey
 First install dependencies for Debian.
 
 #+begin_src sh
-sudo apt-get install python-gtk2 python-setuptools\\ 
-python-setuptools-git python-distutils-extra
+sudo apt-get install python-gtk2 python-setuptools python-setuptools-git python-distutils-extra
 #+end_src
 
 #+begin_src sh

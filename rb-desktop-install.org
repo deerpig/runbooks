@@ -934,6 +934,125 @@ right ctrl or alt keys when I type, remap the right ctrl:
 xmodmap -e "keycode 105 = Menu"
 #+end_src
 
+** Openbox rc.xml Keybindings
+
+There are a lot of default keybindings here.  These are the
+one's I have remapped or created.
+
+*** Open File Manager (Krusader)
+
+#+begin_src xml
+    <keybind key="W-f">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>false</enabled>
+          <name>File Manager</name>
+        </startupnotify>
+        <command>krusader</command>
+      </action>
+    </keybind>
+#+end_src
+
+*** Open Terminal
+
+#+begin_src xml
+    <keybind key="W-t">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>false</enabled>
+          <name>Terminal</name>
+        </startupnotify>
+        <command>x-terminal-emulator</command>
+      </action>
+    </keybind>
+#+end_src
+
+*** Open Firefox (Iceweasel)
+
+#+begin_src xml
+    <keybind key="W-w">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Web Browser</name>
+        </startupnotify>
+        <command>iceweasel</command>
+      </action>
+    </keybind>
+#+end_src
+
+*** Start Editor (Emacs)
+
+#+begin_src xml
+    <keybind key="W-e">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>false</enabled>
+          <name>Editor</name>
+        </startupnotify>
+        <command>emacs</command>
+      </action>
+    </keybind>
+#+end_src
+
+*** Open Org Capture out of emacs
+
+See .emacs for code this is running.
+
+#+begin_src xml
+    <keybind key="W-r">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Emacs Capture</name>
+        </startupnotify>
+        <command>emacsclient -ne "(make-capture-frame)"</command>
+      </action>
+    </keybind>
+#+end_src
+
+*** Start Music Player (Clemintine)
+
+#+begin_src xml
+    <keybind key="W-m">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>false</enabled>
+          <name>Mediaplayer</name>
+        </startupnotify>
+        <command>clementine</command>
+      </action>
+    </keybind>
+#+end_src
+
+*** Start KColor Chooser
+
+#+begin_src xml
+    <keybind key="W-c">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Colorchooser</name>
+        </startupnotify>
+        <command>kcolorchooser</command>
+      </action>
+    </keybind>
+#+end_src
+
+*** Start Bittorrent (Transmission)
+
+#+begin_src xml
+    <keybind key="W-b">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>BitTorrent</name>
+        </startupnotify>
+        <command>transmission-gtk</command>
+      </action>
+    </keybind>
+#+end_src
+
 ** Turn off touchpad on laptops
 
 I don't think this works any more -- need to find out the best

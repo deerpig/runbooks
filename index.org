@@ -72,7 +72,7 @@ clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue t
   - [[./rb-new-vm-install.html][New Virtual Machine Install]]
   - [[./rb-new-website-install.html][New Website Install]]
   - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
-  - [[.rb-screencasts.html][Screencasts HOWTO]]
+  - [[./rb-screencasts.html][Screencasts HOWTO]]
   - Mattermost & IRCD Hybrid Install
   - GitoLite3 & CGit Install
 * Emacs & Orgmode
