@@ -266,7 +266,27 @@ sudo pip3 install jupyter
 #+end_src
 
 
-* Desktop Apps  
+* Desktop Apps
+** Install Guake
+
+Guake is a pop-down terminal emulator.  I use Terminal for
+persistent shell windows.  But if you need to do a quick
+ping or install something, Guake pops up does it's thing and
+then get' out the way.
+
+:url: [[https://github.com/Guake/guake][Quake Home]] | Github
+
+#+begin_src sh
+sudo apt-get install guake
+#+end_src
+
+Put this in openbox autostart file to start it on startup.
+
+#+begin_src sh
+## Start Guake
+guake &
+#+end_src
+
 ** Install some Graphics Apps
 
 Install Gimp Inkscape Blender & Viewnior
@@ -635,8 +655,8 @@ echo "topdirs = /home/deerpig/proj" > ~/.recoll/proj/recoll.conf
 echo "topdirs = /media/deerpig/Transcend/htdocs" > ~/.recoll/doc/recoll.conf
 #+end_src
 
-Now to initial indexing, htdocs has one is 188GB and pushing
-30k of files, so it might need to run overnight.
+Now do initial indexing.  At present, htdocs is 188GB and
+pushing 30k of files, so it might need to run overnight.
 
 #+begin_src sh
 recollindex -c ~/.recoll/org
