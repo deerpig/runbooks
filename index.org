@@ -70,7 +70,7 @@ clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue t
 * Runbooks 
   - [[./rb-desktop-install.html][Desktop Install]]
   - [[./rb-new-vm-install.html][New Virtual Machine Install]]
-  - [[./rb-git-mirror.sh][Set up a Git Repo Mirror]]
+  - [[./rb-git-mirror.html][Set up a Git Repo Mirror]]
   - [[./rb-new-website-install.html][New Website Install]]
   - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
   - [[./rb-screencasts.html][Screencasts HOWTO]]
