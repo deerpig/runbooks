@@ -100,7 +100,7 @@ emacs ~/.dotfiles/mirror.sh
 Add the following text and save.
 
 #+begin_src 
-#!/bin/bash
+*#!/bin/bash
 # Mirror directories
 DOT=~/.dotfiles
 ORG=~/org
