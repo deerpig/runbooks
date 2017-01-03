@@ -62,6 +62,18 @@ This will eventually get split into different files.
 sudo mount -o remount,rw '/media/deerpig/disk-label'
 #+end_src
 
+** Create Multiple Nested Directories
+
+This is a good example of [[http://wiki.bash-hackers.org/syntax/expansion/brace][Brace Expansion]].
+
+#+begin_src sh
+mkdir -p a/b/c
+mkdir -p a/{b1,b2}/c
+mkdir -p a/b{1,2}/c
+mkdir -p a/b{1,2,3/c{1,2}}/d
+mkdir -p doc/{text/,img/{wallpaper/,photos/}}
+#+end_src
+
 * Emacs 
 * Org Mode
 
