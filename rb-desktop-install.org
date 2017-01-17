@@ -30,7 +30,7 @@ The latest version of this document is: src_sh[:results value]{git describe --ab
 
 #+HTML: <ul>
 
-#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.02.01"
   RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- rb-desktop-install.org`
   if [ -z $RES ]; then
     RES="<li>no changes</li>"
@@ -182,6 +182,57 @@ have integrated =IceWeasel= as my primary browser.
 My paying gig uses Google Apps suite, which which doesn't
 work very well with firefox.  But it's no longer my go-to
 browser.
+
+** Install Firefox
+
+Debian is finally including firefox again (instead of their
+iceweasel branded version of firefox).  However, the version
+included in the package is far behind the most recent.
+
+So, let's install Firefox 50 from:
+
+  https://www.mozilla.org/en-US/firefox/new/
+
+Extract the file:
+
+#+begin_src sh
+cd ~/Downloads/
+tar xjf firefox-50.1.0.tar.bz2
+#+end_src
+
+Remove any Firefox version installed in the /opt directory:
+
+#+begin_src sh
+sudo rm -r /opt/firefox
+#+end_src
+
+#+RESULTS:
+
+Now move the firefox directory /opt
+
+#+begin_src sh
+sudo mv firefox /opt/firefox50
+#+end_src
+
+#+RESULTS:
+
+
+“Backup” the old Firefox launcher:
+
+#+begin_src sh
+sudo mv /usr/bin/firefox /usr/bin/firefox-old
+#+end_src
+
+Create a symbolic link to the new Firefox:
+
+#+begin_src sh
+sudo ln -s /opt/firefox50/firefox /usr/bin/firefox
+#+end_src
+
+We might have to change links in openbox to point to new
+version:
+
+
 
 ** Install Conkeror Web Browser (deprecated)
 
