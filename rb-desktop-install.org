@@ -229,8 +229,8 @@ Create a symbolic link to the new Firefox:
 sudo ln -s /opt/firefox50/firefox /usr/bin/firefox
 #+end_src
 
-We might have to change links in openbox to point to new
-version:
+We might have to change links in openbox to point to the new
+version.  Search for "iceweasel" and replace with "firefox".
 
 
 
