@@ -338,6 +338,10 @@ Put this in openbox autostart file to start it on startup.
 guake &
 #+end_src
 
+
+Finally, go to preferences and set sane keybindings for copy
+and paste:  SC-y and SM-w respectively.
+
 ** Install some Graphics Apps
 
 Install Gimp Inkscape Blender & Viewnior
