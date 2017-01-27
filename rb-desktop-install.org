@@ -184,25 +184,29 @@ work very well with firefox.  But it's no longer my go-to
 browser.
 
 ** Install Firefox
+:PROPERTIES:
+
+:END:
 
 Debian is finally including firefox again (instead of their
 iceweasel branded version of firefox).  However, the version
 included in the package is far behind the most recent.
 
-So, let's install Firefox 50 from:
+Download Firefox 51:
 
-  https://www.mozilla.org/en-US/firefox/new/
+  https://www.mozilla.org/en-US/firefox/new/?scene=2
 
 Extract the file:
 
-#+begin_src sh
-cd ~/Downloads/
-tar xjf firefox-50.1.0.tar.bz2
+#+begin_src sh :dir ~/Downloads
+tar xjf ./firefox-51.0.1.tar.bz2
 #+end_src
+
+#+RESULTS:
 
 Remove any Firefox version installed in the /opt directory:
 
-#+begin_src sh
+#+begin_src sh :dir /sudo::
 sudo rm -r /opt/firefox
 #+end_src
 
@@ -210,8 +214,8 @@ sudo rm -r /opt/firefox
 
 Now move the firefox directory /opt
 
-#+begin_src sh
-sudo mv firefox /opt/firefox50
+#+begin_src sh :dir /sudo::/home/deerpig/Downloads
+sudo mv firefox /opt/firefox51
 #+end_src
 
 #+RESULTS:
@@ -219,20 +223,30 @@ sudo mv firefox /opt/firefox50
 
 “Backup” the old Firefox launcher:
 
-#+begin_src sh
+#+begin_src sh :dir /sudo::
 sudo mv /usr/bin/firefox /usr/bin/firefox-old
 #+end_src
 
-Create a symbolic link to the new Firefox:
+#+RESULTS:
 
-#+begin_src sh
-sudo ln -s /opt/firefox50/firefox /usr/bin/firefox
+Delete any existing symbolic links and create a symbolic
+link to the new Firefox:
+
+#+begin_src sh :dir /sudo::
+rm /usr/bin/firefox
+sudo ln -s /opt/firefox51/firefox /usr/bin/firefox
 #+end_src
+
+#+RESULTS:
 
 We might have to change links in openbox to point to the new
 version.  Search for "iceweasel" and replace with "firefox".
 
+[[~/.config/openbox/rc.xml]]
 
+[[~/.config/openbox/menu.xml]]
+
+After editing, restart openbox from the menu.
 
 ** Install Conkeror Web Browser (deprecated)
 
