@@ -301,6 +301,26 @@ The list of plugins I'm presently using are:
        of Firefox.
   - Video DownloadHelper :: obvious as well.
 
+*** Install Keysnail
+
+Keysnail is an interesting package that does what firemacs
+does but is a lot closer to the functionality of Conkeror.
+
+In fact, if you hide the tab bar, it feels a lot like
+Conkeror without all the links being hilighted and numbered
+-- something I didn't use that much anyway.
+
+There is a lot more -- an init file that you can edit like
+in Conkeror etc.  But for now I'm just happy to have back a
+lot of the old functionality of Conkeror again.
+
+:home: [[https://github.com/mooz/keysnail/wiki][mooz/keysnail Wiki]] | Github
+
+#+begin_src sh :dir ~/Downloads
+wget https://github.com/mooz/keysnail/raw/master/keysnail.xpi
+firefox keysnail.xpi
+#+end_src
+
 
 * Install Jupyter
 
