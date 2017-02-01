@@ -307,18 +307,52 @@ Keysnail is an interesting package that does what firemacs
 does but is a lot closer to the functionality of Conkeror.
 
 In fact, if you hide the tab bar, it feels a lot like
-Conkeror without all the links being hilighted and numbered
--- something I didn't use that much anyway.
+Conkeror. There is a lot more -- an init file that you can
+edit like in Conkeror etc.
 
-There is a lot more -- an init file that you can edit like
-in Conkeror etc.  But for now I'm just happy to have back a
-lot of the old functionality of Conkeror again.
-
-:home: [[https://github.com/mooz/keysnail/wiki][mooz/keysnail Wiki]] | Github
+:HOME: [[https://github.com/mooz/keysnail/wiki][mooz/keysnail Wiki]] | Github
+:SEE:    [[http://blog.binchen.org/posts/use-firefox-in-emacs-way-3.html][Use firefox in Emacs way]] | Chen's blog
 
 #+begin_src sh :dir ~/Downloads
 wget https://github.com/mooz/keysnail/raw/master/keysnail.xpi
 firefox keysnail.xpi
+#+end_src
+
+After restarting Firefox, you will get a dialogue for where
+to create the init file.
+
+Now let's move that file into the .dotfiles directory and
+create a symbolic link to the home directory.
+
+#+begin_src sh
+mv ~/.keysnail.js ~/.dotfiles/keysnail
+ln -s ~/.dotfiles/keysnail ~/.keysnail.js
+#+end_src
+
+#+RESULTS:
+
+
+Install the /tanything/ plugin.  Tanything is a /anything/,
+/helm/ style way of browsing tabs.  Very cool stuff.
+
+You should see a purple keysnail icon in your browser, right
+click on the drop down arrow and choose the /Open Plugin
+Manager/ to see available keysnail plugins, and find
+/tanything/.  Right click and install from menu.
+
+After installing and restarting Firefox /again/, we need to
+add a keybinding so that /tanything/ opens the tab list
+using `C-x b' (switch buffer list) which I have set up in
+emacs to use helm.
+
+Open the keysnail file:
+
+ [[~/.dotfiles/keysnail]]
+
+And add the following line to the bottom of the file.
+
+#+begin_src js
+key.setViewKey(['C-x', 'b'], function (ev, arg) { ext.exec("tanything", arg); }, 'タブを一覧表示', true);
 #+end_src
 
 
