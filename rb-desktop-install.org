@@ -328,12 +328,23 @@ edit like in Conkeror etc.
 :SEE:    [[http://blog.binchen.org/posts/use-firefox-in-emacs-way-3.html][Use firefox in Emacs way]] | Chen's blog
 
 #+begin_src sh :dir ~/Downloads
-wget https://github.com/mooz/keysnail/raw/master/keysnail.xpi
-firefox keysnail.xpi
+wget https://github.com/mooz/keysnail/raw/master/keysnail.xpi &
+firefox keysnail.xpi &
 #+end_src
+
+#+begin_src sh :dir ~/Downloads
+firefox &
+#+end_src
+
+
+#+RESULTS:
 
 After restarting Firefox, you will get a dialogue for where
 to create the init file.
+
+If you ran the above code from the babel, babel will keep
+waiting until you do an `M-g' and then firefox should
+happily continue on in the background.
 
 Now let's move that file into the .dotfiles directory and
 create a symbolic link to the home directory.
