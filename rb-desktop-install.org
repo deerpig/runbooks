@@ -268,7 +268,7 @@ alias conkeror='firefox -app /usr/share/conkeror/application.ini'
 #+end_src 
 ** Install Google Chrome
 
-Use IceWeasel, *not* Conkeror to open the followig link:
+Use IceWeasel, *not* Conkeror to open the following link:
 
  http://www.google.com/chrome/browser/desktop/index.html 
 
