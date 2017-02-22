@@ -102,7 +102,7 @@ also needed by orgmode.
 This will take a while -- well over a gigabyte
 
 #+begin_src sh
-sudo apt-get install texinfo texlive-base texlive-bibtex-extra pandoc
+sudo apt-get install texinfo texlive-base texlive-bibtex-extra latexmk pandoc
 sudo apt-get install texlive-fonts-recommended texlive-fonts-extra
 sudo apt-get install texlive-latex-base texlive-latex-extra \
 texlive-latex-recommended texlive-science
