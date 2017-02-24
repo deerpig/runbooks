@@ -114,14 +114,38 @@ Install GNU-Autotools
 sudo apt-get install autoconf automake
 #+end_src
 
+Install WebKitGTK
+
+To enable webkit we still need a few more dependencies.
+
+#+begin_src sh :dir /sudo::
+# install depends
+sudo apt-get install libgtk-3-dev #first
+# configure: error: xwidgets requested but WebKitGTK+ not found
+sudo apt-get install libwebkitgtk-dev
+sudo apt-get install libwebkitgtk-3.0-dev
+
+sudo apt-get install gnutls-dev
+sudo apt-get install libwebkit2gtk-3.0-25 libwebkit2gtk-3.0-dev
+
+#+end_src
+
+
+
+#+RESULTS:
+
 ** Build Dependencies
 
 Install the dependencies specified on the emacs package
 
-#+begin_src sh
-sudo apt-get install build-essential checkinstall
-sudo apt-get build-dep emacs
+#+begin_src sh :dir /sudo::  :results drawer
+sudo apt-get -y install build-essential checkinstall
+sudo apt-get -y build-dep emacs
 #+end_src
+
+#+RESULTS:
+:RESULTS:
+:END:
 
 ** Download Emacs from Github
 
@@ -145,7 +169,9 @@ frames were resized.
 
 #+begin_src sh
 ./autogen.sh
-./configure --with-modules --without-cairo --with-xwidgets
+./autogen.sh git 
+./configure --with-modules --without-cairo --with-xwidgets \
+--with-libxml2 --with-dbus --with-x-toolkit=gtk3
 make
 #+end_src
 
