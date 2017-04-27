@@ -1328,7 +1328,7 @@ For Chinese and Japanese language input support:
 sudo apt-get install ibus ibus-chewing ibus-pinyin ibus-anthy
 #+end_src
 
-
+Reconfigure locals
 
 #+begin_src sh
 sudo dpkg-reconfigure locales
