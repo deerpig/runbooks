@@ -1319,6 +1319,24 @@ And then make Debian aware of the new fonts.
 #+begin_src sh
 sudo fc-cache -f -v
 #+end_src
+
+* Install ibus
+
+For Chinese and Japanese language input support:
+
+#+begin_src sh
+sudo apt-get install ibus ibus-chewing ibus-pinyin ibus-anthy
+#+end_src
+
+
+
+#+begin_src sh
+sudo dpkg-reconfigure locales
+#+end_src
+
+
+
+
 * Apache2
 
 Install apache2
