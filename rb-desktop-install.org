@@ -1313,12 +1313,34 @@ Copy fonts into any of the following directories:
 ~/.fonts
 #+end_src
 
+** Download Google Fonts
 
-And then make Debian aware of the new fonts.
+Google has over 800 open source fonts!  You can download the
+lot as a zip file, but better to clone the repo locally and
+then link the ofl directory in the repo to ~/.fonts.
+
+Periodically, pull any new fonts using git.
 
 #+begin_src sh
-sudo fc-cache -f -v
+cd ~/proj/
+git clone git@github.com:google/fonts.git
+ln -s /home/deerpig/.fonts/ofl /home/deerpig/proj/fonts/ofl
 #+end_src
+
+
+And then make Debian aware of the new fonts.  If you run
+this as sudo it will make fonts available to all users, but
+it won't look at any fonts in user home directories.  I'm
+the only user on the machine, and when I use root I don't
+need anything fancy.  So I first run as sudo, and then as
+deerpig.
+
+#+begin_src sh
+fc-cache -f -v
+#+end_src
+
+
+
 
 * Install ibus
 
