@@ -285,6 +285,8 @@ If you are not using Ruby every day, install Jekyll can be a
 nightmare.  So let's try Nikola which is written in Python
 to see if it might be a bit more sane install environment.
 
+ - [[https://getnikola.com/getting-started.html][Getting Started | Nikola]]
+
 First make sure you have at least python3, pip and
 virtualenv installed.
 
