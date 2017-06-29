@@ -279,3 +279,31 @@ using jekyll build locally, then:
 
  - M-x deploy (to run the deploy shell script for the site).
 
+* Set up Nikola
+
+If you are not using Ruby every day, install Jekyll can be a
+nightmare.  So let's try Nikola which is written in Python
+to see if it might be a bit more sane install environment.
+
+First make sure you have at least python3, pip and
+virtualenv installed.
+
+#+begin_src sh 
+sudo apt-get install python3 python-pip
+#+end_src
+
+check that you have python 3.x
+
+#+begin_src sh
+python3 --version
+#+end_src
+
+Install virtualenv
+
+#+begin_src sh
+sudo pip install virtualenv
+#+end_src
+
+
+
+
