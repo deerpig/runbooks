@@ -304,6 +304,13 @@ Install virtualenv
 sudo pip install virtualenv
 #+end_src
 
+Create a local directory for a project and set up a
+virtualdev project.
 
-
-
+#+begin_src sh
+virtualenv -p /usr/bin/python3 nikola
+cd nikola
+source bin/activate
+pip install --upgrade setuptools pip
+pip install --upgrade "Nikola[extras]"
+#+end_src
