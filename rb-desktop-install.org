@@ -472,8 +472,21 @@ krusader, kcolorchooser (part of kdegraphics), sane
 & calibre
 
 #+begin_src sh
-sudo apt-get install krusader kdegraphics sane
+sudo apt-get install krusader kdegraphics sane systemsettings
 #+end_src
+
+
+** Disable KDE notification sounds 
+
+This drove me crazy for the longest time.  When using
+krusader to delete directories, KDE turns up the volume for
+the alert sound to 100% and then leaves the volume at 100%.
+Fucking annoying.
+
+So run 'systemsettings' => Application and System
+Notifications => Player Settings => No audio Output.
+
+And peace and peace of mind will reign supreme!
 
 ** Install PDF/Ebook Apps
 
