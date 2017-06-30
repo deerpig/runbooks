@@ -300,19 +300,44 @@ check that you have python 3.x
 python3 --version
 #+end_src
 
-Install virtualenv
+Install virtualenv and  virtualenvwrapper
 
 #+begin_src sh
-sudo pip install virtualenv
+sudo pip install virtualenv --upgrade
+sudo pip install virtualenvwrapper
+#+end_src
+
+Add the following to your .bashrc
+
+#+begin_src sh
+export WORKON_HOME=${HOME}/proj/lala
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+elif [ -f /usr/bin/virtualenvwrapper.sh ]; then
+   source /usr/bin/virtualenvwrapper.sh
+fi
+#+end_src
+
+Reload .bashrc
+
+#+begin_src sh
+source ~/.bashrc
 #+end_src
 
 Create a local directory for a project and set up a
-virtualdev project.
+virtualdev project. I'm using ~/proj/lala
 
 #+begin_src sh
+mkdir ~/proj/lala
+cd ~/proj/lala
+
 virtualenv -p /usr/bin/python3 nikola
 cd nikola
-source bin/activate
+workon nikola
 pip install --upgrade setuptools pip
 pip install --upgrade "Nikola[extras]"
 #+end_src
+
+Use the cmd 'deactivate' to escape from the virtualenv and
+then 'workon' to choose which env you want to work in.
+
