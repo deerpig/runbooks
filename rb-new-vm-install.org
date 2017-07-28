@@ -54,6 +54,15 @@ This document assumes that they are using a linux desktop
 environment.  If you are using OSx or Windows some of this
 will have to be adjusted for your OS.
 
+* Create VM in Openstack
+
+  - [ ] give name
+  - [ ] size of instance
+  - [ ] choose boot image
+  - [ ] access & security - choose key pair & security group
+  - [ ] networking - add to private network
+  - [ ] associate ip floating ip address
+
 * Create .ssh key pair
 
 #+begin_src sh
@@ -194,7 +203,7 @@ sudo yum install emacs-nox
 On =Debian= & =Ubuntu=:
 
 #+begin_src sh
-sudo apt-get emacs24-nox
+sudo apt-get install emacs24-nox
 #+end_src
 
 * Create new User
