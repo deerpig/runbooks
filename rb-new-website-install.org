@@ -1,4 +1,4 @@
-#   -*- mode: org; fill-column: 60 -*-
+q#   -*- mode: org; fill-column: 60 -*-
 #+TITLE: Creating a new static website
 #+STARTUP: showall
 #+PROPERTY: filename 
@@ -13,12 +13,12 @@
 * Introduction
 
 This document describes how to create a new static web site
-using either org-publish or jekyll on CentOS VM.
+using either org-publish or jekyll on CentOS.
 
 * Install Apache 2
 
 #+begin_src sh
-sudo apt-get install apache2
+sudo yumg install apache2
 #+end_src
 
 * Set up Apache Virtual Host
