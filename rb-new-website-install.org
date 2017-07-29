@@ -18,7 +18,7 @@ using either org-publish or jekyll on CentOS.
 * Install Apache 2
 
 #+begin_src sh
-sudo yumg install apache2
+sudo yum install apache2
 #+end_src
 
 * Set up Apache Virtual Host
