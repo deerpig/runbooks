@@ -1,4 +1,4 @@
-q#   -*- mode: org; fill-column: 60 -*-
+#   -*- mode: org; fill-column: 60 -*-
 #+TITLE: Creating a new static website
 #+STARTUP: showall
 #+PROPERTY: filename 
