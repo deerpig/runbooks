@@ -225,7 +225,7 @@ Download Firefox 51:
 Extract the file:
 
 #+begin_src sh :dir ~/Downloads
-tar xjf ./firefox-51.0.1.tar.bz2
+tar xjf ./firefox-55.0.1.tar.bz2
 #+end_src
 
 #+RESULTS:
@@ -241,7 +241,7 @@ sudo rm -r /opt/firefox
 Now move the firefox directory /opt
 
 #+begin_src sh :dir /sudo::/home/deerpig/Downloads
-sudo mv firefox /opt/firefox51
+sudo mv firefox /opt/firefox55
 #+end_src
 
 #+RESULTS:
@@ -260,7 +260,7 @@ link to the new Firefox:
 
 #+begin_src sh :dir /sudo::
 rm /usr/bin/firefox
-sudo ln -s /opt/firefox51/firefox /usr/bin/firefox
+sudo ln -s /opt/firefox55/firefox /usr/bin/firefox
 #+end_src
 
 #+RESULTS:
