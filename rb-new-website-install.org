@@ -41,9 +41,18 @@ sudo emacs /etc/httpd/conf/domains/site-www.conf
 
 Now restart apache.
 
+CentOS
+
 #+begin_src sh
 sudo systemctl restart httpd
 #+end_src
+
+Debian
+
+#+begin_src sh
+/etc/init.d/apache2 reload
+#+end_src
+
 
 Go to Directnic and create A record for the subdomain that
 points to site.
@@ -51,7 +60,6 @@ points to site.
 #+begin_src sh
 A  site.kinto-cloud.com   10.0.0.100  1
 #+end_src
-
 
 * On Remote server
 
@@ -77,7 +85,7 @@ emacs post-receive
 GIT_REPO=$HOME/repos/site-www
 TMP_GIT_CLONE=$HOME/tmp/site-www
 # For Jekyll site, use site-www/html
-# For rsync site, ise  site-www/site-www
+# For rsync site, use  site-www/site-www
 PUBLIC_WWW=/var/www/site-www/html
 
 git clone $GIT_REPO $TMP_GIT_CLONE
