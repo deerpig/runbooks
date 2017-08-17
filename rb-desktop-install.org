@@ -1100,41 +1100,58 @@ differences between different computers I am running.
   xrandr --output VGA-1  --right-of HDMI-1
 #+end_src
 
-** Keymappings
+** Keymappings using xmodmap
+
+I'm sure that xmodmap makes perfect sense, but for me it has
+been much more of a black art than it should be.
+
+
+  - [[http://cs.gmu.edu/~sean/stuff/n800/keyboard/old.html][Using xmodmap]] | intro
+
+  - [[https://wiki.archlinux.org/index.php/Xmodmap][xmodmap]] | ArchWiki
+  - [[http://openbox.org/wiki/Help:Bindings][Help:Bindings]] | Openbox
+
+  - [[http://wiki.linuxquestions.org/wiki/List_of_Keysyms_Recognised_by_Xmodmap][List of Keysyms Recognised by Xmodmap]] | LQWiki
 
  :url: /usr/share/X11/xkb/rules/base.lst
 
 
-*** Remap CapLock to Ctrl
+Helpful commands:
 
-Yes, I know this is a popular thing to do, and I have done
-it several times over the past decade or more, but I've
-never managed to actually /use/ it...  I should get around
-to sqwapping and retraining my fingers, but not today.
+  - =xev=: interactively press a key and see info
+  - =xmodmap -pke= : list all keybindings in xmodmap
+  - =xmodmap ~/.Xmodmap= : test and reset changes
 
-*** Disable Caps Lock and Insert Keys
+The goal here is:
 
-Different keyboards require different tweaks -- at the
-moment I disable capslock everywhere and on full keyboards I
-also disable the insert key which I seem to accidently hit
-ten times a day....
+  - CapsLock  => Super
+  - Alt_R     => Hyper
+  - Control_R => menu  
 
-#+begin_src sh
-## disable capslock -- keycode 105
-setxkbmap -option caps:none
-## disable insert key
-xmodmap -e "keycode 118 ="
-#+end_src
-
-*** Remap R-Ctrl to Menu
-
-I have one keyboard that doesn't have a <menu> key which I map
-to helm-command-prefix in emacs.  Since I don't use the
-right ctrl or alt keys when I type, remap the right ctrl:
+This is my ~/.Xmodmap file:
 
 #+begin_src sh
-## on keyboards without a <menu> key remap right ctrl to menu 
-xmodmap -e "keycode 105 = Menu"
+! remap:
+!  - caps_lock to super
+!  - Control_L to menu
+!  - Alt_L     to hyper
+
+clear      lock 
+clear   control
+clear      mod1
+clear      mod2
+clear      mod3
+clear      mod4
+clear      mod5
+keycode     108 = Hyper_R
+keycode      66 = Super_L
+keycode     105 = Menu
+add     control = Control_L
+add        mod1 = Alt_L Alt_R Meta_L
+Add        mod2 = Num_Lock
+add        mod3 = Hyper_R
+add        mod4 = Super_L
+add        mod5 = Mode_switch ISO_Level3_Shift
 #+end_src
 
 ** Openbox rc.xml Keybindings
