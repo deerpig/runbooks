@@ -13,7 +13,7 @@
 * Introduction
 
 This document describes how to create a new static web site
-using either org-publish or jekyll on CentOS.
+using either org-publish or jekyll on Debian.
 
 * Install Apache 2
 
