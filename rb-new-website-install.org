@@ -23,14 +23,13 @@ sudo yum install apache2
 
 * Set up Apache Virtual Host
 
-Create an Virtual Host in apache.
-
-We keep our apache directives in a separate directory to
-prevent apache from overwriting anything when we upgrade.
+Create an Virtual Host in apache2.
 
 #+begin_src  sh
-sudo emacs /etc/httpd/conf/domains/site-www.conf
+sudo emacs /etc/apache2/sites-available/01-site-www.conf
 #+end_src
+
+Add the following
 
 #+begin_src sh
 <VirtualHost *:80>
@@ -41,16 +40,8 @@ sudo emacs /etc/httpd/conf/domains/site-www.conf
 
 Now restart apache.
 
-CentOS
-
 #+begin_src sh
-sudo systemctl restart httpd
-#+end_src
-
-Debian
-
-#+begin_src sh
-/etc/init.d/apache2 reload
+sudo /etc/init.d/apache2 reload
 #+end_src
 
 
