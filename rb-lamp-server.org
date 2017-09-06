@@ -25,13 +25,17 @@
 
 * Introduction
 
-This file is for installing a LAMP server.
+This file walks you through setting up a LAMP server.
+
+It has been adapted from linode's excellent documentation for setting
+up a LAMP server on Debian: [[https://www.linode.com/docs/web-servers/lamp/lamp-on-debian-8-jessie/][LAMP on Debian 8 (Jessie)]]
 
 
-First install a new VM using the New-VM Runbook
+First install a new VM.  See the [[./rb-new-vm-install.org][New-VM Runbook]] for how.
 
 
-Check you have a fully qualified hostname:
+After you have ssh'd into your new VM, check you have a fully
+qualified hostname:
 
 #+begin_src sh
 hostname
@@ -276,13 +280,13 @@ quit
 Yes, yes, I know that you really don't /want/ to use PHP, but if this
 is what your customer wants... what can you do?
 
-** 1 Install PHP5 and the PHP Extension and Application Repository
+** 1. Install PHP5 and the PHP Extension and Application Repository
 
 #+begin_src sh
 sudo apt-get install php5 php-pear
 #+end_src
 
-** 2 Edit =/etc/php5/apache2/php.ini=
+** 2. Edit =/etc/php5/apache2/php.ini=
 
 Open =/etc/php5/apache2/php.ini= and edit the following values. 
 
@@ -297,3 +301,12 @@ error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
 error_log = /var/log/php/error.log  
 max_input_time = 30
 #+end_example
+
+** 3. Create php log directory
+
+Create the log directory for PHP and give the Apache user ownership:
+
+#+begin_src sh
+sudo mkdir /var/log/php
+sudo chown www-data /var/log/php
+#+end_src
