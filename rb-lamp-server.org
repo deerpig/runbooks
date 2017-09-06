@@ -137,7 +137,7 @@ sudo emacs /etc/apache2/sites-available/example.com.conf
 
 Shampoo, rinse, repeat for as many domains as needed.
 
-** 3. Create symbolic link your from =sites-available= =sites-enabled= 
+** 3. Create symbolic link from =sites-available= to =sites-enabled= 
 
 #+begin_src sh
 sudo a2ensite example.com.conf
@@ -146,8 +146,39 @@ sudo a2ensite example.org.conf
 
 To disable a site, use =a2dissite example.com=.
 
-** 4. Restart Apache
 
-#+begin_src sh
+** 4. Point =000-default.conf= to new server root
+
+Before you point your dns to the new server, change the default server
+root to point to one of the virtual hosts that was just created.
+
+File: */etc/apache2/sites-available/000-default.conf*
+
+#+begin_source sh
+sudo emacs /etc/apache2/sites-available/000-default.conf
+#+end_source
+
+#+begin_example
+<VirtualHost *:80>
+        # The ServerName directive sets the request scheme, hostname and port that                                                                                                             
+        # the server uses to identify itself. This is used when creating                                                                                                                       
+        # redirection URLs. In the context of virtual hosts, the ServerName                                                                                                                    
+        # specifies what hostname must appear in the request's Host: header to                                                                                                                 
+        # match this virtual host. For the default virtual host (this file) this                                                                                                               
+        # value is not decisive as it is used as a last resort host regardless.                                                                                                                
+        # However, you must set it for any further virtual host explicitly.                                                                                                                    
+        #ServerName www.example.com                                                                                                                                                            
+
+        ServerAdmin webmaster@example.com
+        DocumentRoot /var/www/html/example.com/public_html
+#+end_example
+
+** 5. Restart Apache
+
+#+begin_src
 sudo systemctl restart apache2
 #+end_src
+
+** 6. Check that everything is working. 
+
+Now check that everything is working.
