@@ -179,6 +179,42 @@ sudo emacs /etc/apache2/sites-available/000-default.conf
 sudo systemctl restart apache2
 #+end_src
 
-** 6. Check that everything is working. 
+** 6. Create DNS A Records for each virtual host
+
+Log into whoever is registering your domain and create A records for
+each domain that point to the public ip address:
+
+#+begin_example
+A  *                192.168.10.1  1
+A  example.com      192.168.10.1  1
+A  www.example.com  192.168.10.1  1
+A  beta.example.com 192.168.10.1  1
+#+end_example
+
+
+** 7. Check that everything is working. 
+
+At this point I usually create a test html file in each domain's
+document root:
+
+#+begin_src sh
+sudo echo '<h1>example.com</h1>' > /var/www/html/example.com/public_html/index.html
+sudo echo '<h1>beta.example.com</h1>' > /var/www/html/beta.example.com/public_html/index.html
+#+end_src
 
 Now check that everything is working.
+
+First check that the default domain is working by using the ip
+address:
+
+#+begin_src sh
+lynx http://192.168.10.0
+#+end_src
+
+Now if the A records have been created in DNS for the domain/s, then
+you can check:
+
+#+begin_src sh
+lynx http://example.com
+lynx http://beta.example.com
+#+end_src
