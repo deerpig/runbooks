@@ -25,18 +25,18 @@ sudo yum install apache2
 
 Create an Virtual Host in apache2.
 
-#+begin_src  sh
-sudo emacs /etc/apache2/sites-available/01-site-www.conf
+#+begin_src sh 
+sudo emacs /etc/apache2/sites-available/example.com.conf
 #+end_src
 
 Add the following
 
-#+begin_src sh
+#+begin_example
 <VirtualHost *:80>
   ServerName site.chenla.org
   DocumentRoot /var/www/site-www/html
 </VirtualHost>
-#+end_src
+#+end_example
 
 Now restart apache.
 
@@ -71,7 +71,7 @@ cd hooks
 emacs post-receive
 #+end_src
 
-#+begin_src sh
+#+begin_example
 #!/bin/bash -l
 GIT_REPO=$HOME/repos/site-www
 TMP_GIT_CLONE=$HOME/tmp/site-www
@@ -90,7 +90,7 @@ jekyll build --source $TMP_GIT_CLONE --destination $PUBLIC_WWW
 # Delete tmp files
 rm -Rf $TMP_GIT_CLONE
 exit
-#+end_src
+#+end_example
 
 #+begin_src sh
 sudo chmod +x post-receive
@@ -163,7 +163,7 @@ emacs <projectname>
 
 And add the following:
 
-#+begin_src sh
+#+begin_example
 #!/bin/bash
 # adds stages and pushes files in directory
 SITE_SRC=$HOME/proj/dir/proj-src
@@ -194,7 +194,7 @@ git add -u && \
 git commit -m "deploy" && \
 git push deploy master
 exit
-#+end_src
+#+end_example
 
 #+begin_src sh
 chmod +x deploy.sh
