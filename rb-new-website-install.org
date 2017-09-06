@@ -135,7 +135,13 @@ need the deploy script.
     rsync -avzh  $HOME/tmp/site.example.com/public_html  $PUBLIC_WWW
     rm -Rf $TMP_GIT_CLONE
 
-------
+We want the src in version control, but not the rendered
+files, but we want the rendered files moved to the server
+using git....  will the ignored file still be copied when
+merged?
+
+
+-----
 
 The way I have things set up, each site has two repos -- one
 for the source files, and the other for the build file (the
