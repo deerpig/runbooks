@@ -25,3 +25,30 @@
 
 * Introduction
 
+This file is for installing a LAMP server.
+
+
+First install a new VM using the New-VM Runbook
+
+
+Check you have a fully qualified hostname:
+
+#+begin_src sh
+hostname
+hostname -f
+#+end_src
+
+Do an update and upgrade
+
+#+begin_src sh
+sudo apt-get update && sudo apt-get upgrade
+#+end_src
+
+* Apache
+
+Install Apache2
+
+#+begin_src sh
+sudo apt-get install apache2
+#+end_src
+
