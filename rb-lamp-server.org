@@ -22,7 +22,6 @@
 [[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
 [[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
-
 * Introduction
 
 This file walks you through setting up a LAMP server on Debian 8
@@ -39,7 +38,7 @@ First install a new VM.  See the [[./rb-new-vm-install.org][New-VM Runbook]] for
 After you have ssh'd into your new VM, check you have a fully
 qualified hostname:
 
-#+begin_src sh
+#+begin_src sh 
 hostname
 hostname -f
 #+end_src
