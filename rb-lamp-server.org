@@ -146,4 +146,8 @@ sudo a2ensite example.org.conf
 
 To disable a site, use =a2dissite example.com=.
 
-** 4. sudo systemctl restart apache2
+** 4. Restart Apache
+
+#+begin_src sh
+sudo systemctl restart apache2
+#+end_src
