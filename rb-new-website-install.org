@@ -112,7 +112,11 @@ git push deploy master
 
 * Create Deploy Script
 
-*THIS NEEDS TO BE REWRITTEN*
+*Rethinking the existing deploy method*
+
+The system I've been using is ugly -- that needs two repos
+and a shell script for deploying.  We need to do this with
+one repo and one hook:
 
 #+begin_ascii
 org/jekyll src --> user@server:~/repo
