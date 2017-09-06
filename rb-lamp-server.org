@@ -46,9 +46,64 @@ sudo apt-get update && sudo apt-get upgrade
 
 * Apache
 
-Install Apache2
+** 1. Install Apache2
 
 #+begin_src sh
 sudo apt-get install apache2
 #+end_src
+
+** 2. Edit the main Apache configuration file and turn off the =KeepAlive= setting:
+
+File: */etc/apaches/apache2.conf*
+
+#+begin_src sh
+sudo emacs /etc/apache2/apache2.conf
+#+end_src
+
+#+begin_example
+KeepAlive  Off
+#+end_example
+
+** 3. Open /etc/apache2/mods-available/mpm_prefork.conf
+
+File: */etc/apache2/mods-available/mpm_prefork.conf*
+
+#+begin_src sh
+sudo emacs /etc/apache2/mods-available/mpm_prefork.conf
+#+end_src
+
+#+begin_example
+# prefork MPM
+# StartServers: number of server processes to start
+# MinSpareServers: minimum number of server processes which are kept spare
+# MaxSpareServers: maximum number of server processes which are kept spare
+# MaxRequestWorkers: maximum number of server processes allowed to start
+# MaxConnectionsPerChild: maximum number of requests a server process serves
+
+<IfModule mpm_prefork_module>
+        StartServers              4
+        MinSpareServers           20
+        MaxSpareServers           40
+        MaxRequestWorkers         200
+        MaxConnectionsPerChild    4500
+</IfModule>
+#+end_example
+
+** 4. On Debian 8
+
+On Debian 8, the event module is enabled by default. This should be
+disabled, and the prefork module enabled:
+
+#+begin_src sh
+sudo a2dismod mpm_event
+sudo a2enmod mpm_prefork
+#+end_src
+
+** 5. Restart Apache:
+
+#+begin_src sh
+sudo systemctl restart apache2
+#+end_src
+
+
 
