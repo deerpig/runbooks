@@ -15,41 +15,15 @@
 This document describes how to create a new static web site
 using either org-publish or jekyll on Debian.
 
-* Install Apache 2
+First install Apache2 and a Virtual Host for the new site:
 
-#+begin_src sh
-sudo yum install apache2
-#+end_src
+  See: [[./rb-lamp-server.org][Lamp Server Runbook]].
 
-* Set up Apache Virtual Host
-
-Create an Virtual Host in apache2.
-
-#+begin_src sh 
-sudo emacs /etc/apache2/sites-available/example.com.conf
-#+end_src
-
-Add the following
+Second, create A record for the subdomain that points to
+site:
 
 #+begin_example
-<VirtualHost *:80>
-  ServerName site.chenla.org
-  DocumentRoot /var/www/site-www/html
-</VirtualHost>
-#+end_example
-
-Now restart apache.
-
-#+begin_src sh
-sudo /etc/init.d/apache2 reload
-#+end_src
-
-
-Go to Directnic and create A record for the subdomain that
-points to site.
-
-#+begin_example
-A  site.kinto-cloud.com   10.0.0.100  1
+A  site.example.com   10.0.0.100  1
 #+end_example
 
 * On Remote server
@@ -64,7 +38,7 @@ to copy the files to =document root=.
 
 #+begin_src sh
 ssh deerpig@dev.chenla.org
-mkdir ~/repos/site-www
+mkdir ~/repos/site.example.com
 cd ./site-www
 git init --bare
 cd hooks
@@ -73,11 +47,11 @@ emacs post-receive
 
 #+begin_example
 #!/bin/bash -l
-GIT_REPO=$HOME/repos/site-www
-TMP_GIT_CLONE=$HOME/tmp/site-www
-# For Jekyll site, use site-www/html
-# For rsync site, use  site-www/site-www
-PUBLIC_WWW=/var/www/site-www/html
+GIT_REPO=$HOME/repos/site.example.com
+TMP_GIT_CLONE=$HOME/tmp/site.example.com
+# For Jekyll site, use site-www/public_html
+# For rsync site, use  site-www/public_html
+PUBLIC_WWW=/var/www/html/site.example.com/public_html
 
 git clone $GIT_REPO $TMP_GIT_CLONE
 
@@ -92,13 +66,20 @@ rm -Rf $TMP_GIT_CLONE
 exit
 #+end_example
 
+Make the file executable.
+
 #+begin_src sh
 sudo chmod +x post-receive
 #+end_src
 
+Create web server directories.
+
+If you followed the directions in the Lamp Runbook then you
+you can skip this step.
+
 #+begin_src sh
-sudo mkdir -p /var/www/site/html
-sudo chown -R deerpig /var/www/site
+sudo mkdir -p /var/www/html/site.example.com/public_html
+sudo chown -R deerpig /var/www/html/site.example.com/public_html
 #+end_src 
 
 * On Local Machine
@@ -113,7 +94,7 @@ git init
 git add .
 git commit -m "added files"
 
-git remote add deploy deerpig@camby.kinto-cloud.com:~/repos/site-www
+git remote add deploy deerpig@example.com:~/repos/site-www
 #+end_src
 
 ----
