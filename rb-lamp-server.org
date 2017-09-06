@@ -1,0 +1,27 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Install New LAMP Server
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/deerpig-install/rb-lamp-server.org
+:Created:   2017-09-06T12:04@Prek Leap (11.642600N-104.919210W)
+:ID:        6b31c842-f952-4536-a3d3-398b7f6b93b8
+:VER:       557946357.533612152
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:WKE2-7607
+:Type:      runbook
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
+
