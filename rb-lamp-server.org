@@ -105,5 +105,45 @@ sudo a2enmod mpm_prefork
 sudo systemctl restart apache2
 #+end_src
 
+* Configure Virtual Hosts
 
+** Create directories for websites and websites’ logs
 
+There can be as many virtual hosts files as needed.
+
+#+begin_src sh
+sudo mkdir -p /var/www/html/example.com/public_html
+sudo mkdir /var/www/html/example.com/logs
+#+end_src
+
+Shampoo, rinse, repeat for as many domains as needed.
+
+** 2. Create an =example.com.conf= file in =/etc/apache2/sites-available=
+
+#+begin_src sh
+sudo emacs /etc/apache2/sites-available/example.com.conf
+#+end_src
+
+#+begin_example
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /var/www/html/example.com/public_html/
+     ErrorLog /var/www/html/example.com/logs/error.log
+     CustomLog /var/www/html/example.com/logs/access.log combined
+</VirtualHost>
+#+end_example
+
+Shampoo, rinse, repeat for as many domains as needed.
+
+** 3. Create symbolic link your from =sites-available= =sites-enabled= 
+
+#+begin_src sh
+sudo a2ensite example.com.conf
+sudo a2ensite example.org.conf
+#+end_src
+
+To disable a site, use =a2dissite example.com=.
+
+** 4. sudo systemctl restart apache2
