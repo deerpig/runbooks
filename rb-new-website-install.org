@@ -48,9 +48,9 @@ sudo /etc/init.d/apache2 reload
 Go to Directnic and create A record for the subdomain that
 points to site.
 
-#+begin_src sh
+#+begin_example
 A  site.kinto-cloud.com   10.0.0.100  1
-#+end_src
+#+end_example
 
 * On Remote server
 
