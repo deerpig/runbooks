@@ -25,14 +25,16 @@
 
 * Introduction
 
-This file walks you through setting up a LAMP server.
+This file walks you through setting up a LAMP server on Debian 8
+Jessie.
 
 It has been adapted from linode's excellent documentation for setting
-up a LAMP server on Debian: [[https://www.linode.com/docs/web-servers/lamp/lamp-on-debian-8-jessie/][LAMP on Debian 8 (Jessie)]]
-
+up a LAMP server on Debian: [[https://www.linode.com/docs/web-servers/lamp/lamp-on-debian-8-jessie/][LAMP on Debian 8 (Jessie)]] which is
+licenced a CC BY-ND 4.0, so we should be good.  I can't count how many
+times I've installed LAMP stacks, and this is a very clear, solid
+install guide.  Thanks Linode!
 
 First install a new VM.  See the [[./rb-new-vm-install.org][New-VM Runbook]] for how.
-
 
 After you have ssh'd into your new VM, check you have a fully
 qualified hostname:
@@ -310,3 +312,22 @@ Create the log directory for PHP and give the Apache user ownership:
 sudo mkdir /var/log/php
 sudo chown www-data /var/log/php
 #+end_src
+
+** 4. Install MySQL support in PHP
+
+To support MySQL in PHP, install the =php5-mysql= package:
+
+#+begin_src sh
+sudo apt-get install php5-mysql
+#+end_src
+
+** 5. Restart Apache2:
+
+You end up restarting apache /a lot/ when your a sysadmin :)
+
+#+begin_src sh
+sudo systemctl restart apache2
+#+end_src
+
+* Done
+
