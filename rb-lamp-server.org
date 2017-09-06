@@ -40,6 +40,8 @@ hostname -f
 
 Do an update and upgrade
 
+Debian:
+
 #+begin_src sh
 sudo apt-get update && sudo apt-get upgrade
 #+end_src
@@ -218,3 +220,65 @@ you can check:
 lynx http://example.com
 lynx http://beta.example.com
 #+end_src
+
+* MySQL
+
+** 1. Install MySQL
+
+#+begin_src sh
+sudo apt-get install mysql-server
+#+end_src
+
+When the installation is complete, a curses interface will pop up and
+prompt you to create a password for MySQL.  Do what you are told.
+
+** 2. Run =mysql_secure_installation=
+
+#+begin_src sh
+sudo mysql_secure_installation
+#+end_src
+
+Answer =y= for all questions.  If you already have a sequre root
+password, you don't need to change it.
+
+** 3. Set up a MySQL database
+
+Now you can creat a database and grant your users permissions to use
+the database.
+
+*** 3.1 Log in to MySQL
+
+#+begin_src sh
+mysql -u root -p
+#+end_src
+
+Enter the MySQL root pass when prompted.
+
+*** 3.2 Create a database and set permissions
+
+Create a database and grant your users permissions on it. Change the
+database name (webdata) and username (username). Change the password
+(password):
+
+#+begin_src sh
+create database webdata;
+grant all on webdata.* to 'username' identified by 'password';
+#+end_src
+
+*** 3.3 Exist MySQL
+
+#+begin_src sh
+quit
+#+end_src
+
+* PHP
+
+Yes, yes, I know that you really don't /want/ to use PHP, but if this
+is what your customer wants... what can you do?
+
+** 1 Install PHP5 and the PHP Extension and Application Repository
+
+#+begin_src sh
+sudo apt-get install php5 php-pear
+#+end_src
+
