@@ -46,6 +46,7 @@ clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue t
   - [[./rb-new-website-install.html][New Website Install]]
   - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
   - [[./rb-screencasts.html][Screencasts HOWTO]]
+  - [[./rb-lamp-server.org][New LAMP Server]]
   - Mattermost & IRCD Hybrid Install
   - GitoLite3 & CGit Install
 * Emacs & Orgmode
