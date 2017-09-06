@@ -1,26 +1,26 @@
 #   -*- mode: org; fill-column: 60 -*-
-#+TITLE: Deerpig: The Runbooks & The Diatribes
 #+STARTUP: showall
-#+PROPERTY: filename 
-#+INCLUDE: ./inc/head.org
-#+HTML_HEAD: <link href="./css/index.css" rel="stylesheet" type="text/css" />
-  :PROPERTIES:
-  :Name: /home/deerpig/proj/deerpig/deerpig-install/index.org
-  :Created: 2016-08-20T16:40@Wat Phnom (11.5733N17-104.925295W)
-  :ID: 5995dc73-91da-4940-bae1-efb75ce040d4
-  :URL:
-  :END:
-#+INCLUDE: ./inc/macros.org
-#+INCLUDE: ./inc/links.org
+#+TITLE: Deerpig: The Runbooks & The Diatribes
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/deerpig-install/index.org
+:Created:   2016-08-20T16:40@Wat Phnom (11.5733N17-104.925295W)
+:ID:        5995dc73-91da-4940-bae1-efb75ce040d4
+:VER:       557945697.143104411
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:KOY3-0723
+:Category:  primer
+:Entity:    toc
+:Status:    stub 
+:Licence:   MIT/CC BY-SA 4.0
+:END:
 
-{{{breadcrumbs}}}
+* Table of Contents
+[[https://img.shields.io/badge/made%20by-Deerpig%20Institute-999999.svg?style=flat-square]]
+[[https://img.shields.io/badge/entity-TOC-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
-#+HTML: <div class="outline-2" id="meta">
-| *Author*  | Brad Collins <brad@chenla.org>             |
-| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
-#+HTML: </div>
-
-#+TOC: headlines 4
 
 * About these pages
 
@@ -33,34 +33,6 @@ bash shell and a browser.  I hope these pages are useful to others,
 but I'm not holding my breath.  You can find the source code for the
 site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
 #+end_quote
-
-*NOTE*: 2016-9-20 -- Non-deerpig material is being moved to it's new
-home in the Chenla repos on GuitHub.  Should have a new web site for
-the rendered HTML soon.
-
-* Recent Activity
-
-Recent change activity on http://github.com/deerpig/deerpig-install
-
-#+BEGIN_SRC sh :exports results :results silent
-githubchart -u deerpig ./img/contrib.svg
-#+END_SRC
-
-#+RESULTS:
-
-[[./img/contrib.svg]]
-
-#+HTML: <div class="contrib-legend text-small text-muted" title="A summary of pull requests, issues opened, and commits to the default and gh-pages branches.">
-#+HTML:  <span>Less</span>
-#+HTML:   <ul class="legend">
-#+HTML:     <li style="background-color: #eee"></li>
-#+HTML:     <li style="background-color: #d6e685"></li>
-#+HTML:     <li style="background-color: #8cc665"></li>
-#+HTML:     <li style="background-color: #44a340"></li>
-#+HTML:     <li style="background-color: #1e6823"></li>
-#+HTML:   </ul>
-#+HTML:  <span>More</span>
-#+HTML: </div>
 
 * Feedback
 
