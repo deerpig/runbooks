@@ -112,10 +112,30 @@ git push deploy master
 
 * Create Deploy Script
 
-The way I have things set up, it that each site has two
-repos -- one for the source files, and the other for the
-build file (the static site rendered by either org-publish
-or jekyll).
+*THIS NEEDS TO BE REWRITTEN*
+
+#+begin_ascii
+org/jekyll src --> user@server:~/repo
+  git repo-1            |     git hook
+                        '--> rsync public_html to document_root
+#+end_ascii
+
+Or simply create a repo that holds both source and rendered
+and then only sync the rendered directory... then we don't
+need the deploy script.
+
+  - site.example.com
+    - src
+    - public_html
+
+    rsync -avzh  $HOME/tmp/site.example.com/public_html  $PUBLIC_WWW
+    rm -Rf $TMP_GIT_CLONE
+
+------
+
+The way I have things set up, each site has two repos -- one
+for the source files, and the other for the build file (the
+static site rendered by either org-publish or jekyll).
 
 Let's say you have a repo called =homer-org= for the org
 source files and then =homer-www= for the generated site.
