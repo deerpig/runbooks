@@ -66,7 +66,7 @@ sudo emacs /etc/apache2/apache2.conf
 KeepAlive  Off
 #+end_example
 
-** 3. Open /etc/apache2/mods-available/mpm_prefork.conf
+** 3. Edit */etc/apache2/mods-available/mpm_prefork.conf*
 
 File: */etc/apache2/mods-available/mpm_prefork.conf*
 
@@ -282,3 +282,18 @@ is what your customer wants... what can you do?
 sudo apt-get install php5 php-pear
 #+end_src
 
+** 2 Edit =/etc/php5/apache2/php.ini=
+
+Open =/etc/php5/apache2/php.ini= and edit the following values. 
+
+File: */etc/php5/apache2/php.ini*
+
+#+begin_src sh
+sudo emacs /etc/php5/apache2/php.ini
+#+end_src
+
+#+begin_example
+error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+error_log = /var/log/php/error.log  
+max_input_time = 30
+#+end_example
