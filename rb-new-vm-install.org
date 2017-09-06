@@ -152,6 +152,13 @@ ping chenla.org
 
 Do a quick =yum= or =apt-get= update. 
 
+Debian
+
+#+begin_src sh
+&& sudo apt-get upgrade
+#+end_src
+
+
 * Install Emacs
 
 Since these are servers, there is no need to install full
