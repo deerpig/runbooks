@@ -24,26 +24,33 @@
 
 * Introduction
 
-This file walks you through setting up a LAMP server on Debian 8
-Jessie.
+This file walks you through setting up a LAMP server on
+Debian 8 Jessie.
 
-It has been adapted from linode's excellent documentation for setting
-up a LAMP server on Debian: [[https://www.linode.com/docs/web-servers/lamp/lamp-on-debian-8-jessie/][LAMP on Debian 8 (Jessie)]] which is
-licenced a CC BY-ND 4.0, so we should be good.  I can't count how many
-times I've installed LAMP stacks, and this is a very clear, solid
-install guide.  Thanks Linode!
+It has been adapted from linode's excellent documentation
+for setting up a LAMP server on Debian: [[https://www.linode.com/docs/web-servers/lamp/lamp-on-debian-8-jessie/][LAMP on Debian 8
+(Jessie)]] which is licenced a CC BY-ND 4.0, so we should be
+good.  I can't count how many times I've installed LAMP
+stacks, and this is a very clear, solid install guide.
+Thanks Linode!
 
-First install a new VM.  See the [[./rb-new-vm-install.org][New-VM Runbook]] for how.
+** 1. Install a New VM
 
-After you have ssh'd into your new VM, check you have a fully
-qualified hostname:
+See the [[./rb-new-vm-install.org][New-VM Runbook]] for how.
+
+** 2. Check =hostname=
+
+After you have ssh'd into your new VM, check you have a
+fully qualified hostname:
 
 #+begin_src sh 
 hostname
 hostname -f
 #+end_src
 
-Do an update and upgrade
+** 3. Update and Upgrade
+
+Do an apt-get update and upgrade
 
 Debian:
 
@@ -283,7 +290,7 @@ password, you don't need to change it.
 
 ** 3. Set up a MySQL database
 
-Now you can creat a database and grant your users permissions to use
+Now you can create a database and grant your users permissions to use
 the database.
 
 *** 3.1 Log in to MySQL
@@ -303,11 +310,6 @@ database name (webdata) and username (username). Change the password
 #+begin_src sh
 create database webdata;
 grant all on webdata.* to 'username' identified by 'password';
-#+end_src
-
-*** 3.3 Exist MySQL
-
-#+begin_src sh
 quit
 #+end_src
 
@@ -363,5 +365,5 @@ You end up restarting apache /a lot/ when your a sysadmin :)
 sudo systemctl restart apache2
 #+end_src
 
-* Done
+`* Done
 
