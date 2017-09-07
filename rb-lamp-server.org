@@ -186,6 +186,41 @@ sudo emacs /etc/apache2/sites-available/000-default.conf
 sudo systemctl restart apache2
 #+end_src
 
+
+** 6. Give Wedadmin Users Read/Write Access
+
+Create a new group
+
+#+begin_src sh
+groupadd webadmin
+#+end_src
+
+Add your users to the group
+
+#+begin_src sh
+usermod -a -G webadmin user1
+usermod -a -G webadmin user2
+#+end_src
+
+Change ownership of the sites directory
+
+#+begin_src sh
+chown root:webadmin /var/www/html/site.example.com
+#+end_src
+
+Change permissions of the sites directory
+
+#+begin_src sh
+chmod 2775 /var/www/html/site.example.com -R
+#+end_src
+
+This allows everyone to read the files (including the
+=apache= user) but only =root= and =webadmin= can modify
+their contents.
+scc
+
+
+
 ** 6. Create DNS A Records for each virtual host
 
 Log into whoever is registering your domain and create A records for
