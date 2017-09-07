@@ -192,26 +192,26 @@ sudo systemctl restart apache2
 Create a new group
 
 #+begin_src sh
-groupadd webadmin
+sudo groupadd webadmin
 #+end_src
 
 Add your users to the group
 
 #+begin_src sh
-usermod -a -G webadmin user1
-usermod -a -G webadmin user2
+sudo usermod -a -G webadmin user1
+sudo usermod -a -G webadmin user2
 #+end_src
 
 Change ownership of the sites directory
 
 #+begin_src sh
-chown root:webadmin /var/www/html/site.example.com
+sudo chown root:webadmin /var/www/html/site.example.com
 #+end_src
 
 Change permissions of the sites directory
 
 #+begin_src sh
-chmod 2775 /var/www/html/site.example.com -R
+sudo chmod 2775 /var/www/html/site.example.com -R
 #+end_src
 
 This allows everyone to read the files (including the
