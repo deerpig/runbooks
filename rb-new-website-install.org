@@ -26,7 +26,7 @@ site:
 A  site.example.com   10.0.0.100  1
 #+end_example
 
-* On Remote server
+* 1. On Remote Server
 
 Create a directory called =repo= in a user account and a
 directory for the new git repo and then do a git init.
@@ -90,8 +90,6 @@ rm -Rf $TMP_GIT_CLONE
 exit
 #+end_source
 
-
-
 Make the file executable.
 
 #+begin_src sh
@@ -105,22 +103,20 @@ you can skip this step.
 
 #+begin_src sh
 sudo mkdir -p /var/www/html/site.example.com/public_html
-sudo chown -R deerpig /var/www/html/site.example.com/public_html
 #+end_src 
 
-* On Local Machine
+* 2. On Local Machine
 
 #+begin_src sh
-mkdir ~/blog/site
-cd ~/blog/site
-jekyll new site-www
-mkdir ./html
-cd ./site-www
+mkdir -p ~/proj/sites/site.example.com
+cd ~/proj/sites/site.example.com
+# skip the jekyll cmd if not a jekyll site
+jekyll new site.example.com
 git init
 git add .
 git commit -m "added files"
 
-git remote add deploy deerpig@example.com:~/repos/site-www
+git remote add deploy deerpig@example.com:~/repos/site.pnsa.edu.kh
 #+end_src
 
 ----
@@ -136,62 +132,18 @@ bash:
 git push deploy master
 #+end_src
 
-* Create Deploy Script
+* 3. Create Deploy Script
 
 *Rethinking the existing deploy method*
 
-The system I've been using is ugly -- that needs two repos
-and a shell script for deploying.  We need to do this with
-one repo and one hook:
+ naming conventions:
 
-#+begin_ascii
-org/jekyll src --> user@server:~/repo
-  git repo-1            |     git hook
-                        '--> rsync public_html to document_root
-#+end_ascii
-
-Or simply create a repo that holds both source and rendered
-and then only sync the rendered directory... then we don't
-need the deploy script.
-
-  - site.example.com
-    - src
-    - public_html
-
-    rsync -avzh  $HOME/tmp/site.example.com/public_html  $PUBLIC_WWW
-    rm -Rf $TMP_GIT_CLONE
-
-We want the src in version control, but not the rendered
-files, but we want the rendered files moved to the server
-using git....  will the ignored file still be copied when
-merged?
+   example.com
+   www.example.com
+   site.example.com
 
 
------
 
-The way I have things set up, each site has two repos -- one
-for the source files, and the other for the build file (the
-static site rendered by either org-publish or jekyll).
-
-Let's say you have a repo called =homer-org= for the org
-source files and then =homer-www= for the generated site.
-
-So you make changes to the site then commit, do a git add and
-commit and push.  That saves the source files.  Then you
-want to regenerate the site and deploy it on the web server
-using either org-publish-project, or jekyll build.
-
-With our configuration, git will commit the static site
-locally, push the files to the server and then run a deploy
-command that clones the repo into the web server directory.
-
-On the local machine, this means that git commit will always
-just be /deploying/ the site -- there is no need to describe
-what changes have been made because this is already being
-taken care of in the source repo.
-
-So we write a script that builds the static site locally then
-deploys using git add commit push.
 
 #+begin_src sh
 cd ~/bin
