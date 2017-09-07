@@ -173,7 +173,7 @@ bash:
 git push deploy master
 #+end_src
 
-* 3. Create Deploy Script
+* Create Deploy Script
 
 *Rethinking the existing deploy method*
 
@@ -182,9 +182,6 @@ git push deploy master
    example.com
    www.example.com
    site.example.com
-
-
-
 
 #+begin_src sh
 cd ~/bin
