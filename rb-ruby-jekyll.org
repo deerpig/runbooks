@@ -26,17 +26,67 @@
 
 * Introduction
 
+The Jekyll site is notoriously misleading about how easy it
+is to install Jekyll.  There is a whole world of things they
+assume you know about the Ruby ecosystem.  They make it
+sound so easy:
+
+#+begin_quote
+apt-get install ruby ruby-gems
+gem install jekyll
+#+end_quote
+
+In the last, what, nearly ten years, that has worked for me
+2-3 times, the rest of the time has been a nightmare.  And
+it's not only me.  There are a lot of blog posts from people
+who would love to stick with Jekyll, but getting  it to run
+on your development box and your production box can be a
+/nightmare/.
+
+I was on the cusp of doing the same, but I thought I'd make
+one last go of it and see if I could come up with a way of
+installing jekyll across any of the desktop or server boxes
+that I use in development and production.
+
+The one thing to remember about Ruby is that you don't run
+most things as root.  Install gems as a regular user.
+
+Ruby Gems can be a real bitch to install.  
+
+*Don't Install Gems Using SUDO* If you do, it will create
+all sorts of hell for you later on.  And it's *very*
+difficult to get the system cleaned out once you've
+installed any gems using sudo.
+
+So, what to do?  Use the Ruby Version Manager (rvm) which is
+not difficult to install but it has it's issues as well and
+the rvm documentation is not as clear as I'd like.
+
+
 * Ruby
+
+Install =ruby-full= which includes =ruby=, =ruby-headers= and
+=ruby gem=.
 
 #+begin_src sh
 sudo apt-get install ruby-full build-essential 
 #+end_src
 
-* RVM
+* RVM: The Ruby Version Manager
+
+I don't know if this is the best way to install rvm, but it
+worked for me.
+
+First install keys:
 
 #+begin_src sh
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 #+end_src
+
+Now install the stable version of rvm.  The leading '\'
+ensures that the original version of curl is used for the
+download, rather than variations of curl that the system
+might be running.
 
 #+begin_src sh
 \curl -sSL https://get.rvm.io | bash
@@ -48,8 +98,37 @@ Either log out and log back in or run the following to load rvm:
 source ~/.rvm/scripts/rvm
 #+end_src
 
-Test that it's working:
+Install rvm requirements
+
+Run =rvm requirements= which will prompt you for your sudo
+password and install everything that needs to be installed.
 
 #+begin_src sh
-rvm list known
+rvm requirements
+#+end_src
+
+Check your version of ruby:
+
+#+begin_src sh
+ruby -v
+#+end_src
+
+If you have /ruby-2.1.5/, install rvm ruby-2.1.5 and then set
+it as the default.
+
+#+begin_src sh
+rvm install ruby-2.1.5
+rvm use --default use 2.1.5
+#+end_src
+
+* Install Jekyll
+
+#+begin_src sh
+gem install jekyll
+#+end_src
+
+* Pygments
+
+#+begin_src sh
+sudo apt-get install python-pygments
 #+end_src
