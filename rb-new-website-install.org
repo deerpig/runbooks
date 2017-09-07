@@ -15,9 +15,13 @@
 This document describes how to create a new static web site
 using either org-publish or jekyll on Debian.
 
+** 1. Install Apache2
+
 First install Apache2 and a Virtual Host for the new site:
 
   See: [[./rb-lamp-server.org][Lamp Server Runbook]].
+
+** 2. Create A Record for DOmain
 
 Second, create A record for the subdomain that points to
 site:
@@ -26,21 +30,34 @@ site:
 A  site.example.com   10.0.0.100  1
 #+end_example
 
-* 1. On Remote Server
+* On Remote Server
 
-Create a directory called =repo= in a user account and a
-directory for the new git repo and then do a git init.
+** 1 Create Directory
+
+SSH into the server and create a directory called =repo= in
+a user account and a directory for the new git repo.
 
 #+begin_src sh
 mkdir -p ~/repos/site.example.com
+#+end_src
+
+** 2. Initialize Git Repo
+
+Initialize a new bare git repository.
+
+#+begin_src sh
 cd ./site.example.com
 git init --bare
 #+end_src
 
-Then create a new file in ./hooks called /post-receive/
+** 3. Create file =post-receive=
+
+Create a new file in ./hooks called /post-receive/
 which will either automatically build the website and move
 the files to =document root= using jekyll or =rsync= to copy
 the files to =document root=.
+
+
 
 #+begin_src sh
 emacs ~/repo/site.example.com/hooks/post-receive
@@ -54,10 +71,11 @@ For Jekyll Sites, use the following:
 
 #+begin_source sh
 #!/bin/bash -l
-GIT_REPO=$HOME/repos/site.example.com
-TMP_GIT_CLONE=$HOME/tmp/site.example.com
-# For Jekyll site, use site-www/public_html
-PUBLIC_WWW=/var/www/html/site.example.com/public_html
+# Use trailing slash so that contents are moved,
+# not whole directories.
+GIT_REPO=$HOME/repos/site.example.com/
+TMP_GIT_CLONE=$HOME/tmp/site.example.com/
+PUBLIC_WWW=/var/www/html/site.example.com/public_html/
 
 git clone $GIT_REPO $TMP_GIT_CLONE
 
@@ -75,15 +93,16 @@ For Static Sites, use the following:
 
 #+begin_source sh
 #!/bin/bash -l
-GIT_REPO=$HOME/repos/site.example.com
-TMP_GIT_CLONE=$HOME/tmp/site.example.com
-# For rsync site, use  site-www/public_html
-PUBLIC_WWW=/var/www/html/site.example.com/public_html
+# Use trailing slash so that contents are moved,
+# not whole directories.
+GIT_REPO=$HOME/repos/site.example.com/
+TMP_GIT_CLONE=$HOME/tmp/site.example.com/
+PUBLIC_WWW=/var/www/html/site.example.com/public_html/
 
 git clone $GIT_REPO $TMP_GIT_CLONE
 
 # Use rsync to copy files to document root
-#rsync -avzh  $TMP_GIT_CLONE $PUBLIC_WWW
+rsync -avzh  $TMP_GIT_CLONE $PUBLIC_WWW
 
 # Delete tmp files
 rm -Rf $TMP_GIT_CLONE
