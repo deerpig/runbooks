@@ -43,10 +43,15 @@ who would love to stick with Jekyll, but getting  it to run
 on your development box and your production box can be a
 /nightmare/.
 
-I was on the cusp of doing the same, but I thought I'd make
-one last go of it and see if I could come up with a way of
-installing jekyll across any of the desktop or server boxes
-that I use in development and production.
+I was on the cusp of doing the same.  But then I realised
+that sooner or later I would have to tackle this because we
+will be using =Chef= which uses Ruby and makes the problems
+I've had installing Jekyll look trivial.
+
+So I decided to make one last go of it and see if I could
+come up with a way of installing jekyll across any of the
+desktop or server boxes that I use in development and
+production.  This file is the beginning of that process.
 
 The one thing to remember about Ruby is that you don't run
 most things as root.  Install gems as a regular user.
