@@ -57,15 +57,16 @@ which will either automatically build the website and move
 the files to =document root= using jekyll or =rsync= to copy
 the files to =document root=.
 
-
+File: *~/repo/site.example.com/hooks/post-receive*
 
 #+begin_src sh
 emacs ~/repo/site.example.com/hooks/post-receive
 #+end_src
 
-File: *~/repo/site.example.com/hooks/post-receive*
+Include the following text, depending on if you are building
+a Jekyll site or a Static site:
 
-** Jekyll Site
+*** 3.1 Jekyll Site
 
 For Jekyll Sites, use the following:
 
@@ -87,7 +88,7 @@ rm -Rf $TMP_GIT_CLONE
 exit
 #+end_source
 
-** Static Site
+*** 3.3 Static Site
 
 For Static Sites, use the following:
 
@@ -109,20 +110,17 @@ rm -Rf $TMP_GIT_CLONE
 exit
 #+end_source
 
-Make the file executable.
+** 4. Make the file executable
 
 #+begin_src sh
 sudo chmod +x post-receive
 #+end_src
 
-Create web server directories.
+** 5. Create web server directories
 
-If you followed the directions in the Lamp Runbook then you
-you can skip this step.
+Follow the directions in the [[./rb-lamp-server.org][Lamp Runbook]] to create the
+directories for the web site, and set permissions.
 
-#+begin_src sh
-sudo mkdir -p /var/www/html/site.example.com/public_html
-#+end_src 
 
 * 2. On Local Machine
 
