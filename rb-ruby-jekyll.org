@@ -71,7 +71,7 @@ the rvm documentation is not as clear as I'd like.
 * Ruby
 
 Install =ruby-full= which includes =ruby=, =ruby-headers= and
-=ruby gem=.
+=ruby gems=.
 
 #+begin_src sh
 sudo apt-get install ruby-full build-essential 
