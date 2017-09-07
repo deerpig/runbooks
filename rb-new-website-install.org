@@ -122,17 +122,33 @@ Follow the directions in the [[./rb-lamp-server.org][Lamp Runbook]] to create th
 directories for the web site, and set permissions.
 
 
-* 2. On Local Machine
+* On Local Machine
+
+** 1. 
 
 #+begin_src sh
 mkdir -p ~/proj/sites/site.example.com
+#+end_src
+
+** 2.
+
+#+begin_src sh
 cd ~/proj/sites/site.example.com
 # skip the jekyll cmd if not a jekyll site
 jekyll new site.example.com
+#+end_src
+
+** 3.
+
+#+begin_src sh
 git init
 git add .
 git commit -m "added files"
+#+end_src
 
+** 4.
+
+#+begin_src sh
 git remote add deploy deerpig@example.com:~/repos/site.pnsa.edu.kh
 #+end_src
 
