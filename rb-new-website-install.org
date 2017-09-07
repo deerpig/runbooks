@@ -124,13 +124,18 @@ directories for the web site, and set permissions.
 
 * On Local Machine
 
-** 1. 
+** 1. Create local directories
+
+Create the local directories for the site.
 
 #+begin_src sh
 mkdir -p ~/proj/sites/site.example.com
 #+end_src
 
-** 2.
+** 2. Create New Jeykll Project 
+
+Create a new Jekyll project or copy your existing code into
+the new directory.
 
 #+begin_src sh
 cd ~/proj/sites/site.example.com
@@ -138,7 +143,7 @@ cd ~/proj/sites/site.example.com
 jekyll new site.example.com
 #+end_src
 
-** 3.
+** 3. Initialize the Git Repository
 
 #+begin_src sh
 git init
@@ -146,17 +151,20 @@ git add .
 git commit -m "added files"
 #+end_src
 
-** 4.
+** 4. Create a =git remote= 
+
+Create a =git remote= that points to the directory on the server.
 
 #+begin_src sh
 git remote add deploy deerpig@example.com:~/repos/site.pnsa.edu.kh
 #+end_src
 
-----
+** 5. Push Deploy
 
-Now manage staging and commits in magit in emacs.  When you Push from
-Magit it will run the deployment script on the server which
-automatically invokes Jekyll and builds the site from git the Git repo.
+You can now manage staging and commits in magit in emacs.
+When you Push from Magit it will run the deployment script
+on the server which automatically invokes Jekyll and builds
+the site from git the Git repo.
 
 Alternately, you can deploy, (push changes and rebuild jekyll) using
 bash:
