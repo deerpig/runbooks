@@ -1,0 +1,28 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Install Ruby & Jekyll
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/deerpig-install/rb-ruby-jekyll.org
+:Created:   2017-09-07T07:28@Prek Leap (11.642600N-104.919210W)
+:ID:        4eb0c094-9967-486d-a885-02977f5f3242
+:VER:       558016186.410367477
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:KEK2-5215
+:Class:     runbook
+:Type:      runbook
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
+
