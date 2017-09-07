@@ -28,28 +28,55 @@ A  site.example.com   10.0.0.100  1
 
 * On Remote server
 
-SHH into the remove server and create the directory for the
-new repo and then do a git init.  Then create a new file in
-./hooks called /post-receive/ which will either automatically build
-the website and move the files to =document root= using
-jekyll or, if the site has already been built, use =rsync=
-to copy the files to =document root=.
-
+Create a directory called =repo= in a user account and a
+directory for the new git repo and then do a git init.
 
 #+begin_src sh
-ssh deerpig@dev.chenla.org
-mkdir ~/repos/site.example.com
-cd ./site-www
+mkdir -p ~/repos/site.example.com
+cd ./site.example.com
 git init --bare
-cd hooks
-emacs post-receive
 #+end_src
 
-#+begin_example
+Then create a new file in ./hooks called /post-receive/
+which will either automatically build the website and move
+the files to =document root= using jekyll or =rsync= to copy
+the files to =document root=.
+
+#+begin_src sh
+emacs ~/repo/site.example.com/hooks/post-receive
+#+end_src
+
+File: *~/repo/site.example.com/hooks/post-receive*
+
+** Jekyll Site
+
+For Jekyll Sites, use the following:
+
+#+begin_source sh
 #!/bin/bash -l
 GIT_REPO=$HOME/repos/site.example.com
 TMP_GIT_CLONE=$HOME/tmp/site.example.com
 # For Jekyll site, use site-www/public_html
+PUBLIC_WWW=/var/www/html/site.example.com/public_html
+
+git clone $GIT_REPO $TMP_GIT_CLONE
+
+# Use Jekyll to build the site and copy files to document root
+jekyll build --source $TMP_GIT_CLONE --destination $PUBLIC_WWW
+
+# Delete tmp files
+rm -Rf $TMP_GIT_CLONE
+exit
+#+end_source
+
+** Static Site
+
+For Static Sites, use the following:
+
+#+begin_source sh
+#!/bin/bash -l
+GIT_REPO=$HOME/repos/site.example.com
+TMP_GIT_CLONE=$HOME/tmp/site.example.com
 # For rsync site, use  site-www/public_html
 PUBLIC_WWW=/var/www/html/site.example.com/public_html
 
@@ -58,13 +85,12 @@ git clone $GIT_REPO $TMP_GIT_CLONE
 # Use rsync to copy files to document root
 #rsync -avzh  $TMP_GIT_CLONE $PUBLIC_WWW
 
-# Use Jekyll to build the site and copy files to document root
-jekyll build --source $TMP_GIT_CLONE --destination $PUBLIC_WWW
-
 # Delete tmp files
 rm -Rf $TMP_GIT_CLONE
 exit
-#+end_example
+#+end_source
+
+
 
 Make the file executable.
 
