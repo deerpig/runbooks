@@ -26,6 +26,6 @@
 * Introduction
 
  - [[https://about.gitlab.com/features/gitlab-ci-cd/][GitLab Continuous Integration & Deployment]] | GitLab
- - [[https://about.gitlab.com/features/gitlab-ci-cd/][GitLab Continuous Integration & Deployment]] | GitLab
+
 
  - [[https://www.computing.zone/deploy-phphtml-website-gitlab-ci/][How to deploy PHP/HTML website with Gitlab CI]] | ComputingZone
