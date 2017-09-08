@@ -15,31 +15,28 @@
 :Licence:   MIT/CC BY-SA 4.0
 :END:
 
-* Table of Contents
 [[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]]
 [[https://img.shields.io/badge/entity-TOC-0072B2.svg?style=flat-square]]
 [[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
 [[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
 
-* About these pages
+* Introduction
 
-#+begin_quote
-This page describes the various installation guides & documentation
-that I use personally and professionally.  Please be aware that I am a
-old-school Emacs user and Lisp hacker, and have a somewhat eclectic
-tool chain and work flow that revolves around emacs, orgmode, the
-bash shell and a browser.  I hope these pages are useful to others,
-but I'm not holding my breath.  You can find the source code for the
+This page describes the various installation guides &
+documentation that I use personally and professionally.
+Please be aware that I am an old-school Emacs user and Lisp
+hacker, and have a somewhat eclectic tool chain and work
+flow that revolves around emacs, orgmode, the bash shell and
+a browser.  I hope these pages are useful to others, but I'm
+not holding my breath.  You can find the source code for the
 site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
-#+end_quote
 
-* Feedback
 
-Please make a [[https://github.com/deerpig/deerpig-install][pull request]] on Github to suggest improvements or add
-clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue tracker]] to ask questions.
+* Table of Contents
 
-* Runbooks 
+
+** Runbooks 
   - [[./rb-desktop-install.html][Desktop Install]]
   - [[./rb-new-vm-install.html][New Virtual Machine Install]]
   - [[./rb-git-mirror.html][Set up a Git Repo Mirror]]
@@ -54,11 +51,11 @@ clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue t
   - OpenStack Project Management
   - OpenStack Add New Images
   - OpenStack Launch Instances
-* Emacs & Orgmode
+** Emacs & Orgmode
   - Emacs Configuration
-* Cookbooks
+** Cookbooks
   - [[./cb-cookbook.org][Our First Cookbook]]
-* Colophon
+** Colophon
   - Making this document
   - What is a Deerpig?
 
