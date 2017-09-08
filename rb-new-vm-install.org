@@ -142,8 +142,8 @@ wget, curl, git-core, and lynx.
 sudo apt-get install wget curl git-core lynx
 #+end_src
 
-* What Next?
+* What's Next?
 
-You now have a base plain-vanilla server.  From here you can
+You should now have a base plain-vanilla server.  From here you can
 [[./rb-lamp-server.org][install a LAMP stack]], or whatever your heart desires....
 
