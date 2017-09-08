@@ -136,14 +136,14 @@ sudo userdel -r <distroname>
 * Install some useful stuff
 
 Use =apt-get= or =yum=, depending on the distro, to install
-wget, curl, git-core.
+wget, curl, git-core, and lynx.
 
 #+begin_src sh
-sudo apt-get install wget curl git-core
+sudo apt-get install wget curl git-core lynx
 #+end_src
 
 * What Next?
 
 You now have a base plain-vanilla server.  From here you can
-install a LAMP stack, or whatever your heart desires....
+[[./rb-lamp-server.org][install a LAMP stack]], or whatever your heart desires....
 
