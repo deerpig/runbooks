@@ -1,50 +1,28 @@
 #   -*- mode: org; fill-column: 60 -*-
-#+TITLE: Set up a Git Repo Mirror
+
+#+TITLE: Git Mirror
 #+STARTUP: showall
-#+PROPERTY: filename
-  :PROPERTIES:
-  :Name: /home/deerpig/proj/deerpig/deerpig-install/rb-git-mirror.org
-  :Created: 2017-01-03T13:26@Prek Leap (11.642600N-104.919210W)
-  :ID: 7e1928e4-a1ea-4f5e-9b69-6f3ae0001f71
-  :URL:
-  :END:
-#+INCLUDE: ./inc/head.org
-#+INCLUDE: ./inc/macros.org
-
-{{{breadcrumbs}}}
-
-#+HTML: <div class="outline-2" id="meta">
-| *Author*  | Brad Collins <brad@chenla.org>             |
-| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
-#+HTML: </div>
-
 #+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/deerpig-install/rb-git-mirror.org
+:Created: 2017-01-03T13:26@Prek Leap (11.642600N-104.919210W)
+:ID: 7e1928e4-a1ea-4f5e-9b69-6f3ae0001f71
+:VER:       558129753.295987091
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:CSL7-8633
+:Class:     primer
+:Type:      runbook
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
 
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
-* Status of This Document
-
-The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
-
-#+HTML: <div class="notice notice-info">
-*Changes since the last version*
-
-#+HTML: <ul>
-
-#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
-  RES=YASESCAPE96PROTECTGUARDgit log $TAG...HEAD --pretty="<li>%s</li>\n" -- YYYASESCAPE96PROTECTGUARD
-  if [ -z $RES ]; then
-    RES="<li>no changes</li>"
-  fi
-  echo $RES
-#+END_SRC
-
-#+RESULTS:
-#+BEGIN_EXPORT html
-<li>no changes</li>
-#+END_EXPORT
-
-#+HTML: </ul>
-#+HTML: </div>
 
 * Introduction
 
