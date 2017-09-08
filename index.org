@@ -49,7 +49,8 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
   - [[./rb-lamp-server.org][New LAMP Server]]
   - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
   - Mattermost
-  - IRCD Hybrid Install
+  - [[./rb-ircd-install.org][IRCD Hybrid Install]] 
+  - [[./rb-postfix-dovecot.org][Email Server with Postfix & Dovecot]]
   - GitoLite3 & CGit Install
 *** GitLab
   - [[./rb-gitlab-ce-instll.org][GitLab CE Install]]
