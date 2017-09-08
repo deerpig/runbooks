@@ -1,0 +1,27 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Install Email Server with Postfix & Dovecot
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/deerpig-install/rb-postfix-dovecot.org
+:Created:   2017-09-09T06:32@Prek Leap (11.642600N-104.919210W)
+:ID:        efa2b20e-b646-4b36-a93d-ac42b91a075e
+:VER:       558185641.811790643
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:SOK0-1734
+:Type:      runbook
+:Status:    stub
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-stub-CC79A7.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
+
