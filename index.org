@@ -52,7 +52,7 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
   - IRCD Hybrid Install
   - GitoLite3 & CGit Install
 *** GitLab
-  - GitLab SE Install
+  - [[./rb-gitlab-ce-instll.org][GitLab CE Install]]
   - [[./gitlab-ci.org][GitLab CI]] (continous integration)
 *** OpenStack
   - OpenStack Project Management
