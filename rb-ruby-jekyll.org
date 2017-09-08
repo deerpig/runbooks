@@ -12,7 +12,6 @@
 :VER:       558016186.410367477
 :GEO:       48P-491193-1287029-15
 :BXID:      proj:KEK2-5215
-:Class:     runbook
 :Type:      runbook
 :Status:    wip
 :Licence:   MIT/CC BY-SA 4.0
