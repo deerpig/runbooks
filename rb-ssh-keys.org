@@ -59,7 +59,7 @@ chmod 644 ./authorized_keys
 The page on [[https://wiki.archlinux.org/index.php/SSH_keys][SSH Keys]] the Arch Linux Wiki is excellent,
 in-depth and fully referenced.
 
-- [[https://wiki.archlinux.org/index.php/SSH_keys][SSH Keys]]
+- [[https://wiki.archlinux.org/index.php/SSH_keys][SSH Keys]] | Arch Linux Wiki
 - [[https://www.howtoforge.com/linux-basics-how-to-install-ssh-keys-on-the-shell][Linux Basics: How To Create and Install SSH Keys on the Shell]]
 
 ** 2.  SSH Agent
