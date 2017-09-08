@@ -1,49 +1,27 @@
 #   -*- mode: org; fill-column: 60 -*-
+
 #+TITLE: Screencasting
 #+STARTUP: showall
+#+TOC: headlines 4
 #+PROPERTY: filename
 :PROPERTIES:
-:Name: /home/deerpig/proj/deerpig/deerpig-install/rb-screencasting.org
-:Created: 2016-11-19T11:39@Prek Leap (11.642600N-104.919210W)
-:ID: 5fde9f0b-5fd7-4144-87a0-b6e8a3c21224
-:URL:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/deerpig-install/rb-screencasts.org
+:Created:   2016-11-19T11:39@Prek Leap (11.642600N-104.919210W)
+:ID:        5fde9f0b-5fd7-4144-87a0-b6e8a3c21224
+:VER:       558131740.004330481
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:BBK6-2444
+:Type:      runbook
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
 :END:
-#+INCLUDE: ./inc/head.org
-#+INCLUDE: ./inc/macros.org
 
-{{{breadcrumbs}}}
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
-#+HTML: <div class="outline-2" id="meta">
-| *Author*  | Brad Collins <brad@chenla.org>             |
-| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
-#+HTML: </div>
-
-#+TOC: headlines 4
-
-* Status of This Document
-
-The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
-
-#+HTML: <div class="notice notice-info">
-*Changes since the last version*
-
-#+HTML: <ul>
-
-#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
-RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- rb-screencasting.org`
-if [ -z $RES ]; then
-RES="<li>no changes</li>"
-fi
-echo $RES
-#+END_SRC
-
-#+RESULTS:
-#+BEGIN_EXPORT html
-<li>no changes</li>
-#+END_EXPORT
-
-#+HTML: </ul>
-#+HTML: </div>
 
 * Introduction
 
