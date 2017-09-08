@@ -25,3 +25,18 @@
 
 * Introduction
 
+This will be a walk through in launching a new instance in the
+OpenStack dashboard.  I'm putting it off, because I don't like taking
+screenshots :)
+
+* OpenStack Launch Instance Checklist [0/0]
+
+When creating a new VM in OpenStack, be careful to do the
+following.
+
+  - [ ] give name
+  - [ ] size of instance
+  - [ ] choose boot image
+  - [ ] access & security - choose key pair & security group
+  - [ ] networking - add to private network
+  - [ ] associate ip floating ip address
