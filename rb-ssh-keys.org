@@ -25,7 +25,7 @@
 
 *  SSH Keys (Linux)
 
-** 1.Create .ssh key pair
+** 1.Create SSH key pair
 
 #+begin_src sh
 cd ~/
