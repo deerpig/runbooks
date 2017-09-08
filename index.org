@@ -51,6 +51,9 @@ clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue t
   - [[./rb-ssh-keys.org][SSH Keys]]
   - Mattermost & IRCD Hybrid Install
   - GitoLite3 & CGit Install
+  - OpenStack Project Management
+  - OpenStack Add New Images
+  - OpenStack Launch Instances
 * Emacs & Orgmode
   - Emacs Configuration
 * Cookbooks
@@ -58,21 +61,4 @@ clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue t
 * Colophon
   - Making this document
   - What is a Deerpig?
-* Licence
 
-#+begin_quote
-The MIT License (MIT)
-
-Copyright (c) 2016 deerpig
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-#+end_quote
