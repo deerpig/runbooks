@@ -29,19 +29,6 @@ This document assumes that they are using a linux desktop
 environment.  If you are using OSx or Windows some of this
 will have to be adjusted for your OS.
 
-* OpenStack Launch Instance Checklist [0/0]
-
-When creating a new VM in OpenStack, be careful to do the
-following.
-
-  - [ ] give name
-  - [ ] size of instance
-  - [ ] choose boot image
-  - [ ] access & security - choose key pair & security group
-  - [ ] networking - add to private network
-  - [ ] associate ip floating ip address
-
-
 * First Login
 
 SSH into the newly minted VM.
