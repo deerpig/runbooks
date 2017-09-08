@@ -106,53 +106,6 @@ The stock username depends on the VM's distro:
 ssh <distroname>@192.0.2.25
 #+end_src
 
-*  Set up outgoing DNS
-
-Technically speaking, you really should create a new user
-and delete the install user first, but I prefer to make
-emacs available asap, and sadly before we can to that we
-will have to fix outgoing DNS so we can install emacs.
-
-At the time of writing there is a problem with VMs that are
-set up in new Open Stack Projects on Kinto.  Kinto has a DNS
-nameserver, but it is blocks VMs from using them from inside
-those projects.
-
-The work around is to edit =/etc/dhcp/dhclient.conf= and
-supersede the kinto nameserver with either the =OpenDNS= or
-=Google DNS= nameservers.
-
-Emacs is not part of the default server distros, but =vi=
-and =nano= are.
-
-#+begin_src sh
-sudo nano /etc/dhcp/dhclient.conf
-#+end_src
-
-Add one of the following lines at the /top/ of the file.
-
-For OpenDNS:
-
-#+begin_src sh
-supersede domain-name-servers 208.67.222.222, 298.67.220.220;
-#+end_src sh
-
-For Google DNS:
-
-#+begin_src sh
-supersede domain-name-servers 8.8.8.8, 8.8.4.4;
-#+end_src
-
-Save the file and restart networking:
-
-#+begin_src sh
-sudo /etc/init.d/networking restart
-#+end_src
-
-#+begin_src sh
-ping chenla.org
-#+end_src
-
 * Update Software
 
 Do a quick =yum= or =apt-get= update. 
