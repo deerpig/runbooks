@@ -53,7 +53,7 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
   - GitoLite3 & CGit Install
 *** GitLab
   - GitLab SE Install
-  - GitLab CI (continous integration)
+  - [[./gitlab-ci.org][GitLab CI]] (continous integration)
 *** OpenStack
   - OpenStack Project Management
   - OpenStack Add New Images
