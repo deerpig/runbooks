@@ -37,20 +37,30 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
 
 
 ** Runbooks 
-  - [[./rb-desktop-install.html][Desktop Install]]
+*** Desktop
+  - [[./rb-desktop-install.html][Desktop Install]] 
+*** Basics
   - [[./rb-new-vm-install.html][New Virtual Machine Install]]
   - [[./rb-git-mirror.html][Set up a Git Repo Mirror]]
   - [[./rb-new-website-install.html][New Website Install]]
-  - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
-  - [[./rb-screencasts.html][Screencasts HOWTO]]
-  - [[./rb-lamp-server.org][New LAMP Server]]
   - [[./rb-ruby-jekyll.org][Install Ruby & Jekyll]]
-  - [[./rb-ssh-keys.org][SSH Keys]]
-  - Mattermost & IRCD Hybrid Install
+  - [[./rb-ssh-keys.org][SSH Keys]] 
+*** Servers
+  - [[./rb-lamp-server.org][New LAMP Server]]
+  - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
+  - Mattermost
+  - IRCD Hybrid Install
   - GitoLite3 & CGit Install
+*** GitLab
+  - GitLab SE Install
+  - GitLab CI (continous integration)
+*** OpenStack
   - OpenStack Project Management
   - OpenStack Add New Images
-  - [[./rb-openstack-launch-instance.org][OpenStack Launch Instances]]
+  - [[./rb-openstack-launch-instance.org][OpenStack Launch Instances]] 
+*** Other
+  - [[./rb-screencasts.html][Screencasts HOWTO]]
+
 ** Emacs & Orgmode
   - Emacs Configuration
 ** Cookbooks
