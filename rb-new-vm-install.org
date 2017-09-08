@@ -1,25 +1,27 @@
 #   -*- mode: org; fill-column: 60 -*-
+
 #+TITLE: Setting Up A VM on Kinto Cloud Service
 #+STARTUP: showall
-#+PROPERTY: filename 
-  :PROPERTIES:
-  :Name: /home/deerpig/proj/deerpig/deerpig-install/kinto-vm-install.org
-  :Created: 2016-08-06T14:19@Wat Phnom (11.5733N17-104.925295W)
-  :ID: 6de8e89f-1bfb-44d1-8bd2-f68e1dc44109
-  :URL:
-  :END:
-#+INCLUDE: ./inc/head.org
-#+INCLUDE: ./inc/macros.org
-#+INCLUDE: ./inc/links.org
-
-{{{breadcrumbs}}}
-
-#+HTML: <div class="outline-2" id="meta">
-| *Author*  | Brad Collins <brad@chenla.org>             |
-| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
-#+HTML: </div>
-
 #+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/deerpig-install/rb-new-vm-install.org
+:Created:   2016-08-06T14:19@Wat Phnom (11.5733N17-104.925295W)
+:ID:        6de8e89f-1bfb-44d1-8bd2-f68e1dc44109
+:VER:       558131119.840072642
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:TKW5-6453
+:Type:      runbook
+:Status:    stub
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
 
 * Introduction
 
@@ -27,7 +29,10 @@ This document assumes that they are using a linux desktop
 environment.  If you are using OSx or Windows some of this
 will have to be adjusted for your OS.
 
-* Create VM in Openstack [0/0]
+* OpenStack Launch Instance Checklist [0/0]
+
+When creating a new VM in OpenStack, be careful to do the
+following.
 
   - [ ] give name
   - [ ] size of instance
