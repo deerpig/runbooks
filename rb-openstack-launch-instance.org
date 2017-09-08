@@ -1,0 +1,27 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: OpenStack Launch Instance
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/deerpig-install/rb-openstack-launch-instance.org
+:Created:   2017-09-08T16:32@Prek Leap (11.642600N-104.919210W)
+:ID:        44ece9ae-5267-4943-861a-c236ecbb268c
+:VER:       558135226.136372358
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:GTT5-5006
+:Type:      runbook
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
+
