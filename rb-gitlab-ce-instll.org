@@ -25,3 +25,6 @@
 
 * Introduction
 
+ - [[https://about.gitlab.com/installation/][Installation methods for GitLab]] | GitLab
+ - [[https://www.howtoforge.com/tutorial/how-to-install-gitlab-on-debian-8/][How to Install Gitlab on Debian 8 (Jessie)]] | HowtoForge
+
