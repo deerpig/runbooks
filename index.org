@@ -48,6 +48,7 @@ clarifications. Please use the [[http://bugs.chenla.org/support/][chenla issue t
   - [[./rb-screencasts.html][Screencasts HOWTO]]
   - [[./rb-lamp-server.org][New LAMP Server]]
   - [[./rb-ruby-jekyll.org][Install Ruby and Jekyll]]
+  - [[./rb-ssh-keys.org][SSH Keys]]
   - Mattermost & IRCD Hybrid Install
   - GitoLite3 & CGit Install
 * Emacs & Orgmode
