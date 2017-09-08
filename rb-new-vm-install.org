@@ -29,6 +29,12 @@ This document assumes that they are using a linux desktop
 environment.  If you are using OSx or Windows some of this
 will have to be adjusted for your OS.
 
+We will assume that you have already generated and installed
+a SSH key pair locally, and that a VM has been launched with
+your ssh key.
+
+This document will describe how to set up a clean VM.
+
 * First Login
 
 SSH into the newly minted VM.
