@@ -1,49 +1,27 @@
 #   -*- mode: org; fill-column: 60 -*-
+
 #+TITLE: Install ircd Hybrid 
 #+STARTUP: showall
-#+PROPERTY: filename 
-  :PROPERTIES:
-  :Name: /home/deerpig/proj/deerpig/deerpig-install/rb-ircd-install.org
-  :Created: 2016-09-01T14:00@Wat Phnom (11.5733N17-104.925295W)
-  :ID: 4b1f5459-c661-45ef-b8b3-00b4d2244f8f
-  :URL:
-  :END:
-#+INCLUDE: ./inc/head.org
-#+INCLUDE: ./inc/macros.org
-
-{{{breadcrumbs}}}
-
-#+HTML: <div class="outline-2" id="meta">
-| *Author*  | Brad Collins <brad@chenla.org>             |
-| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
-#+HTML: </div>
-
 #+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/deerpig-install/rb-ircd-install.org
+:Created:   2016-09-01T14:00@Wat Phnom (11.5733N17-104.925295W)
+:ID:        4b1f5459-c661-45ef-b8b3-00b4d2244f8f
+:VER:       558129984.584912469
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:QHC6-5315
+:Type:      runbook
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
 
-* Status of This Document
+[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-work-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
-The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
-
-#+HTML: <div class="notice notice-info">
-*Changes since the last version*
-
-#+HTML: <ul>
-
-#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
-  RES=`git log $TAG...HEAD --pretty="<li>%s</li>\n" -- rb-ircd-install.org`
-  if [ -z $RES ]; then
-    RES="<li>no changes</li>"
-  fi
-  echo $RES
-#+END_SRC
-
-#+RESULTS:
-#+BEGIN_EXPORT html
-<li>no changes</li>
-#+END_EXPORT
-
-#+HTML: </ul>
-#+HTML: </div>
 
 * Introduction
 
