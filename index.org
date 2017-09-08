@@ -44,13 +44,13 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
   - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
   - [[./rb-screencasts.html][Screencasts HOWTO]]
   - [[./rb-lamp-server.org][New LAMP Server]]
-  - [[./rb-ruby-jekyll.org][Install Ruby and Jekyll]]
+  - [[./rb-ruby-jekyll.org][Install Ruby & Jekyll]]
   - [[./rb-ssh-keys.org][SSH Keys]]
   - Mattermost & IRCD Hybrid Install
   - GitoLite3 & CGit Install
   - OpenStack Project Management
   - OpenStack Add New Images
-  - OpenStack Launch Instances
+  - [[./rb-openstack-launch-instance.org][OpenStack Launch Instances]]
 ** Emacs & Orgmode
   - Emacs Configuration
 ** Cookbooks
