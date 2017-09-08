@@ -41,49 +41,6 @@ following.
   - [ ] networking - add to private network
   - [ ] associate ip floating ip address
 
-* Create .ssh key pair
-
-#+begin_src sh
-cd ~/
-mkdir .ssh
-cd ~/.ssh
-ssh-keygen -b 4096
-#+end_src
-
-This will create a 4096-bit RSA (and SHA256) which should be
-pretty solid for the forseeable future.
-
-You will be prompted for a location to save the keys, and
-for an optional passphrase.  The passphrase is a backup
-security measure so that if your private key is stolen, the
-attacker will need your passphrase to be able to use the
-key.
-
-Two files will be generated, =id_rsa= and =id_rsa.pub=.  
-
-Now double check that all permissions on the .ssh directory
-and keys are correct.
-
-#+begin_src sh
-chmod 700 ./.ssh
-chmod 600 ./id_rsa
-chmod 644 ./authorized_keys
-#+end_src
-
-** Further Reading
-
-The page on [[https://wiki.archlinux.org/index.php/SSH_keys][SSH Keys]] the Arch Linux Wiki is excellent,
-in-depth and fully referenced.
-
-:url: [[https://wiki.archlinux.org/index.php/SSH_keys][SSH Keys]]
-
-* Send Key & Username to Kinto
-
-Send a copy of the public key along with a preferred name
-for the machine to whoever is setting up your VM at Kinto.
-
-When the VM is ready you will get back an ip address,
-machine name, and possibly a domain name.
 
 * First Login
 
