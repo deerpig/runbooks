@@ -12,7 +12,6 @@
 :VER:       558129388.244458256
 :GEO:       48P-491193-1287029-15
 :BXID:      proj:PAJ6-5337
-:Class:     primer
 :Type:      runbook
 :Status:    wip
 :Licence:   MIT/CC BY-SA 4.0
