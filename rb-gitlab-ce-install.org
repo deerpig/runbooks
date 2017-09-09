@@ -25,6 +25,32 @@
 
 * Introduction
 
+** 1. Install Required packages
+
+Install packages required by GitLab
+
+#+begin_src sh
+sudo apt-get -y install curl openssh-server ca-certificates postfix
+#+end_src
+
+The postfix installer will popup a curses dialog and ask a
+few qustions.
+
+Choose =Internet Site=
+
+[[./img/gitlab-install/posix-config-screen.png]] 
+
+Next, you'll be asked for the hostname of the mail server.
+Use the name of the server that will be sending email, which
+in our case is the git server, for example =git.example.org=.
+
+[[./img/gitlab-install/posix-config-screen-2.png]]
+
+
+
+
+
+* References & Further Reading
+
  - [[https://about.gitlab.com/installation/][Installation methods for GitLab]] | GitLab
  - [[https://www.howtoforge.com/tutorial/how-to-install-gitlab-on-debian-8/][How to Install Gitlab on Debian 8 (Jessie)]] | HowtoForge
-
