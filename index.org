@@ -40,7 +40,7 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
 *** Desktop
   - [[./rb-desktop-install.html][Desktop Install]] 
 *** Basics
-  - [[./rb-new-vm-install.html][New Virtual Machine Install]]
+  - [[./rb-new-vm-install.html][New Virtual Machine]]
   - [[./rb-git-mirror.html][Set up a Git Repo Mirror]]
   - [[./rb-new-website-install.html][New Website Install]]
   - [[./rb-ruby-jekyll.org][Install Ruby & Jekyll]]
