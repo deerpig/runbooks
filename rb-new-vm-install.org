@@ -35,7 +35,7 @@ your ssh key.
 
 This document will describe how to set up a clean VM.
 
-* First Login
+* 1. First Login
 
 SSH into the newly minted VM.
 
@@ -56,7 +56,7 @@ The stock username depends on the VM's distro:
 ssh <distroname>@192.0.2.25
 #+end_src
 
-* Update Software
+* 2. Update Software
 
 Do a quick =yum= or =apt-get= update. 
 
@@ -67,7 +67,7 @@ sudo apt-get update && sudo apt-get upgrade
 #+end_src
 
 
-* Install Emacs
+* 3. Install Emacs
 
 Since these are servers, there is no need to install full
 blown versions of emacs which require you to install X and
@@ -94,7 +94,7 @@ On =Debian= & =Ubuntu=:
 sudo apt-get install emacs24-nox
 #+end_src
 
-* Create new User
+* 4. Create new User
 
 Create the =wheel= group which is still used by some
 software packages.
@@ -111,7 +111,7 @@ sudo adduser <username>
 sudo usermod -a -G sudo,wheel <username>
 #+end_src
 
-* Copy .ssh key directory to new user 
+* 5. Copy .ssh key directory to new user 
 
 Copy the ssh key that is in the default user directory to
 the new account.  Then change the ownership and group to the
@@ -124,7 +124,7 @@ sudo chown -R <username>:<username> /home/<username>/.ssh
 
 Exit and ssh back into the machine as your new user.
 
-* Delete default user
+* 6. Delete default user
 
 If everything seems to be working (sudo something) then
 delete the default user account and their home directory.
@@ -133,7 +133,7 @@ delete the default user account and their home directory.
 sudo userdel -r <distroname>
 #+end_src
 
-* Install some useful stuff
+* 7. Install some useful stuff
 
 Use =apt-get= or =yum=, depending on the distro, to install
 wget, curl, git-core, and lynx.
@@ -142,7 +142,7 @@ wget, curl, git-core, and lynx.
 sudo apt-get install wget curl git-core lynx
 #+end_src
 
-* What's Next?
+* 8. What's Next?
 
 You should now have a base plain-vanilla server.  From here you can
 [[./rb-lamp-server.org][install a LAMP stack]], or whatever your heart desires....
