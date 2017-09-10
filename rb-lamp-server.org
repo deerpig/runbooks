@@ -68,7 +68,7 @@ sudo apt-get install apache2
 
 ** 2. Edit the main Apache configuration file and turn off the =KeepAlive= setting:
 
-File: */etc/apaches/apache2.conf*
+File: */etc/apache2/apache2.conf*
 
 #+begin_src sh
 sudo emacs /etc/apache2/apache2.conf
