@@ -1,5 +1,3 @@
 * README
 
-This is a collection of installation documents for personal use and
-work.  The web site generated from this repo can be found at
-[[http://deerpig.chenla.org][deerpig.chenla.org]]
+This is a collection of runbooks for personal use and work.
