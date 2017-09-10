@@ -64,7 +64,7 @@ sudo apt-get update
 sudo apt-get install gitlab-ci-multi-runner
 #+end_src
 
-** Register the Runner
+** 5. Register the Runner
 
 See: [[https://docs.gitlab.com/runner/register/index.html][Register the Runner]]
 
