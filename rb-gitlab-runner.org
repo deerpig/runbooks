@@ -58,3 +58,13 @@ Pin-Priority: 1001
 sudo apt-get update
 #+end_src
 
+** 4. Install =gitlab-ci-multi-runner=
+
+#+begin_src sh
+sudo apt-get install gitlab-ci-multi-runner
+#+end_src
+
+** Register the Runner
+
+See: [[https://docs.gitlab.com/runner/register/index.html][Register the Runner]]
+
