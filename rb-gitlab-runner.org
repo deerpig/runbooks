@@ -25,3 +25,36 @@
 
 * Introduction
 
+** 1. Add GitLab's repo
+
+#+begin_src sh
+curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.deb.sh | sudo bash
+#+end_src
+
+According to GitLab, since Debian's package names are the same as
+GitLab's you need to use /APT pinning/ to prefer the GitLab packages
+over Debian's.
+
+** 2. Create the file =pin-gitlab-runner.pref=
+
+File: */etc/apt/preferences.d/pin-gitlab-runner.pref*
+
+#+begin_example
+sudo emacs /etc/apt/preferences.d/pin-gitlab-runner.pref
+#+end_example
+
+and include the following:
+
+#+begin_example
+Explanation: Prefer GitLab provided packages over the Debian native ones
+Package: gitlab-ci-multi-runner
+Pin: origin packages.gitlab.com
+Pin-Priority: 1001
+#+end_example
+
+** 3. Do an apt-get update
+
+#+begin_src sh
+sudo apt-get update
+#+end_src
+
