@@ -54,7 +54,8 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
   - [[./rb-postfix-dovecot.org][Email Server with Postfix & Dovecot]]
   - GitoLite3 & CGit Install
 *** GitLab
-  - [[./rb-gitlab-ce-instll.org][GitLab CE Install]]
+  - [[./rb-gitlab-ce-instll.org][GitLab CE Install]] 
+  - [[./rb-gitlab-runner.org][GitLab Runner Install]]
   - [[./rb-gitlab-ci.org][GitLab CI]] (Continuous Integration)
 *** OpenStack
   - OpenStack Project Management
