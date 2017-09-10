@@ -25,8 +25,6 @@
 
 * Install GitLab Runner
 
-
-
 ** 1. Add GitLab's repo
 
 #+begin_src sh
@@ -66,12 +64,29 @@ sudo apt-get update
 sudo apt-get install gitlab-ci-multi-runner
 #+end_src
 
-** 5. Register the Runner
+* Register the Runner
 
-See: [[https://docs.gitlab.com/runner/register/index.html][Register the Runner]]
+** 1. Obtain a token
+
+In GitLab, the token can be found in admin/runners page.
+
+** 2. Run =gitlab-runner=
+
+On the Runner instance run =gitlab-runner=.
+
+#+begin_src sh
+sudo gitlab-runner register
+#+end_src
+
+Runner will ask a lot of questions. Including the token
+information, and the /executor/ method ie. ssh.
+
+When the script finishes, you should see the registered
+running on the =admin/runners= page when you refresh the
+page.
 
 * References & Links 
 
  - [[https://docs.gitlab.com/runner/install/linux-repository.html][Install GitLab Runner using the official GitLab
    repositories]] | GitLab Documentation
-
+ - [[https://docs.gitlab.com/runner/register/index.html][Registering Runners]] | GitLab Documentation
