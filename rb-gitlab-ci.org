@@ -25,10 +25,12 @@
 
 * Introduction
 
+Not having much luck so far with getting gitlab to autodeploy.
+
 
 * References & Links 
 
  - [[https://about.gitlab.com/features/gitlab-ci-cd/][GitLab Continuous Integration & Deployment]] | GitLab
-
-
+ - [[https://docs.gitlab.com/ee/ci/variables/README.html#gitlab-ci-yaml-defined-variables][Variables]] | GitLab Documentation
  - [[https://www.computing.zone/deploy-phphtml-website-gitlab-ci/][How to deploy PHP/HTML website with Gitlab CI]] | ComputingZone
+ - [[https://rpadovani.com/jekyll-autodeploy-gitlab-ci][Auto deploy a Jekyll website with Gitlab CI]]  
