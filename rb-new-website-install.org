@@ -85,8 +85,8 @@ For Jekyll Sites, use the following:
 
 #+begin_source sh
 #!/bin/bash -l
-# Use trailing slash so that contents are moved,
-# not whole directories.
+# Use Jekyll to build and deploy website
+# No trailing slashes for directories
 GIT_REPO=$HOME/repos/site.example.com
 TMP_GIT_CLONE=$HOME/tmp/site.example.com
 PUBLIC_WWW=/var/www/html/site.example.com/public_html
@@ -107,6 +107,7 @@ For Static Sites, use the following:
 
 #+begin_source sh
 #!/bin/bash -l
+# Use rsync to copy the site to the server. 
 # Use trailing slash so that contents are moved,
 # not whole directories.
 GIT_REPO=$HOME/repos/site.example.com/
