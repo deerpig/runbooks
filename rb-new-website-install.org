@@ -87,9 +87,9 @@ For Jekyll Sites, use the following:
 #!/bin/bash -l
 # Use trailing slash so that contents are moved,
 # not whole directories.
-GIT_REPO=$HOME/repos/site.example.com/
-TMP_GIT_CLONE=$HOME/tmp/site.example.com/
-PUBLIC_WWW=/var/www/html/site.example.com/public_html/
+GIT_REPO=$HOME/repos/site.example.com
+TMP_GIT_CLONE=$HOME/tmp/site.example.com
+PUBLIC_WWW=/var/www/html/site.example.com/public_html
 
 git clone $GIT_REPO $TMP_GIT_CLONE
 
@@ -126,7 +126,7 @@ exit
 ** 4. Make the file executable
 
 #+begin_src sh
-sudo chmod +x post-receive
+chmod +x post-receive
 #+end_src
 
 ** 5. Create web server directories
