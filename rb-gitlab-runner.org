@@ -23,7 +23,9 @@
 [[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
 
-* Introduction
+* Install GitLab Runner
+
+
 
 ** 1. Add GitLab's repo
 
@@ -67,4 +69,9 @@ sudo apt-get install gitlab-ci-multi-runner
 ** 5. Register the Runner
 
 See: [[https://docs.gitlab.com/runner/register/index.html][Register the Runner]]
+
+* References & Links 
+
+ - [[https://docs.gitlab.com/runner/install/linux-repository.html][Install GitLab Runner using the official GitLab
+   repositories]] | GitLab Documentation
 
