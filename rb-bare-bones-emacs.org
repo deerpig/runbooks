@@ -36,6 +36,35 @@ set them up to make remote workflow a little easier.
 That's all this file is.
 
 
+* Header
+
+#+begin_src emacs-lisp
+  ;;; Deerpig's Barebones .emacs file.
+  ;;; (c)2017 Brad Collins, Phnom Penh.
+  ;;; MIT Licence
+  ;;;
+  ;;; This is part of a literate program that was tangled 
+  ;;; from either of the following:
+  ;;;
+  ;;;  https://github.com/deerpig/runbooks/blob/master/rb-bare-bones-emacs.org
+  ;;;  http://git.chenla.org/deerpig-public/runbooks/blob/master/rb-bare-bones-emacs.org
+  ;;;
+  ;;;  Now for a true story:
+  ;;;
+  ;;;     "Daddy, is there emacs in heaven"
+  ;;;
+  ;;;     "Well my dear daughter, if there wasn't, you couldn't really
+  ;;;     call it heaven, now could you." The father stroked his long
+  ;;;     beard thoughtfully and whispered, almost to himself, "But what
+  ;;;     keeps me awake at night is if you can take your .emacs with
+  ;;;     you!"
+  ;;;
+  ;;; ===========================================================
+
+
+#+end_src
+
+
 * NOX Configuration
 
 ** Yes-or-no questions
@@ -43,24 +72,45 @@ That's all this file is.
 Don't require typing 'yes" or 'no'
 
 #+begin_src emacs-lisp
+;; y-or-n questions -----------------------------------------
 (fset 'yes-or-no-p 'y-or-n-p)
+
 #+end_src
 
 ** Inhibit startup message
 
-Don't display boilerplate startup message in scratch buffer.
+Don't display boilerplate startup message in scratch buffer. This
+gives us a nice clean scratch buffer.
 
 #+begin_src emacs-lisp
+;; no scratch message ----------------------------------------
+
 (setq initial-scratch-message nil)
 #+end_src
 
-* Minimal GUI Configuration 
+** Don't mix tabs and spaces
 
-Don't show tool bar, menu bar or scroll bar or startup screen.
+I know this is a religous issue, but I've found life easier without
+tabspace characters mucking things up.
 
 #+begin_src emacs-lisp
+;; Don't mix tabs and spaces ---------------------------------
+  (setq-default indent-tabs-mode nil) 
+
+#+end_src
+
+
+* Minimal GUI Configuration 
+
+I know what I'm doing, so don't clutter up the screen with 
+the the tool, menu, scroll bars or splash screen.
+
+#+begin_src emacs-lisp
+;; No cluttering tool, menu, scroll bars or splash screen.
+
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode -1)
 (setq inhibit-startup-screen t)
 #+end_src
+
