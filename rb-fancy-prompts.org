@@ -1,0 +1,27 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Bash Prompt
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/runbooks/rb-fancy-prompts.org
+:Created:   2017-09-12T11:46@Prek Leap (11.642600N-104.919210W)
+:ID:        a00f1bb2-4b70-48f6-8eda-d1a5ceb7a09f
+:VER:       558463684.309171212
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:EUV4-5438
+:Type:      work
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
+
