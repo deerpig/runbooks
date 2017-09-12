@@ -218,7 +218,7 @@ sudo chown root:webadmin /var/www/html/site.example.com
 Change permissions of the sites directory
 
 #+begin_src sh
-sudo chmod 2775 /var/www/html/site.example.com -R
+sudo chmod -R 2775 /var/www/html/site.example.com
 #+end_src
 
 This allows everyone to read the files (including the
@@ -312,6 +312,20 @@ create database webdata;
 grant all on webdata.* to 'username' identified by 'password';
 quit
 #+end_src
+
+*** 3.3 Import Database Dump
+
+#+begin_src sh
+mysql -u root -p
+use webdata;
+source /home/user/webdatadb.sql;
+quit
+#+end_src
+
+** References & Links
+
+ - [[https://www.digitalocean.com/community/tutorials/how-to-migrate-a-mysql-database-to-a-new-server-on-ubuntu-14-04][How To Migrate a MySQL Database To A New Server On Ubuntu 14.04]] | DigitalOcean
+ - 
 
 * PHP
 
