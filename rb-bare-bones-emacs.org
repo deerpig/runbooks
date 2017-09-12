@@ -82,19 +82,22 @@ Don't require typing 'yes" or 'no'.
 
 ** Inhibit startup message
 
-Don't display boilerplate startup message in scratch buffer. This
-gives us a nice clean scratch buffer.
+Don't display boilerplate startup message in scratch
+buffer. This gives us a nice clean scratch buffer.
 
 #+begin_src emacs-lisp
-;; no scratch message 
-
+;; no startup message in scratch
 (setq initial-scratch-message nil)
+
+;; no splash screen 
+(setq inhibit-startup-screen t)
+
 #+end_src
 
 ** Don't mix tabs and spaces
 
-I know this is a religous issue, but I've found life easier without
-tabspace characters mucking things up.
+I know this is a religous issue, but I've found life easier
+without tabspace characters mucking things up.
 
 #+begin_src emacs-lisp
 ;; Don't mix tabs and spaces
@@ -102,35 +105,27 @@ tabspace characters mucking things up.
 
 #+end_src
 
-** Flash matching parenthesis
-
-#+begin_src sh
-;; flash matching parenthesis
-  (require 'flash-paren)
-  (flash-paren-mode 1)
-
-#+end_src
-
 * Minimal GUI Configuration 
+
+The following can only be used if you are running X.  If you
+try to use them in emacs-nox, you'll get an error.
 
 I know what I'm doing, so don't clutter up the screen with 
 the the tool, menu, scroll bars or splash screen.
 
 #+begin_src emacs-lisp
 ;; Clean up the gui on X
+;; uncomment out the following if you are using this 
+;; init file in X.
 
 ;; no tool bar
-(tool-bar-mode 0)
+;(tool-bar-mode 0)
 
 :; no menu bar
-(menu-bar-mode 0)
+;(menu-bar-mode 0)
 
 ;; no scroll bars
-(scroll-bar-mode -1)
-
-;; no splash screen 
-(setq inhibit-startup-screen t)
-
+;(scroll-bar-mode -1)
 #+end_src
 
 * End of file
