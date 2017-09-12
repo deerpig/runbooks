@@ -117,7 +117,7 @@ I know what I'm doing, so don't clutter up the screen with
 the the tool, menu, scroll bars or splash screen.
 
 #+begin_src emacs-lisp
-;; Clean up the gui on X ---------------------------------------
+;; Clean up the gui on X
 
 ;; no tool bar
 (tool-bar-mode 0)
