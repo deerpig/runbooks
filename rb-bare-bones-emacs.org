@@ -25,3 +25,13 @@
 
 * Introduction
 
+My local =.emacs= is /enormous/ and grows by the hour.
+
+But I've never found a solution that is consistent for working over
+ssh on remote hosts.  I'm not talking about using tramp to work on a
+remote host.  All I want is a very basic dotemacs that I can put on
+servers when I set them up to make remote workflow a little easier.
+
+#+begin_src sh
+
+#+end_src
