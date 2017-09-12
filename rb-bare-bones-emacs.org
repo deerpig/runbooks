@@ -106,11 +106,14 @@ I know what I'm doing, so don't clutter up the screen with
 the the tool, menu, scroll bars or splash screen.
 
 #+begin_src emacs-lisp
-;; No cluttering tool, menu, scroll bars or splash screen.
+;; Clean up the gui on X ---------------------------------------
+;; No tool, menu, scroll bars or splash screen. 
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode -1)
 (setq inhibit-startup-screen t)
+
+
 #+end_src
 
