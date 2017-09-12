@@ -3,7 +3,7 @@
 #+TITLE: Bare Bones .emacs
 #+STARTUP: showall
 #+TOC: headlines 4
-#+PROPERTY: filename
+#+PROPERTY: header-args :results drawer  :tangle bare-bones-emacs.el
 :PROPERTIES:
 :CUSTOM_ID: 
 :Name:      /home/deerpig/proj/deerpig/runbooks/rb-bare-bones-emacs.org
@@ -95,7 +95,7 @@ tabspace characters mucking things up.
 
 #+begin_src emacs-lisp
 ;; Don't mix tabs and spaces ---------------------------------
-  (setq-default indent-tabs-mode nil) 
+(setq-default indent-tabs-mode nil) 
 
 #+end_src
 
@@ -117,3 +117,13 @@ the the tool, menu, scroll bars or splash screen.
 
 #+end_src
 
+
+* End of file
+
+#+begin_src emacs-lisp
+
+
+;; that's all folks
+;; eof
+
+#+end_src
