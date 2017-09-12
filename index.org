@@ -46,7 +46,7 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
   - [[./rb-ruby-jekyll.org][Install Ruby & Jekyll]]
   - [[./rb-ssh-keys.org][SSH Keys]] 
   - [[./rb-ca-certificates.org][CA Certificates]]
-  - [[rb-fancy-prompts.org][Bash Prompt]]
+  - [[./rb-fancy-prompts.org][Bash Prompt]]
 *** Servers
   - [[./rb-lamp-server.org][New LAMP Server]]
   - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
