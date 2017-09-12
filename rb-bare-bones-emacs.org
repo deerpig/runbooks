@@ -41,7 +41,7 @@ That's all this file is.
 #+begin_src emacs-lisp
   ;;; Deerpig's Barebones .emacs file.
   ;;; (c)2017 Brad Collins, Phnom Penh.
-  ;;; MIT Licence
+  ;;; Licence: MIT/CC BY-SA 4.0
   ;;;
   ;;; This is part of a literate program that was tangled 
   ;;; from either of the following:
@@ -51,7 +51,7 @@ That's all this file is.
   ;;;
   ;;;  Now for a true story:
   ;;;
-  ;;;     "Daddy, is there emacs in heaven"
+  ;;;     "Daddy, is there emacs in heaven?"
   ;;;
   ;;;     "Well my dear daughter, if there wasn't, you couldn't really
   ;;;     call it heaven, now could you." The father stroked his long
@@ -65,7 +65,7 @@ That's all this file is.
 #+end_src
 
 
-* NOX Configuration
+* NOX (no X-windows) Configuration
 
 ** Yes-or-no questions
 
