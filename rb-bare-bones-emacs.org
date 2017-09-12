@@ -3,7 +3,7 @@
 #+TITLE: Bare Bones .emacs
 #+STARTUP: showall
 #+TOC: headlines 4
-#+PROPERTY: header-args :results drawer  :tangle bare-bones-emacs.el
+#+PROPERTY: header-args :results drawer  :tangle .emacs.el
 :PROPERTIES:
 :CUSTOM_ID: 
 :Name:      /home/deerpig/proj/deerpig/runbooks/rb-bare-bones-emacs.org
