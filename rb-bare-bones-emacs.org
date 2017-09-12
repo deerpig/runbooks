@@ -27,11 +27,40 @@
 
 My local =.emacs= is /enormous/ and grows by the hour.
 
-But I've never found a solution that is consistent for working over
-ssh on remote hosts.  I'm not talking about using tramp to work on a
-remote host.  All I want is a very basic dotemacs that I can put on
-servers when I set them up to make remote workflow a little easier.
+But I still finding myself working on other machines, either by
+ssh'ing into them or at a different desktop that I use occasionally.
 
-#+begin_src sh
+All I need is a very basic dotemacs that I can put on servers when I
+set them up to make remote workflow a little easier.
 
+That's all this file is.
+
+
+* NOX Configuration
+
+** Yes-or-no questions
+
+Don't require typing 'yes" or 'no'
+
+#+begin_src emacs-lisp
+(fset 'yes-or-no-p 'y-or-n-p)
+#+end_src
+
+** Inhibit startup message
+
+Don't display boilerplate startup message in scratch buffer.
+
+#+begin_src emacs-lisp
+(setq initial-scratch-message nil)
+#+end_src
+
+* Minimal GUI Configuration 
+
+Don't show tool bar, menu bar or scroll bar or startup screen.
+
+#+begin_src emacs-lisp
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode -1)
+(setq inhibit-startup-screen t)
 #+end_src
