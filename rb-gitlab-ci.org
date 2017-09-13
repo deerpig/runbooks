@@ -13,22 +13,65 @@
 :GEO:       48P-491193-1287029-15
 :BXID:      proj:JKB0-7052
 :Type:      runbook
-:Status:    stub
+:Status:    wip
 :Licence:   MIT/CC BY-SA 4.0
 :END:
 
 [[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
 [[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
-[[https://img.shields.io/badge/status-stub-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
 [[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
 
 * Introduction
 
-Not having much luck so far with getting gitlab to autodeploy.
+
+laptop  --push--> GitLab --trigger--> webhook --> receiver
+--> build-deploy.sh
+
+
+* On the server
+
+
+** Create user for Apache2
+
+Generate ssh keys for both the Apache user and the standard
+web server user (stephen in my case): ~# ssh-keygen -t
+rsa~. 
+
+Create these keys in the =.ssh= folder in the user's home
+folder.  
+
+Ensure that the .ssh folder is assigned =0700=
+permissions and is owned by their respective user. 
+
+The home folder for the Apache user is =/var/www= in most
+cases. Run 
+
+sudo cat /etc/passwd
+sudo echo ~apache 
+
+to verify where the Apache user's home folder is actually located.
+
+** Generate Keys 
+
+ - put on gitlab
+ 
+
+
+* Install Web Hoook
+
+
+
 
 
 * References & Links 
+
+** Webhooks
+
+
+
+** GitLab CI
 
  - [[https://about.gitlab.com/features/gitlab-ci-cd/][GitLab Continuous Integration & Deployment]] | GitLab
  - [[https://docs.gitlab.com/ee/ci/variables/README.html#gitlab-ci-yaml-defined-variables][Variables]] | GitLab Documentation
