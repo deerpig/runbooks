@@ -1,0 +1,33 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Mattermost Server Install
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/runbooks/rb-mattermost-install.org
+:Created:   2017-09-14T17:18@Prek Leap (11.642600N-104.919210W)
+:ID:        e5ec7ee3-4535-4971-9498-29ac31cd9d30
+:VER:       558656392.145004611
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:FLW4-3575
+:Class:     docs
+:Type:      runbook
+:Status:    stub
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/class-docs-56B4E9.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-stub-CC79A7.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
+
+Since we've dipped our feet in the water and are using =GitLab=, we
+might as well jump all the way in and install =GitLab Mattermost=.
+
+  - [[https://docs.gitlab.com/omnibus/gitlab-mattermost/][GitLab Mattermost]] | GitLab Documentation
