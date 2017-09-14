@@ -52,15 +52,23 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
 *** Servers
   - [[./rb-lamp-server.org][New LAMP Server]]
   - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
-  - [[./rb-mattermost-install.org][Mattermost Install]]
   - [[./rb-ircd-install.org][IRCD Hybrid Install]] 
-  - [[./rb-postfix-dovecot.org][Email Server with Postfix & Dovecot]]
-  - GitoLite3 & CGit Install
+  - [[./rb-postfix-dovecot.org][Postfix & Dovecot]]
+*** OpenShift
+  - Research and Notes
+  - OpenShift Install
+*** Ceph
+  - Research and Notes
+  - Ceph Install
 *** GitLab
   - [[./rb-gitlab-ce-instll.org][GitLab CE Install]] 
   - [[./rb-gitlab-runner.org][GitLab Runner Install]]
   - [[./rb-gitlab-ci.org][GitLab CI]] (Continuous Integration)
+*** Mattermost
+  - [[./rb-mattermost-install.org][Mattermost Install]] 
 *** OpenStack
+  - Research and Notes
+  - OpenStack Install
   - OpenStack Project Management
   - OpenStack Add New Images
   - [[./rb-openstack-launch-instance.org][OpenStack Launch Instances]] 
