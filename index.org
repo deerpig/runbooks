@@ -52,7 +52,7 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
 *** Servers
   - [[./rb-lamp-server.org][New LAMP Server]]
   - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
-  - Mattermost
+  - [[./rb-mattermost-install.org][Mattermost Install]]
   - [[./rb-ircd-install.org][IRCD Hybrid Install]] 
   - [[./rb-postfix-dovecot.org][Email Server with Postfix & Dovecot]]
   - GitoLite3 & CGit Install
