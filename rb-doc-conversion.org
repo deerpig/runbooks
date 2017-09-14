@@ -13,17 +13,33 @@
 :GEO:       48P-491193-1287029-15
 :BXID:      proj:BQR5-6823
 :Class:     docs
-:Type:      work
+:Type:      runbook
 :Status:    wip
 :Licence:   MIT/CC BY-SA 4.0
 :END:
 
 [[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]]
 [[https://img.shields.io/badge/class-docs-56B4E9.svg?style=flat-square]]
-[[https://img.shields.io/badge/type-work-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
 [[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
 [[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
 
 * Introduction
 
+At present all Chenla, PNCA and personel documetation is written in
+=orgmode= syntax because a) it's a very powerful document creation
+framework and just as importantly, b) because I am the only one writing
+documentation and that means it's going to be in emacs using orgmode.
+
+This document describes the workflow for converting documentation
+written in =orgmode syntax= into other formats including =latex/pdf=,
+=plain text=, =html=, and =markdown=.
+
+* Orgmode OX
+
+Convert in emacs orgmode.
+
+* Pandoc
+
+ - [[http://pandoc.org/][Pandoc]] | About pandoc
