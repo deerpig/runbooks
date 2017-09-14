@@ -27,7 +27,48 @@
 
 * Introduction
 
-Since we've dipped our feet in the water and are using =GitLab=, we
-might as well jump all the way in and install =GitLab Mattermost=.
+Since we've dipped our feet in the water and are using
+=GitLab=, we might as well jump all the way in and enable
+=GitLab Mattermost=.
 
   - [[https://docs.gitlab.com/omnibus/gitlab-mattermost/][GitLab Mattermost]] | GitLab Documentation
+
+The rest of this document assumes you already have a working
+GitLab installation.
+
+** 1. Create DNS entry for Mattermost
+
+Add a DNS entry for mattermost pointing to the same ip
+address where GitLab is installed. e.g. gitlab.example.com
+and mattermost.example.com.
+
+** 2. Enable Github Mattermost
+
+GitLab Mattermost is disabled by default, to enable it tell
+gitlab what the external URL for Mattermost server is:
+
+File: */etc/gitlab/gitlab.rb*
+
+#+begin_src sh
+sudo emacs /etc/gitlab/gitlab.rb
+#+end_src
+
+Change the following to match your dns entry you just
+created for mattermost.
+
+#+begin_src sh
+# in /etc/gitlab/gitlab.rb
+mattermost_external_url 'http://mattermost.example.com'
+#+end_src
+
+** 3. Reconfigure GitLab
+
+Now run =gitlab-ctl reconfigure=
+
+#+begin_src sh
+sudo gitlab-ctl reconfigure
+#+end_src
+
+Mattermost should now be reachable at
+http://mattermost.example.com and authorized to connect to
+GitLab. 
