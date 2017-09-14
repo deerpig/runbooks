@@ -1,0 +1,29 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Documentation Conversion HOWTO
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/runbooks/rb-doc-conversion.org
+:Created:   2017-09-14T11:04@Prek Leap (11.642600N-104.919210W)
+:ID:        c019b624-4521-4443-87b0-d3b165984259
+:VER:       558633923.521800968
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:BQR5-6823
+:Class:     docs
+:Type:      work
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]]
+[[https://img.shields.io/badge/class-docs-56B4E9.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-work-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
+
