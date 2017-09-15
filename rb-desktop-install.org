@@ -7,17 +7,19 @@
 :PROPERTIES:
 :CUSTOM_ID: 
 :Name:      /home/deerpig/proj/deerpig/deerpig-install/rb-desktop-install.org
-:Created: 2016-06-13T12:52@Wat Phnom (11.5733N17-104.925295W)
-:ID: 238cc479-376a-4040-9e06-750faf722dc7
+:Created:   2016-06-13T12:52@Wat Phnom (11.5733N17-104.925295W)
+:ID:        238cc479-376a-4040-9e06-750faf722dc7
 :VER:       558129388.244458256
 :GEO:       48P-491193-1287029-15
 :BXID:      proj:PAJ6-5337
+:CLASS:     docs
 :Type:      runbook
 :Status:    wip
 :Licence:   MIT/CC BY-SA 4.0
 :END:
 
 [[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/class-docs-56B4E9.svg?style=flat-square]]
 [[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
 [[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
 [[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
