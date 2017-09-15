@@ -36,7 +36,7 @@ Since we've dipped our feet in the water and are using
 The rest of this document assumes you already have a working
 GitLab installation.
 
-** 1. Create DNS entry for Mattermost
+** 1. jCreate DNS entry for Mattermost
 
 Add a DNS entry for mattermost pointing to the same ip
 address where GitLab is installed. e.g. gitlab.example.com
