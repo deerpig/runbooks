@@ -352,10 +352,22 @@ edit like in Conkeror etc.
 :HOME: [[https://github.com/mooz/keysnail/wiki][mooz/keysnail Wiki]] | Github
 :SEE:    [[http://blog.binchen.org/posts/use-firefox-in-emacs-way-3.html][Use firefox in Emacs way]] | Chen's blog
 
+The following can not be done remotely, it has to be done in
+a terminal on the machine you are installing it on.
+
 #+begin_src sh :dir ~/Downloads
 wget https://github.com/mooz/keysnail/raw/master/keysnail.xpi &
 firefox keysnail.xpi &
 #+end_src
+
+Link the existing keysnail init file in  .dotfiles to ~/
+
+#+begin_src sh
+ln -s /home/deerpig/.dotfiles/keysnail /home/deerpig/.keysnail
+#+end_src
+
+When you open firefox, it will prompt you for a .keysnail
+file, choose to use an existing file.
 
 #+begin_src sh :dir ~/Downloads
 firefox &
