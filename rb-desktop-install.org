@@ -393,9 +393,14 @@ ln -s ~/.dotfiles/keysnail ~/.keysnail.js
 
 #+RESULTS:
 
+*** Install =tanything= plugin
 
-Install the /tanything/ plugin.  Tanything is a /anything/,
-/helm/ style way of browsing tabs.  Very cool stuff.
+If you're using an existing .keysnail file, you've already
+installed =tanything= so you can skip this section.  If not,
+continue.
+
+Install the =tanything= plugin.  Tanything is a =anything=,
+=helm= style way of browsing tabs.  Very cool stuff.
 
 You should see a purple keysnail icon in your browser, right
 click on the drop down arrow and choose the /Open Plugin
@@ -444,7 +449,7 @@ then get' out the way.
 :url: [[https://github.com/Guake/guake][Quake Home]] | Github
 
 #+begin_src sh
-sudo apt-get install guake
+sudo apt-get -y install guake
 #+end_src
 
 Put this in openbox autostart file to start it on startup.
@@ -498,7 +503,7 @@ sudo apt-get install okular okular-extra-backends calibre djview4
 ** Install media Apps
 
 VLC is already installed, so install audacious for light
-weight, music playing and clementine for my 2TB collection.
+weight music playing and clementine for my 2TB collection.
 
 #+begin_src sh
 sudo apt-get install clementine audacious
@@ -558,12 +563,9 @@ Download and install the .deb file:
 
 :url: https://community.skype.com/t5/Linux/bd-p/Linux
 * Install Ruby Apps 
-** Install Jekyll
+** Install Ruby & Jekyll
 
-#+begin_src sh
-sudo apt-get install ruby ruby-dev rubygems
-sudo gem install jekyll
-#+end_src
+Use the [[,.rb-ruby-jekyll.org][runbook]] for installing ruby & jekyll.
 
 Then follow the guide in [[./jekyll-new-site.org]]
 
@@ -674,7 +676,7 @@ diectory is a git repo that I then use to sync between
 five different machines.
 
 #+begin_src sh
-git clone deerpig@dev.chenla.org:/~repos/dotfiles
+git clone git@git.chenla.org:private/dotfiles.git
 mv ~/dotfiles ~/.dotfiles
 cd .dotfiles
 #+end_src
@@ -694,12 +696,12 @@ ln -s .dotfiles/<filename> .<filename>
 The version of orgmode is downloaded via git.  I was
 recently having a problem with timezones...
 
-If something doesn't work, redownload and install clearn
+If something doesn't work, redownload and install clean
 version:
 
 #+begin_src sh
 cd ~/emacs-lisp
-mv -R ./org-mode ./org-mode.bak./orf
+mv -R ./org-mode ./org-mode.bak./org
 git clone git://orgmode.org/org-mode.git
 cd ./org-mode
 make autoloads
