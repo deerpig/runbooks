@@ -871,11 +871,15 @@ helm-recoll.
 Install dependencies
 
 #+begin_src sh
-sudo apt-get install libgmime-2.6-dev libxapian-dev gnutls-bin \\
-guile-2.0-dev html2text xdg-utils
+sudo apt-get install libgmime-2.6-dev libxapian-dev gnutls-bin \
+guile-2.0-dev html2text xdg-utils autoconf-archive
 #+end_src
 
 Now download and install mu (which includes mu4e.
+
+If the build barfs on the version of autoconf-archive, then
+download the /official/ tarball which has everything needed
+to build.
 
 #+begin_src sh
 cd ~/tmp
@@ -1199,7 +1203,7 @@ one's I have remapped or created.
           <enabled>true</enabled>
           <name>Web Browser</name>
         </startupnotify>
-        <command>iceweasel</command>
+        <command>firefox</command>
       </action>
     </keybind>
 #+end_src
