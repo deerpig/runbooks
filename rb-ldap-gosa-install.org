@@ -27,5 +27,14 @@
 
 * Introduction
 
+We will try OpenLDAP & GOSA as a front end.  A LDAP server can
+integrate and manage logins, passwords and ssh public keys to GitLab,
+Mattermost, RedMine (if we need it).
+
+OpenShift, OpenStack and Ceph
+
+
   - [[https://oss.gonicus.de/labs/gosa/][GOsa]]
   - [[https://oss.gonicus.de/labs/gosa/wiki/documentation][GOsa]] | Documentation
+
+  - [[https://www.ossramblings.com/using-ldap-to-store-ssh-public-keys-with-sssd][Using LDAP to Store SSH Public Keys with SSSD]]
