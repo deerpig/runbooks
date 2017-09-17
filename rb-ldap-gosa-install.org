@@ -1,0 +1,31 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: LDAP & GOsa Install
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/runbooks/rb-ldap-gosa-install.org
+:Created:   2017-09-17T09:05@Prek Leap (11.642600N-104.919210W)
+:ID:        523599e1-9c29-4765-a10c-014a677ed105
+:VER:       558885977.761303273
+:GEO:       48P-491193-1287029-15
+:BXID:      docs:YAS8-7133
+:CLASS:     docs
+:Type:      runbook
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
+
+  - [[https://oss.gonicus.de/labs/gosa/][GOsa]]
+  - [[https://oss.gonicus.de/labs/gosa/wiki/documentation][GOsa]] | Documentation
