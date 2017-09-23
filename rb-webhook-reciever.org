@@ -26,3 +26,145 @@
 
 
 * Introduction
+
+
+If you've never heard of WebHooks before and you find you need one,
+finding out how to set up a webhook receiver is not terribly straight
+forward.
+
+Webhooks are used by GitHub and GitLab and an ever growing number of
+server applications to trigger something when an event happens.
+
+In our case the trigger is a merge on a specific branch in a
+repository.  When this happens, the webhook contacts a server running
+a webhook reciever that is listening on an HTTP port and then does
+something like running a script.
+
+There is lots of information on how to set up the webhooks on various
+platforms, but there isn't much out there on setting up webhook
+receivers on the server.
+
+Our approach will be as simple as possible. We will use a python
+script on the server to listen on an HTTP port for a request from a
+GitLab webhook.  When it receives the request, the script does a git
+pull from the GitLab instance.  That's all the script does, unlike
+other webhook receivers it doesn't have a /payload/ that triggers a
+script, which is just fine because we can then put that script in a
+git hook in the repo to do anything that we want to do.
+
+** Create the GitLab Webhook
+
+In gitlab, as admin, go to "Hooks" tab, create hook as:
+http://example.com:8000
+
+or change the port on line 175 of the script.
+
+** Dependencies
+
+Check to see you have python on the server.  It should be installed as
+part of a base install.
+
+** Install the Webhook Receiver
+
+We will use Shawn Sterling's Gitlab Webhook Receiver:
+
+ - [[https://github.com/shawn-sterling/gitlab-webhook-receiver][shawn-sterling/gitlab-webhook-receiver]] | GitHub
+
+SSH into your server and clone the repo:
+
+#+begin_src sh
+git@github.com:shawn-sterling/gitlab-webhook-receiver.git
+#+end_src
+
+** Config the script
+
+
+edit config:
+
+*File:* gitlab-webhook-receiver.py
+
+#+begin_src sh
+cd gitlab-webhook-receiver
+emacs gitlab-webhook-receiver.py
+#+end_src
+
+#+begin_example
+############################################################
+##### You will likely need to change some of the below #####
+
+# log file for this script
+log_file = '/var/www/html/example.com/logs/webhook.log'
+
+# where the puppet base git dir is
+git_dir = "/home/deepig/repos"
+
+# the puppet master environment
+git_master_dir = "/home/deerpig/repos/master"
+
+# this is the name of the gitlab project name
+git_project = "example.com"
+
+# this is the git ssh account
+git_ssh = "git@git.chenla.org:user"
+
+log_max_size = 25165824         # 24 MB
+log_level = logging.INFO
+#log_level = logging.DEBUG      # DEBUG is quite verbose
+
+listen_port = 8000
+
+##### You should stop changing things unless you know what you are doing #####
+##############################################################################
+#+end_example
+
+
+Copy the script to where it will run.
+
+#+begin_src sh
+sudo cp ./gitlab-webhook-receiver.py /usr/local/bin/
+#+end_src
+
+Change the owner and group to root/webadmin
+
+#+begin_src sh
+sudo 
+
+#+end_src
+
+Now make the script executable.
+
+#+begin_src sh
+sudo chmod +x myfile.py
+#+end_src
+
+
+** Run the Reciever when the server boots
+
+
+Running crontab -e will allow you to edit your cron.
+
+Adding a line like this to it:
+
+#+begin_src emacs-lisp
+
+#+end_src
+
+will execute that script once your computer boots up.
+
+
+** Run the script 
+
+You can run the script without rebooting it using the bash script that
+comes with the reciever.
+
+#+begin_src sh 
+cd ~/gitlab-webhook-receiver
+chmod +x gitlab-webhook-receiver
+gitlab-webhook-receiver
+#+end_src
+
+Check to see if it's listening on port 8000
+
+#+begin_src sh
+netstat -tpln
+#+end_src
