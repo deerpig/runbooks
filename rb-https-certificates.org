@@ -1,6 +1,6 @@
 #   -*- mode: org; fill-column: 60 -*-
 
-#+TITLE: HTTPS Certificates
+#+TITLE: HTTPS Certificates on Apache2 running on Debian Jessie
 #+STARTUP: showall
 #+TOC: headlines 4
 #+PROPERTY: filename
@@ -26,3 +26,84 @@
 
 
 * Introduction
+
+Install HTTPS Certificates on Apache2 running on Debian
+Jessie.
+
+  - [[https://certbot.eff.org/#debianjessie-apache][Certbot]] | Debian Jessie
+  - [[https://letsencrypt.org/][Let's Encrypt - Free SSL/TLS Certificates]] 
+
+This is a very straight forward process, but there were
+still a few gotchas that required some googling.  I don't
+want to have to do that again... thus the need for this
+runbook.
+
+** Add jessie-backports repo
+
+Create a new file in =/etc/apt/sources.list.d/= with the
+=.list= extension.
+
+*File:* /etc/apt/sources.list.d/jesse-backports.list
+
+#+begin_src sh
+sudo emacs /etc/apt/sources.list.d/jesse-backports.list
+#+end_src
+
+Add the following line and save:
+
+#+begin_example
+deb http://ftp.debian.org/debian jessie-backports main
+#+end_example
+
+Refresh apt by doing an update:
+
+#+begin_src sh
+sudo apt-get update
+#+end_src
+
+SEE: [[https://backports.debian.org/Instructions/][Instructions]] | Debian Backports
+
+** Install Certbot
+
+Install python-certbot-apache
+
+#+begin_src sh
+sudo apt-get install python-certbot-apache -t jessie-backports
+#+end_src
+
+** Check Apache2 VirtualHost syntax
+
+=</VirtualHosts>= must end in a =newline=, so check all
+virtualhost config files in =/etc/apache2/sites-enabled/=.
+This bit me after Certbot barfed and spat out a syntax
+error.
+
+SEE: [[http://httpd.apache.org/docs/2.4/configuring.html#syntax][Configuration Files - Apache HTTP Server Version 2.4]]
+
+** Run certbot and follow instructions
+
+#+begin_src sh
+sudo certbot --apache
+#+end_src
+
+** Confirm certificate renewal
+
+#+begin_src sh
+sudo certbot renew --dry-run
+#+end_src
+
+** Check for new certs twice a day
+
+Create a crontab to check twice a day:
+
+#+begin_src sh
+sudo crontab -e
+#+end_src
+
+Add the following entry.
+
+#+begin_example
+6 1,13 * * * certbot renew --renew-hook "service restart apache2"
+#+end_example
+
+SEE: [[https://serverfault.com/questions/790772/cron-job-for-lets-encrypt-renewal#790776][Cron job for let's encrypt renewal]] | Server Fault
