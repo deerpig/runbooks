@@ -49,6 +49,7 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
   - [[./rb-bare-bones-emacs.org][Minimal .emacs for remote hosts]]
   - [[./rb-fancy-prompts.org][Bash Prompt]] 
   - [[./rb-webhook-receiver.org][Webhook Receiver]]
+  - [[./rb-https-certificates.org][HTTPS Certificates]]
 *** Servers
   - [[./rb-lamp-server.org][New LAMP Server]]
   - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
