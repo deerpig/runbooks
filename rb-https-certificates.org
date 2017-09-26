@@ -1,0 +1,28 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: HTTPS Certificates
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/runbooks/rb-https-certificates.org
+:Created:   2017-09-26T18:01@Prek Leap (11.642600N-104.919210W)
+:ID:        170207ed-e09c-4caa-8d06-b300b1c51efb
+:VER:       559695765.926675568
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:SSM1-7673
+:Class:     docs
+:Type:      runbook
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/class-docs-56B4E9.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
