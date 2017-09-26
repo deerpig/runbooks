@@ -1,0 +1,208 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Create Webhook Reciever
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/runbooks/rb-webhook-reciever.org
+:Created:   2017-09-23T09:14@Prek Leap (11.642600N-104.919210W)
+:ID:        e468d125-93fa-4fc8-b362-dc61f47a9586
+:VER:       559404909.368920523
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:GTQ6-5606
+:Class:     docs
+:Type:      runbook
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/class-docs-56B4E9.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
+
+
+If you've never heard of WebHooks before and you find you need one,
+finding out how to set up a webhook receiver is not terribly straight
+forward.
+
+Webhooks are used by GitHub and GitLab and an ever growing number of
+server applications to trigger something when an event happens.
+
+In our case the trigger is a merge on a specific branch in a
+repository.  When this happens, the webhook contacts a server running
+a webhook receiver that is listening on an HTTP port and then does
+something like running a script.
+
+There is lots of information on how to set up the webhooks on various
+platforms, but there isn't much out there on setting up webhook
+receivers on the server.
+
+Our approach will be as simple as possible. We use a python script on
+the server to listen on an HTTP port for a request from a GitLab
+webhook.  When it receives the request, the script does a git pull
+from the GitLab instance, runs jekyll and then moves the files into
+place on the server.  Essentially this is what our git post_receive
+hook was doing before.  The advantage of this approach is that the
+GitLab repo will be the primary repo, that many different people can
+work on.
+
+At the moment, I am pushing to both GitLab and to the production
+server.
+
+Eventually we will protect the production branch and switch the
+webhook from triggering on a Push event to triggering on a Merge
+request.
+
+** 1. Create a GitLab Webhook
+
+In gitlab, in project go to project --> settings --> integrations
+
+  - create hook for =Push= events as: http://example.com:8000
+
+** 2. SSH Keys
+
+ - ssh-keygen
+ - if you don't use default names ie =id_rsa=, then you need to create
+   a .ssh config file.
+
+ - copy public key on GitLab in user settings --> SSH keys
+
+ - ssh into server and test that the keys are working
+
+    ssh -T  git@git.chenla.org
+
+You should see something like the following:
+
+    #+begin_example
+    ╭ deerpig@chenla-www:~/repos/chenla.org-src
+    ╰ $ ssh -T git@git.chenla.org
+        Welcome to GitLab, Brad Collins!
+    #+end_example 
+
+
+** 3. Check that the server can listen on port
+
+In OpenStack, add a security rule allowing ingress on port 8000.
+
+I opened up 8000-8010 so that we can run multiple scripts, listening
+on different ports.
+
+** 4. Install the Webhook Receiver
+
+We will use Shawn Sterling's Gitlab Webhook Receiver:
+
+ - [[https://github.com/shawn-sterling/gitlab-webhook-receiver][shawn-sterling/gitlab-webhook-receiver]] | GitHub
+
+SSH into your server and clone the repo:
+
+#+begin_src sh
+git@github.com:shawn-sterling/gitlab-webhook-receiver.git
+#+end_src
+
+** 5. Config the script
+
+Edit directories in the script:
+
+*File:* gitlab-webhook-receiver.py
+
+#+begin_src sh
+cd gitlab-webhook-receiver
+emacs gitlab-webhook-receiver.py
+#+end_src
+
+#+begin_example
+############################################################                                                                                                                                   
+##### You will likely need to change some of the below #####                                                                                                                                   
+
+
+
+
+# Logs ----------------------------------------------------                                                                                                                                    
+
+log_max_size = 25165824         # 24 MB                                                                                                                                                        
+#log_level = logging.INFO                                                                                                                                                                      
+log_level = logging.DEBUG      # DEBUG is quite verbose                                                                                                                                        
+
+listen_port = 8000
+
+##### You should stop changing things unless you know  #####                                                                                                                                    
+##### what you are doing                               #####                                                                                                                                    
+############################################################    
+#+end_example
+
+
+Copy the script to where it will run.
+
+#+begin_src sh
+sudo cp ./webhook-script.py /usr/local/bin/
+#+end_src
+
+Change the owner and group to root/webadmin for both the log file and
+the script.
+
+#+begin_src sh
+sudo chown root:webadmin /usr/local/bin/webhook-script.py
+#+end_src
+
+Now make the script executable.
+
+#+begin_src sh
+sudo chmod +x webhook-script.py
+#+end_src
+
+
+** 6. Test the script 
+
+You can run the script without rebooting it using the bash script that
+comes with the receiver.
+
+#+begin_src sh 
+webhook-script.py
+#+end_src
+
+Check to see if it's listening on port 8000
+
+#+begin_src sh
+netstat -tpln
+#+end_src
+
+- turn on debugging
+- run the script
+- run tail -f on the log
+- make a local change in the repo, commit and push the change and
+  watch the log.  If that looks good, check the code on the server to
+  see if the change made it all the way through.
+
+** 7. Run the Receiver when the server boots
+
+Add a line to /etc/rc.local before /exit 0/
+
+#+begin_src sh
+sudo emacs /etc/rc.local
+#+end_src
+
+#+begin_example
+su user -c '/usr/local/bin/git-webhook-script.py'
+
+exit 0
+#+end_example
+
+Test that it's running on port 8000:
+
+#+begin_src sh
+/etc/rc.d/rc.local start &
+#+end_src
+
+When the system reboots the receiver should be running which
+you can check again, by running netstat:
+
+#+begin_src sh
+netstat -tpln
+#+end_src
