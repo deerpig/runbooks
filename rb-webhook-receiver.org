@@ -91,34 +91,64 @@ So the workflow is something like this:
 
 *** Git post-receive hook
 
-This is dead simple and is explained in our New Website
-Runbook.  Changes are pushed to the user account on the
-production server.  A git post-receive hook is triggered
-which builds the site and copies it to document root.
-
 This works very well for personal projects only being worked
 on by a single developer.
 
+Changes are pushed to the user account on the production
+server.  A git post-receive hook is triggered which builds
+the site and copies it to document root.
+
+SEE: New Web Site Handbook
+
+Projects should treat =master= as stable, and use feature
+branches named after GL# issues.
+
 *** GitLab Webhook Push Event
 
+This works for very small development teams (1-2 members)
+where everyone can push to the production server.
 
+Changes are pushed to =origin= which triggers a webhook that
+points to a webhook receiver on the production server.  The
+reciever then runs a shell script that builds and deploys
+the code.
 
+SEE: Webhook Receiver Handbook
+
+Projects should treat =master= as stable, and use feature
+branches named after GL# issues.
 
 *** GitLab Webhook Merge Event
 
-In the next iteration of this toolchain we will protect the
-production branch and switch the webhook from triggering on
-a Push event to triggering on a Merge request.
+NOTE: This not been implemented yet.
+
+This is for small development teams (2-10 members) where
+there is a person who must approve changes before they are
+deployed to the production server.
+
+The =production= branch on GitLab is protected and a merge
+request must be created to merge to the branch.  After the
+merge manager reviews and tests the changes, the merge is
+approved and merged with production.  This triggers a
+Webhook which points to a webhook on the productin server
+which then runs a script which builds and deploys the code.
+
+Projects should treat =master= as stable, and use feature
+branches named after GL# issues.  Feature branches are
+merged into =master= and after testing, a merge request is
+create to merge master with =production= which triggers a
+webhoo that deploys the site.
 
 *** GitLab CI, Multi-Stage Test, Build & Deployment
 
-After that we will move to a multistage deployment, with a
-separate staging branch in the repo, which will trigger a
-=runner= on a staging server which will build and run
-tests.  Then if the tests run will trigger a merge request
-to merge with the production branch which will trigger a
-webhook which deploys the app or webpage to the production
-server. 
+NOTE: This not been implemented yet.
+
+After that we will move to a multi-stage deployment, with a
+separate staging branch in the repo which will trigger a
+=runner= on a staging server which will build and run tests.
+Then if the tests run will trigger a merge request to merge
+with the production branch which will trigger a webhook
+which deploys the app or webpage to the production server.
 
 ** 1. Create a GitLab Webhook
 
