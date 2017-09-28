@@ -106,23 +106,18 @@ SSH into your server and clone the repo:
 git@github.com:shawn-sterling/gitlab-webhook-receiver.git
 #+end_src
 
-** 5. Config the script
+** 5. Config the receiver
 
 Edit directories in the script:
 
 *File:* gitlab-webhook-receiver.py
 
-#+begin_src sh
-cd gitlab-webhook-receiver
-emacs gitlab-webhook-receiver.py
-#+end_src
-
 #+begin_example
 ############################################################                                                                                                                                   
 ##### You will likely need to change some of the below #####                                                                                                                                   
 
-
-
+git_project = "git-project-name"
+bash_script = "/path/to/webhook-run.sh"
 
 # Logs ----------------------------------------------------                                                                                                                                    
 
@@ -136,7 +131,6 @@ listen_port = 8000
 ##### what you are doing                               #####                                                                                                                                    
 ############################################################    
 #+end_example
-
 
 Copy the script to where it will run.
 
@@ -157,11 +151,67 @@ Now make the script executable.
 sudo chmod +x webhook-script.py
 #+end_src
 
+** 6. Config the bash script
 
-** 6. Test the script 
+Create a bash script that will we run by the webhook
+receiver.  The script will do a =git pull= and then =jekyll
+build= which will generate the web site in =document root=
+for the web site.
 
-You can run the script without rebooting it using the bash script that
-comes with the receiver.
+*File:* /home/user/repos/webhook-run.sh
+
+#+begin_src sh
+emacs /home/user/repos/webhook-run.sh
+#+end_src
+
+#+begin_src sh
+#!/bin/bash -l
+
+cd /home/deerpig/repos/chenla.org-src &&
+
+git reset --hard HEAD &&
+    
+git pull &&
+    
+jekyll build --source /home/deerpig/repos/chenla.org-src --destination /var/www/html/chenla.org-src/public_html 
+
+exit
+#+end_src
+
+Make the script executable:
+
+#+begin_src sh
+chmod +x /path/to/webhook-run.sh
+#+end_src
+
+** 7. Test the toolchain
+
+The whole workflow is between three different computers,
+with a webhook on gitlab, and a receiver and shell script
+running git pull and jekyll build on the server.  A lot of
+things can and will go wrong. So...
+
+I know the following is obvious but I'm including this
+section because often I am tired by the time I get to this
+part and I'm not thinking clearly.
+
+The debug in the receiver script helps, but there is often
+additional information when the receiver fails in the shell
+where you run the script.
+
+I found it best to test and debug using four shell windows
+on the web server:
+
+  - window 1: run the script
+  - window 2: tail -f =/var/www/html/project-name/logs/webhook.log=
+  - window 3: the scripts open in emacs to tweak
+  - window 4: to cat files in document root to ensure it worked.
+
+In a web browser, in two tabs, one for GitLab and the other
+for the web site.
+
+Turn on debugging in the receiver script and run the
+receiver as =user=.
 
 #+begin_src sh 
 webhook-script.py
@@ -173,7 +223,7 @@ Check to see if it's listening on port 8000
 netstat -tpln
 #+end_src
 
-- turn on debugging
+
 - run the script
 - run tail -f on the log
 - make a local change in the repo, commit and push the change and
