@@ -182,6 +182,38 @@ netstat -tpln
 
 ** 7. Run the Receiver when the server boots
 
+This is making my head hurt. Here's the problem:
+
+  - Jekyll doesn't like being run as root.  
+  - The ssh keys for pulling the repo from git have to be in
+    the same user that pulls the git repo from gitlab.
+  - If you run the receiever script as user from the shell
+    it works like a charm.  But it you run it from
+    =/etc/rc.local= as =su user= it doesn't work.
+  - There is no way to push from GitLab to a git receive
+    hook on the server.  Well, there is, but it means
+    setting up a runner on a staging server which would then
+    push to the server.  Runners and the yaml scripts are
+    still over my head.  I'll figure it out, but it's
+    overkill unless you need a lot more complex multistage
+    staging and deployment environment than we need here.
+
+After banging my head against the wall for a whole day I
+finally hit on the idea of putting all of the shell commands
+in the payload into a bash shell script.  It worked.
+
+So the workflow is something like this:
+
+#+begin_ascii
+ *local*    *gitlab*                *web server*
+----------|----------|-----------------------------------------
+   git  -->  webhook --> receiver.py --> bash.sh   -->  apache         
+   push        http        httpd         git pull      document
+                          rc.local     jekyll build      root
+#+end_ascii
+
+---
+
 Add a line to /etc/rc.local before /exit 0/
 
 #+begin_src sh
