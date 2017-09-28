@@ -87,6 +87,54 @@ So the workflow is something like this:
                           rc.local     jekyll build      root
 #+end_ascii
 
+
+** 1. Create a GitLab Webhook
+
+In gitlab, in project go to project --> settings --> integrations
+
+  - create hook for =Push= events as: http://example.com:8000
+
+** 2. SSH Keys
+
+ - ssh-keygen
+ - if you don't use default names ie =id_rsa=, then you need to create
+   a .ssh config file.
+
+ - copy public key on GitLab in user settings --> SSH keys
+
+ - ssh into server and test that the keys are working
+
+    ssh -T  git@git.chenla.org
+
+You should see something like the following:
+
+    #+begin_example
+    ╭ deerpig@chenla-www:~/repos/chenla.org-src
+    ╰ $ ssh -T git@git.chenla.org
+        Welcome to GitLab, Brad Collins!
+    #+end_example 
+
+
+** 3. Check that the server can listen on port
+
+In OpenStack, add a security rule allowing ingress on port 8000.
+
+I opened up 8000-8010 so that we can run multiple scripts, listening
+on different ports.
+
+** 4. Install the Webhook Receiver
+
+We will use Shawn Sterling's Gitlab Webhook Receiver:
+
+ - [[https://github.com/shawn-sterling/gitlab-webhook-receiver][shawn-sterling/gitlab-webhook-receiver]] | GitHub
+
+SSH into your server and clone the repo:
+
+#+begin_src sh
+git@github.com:shawn-sterling/gitlab-webhook-receiver.git
+#+end_src
+
+
 ** 5. Config the receiver
 
 Edit directories in the script:
