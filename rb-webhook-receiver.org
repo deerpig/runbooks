@@ -28,37 +28,97 @@
 * Introduction
 
 
-If you've never heard of WebHooks before and you find you need one,
-finding out how to set up a webhook receiver is not terribly straight
-forward.
+If you've never heard of WebHooks before and you find you
+need one, finding out how to set up a webhook receiver is
+not terribly straight forward.
 
-Webhooks are used by GitHub and GitLab and an ever growing number of
-server applications to trigger something when an event happens.
+Webhooks are used by GitHub and GitLab and an ever growing
+number of server applications to trigger something when an
+event happens.
 
 In our case the trigger is a merge on a specific branch in a
-repository.  When this happens, the webhook contacts a server running
-a webhook receiver that is listening on an HTTP port and then does
-something like running a script.
+repository.  When this happens, the webhook contacts a
+server running a webhook receiver that is listening on an
+HTTP port and then does something like running a script.
 
-There is lots of information on how to set up the webhooks on various
-platforms, but there isn't much out there on setting up webhook
-receivers on the server.
+Figuring this out and getting it to work has taken the
+better part of three 12 hour days.  This is because I am
+stupid.  But it's also because there isn't a lot of
+information out there about web recievers and most of the
+web receivers that I found were for very specialized
+applications, or were written in Node.js or Go or something
+else.  I have nothing against Go or Node, but I am more
+familar with Ruby, Python and Bash.  And I really didn't
+want to introduce another language environment into an
+already complex setup.
 
-Our approach will be as simple as possible. We use a python script on
-the server to listen on an HTTP port for a request from a GitLab
-webhook.  When it receives the request, the script does a git pull
-from the GitLab instance, runs jekyll and then moves the files into
-place on the server.  Essentially this is what our git post_receive
-hook was doing before.  The advantage of this approach is that the
-GitLab repo will be the primary repo, that many different people can
-work on.
+The site this first webhook is meant for is to automatically
+trigger the hook when a change is pushed to a GitLab repo.
+The webhook sends a message to a webhook receiver which is
+listening on an httpd port on the web server and then runs
+commands that pull the repo from GitLab and then runs Jekyll
+which builds the site and we're good to go.
 
-At the moment, I am pushing to both GitLab and to the production
-server.
+I found a simple python script on GitHub (linked below)
+which I adapted and got working quite quickly.  But getting
+the receiver to run via =/etc/rc.local= was problematic.
 
-Eventually we will protect the production branch and switch the
-webhook from triggering on a Push event to triggering on a Merge
-request.
+Here's the problem:
+
+  - Jekyll doesn't like being run as root.  
+  - The ssh keys for pulling the repo from git have to be in
+    the same user that pulls the git repo from gitlab.
+  - If you run the receiever script as user from the shell
+    it works like a charm.  But it you run it from
+    =/etc/rc.local= as =su user= it doesn't work.
+
+After banging my head against the wall for a whole day I
+finally hit on the idea of putting all of the shell commands
+in the payload of the python script into a bash shell
+script.  It worked.
+
+So the workflow is something like this:
+
+#+begin_ascii
+ *local*    *gitlab*                *web server*
+----------|----------|-----------------------------------------
+   git  -->  webhook --> receiver.py --> bash.sh   -->  apache         
+   push        http        httpd         git pull      document
+                          rc.local     jekyll build      root
+#+end_ascii
+
+** Deployment Types
+
+*** Git post-receive hook
+
+This is dead simple and is explained in our New Website
+Runbook.  Changes are pushed to the user account on the
+production server.  A git post-receive hook is triggered
+which builds the site and copies it to document root.
+
+This works very well for personal projects only being worked
+on by a single developer.
+
+*** GitLab Webhook Push Event
+
+
+
+
+*** GitLab Webhook Merge Event
+
+In the next iteration of this toolchain we will protect the
+production branch and switch the webhook from triggering on
+a Push event to triggering on a Merge request.
+
+*** GitLab CI, Multi-Stage Test, Build & Deployment
+
+After that we will move to a multistage deployment, with a
+separate staging branch in the repo, which will trigger a
+=runner= on a staging server which will build and run
+tests.  Then if the tests run will trigger a merge request
+to merge with the production branch which will trigger a
+webhook which deploys the app or webpage to the production
+server. 
 
 ** 1. Create a GitLab Webhook
 
@@ -223,44 +283,8 @@ Check to see if it's listening on port 8000
 netstat -tpln
 #+end_src
 
-
-- run the script
-- run tail -f on the log
-- make a local change in the repo, commit and push the change and
-  watch the log.  If that looks good, check the code on the server to
-  see if the change made it all the way through.
-
 ** 7. Run the Receiver when the server boots
 
-This is making my head hurt. Here's the problem:
-
-  - Jekyll doesn't like being run as root.  
-  - The ssh keys for pulling the repo from git have to be in
-    the same user that pulls the git repo from gitlab.
-  - If you run the receiever script as user from the shell
-    it works like a charm.  But it you run it from
-    =/etc/rc.local= as =su user= it doesn't work.
-  - There is no way to push from GitLab to a git receive
-    hook on the server.  Well, there is, but it means
-    setting up a runner on a staging server which would then
-    push to the server.  Runners and the yaml scripts are
-    still over my head.  I'll figure it out, but it's
-    overkill unless you need a lot more complex multistage
-    staging and deployment environment than we need here.
-
-After banging my head against the wall for a whole day I
-finally hit on the idea of putting all of the shell commands
-in the payload into a bash shell script.  It worked.
-
-So the workflow is something like this:
-
-#+begin_ascii
- *local*    *gitlab*                *web server*
-----------|----------|-----------------------------------------
-   git  -->  webhook --> receiver.py --> bash.sh   -->  apache         
-   push        http        httpd         git pull      document
-                          rc.local     jekyll build      root
-#+end_ascii
 
 ---
 
