@@ -27,3 +27,30 @@
 
 * Introduction
 
+This will eventually show how to create a new systemd service.
+
+SEE: [[https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal][Systemd Essentials: Working with Services, Units, and the Journal]] | DigitalOcean
+
+
+Put this in a file
+=/etc/systemd/system/webhook-chenla.org-src.service=.
+
+#+begin_example
+[Unit]
+Description=GitLab Webhook for chenla.org-src
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/bin/bash /usr/local/bin/start.sh
+Type=simple
+User=deerpig
+Group=webadmin
+WorkingDirectory=/home/deerpig/repos/chenla.org-src
+Restart=on-failure
+#+end_example
+
+Then run =systemctl daemon-reload= 
+
+Then =systemctl start unturned.service= to start the script.
