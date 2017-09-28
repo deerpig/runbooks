@@ -1,0 +1,29 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Create Systemd Service Runbook
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/runbooks/rb-systemd-services.org
+:Created:   2017-09-28T11:35@Prek Leap (11.642600N-104.919210W)
+:ID:        8325ba35-c5b4-4398-baea-1bf1576a410c
+:VER:       559845398.886773713
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:MHA4-7736
+:Class:     docs
+:Type:      runbook
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/class-docs-56B4E9.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
+
