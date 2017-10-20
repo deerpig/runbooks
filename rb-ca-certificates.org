@@ -30,3 +30,4 @@ Proceedure for getting and installing CA Certificates for websites.
   - [[https://letsencrypt.org/getting-started/][Getting Started - Let's Encrypt - Free SSL/TLS Certificates]] 
   - [[https://certbot.eff.org/#debianjessie-apache][Certbot]] 
 
+  - [[https://www.troyhunt.com/the-6-step-happy-path-to-https/][Troy Hunt: The 6-Step "Happy Path" to HTTPS]]
