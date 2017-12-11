@@ -1,0 +1,65 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Install LaTeX Package
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+* Introduction
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/runbooks/rb-install-latex-package.org
+:Created:   2017-12-11T12:00@Prek Leap (11.642600N-104.919210W)
+:ID:        8afbaf65-8a0d-4da3-b85f-1ce2a69e16da
+:VER:       566240496.887626767
+:GEO:       48P-491193-1287029-15
+:BXID:      proj:KID7-4025
+:CLASS:     docs
+:Type:      runbook
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+Download and unpack the package.
+
+
+Copy package files under the texmf directory tree:
+
+#+begin_src sh
+sudo cp ./[package name]  /usr/share/texmf/tex/latex/
+#+end_src
+
+Run =texhash= so LaTeX knows about the new package.
+
+#+begin_src sh
+sudo texhash
+#+end_src
+
+Now call the package in your document:
+
+#+begin_src latex
+\documentclass{tufte-handout}
+
+\begin{document}
+
+\section{Demonstrating the Tufte classes}
+
+
+\newthought{ This document} demonstrates a compiling document with the 
+\texttt{tufte-latex} classes.
+
+A rather minimal version will compile easy enough.
+
+\newthought{For more details} on tweaks and tricks, refer to the documentation.
+
+
+\end{document}
+#+end_src
+
+
