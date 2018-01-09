@@ -40,13 +40,82 @@ emacs.
 
 * Desktop Install
 
+I have been waiting for BunsenLabs Helium to be released but
+I can't wait any longer.
+
+** Debian Stretch Install
+
+Do a basic installation of Debian Stretch from install
+media.
+
+Uncheck everything except Desktop environment and "standard
+system utilities"
+
+
+install emacs-nox
+
+*** Install Firmware
+
+The missing of this firmware can throw different errors
+prefixed by rtl_nic/ to solve this simply add the official
+repository Debian firmware-realtek to your
+/etc/apt/sources.list and make sure you are selecting the
+right destro
+
+
+#realtek firmware
+deb http://ftp.de.debian.org/debian stretch main non-free
+deb-src  http://ftp.de.debian.org/debian stretch main non-free
+
+After that install realtek firmware
+
+sudo apt-get update
+sudo apt-get install firmware-realtek
+
+
+
+
 ** Bunsen Install
 
-Do generic install from Live USB, when you reboot you'll get
-an install script -- don't install everything they suggest.
-Tried that once and it screwed things up, but use it to do
-an apt-get update, upgrade and add the alternate repos they
-suggest.
+Add user to sudoers list
+
+https://forums.bunsenlabs.org/viewtopic.php?id=3800 
+
+
+download the script:
+
+wget https://github.com/bunsenlabs/bunsen-netinstall/archive/helium-dev.tar.gz
+
+Unpack the tarball:
+
+tar xf helium-dev.tar.gz
+cd bunsen-netinstall-helium-dev
+
+And run the script:
+
+./install
+
+If run from the chroot APT will complain about missing
+hostnames, those messages can be safely ignored.
+
+Once the script is finished the machine can be rebooted into
+Helium-dev (hopefully).
+
+If the chroot method is employed then either `exit` or
+<Ctrl>+d will exit the user session & chroot (needs to be
+run twice) and `umount -R /mnt` will clear the mountpoint.
+
+*** Bootloader
+
+Remember to run `sudo update-grub` (from the "host") after
+finishing the entire installation, this should pick up the
+new system and provide a menu entry in the GRUB bootloader.
+
+If a conventional ISO image is used for installation then I
+would recommend disabling the bootloader step in the
+installer and updating the pre-existing bootloader
+configuration afterwards instead.
+
 
 ** Install Some Tools
 
