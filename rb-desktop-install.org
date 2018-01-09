@@ -62,16 +62,18 @@ repository Debian firmware-realtek to your
 /etc/apt/sources.list and make sure you are selecting the
 right destro
 
-
+#+begin_example
 #realtek firmware
 deb http://ftp.de.debian.org/debian stretch main non-free
 deb-src  http://ftp.de.debian.org/debian stretch main non-free
+#+end_example
 
 After that install realtek firmware
 
+#+begin_src sh
 sudo apt-get update
 sudo apt-get install firmware-realtek
-
+#+end_src
 
 
 
@@ -84,16 +86,21 @@ https://forums.bunsenlabs.org/viewtopic.php?id=3800
 
 download the script:
 
+#+begin_src sh
 wget https://github.com/bunsenlabs/bunsen-netinstall/archive/helium-dev.tar.gz
+#+end_src
 
 Unpack the tarball:
 
+#+begin_src sh
 tar xf helium-dev.tar.gz
 cd bunsen-netinstall-helium-dev
-
+#+end_src
 And run the script:
 
+#+begin_src sh
 ./install
+#+end_src
 
 If run from the chroot APT will complain about missing
 hostnames, those messages can be safely ignored.
@@ -107,7 +114,7 @@ run twice) and `umount -R /mnt` will clear the mountpoint.
 
 *** Bootloader
 
-Remember to run `sudo update-grub` (from the "host") after
+Remember to run =sudo update-grub= (from the "host") after
 finishing the entire installation, this should pick up the
 new system and provide a menu entry in the GRUB bootloader.
 
