@@ -1582,3 +1582,84 @@ sudo /etc/init.d/apache2 restart
 
 Files can now be accessed at http://localhost/~deerpig/  --
 remember to include the ~.
+
+* x2x
+
+https://linuxcommando.blogspot.com/2014/07/share-keyboard-and-mouse-on-two-x.html
+
+You only need to install x2x on the secondary machine, the
+one whose keyboard and mouse you are NOT using.
+
+Before the install, verify that the X Server on your
+secondary machine supports the XTEST extension.
+
+
+$ xdpyinfo -ext XTEST |grep XTEST
+    XTEST
+XTEST version 2.2 opcode: 141
+
+If the secondary machine runs on a recent Debian or Ubuntu
+release, the install is as easy as:
+
+
+$ sudo apt-get install x2x
+
+Unfortunately, recent Fedora and other Red Hat-based
+distributions do not pre-package x2x in their official
+repositories. This is not totally surprising because x2x is
+currently not being actively developed. Its most recent
+release was back in 2003. Part 2 of this series introduces
+an alternative tool named Synergy that works for Fedora.
+
+If you are successful in installing x2x on a recent Fedora
+release, please share your experience by leaving a comment.
+
+Setup
+
+Before you run x2x, verify that X forwarding over SSH is
+enabled on the secondary machine. Specifically, the
+/etc/ssh/sshd_config file on that machine must contain the
+following line:
+
+
+X11Forwarding yes
+
+Restart the ssh daemon if you had to edit the sshd_config file.
+
+
+$ sudo service ssh restart
+
+For details on SSH X forwarding, please refer to my earlier
+post.  Running x2x
+
+Execute a customized version of the following command on
+your primary machine, the one with the mouse and keyboard
+that you want to use.
+
+
+$ ssh -X 192.168.1.111 x2x -west -to :0
+peter@192.168.1.111's password: 
+
+The parameters to modify are:
+
+    1. IP address
+
+       This is the IP address of the secondary machine.
+ 
+    2. Location of the secondary machine relative to the
+       primary.
+
+       My secondary machine is placed to the left of my
+       primary, hence -west. When the mouse crosses the left
+       edge of the primary display, the mouse pointer slides
+       over to the secondary display. From there, when the
+       mouse crosses the right edge of the secondary
+       display, the mouse pointer slides back to the
+       primary. Depending on the relative machine location,
+       you can specify instead -north, -south, or -east.
+
+Now, the two X displays are virtually integrated. Move the
+mouse of your primary display to the left, crossing the left
+edge. Notice that the mouse pointer lands in the secondary
+display. Any keystrokes you enter with the keyboard of the
+primary display appear inside a window on the secondary.
