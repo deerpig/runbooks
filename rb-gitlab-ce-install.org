@@ -74,7 +74,7 @@ edit:
 File: */etc/gitlab/gitlab.rb*
 
 Edit the external address url to the external address of the
-web server.  Then the configure script again.
+web server.  Then run the configure script again.
 
 ** 5. Change Password & Login
 
