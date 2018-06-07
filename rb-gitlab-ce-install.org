@@ -82,6 +82,29 @@ You will be prompted for a new password.  Then, login as
 =root= with the new password.
 
 
+* Update Gitlab
+
+Updates are released on the 22nd of every month.
+
+Make a backup (Optional)
+
+If you would like to make a backup before updating, the
+below command will backup data in /var/opt/gitlab/backups by
+default.
+
+#+begin_src sh
+sudo gitlab-rake gitlab:backup:create STRATEGY=copy
+#+end_src
+
+2. Update GitLab
+
+Update to the latest version of GitLab.
+
+#+begin_src sh
+sudo apt-get update && sudo apt-get install gitlab-ce
+#+end_src
+
+
 * References & Further Reading
 
  - [[https://about.gitlab.com/installation/][Installation methods for GitLab]] | GitLab
