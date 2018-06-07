@@ -25,7 +25,7 @@
 [[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
 
-* Introduction
+* HTTPS Certificates on Apache2 running on Debian Jessie
 
 Install HTTPS Certificates on Apache2 running on Debian
 Jessie.
@@ -107,3 +107,21 @@ Add the following entry.
 #+end_example
 
 SEE: [[https://serverfault.com/questions/790772/cron-job-for-lets-encrypt-renewal#790776][Cron job for let's encrypt renewal]] | Server Fault
+
+** Confirm everything is working
+
+Open a browser and go to your newly cetified site,
+[[https://chenla.org]].  You should see a TLS message flash up
+before the site loads.
+
+That's it!
+
+* HTTPS Certificates on GitLab CE running on Debian Jessie 
+
+  - [[https://stackoverflow.com/questions/34189199/how-do-i-use-let-s-encrypt-with-gitlab][ssl certificate - How do I use let's encrypt with
+    gitlab?]] | Stack Overflow
+  - [[https://stackoverflow.com/questions/34189199/how-do-i-use-let-s-encrypt-with-gitlab][Setting up gitlab with free SSL-Certs from Let's Encrypt
+    on Ubuntu 14.04]] 
+
+
+
