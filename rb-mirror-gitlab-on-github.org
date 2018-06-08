@@ -27,3 +27,6 @@
 
 * Introduction
 
+NOTE: This is a mirror, the primary repo is @ 
+
+Then set the homepage to be the GitHub Repo
