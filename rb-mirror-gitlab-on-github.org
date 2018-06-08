@@ -24,9 +24,50 @@
 [[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
 [[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
+We now use our own GitLab instance running on git.chenla.org as our
+primary repo for all projects.  We maintain a mirror on GitHub, at
+least until they do something silly like requiring a MS account login.
 
-* Introduction
+This preceedure assumes that we have created repos on both local
+gitlab and on gibhub.
 
-NOTE: This is a mirror, the primary repo is @ 
+** Generate Access Token on GitHub
 
-Then set the homepage to be the GitHub Repo
+Log into GitHub.  Go to Settings > Developer Settings > Personal Access
+Tokens.
+
+Click on "Generate new token" button.
+
+Give the token a description.
+
+Check the box: X public_repo
+
+Click on the green "Generate token" button and copy the token and put
+it somewhere safe before leaving the page.
+
+** Push to a remote repository on GitLab
+
+Log into GitLab.
+
+Go to: Repo > Settings > Repository > Push to a remote respository
+
+Check the box: X Remote mirror repository
+
+Add the GitHub URL with the personal access token as a password for
+example:
+
+#+begin_example
+https://deerpig:[access-token]@github.com/deerpig/runbooks.git
+#+end_example
+
+** Add Note on GitHub Pointing to Primary Repo
+
+Now put a notice on the GitHub repo that is being mirrored.  Click on
+the =edit= button to edit the description and replace the description
+with the following text.
+
+     "NOTE: This is a mirror, the primary repo is @"
+
+Then add the url to the gitlab repo in the Repo Website field.
+
+
