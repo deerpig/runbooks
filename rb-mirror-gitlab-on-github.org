@@ -1,0 +1,29 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Mirror GitLab repo on GitHub
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+  :PROPERTIES:
+  :CUSTOM_ID: 
+  :Name:      /home/deerpig/proj/deerpig/runbooks/rb-mirror-gitlab-on-github.org
+  :Created:   2018-06-08T08:29@Prek Leap (11.642600N-104.919210W)
+  :ID:        52e71c61-f921-45fd-8362-468c027dd53e
+  :VER:       581693433.362959557
+  :GEO:       48P-491193-1287029-15
+  :BXID:      proj:ALU0-3552
+  :CLASS:     docs
+  :Type:      runbook
+  :Status:    wip
+  :Licence:   MIT/CC BY-SA 4.0
+  :END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction
+
