@@ -38,12 +38,7 @@ several gig of files.  And let's not forget it takes the
 better part of an hour to config, make and make install
 emacs.
 
-* Desktop Install
-
-I have been waiting for BunsenLabs Helium to be released but
-I can't wait any longer.
-
-** Bunsen Labs Install
+* Bunsen Labs Install
 
 Download the image from:
 
@@ -53,7 +48,7 @@ I've found that it's often faster to download using bittorrent.
 
 Create a bootable USB stick:
 
-#+begin_src shell
+#+begin_src sh
 dd if=bl-Deuterium-amd64_20170429.iso of=/dev/sdc
 #+end_src
 
@@ -75,6 +70,13 @@ net-tools
 * Emacs
 ** Install Dependencies
 
+For more info about dependencies:
+
+SEE: http://linuxfromscratch.org/blfs/view/svn/postlfs/emacs.html 
+
+I have yet to get emacs to see imagemagick, even though I've
+tried repeatedly to get the correct version.
+
 Install graphics and dev libs:
 
 #+begin_src sh
@@ -89,7 +91,7 @@ Full install of texinfo, latex & tex and pandoc.  Texinfo is
 needed by emacs, this will also install pdflatex which is
 also needed by orgmode.
 
-This will take a while -- well over a gigabyte
+This will take a while -- several gigabytes
 
 #+begin_src sh
 sudo apt-get -y install texinfo texlive-base texlive-bibtex-extra latexmk pandoc
@@ -158,7 +160,7 @@ frames were resized.
 ./autogen.sh
 ./autogen.sh git 
 ./configure --with-modules --without-cairo --with-xwidgets \
---with-libxml2 --with-dbus --with-x-toolkit=gtk3
+--with-dbus --with-x-toolkit=gtk3
 make
 #+end_src
 
@@ -169,6 +171,8 @@ sudo make install
 #+end_src
 
 ** Set emacs as system default editor
+
+*NOTE:* This may not be needed.
 
 #+begin_src sh
 update-alternatives --set editor /usr/local/bin/emacs
@@ -198,10 +202,6 @@ sudo cp ./plantuml.jar /usr/local/bin/
 Poor =Conkeror= is no longer in development and Mozilla keeps
 making it progressively harder to keep it working.  I now
 have integrated =IceWeasel= as my primary browser.
-
-My paying gig uses Google Apps suite, which which doesn't
-work very well with firefox.  But it's no longer my go-to
-browser.
 
 ** Install Firefox
 :PROPERTIES:
@@ -284,27 +284,9 @@ sudo update-alternatives --set x-www-browser /usr/bin/firefox
 sudo update-alternatives --config x-www-browser
 #+end_src
 
-** Install Conkeror Web Browser (deprecated)
-
-#+begin_src sh
-sudo apt-get install conkeror conkeror-spawn-process-helper
-#+end_src
-
-XULRunner has been booted out by Mozilla, so we need to use Firefox
-instead. 
-
-#+begin_src sh
-emacs ~/.bashrc_aliases
-#+end_src
-
-And add:
-
-#+begin_src sh
-alias conkeror='firefox -app /usr/share/conkeror/application.ini'
-#+end_src 
 ** Install Google Chrome
 
-Use IceWeasel, *not* Conkeror to open the following link:
+Go to the following page:
 
  http://www.google.com/chrome/browser/desktop/index.html 
 
@@ -334,105 +316,15 @@ machines will autoinstall and configure.
 The list of plugins I'm presently using are:
 
   - Adblock Plus :: it's obvious
-  - Bottom UI :: moves nav bar to bottom of the screen so it
-       works a bit more like the Conkeror mini-buffer which
-       is meant to work like the emacs minibuffer.
-  - Copy as Org-Mode :: copies links and pastes them using
-       orgmode syntax.
   - DuckDuckGo Plus :: sets ddg as default browser.
   - Firemacs :: emacs keybindings!
   - Google Scholar Button :: which I use heavily to lookup
        bibtex citations.  It's worth installing this in
        Chrome as well.
-  - Hide Tabbar :: toggles visability of tab bar so it works
-       more like Conkeror.
   - Pinboard.in :: add bookmarks to Pinboard.in account.
-  - Tab Groups :: restores this feature that used to be part
+  - Simple Tab Groups :: restores this feature that used to be part
        of Firefox.
   - Video DownloadHelper :: obvious as well.
-
-*** Install Keysnail
-
-Keysnail is an interesting package that does what firemacs
-does but is a lot closer to the functionality of Conkeror.
-
-In fact, if you hide the tab bar, it feels a lot like
-Conkeror. There is a lot more -- an init file that you can
-edit like in Conkeror etc.
-
-:HOME: [[https://github.com/mooz/keysnail/wiki][mooz/keysnail Wiki]] | Github
-:SEE:    [[http://blog.binchen.org/posts/use-firefox-in-emacs-way-3.html][Use firefox in Emacs way]] | Chen's blog
-
-The following can not be done remotely, it has to be done in
-a terminal on the machine you are installing it on.
-
-#+begin_src sh :dir ~/Downloads
-wget https://github.com/mooz/keysnail/raw/master/keysnail.xpi &
-firefox keysnail.xpi &
-#+end_src
-
-Link the existing keysnail init file in  .dotfiles to ~/
-
-#+begin_src sh
-ln -s /home/deerpig/.dotfiles/keysnail /home/deerpig/.keysnail
-#+end_src
-
-When you open firefox, it will prompt you for a .keysnail
-file, choose to use an existing file.
-
-#+begin_src sh :dir ~/Downloads
-firefox &
-#+end_src
-
-
-#+RESULTS:
-
-After restarting Firefox, you will get a dialogue for where
-to create the init file.
-
-If you ran the above code from the babel, babel will keep
-waiting until you do an `M-g' and then firefox should
-happily continue on in the background.
-
-Now let's move that file into the .dotfiles directory and
-create a symbolic link to the home directory.
-
-#+begin_src sh
-mv ~/.keysnail.js ~/.dotfiles/keysnail
-ln -s ~/.dotfiles/keysnail ~/.keysnail.js
-#+end_src
-
-#+RESULTS:
-
-*** Install =tanything= plugin
-
-If you're using an existing .keysnail file, you've already
-installed =tanything= so you can skip this section.  If not,
-continue.
-
-Install the =tanything= plugin.  Tanything is a =anything=,
-=helm= style way of browsing tabs.  Very cool stuff.
-
-You should see a purple keysnail icon in your browser, right
-click on the drop down arrow and choose the /Open Plugin
-Manager/ to see available keysnail plugins, and find
-/tanything/.  Right click and install from menu.
-
-After installing and restarting Firefox /again/, we need to
-add a keybinding so that /tanything/ opens the tab list
-using `C-x b' (switch buffer list) which I have set up in
-emacs to use helm.
-
-Open the keysnail file:
-
- [[~/.dotfiles/keysnail]]
-
-And add the following line to the bottom of the file.
-
-#+begin_src js
-key.setViewKey(['C-x', 'b'], function (ev, arg) { ext.exec("tanything", arg); }, 'タブを一覧表示', true);
-#+end_src
-
 
 * Install TLDR
 
