@@ -65,3 +65,98 @@ On CentOS running systemd:
 #+begin_src sh
 systemctl disable NetworkManager.service
 #+end_src
+
+** Configure Network Interfaces
+
+#+begin_src sh
+emacs /etc/sysconfig/network-scripts/
+#+end_src
+
+Will open emacs in the network scripts dir.  The interfaces should be
+either eth0 and eth1, or they might be using the newfangled naming
+system with something like p4p1 and p4p2.
+
+Don't erase the UUID.
+
+Lookup the available interfaces:
+
+#+begin_src sh
+ifconfig -a
+#+end_src
+
+And note down the MAC addresses for each interface.
+
+Then config each interface:
+
+#+begin_src sh
+emacs /etc/sysconfig/network-scripts/ifcg-p4p1
+#+end_src
+
+This is connected to a local network that contains servers that are
+not directly connected to the Internet, so no gateway and no default route.
+
+#+begin_example
+DEVICE=p4p1
+ONBOOT=yes
+NETBOOT=yes
+BOOTPROTO=static
+TYPE=Ethernet
+ONBOOT=yes
+DEFROUTE=no
+UUID="6b561b83-b86c-4412-b84a-fe2932ebb0c5"
+HWADDR=00:e0:81:bb:b8:1a
+IPADDR=10.0.0.202
+NETMASK=225.225.225.0
+ZONE=trusted
+DOMAIN=kinto.dom
+#+end_example
+
+The second interface is connected directly to the Internet, so we make
+this the default route include a gateway address and include it in the
+public zone.
+
+#+begin_src sh
+emacs /etc/sysconfig/network-scripts/ifcg-p4p2
+#+end_src
+
+#+begin_example
+NAME=p4p2
+DEVICE=p4p2
+TYPE=Ethernet
+BOOTPROTO=static
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+UUID=7cf9d06b-e739-44f9-9cb8-882413462f51
+ONBOOT=yes
+HWADDR=00:e0:81:bb:b8:1b
+IPADDR=103.56.174.11
+NETMASK=225.225.225.0
+GATEWAY=103.56.174.1
+ZONE=public
+#+end_example
+
+Save files and restart network services.
+
+On CentOS:
+
+#+begin_src sh
+systemctl restart network
+#+end_src
+
+Plug in ethernet cables and try to ping both 10.0.0.1 and something on
+the internet to ensure that DNS is working and that both NICs are
+configured properly.
+
+You don't have to but I usually reboot the server at the point to
+ensure the new hostname sticks and check that selinux and
+networkmanager are disabled and the new network configuration works.
+
+Now from a host on the Internet see if you can ping and ssh into the box.
+
+** Add ssh key & disable password login
+
+SEE: [[./rb-ssh-keys.org][rb-ssh-keys.org]]
+
+** Configure firwalld
+
+
