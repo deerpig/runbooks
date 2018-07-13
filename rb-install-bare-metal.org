@@ -1,0 +1,47 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Install Bare Metal Server 
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+#+LINK: pdf   pdfview:~/proj/chenla/hoard/lib/
+
+[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/class-runbook-56B4E9.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-work-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+bibliography:~/proj/chenla/hoard/bib.bib
+
+[[[../../index.org][top]]] [[[../index.org][up]]]
+
+* Install Bare Metal Server
+  :PROPERTIES:
+  :CUSTOM_ID: 
+  :Name:      /home/deerpig/proj/deerpig/runbooks/rb-install-bare-metal.org
+  :Created:   2018-07-13T18:59@Prek Leap (11.642600N-104.919210W)
+  :ID:        94e0d1cd-6f58-4f1c-a937-4202d9b9919a
+  :VER:       584755207.702163602
+  :GEO:       48P-491193-1287029-15
+  :BXID:      proj:BEV4-0178
+  :Class:     primer
+  :Type:      work
+  :Status:    wip
+  :Licence:   MIT/CC BY-SA 4.0
+  :END:
+
+For now let's assume a generic install of CentOS or Debian, with two
+NICs, one pointing to 10.0.0 and the other to 103.56.174.
+
+** Set Hostname
+
+#+begin_src sh
+emacs /etc/hostname
+#+end_src
+
+Set the hostname.
+
+#+begin_example
+<hostname>.kinto.dom
+#+end_example
