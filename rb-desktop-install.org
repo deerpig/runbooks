@@ -325,6 +325,8 @@ The list of plugins I'm presently using are:
   - Simple Tab Groups :: restores this feature that used to be part
        of Firefox.
   - Video DownloadHelper :: obvious as well.
+  - Various Dark Themes :: for Hacker News, Reddit etal.
+
 
 * Install TLDR
 
@@ -332,44 +334,16 @@ TLDR provides command line documentation like man pages.
 But unlike man pages tldr just provides examples of command
 usage.
 
-The problem with installing on Debian is that there is
-another package that is named node, so if you follow most of
-the instructions that pop up when you google you won't
-getting a working system.
+Installing is now far easier than before:
 
- - [[https://github.com/tldr-pages/tldr][tldr]] | GitHub
- - [[https://github.com/tldr-pages/tldr-node-client][tldr-pages]] | GitHub
- - [[https://www.linuxhelp.com/how-to-install-tldr-an-alternate-to-man-pages/][How to install TLDR - An alternate to Man pages]] | Linux Help
- - [[https://stackoverflow.com/questions/30281057/node-forever-usr-bin-env-node-no-such-file-or-directory/30281097#30281097][Node forever /usr/bin/env: node: No such file or
-   directory]]
-
+ - [[https://github.com/pepa65/tldr-bash-client][tldr-bash-client]]
 
 #+begin_src sh
-sudo apt-get install nodejs-legacy npm
+loc=/usr/local/bin/tldr  # elevated privileges needed for some locations
+sudo wget -qO $loc https://4e4.win/tldr
+sudo chmod +x $loc
 #+end_src
 
-The version of npm doesn't work, so it's best to clear the
-cache and then upgrade to the lastest version.
-
-#+begin_src sh
-sudo npm cache clean -f
-sudo npm install -g n
-sudo n stable
-#+end_src
-
-Now install tldr, which also installs the command line
-client.
-
-#+begin_src sh
-sudo npm install -g tldr
-#+end_src
-
-Try a command to see if it works:
-
-#+begin_src sh
-tldr --help
-tldr tar
-#+end_src
 
 
 * Install Jupyter
