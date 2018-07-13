@@ -48,9 +48,7 @@ Now double check that all permissions on the .ssh directory and keys
 are correct.
 
 #+begin_src sh
-chmod 700 ./.ssh
-chmod 600 ./id_rsa
-chmod 644 ./authorized_keys
+chmod -R go= ~/.ssh
 #+end_src
 
 *** Further Reading
@@ -68,22 +66,21 @@ every time, use SSH Agent during that session.
 
 #+begin_src sh
 ssh-agent BASH
-ssh-add
+ssh-add ~/.ssh/<key-file>
 #+end_src
 
+** 3. Disable Password Login
 
-* SSH Keys (MacOS)
+Test that you can login without a password, then open:
 
-todo
+#+begin_src sh
+emacs /etc/ssh/sshd_config
+#+end_src
 
-* SSH Keys (Windows)
+Search for the PasswordAuthorization section. Uncomment and
+change =PasswordAuthentication= from yes to no.
 
-todo
+#+begin_example
+PasswordAuthentication no
+#+end_example
 
-* Send Key & Username to Kinto
-
-Send a copy of the public key along with a preferred name
-for the machine to whoever is setting up your VM at Chenla d9d.
-
-When the VM is ready you will get back an ip address, machine name,
-and possibly a domain name.
