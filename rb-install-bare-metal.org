@@ -157,6 +157,28 @@ Now from a host on the Internet see if you can ping and ssh into the box.
 
 SEE: [[./rb-ssh-keys.org][rb-ssh-keys.org]]
 
-** Configure firwalld
+** Configure firewalld
 
+#+begin_src sh
+yum -y install firewalld
+#+end_src
 
+Start firewalld and enable it to run automatically at boot time with
+systemctl:
+
+#+begin_src sh
+systemctl start firewalld
+systemctl enable firewalld
+#+end_src
+
+Open new ports for our services. We will open SSH, HTTP and HTTPS
+ports for our GitLab config. Run firewall-cmd commands below to open
+the ports.
+
+#+begin_src sh
+sudo yum install -y curl policycoreutils-python openssh-server
+sudo systemctl enable sshd
+sudo systemctl start sshd
+sudo firewall-cmd --permanent --add-service=http
+sudo systemctl reload firewalld
+#+end_src
