@@ -40,8 +40,28 @@ NICs, one pointing to 10.0.0 and the other to 103.56.174.
 emacs /etc/hostname
 #+end_src
 
-Set the hostname.
+Set the hostname:
 
 #+begin_example
 <hostname>.kinto.dom
 #+end_example
+
+** Turn off SELinux
+
+#+begin_src sh
+emacs /etc/selinux/config
+#+end_src
+
+Change to disabled.
+
+#+begin_example
+SELINUX=disabled
+#+end_example
+
+** Turn off Network Manager
+
+On CentOS running systemd:
+
+#+begin_src sh
+systemctl disable NetworkManager.service
+#+end_src
