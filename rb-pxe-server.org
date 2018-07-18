@@ -48,7 +48,7 @@ set up a temporary PXE server when the need arises in the future.
 
 ** Install Ubuntu Server
 
-Do a bog standard Install from usb.
+Do a bog standard minimal install of ubuntu server from a usb.
 
 Run apt update and upgrade:
 
@@ -75,6 +75,50 @@ sudo apt-get install isc-dhcp-Server inetutils-inetd tftpd-hpa syslinux nfs-kern
 
 ** Configure DHCP Server
 
+Edit the DHCP config file:
+
+#+begin_src sh
+sudo emacs /etc/default/dhcp3-server
+#+end_src
+
+Add or edit the network interface that will be used, which is eth0 or
+the equiv.
+
+#+begin_example bash
+INTERFACES="eth0"
+#+end_example
+
+#+begin_src sh
+sudo emacs /etc/dhcp/dhcpd.conf
+#+end_src
+
+Edit as follows:
+
+#+begin_example
+default-lease-time 600;
+max-lease-time 7200;
+subnet 192.168.1.0 netmask 255.255.255.0 {
+range 192.168.1.21 192.168.1.240;
+option subnet-mask 255.255.255.0;
+option routers 192.168.1.20;
+option broadcast-address 192.168.1.255;
+filename "pxelinux.0";
+next-Server 192.168.1.20;
+}
+#+end_example
+
+Start DHCP Service:
+
+#+begin_src sh
+sudo /etc/init.d/isc-dhcp-server start
+#+end_src
+
+** Configure TFTP Server
+
+TFTP is like ftp, but doesn't require authentication.  The server will
+listen for PXE clients on the network.  When it sees a box doing a
+network boot, it will send the network package that was chosen from
+the boot menu.
 
 ** Configure the Network Interface
 
@@ -92,7 +136,7 @@ box was installed with.
 
 Edit as follows:
 
-#+begin_example
+#+begin_example 
 # The loopback network interface
 auto lo
 iface lo inet loopback
