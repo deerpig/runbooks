@@ -169,6 +169,80 @@ udp 0 0 *:tftp *:*
 
 ** Configure PXE boot files
 
+Create files used by PXE that must be in the tftp root directory and
+copy filed from syslinux in the "/usr/lib/syslinux" to
+"/var/lib/tftpboot".
+
+#+begin_src sh
+sudo mkdir /var/lib/tftpboot
+sudo mkdir /var/lib/tftpboot/pxelinux.cfg
+sudo mkdir -p /var/lib/tftpboot/Ubuntu/14.04/amd64/
+sudo cp /usr/lib/syslinux/vesamenu.c32 /var/lib/tftpboot/
+sudo cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot/
+#+end_src
+
+Edit the PXE Server config file:
+
+#+begin_src sh
+sudo emacs /var/lib/tftpboot/pxelinux.cfg/default
+#+end_src
+
+As follows:
+
+#+begin_example sh
+DEFAULT vesamenu.c32
+TIMEOUT 100
+PROMPT 0
+MENU INCLUDE pxelinux.cfg/PXE.conf
+NOESCAPE 1
+LABEL Try Ubuntu 14.04 Desktop
+MENU LABEL Try Ubuntu 14.04 Desktop
+kernel Ubuntu/vmlinuz
+append boot=casper netboot=nfs nfsroot=192.168.1.20:/var/lib/tftpboot/Ubuntu/14.04/amd64
+initrd=Ubuntu/initrd.lz quiet splash
+ENDTEXT
+LABEL Install Ubuntu 14.04 Desktop
+MENU LABEL Install Ubuntu 14.04 Desktop
+kernel Ubuntu/vmlinuz
+append boot=casper automatic-ubiquity netboot=nfs nfsroot=192.168.1.20:/var/lib/tftpboot/Ubuntu/14.04/amd64
+initrd=Ubuntu/initrd.lz quiet splash
+ENDTEXT
+#+end_example
+
+Edit "pxe.conf":
+
+#+begin_src sh
+MENU TITLE PXE Server
+NOESCAPE 1
+ALLOWOPTIONS 1
+PROMPT 0
+MENU WIDTH 80
+MENU ROWS 14
+MENU TABMSGROW 24
+MENU MARGIN 10
+MENU COLOR border 30;44 #ffffffff #00000000 std
+#+end_src
+
+** Add Ubuntu Server 16.04 Images to PXE Server
+
+Download the ISO file into the /mnt directory. Change the file name to
+the latest image:
+
+#+begin_src sh
+sudo cd /mnt
+sudo wget http://releases.ubuntu.com/16.04/ubuntu-16.04.3-server-amd64.iso
+#+end_src
+
+Mount the ISO file and copy all the files to the TFTP diretory:
+
+#+begin_src sh
+sudo mount -o loop /mnt/ubuntu-14.04.3-desktop-amd64.iso /media/
+sudo cp -r /media/* /var/lib/tftpboot/Ubuntu/14.04/amd64/
+sudo cp -r /media/.disk /var/lib/tftpboot/Ubuntu/14.04/amd64/
+sudo cp /media/casper/initrd.lz /media/casper/vmlinuz /var/lib/tftpboot/Ubuntu/
+#+end_src
+
+** Configure NFS Server to Export ISO Contents
 
 
 
