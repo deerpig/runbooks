@@ -70,7 +70,7 @@ authentication in /etc/ssh/config. Yada Yada.
 Install DHCP, TFTP and NFS:
 
 #+begin_src sh
-sudo apt-get install isc-dhcp-Server inetutils-inetd tftpd-hpa syslinux nfs-kernel-Server
+sudo apt-get install apache2 inetutils-inetd tftpd-hpa 
 #+end_src
 
 ** Configure DHCP Server
@@ -82,29 +82,25 @@ sudo emacs /etc/default/dhcp3-server
 #+end_src
 
 Add or edit the network interface that will be used, which is eth0 or
-the equiv.
+something like .
 
 #+begin_example bash
-INTERFACES="eth0"
+INTERFACES="enp2s0"
 #+end_example
 
 #+begin_src sh
 sudo emacs /etc/dhcp/dhcpd.conf
 #+end_src
 
-Edit as follows:
+Add the following at the end of the file:
 
 #+begin_example
-default-lease-time 600;
-max-lease-time 7200;
-subnet 192.168.1.0 netmask 255.255.255.0 {
-range 192.168.1.21 192.168.1.240;
-option subnet-mask 255.255.255.0;
-option routers 192.168.1.20;
-option broadcast-address 192.168.1.255;
+allow booting;
+allow bootp;
+option option-128 code 128 = string;
+option option-129 code 129 = text;
+next-server 192.168.1.105;
 filename "pxelinux.0";
-next-Server 192.168.1.20;
-}
 #+end_example
 
 Start DHCP Service:
@@ -138,11 +134,9 @@ Now open:
 sudo emacs /etc/default/tftpd-hpa
 #+end_src
 
+Add the following to the end of the file:
+
 #+begin_example sh
-TFTP_USERNAME="tftp"
-TFTP_DIRECTORY="/var/lib/tftpboot"
-TFTP_ADDRESS="[:0.0.0.0:]:69"
-TFTP_OPTIONS="--secure"
 RUN_DAEMON="yes"
 OPTIONS="-l -s /var/lib/tftpboot"
 #+end_example
@@ -157,14 +151,24 @@ sudo service tftpd-hpa start
 Check status
 
 #+begin_src sh
-sudo netstat -lu
+sudo systemctl status tftpd-hpa
 #+end_src
 
 You should see something like the following:
 
 #+begin_example
-Proto Recv-Q Send-Q Local Address Foreign Address State
-udp 0 0 *:tftp *:*
+tftpd-hpa.service - LSB: HPA's tftp server
+   Loaded: loaded (/etc/init.d/tftpd-hpa; bad; vendor preset: enabled)
+   Active: active (running) since Wed 2018-07-18 18:03:29 +07; 22min ago
+     Docs: man:systemd-sysv-generator(8)
+   CGroup: /system.slice/tftpd-hpa.service
+           └─4190 /usr/sbin/in.tftpd --listen --user tftp --address :69 --secure /var/lib/tftpboot
+
+Jul 18 18:03:29 trinket systemd[1]: Starting LSB: HPA's tftp server...
+Jul 18 18:03:29 trinket tftpd-hpa[4180]:  * Starting HPA's tftpd in.tftpd
+Jul 18 18:03:29 trinket tftpd-hpa[4180]:    ...done.
+Jul 18 18:03:29 trinket systemd[1]: Started LSB: HPA's tftp server.
+Jul 18 18:13:22 trinket systemd[1]: Started LSB: HPA's tftp server.
 #+end_example
 
 ** Configure PXE boot files
@@ -175,47 +179,28 @@ copy filed from syslinux in the "/usr/lib/syslinux" to
 
 #+begin_src sh
 sudo mkdir /var/lib/tftpboot
-sudo mkdir /var/lib/tftpboot/pxelinux.cfg
-sudo mkdir -p /var/lib/tftpboot/Ubuntu/14.04/amd64/
+sudo touch /var/lib/tftpboot/pxelinux.cfg
+sudo mkdir -p /var/lib/tftpboot/Ubuntu/16.04.4/
 sudo cp /usr/lib/syslinux/vesamenu.c32 /var/lib/tftpboot/
 sudo cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot/
 #+end_src
 
 Edit the PXE Server config file:
 
+Edit pxelinux.cfg/default
+
 #+begin_src sh
 sudo emacs /var/lib/tftpboot/pxelinux.cfg/default
 #+end_src
 
-As follows:
+Add the following:
 
 #+begin_example sh
-DEFAULT vesamenu.c32
-TIMEOUT 100
-PROMPT 0
-MENU INCLUDE pxelinux.cfg/PXE.conf
-NOESCAPE 1
-LABEL Install Ubuntu Server
-MENU LABEL Install Ubuntu Server 16.04 Ubuntu 16.04 
-kernel Ubuntu/vmlinuz
-append boot=casper netboot=nfs nfsroot=192.168.1.20:/var/lib/tftpboot/Ubuntu/16.04/amd64
-initrd=Ubuntu/initrd.lz quiet splash
-ENDTEXT
+label linux
+        kernel ubuntu-installer/amd64/linux
+        append ks=http://10.0.1.1/ks.cfg vga=normal initrd=ubuntu-installer/amd64/initrd.gz
+ramdisk_size=16432 root=/dev/rd/0 rw  --
 #+end_example
-
-Edit "pxe.conf":
-
-#+begin_src sh
-MENU TITLE PXE Server
-NOESCAPE 1
-ALLOWOPTIONS 1
-PROMPT 0
-MENU WIDTH 80
-MENU ROWS 14
-MENU TABMSGROW 24
-MENU MARGIN 10
-MENU COLOR border 30;44 #ffffffff #00000000 std
-#+end_src
 
 ** Add Ubuntu Server 16.04 Images to PXE Server
 
@@ -223,17 +208,29 @@ Download the ISO file into the /mnt directory. Change the file name to
 the latest image:
 
 #+begin_src sh
-sudo cd /mnt
-sudo wget http://releases.ubuntu.com/16.04/ubuntu-16.04.3-server-amd64.iso
+sudo cd /tmp
+sudo wget http://releases.ubuntu.com/16.04.4/ubuntu-16.04.4-server-amd64.iso
 #+end_src
 
 Mount the ISO file and copy all the files to the TFTP diretory:
 
 #+begin_src sh
-sudo mount -o loop /mnt/ubuntu-14.04.3-desktop-amd64.iso /media/
-sudo cp -r /media/* /var/lib/tftpboot/Ubuntu/14.04/amd64/
-sudo cp -r /media/.disk /var/lib/tftpboot/Ubuntu/14.04/amd64/
-sudo cp /media/casper/initrd.lz /media/casper/vmlinuz /var/lib/tftpboot/Ubuntu/
+sudo mount -o loop /tmp/ubuntu-16.04.4-server-amd64.iso /mnt/
+#+end_src
+
+Now cd into the mounted iso, and copy files to tftp.
+
+#+begin_src sh
+cd /mnt
+sudo cp -fr install/netboot/* /var/lib/tftpboot/
+#+end_src
+
+Create directory called ubuntu in the apache root document directory
+and then copy all the files from the Ubunto ISO into the directory:
+
+#+begin_src sh
+sudo mkdir /var/www/html/ubuntu
+sudo cp -fr /mnt/* /var/www/html/ubuntu/
 #+end_src
 
 ** Configure NFS Server to Export ISO Contents
@@ -260,8 +257,6 @@ Export and start NFS.
 sudo exportfs -a
 sudo /etc/init.d/nfs-kernel-server start
 #+end_src
-
-
 
 
 ** Configure the Network Interface
@@ -311,4 +306,5 @@ bios.
 
 ** References
 
+  - [[https://www.ostechnix.com/how-to-install-pxe-server-on-ubuntu-16-04/][How to install PXE Server on Ubuntu 16.04]]
   - [[https://www.maketecheasier.com/configure-pxe-server-ubuntu/][Configure PXE Server In Ubuntu 14.04]]
