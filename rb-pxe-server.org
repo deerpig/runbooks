@@ -195,16 +195,10 @@ TIMEOUT 100
 PROMPT 0
 MENU INCLUDE pxelinux.cfg/PXE.conf
 NOESCAPE 1
-LABEL Try Ubuntu 14.04 Desktop
-MENU LABEL Try Ubuntu 14.04 Desktop
+LABEL Install Ubuntu Server
+MENU LABEL Install Ubuntu Server 16.04 Ubuntu 16.04 
 kernel Ubuntu/vmlinuz
-append boot=casper netboot=nfs nfsroot=192.168.1.20:/var/lib/tftpboot/Ubuntu/14.04/amd64
-initrd=Ubuntu/initrd.lz quiet splash
-ENDTEXT
-LABEL Install Ubuntu 14.04 Desktop
-MENU LABEL Install Ubuntu 14.04 Desktop
-kernel Ubuntu/vmlinuz
-append boot=casper automatic-ubiquity netboot=nfs nfsroot=192.168.1.20:/var/lib/tftpboot/Ubuntu/14.04/amd64
+append boot=casper netboot=nfs nfsroot=192.168.1.20:/var/lib/tftpboot/Ubuntu/16.04/amd64
 initrd=Ubuntu/initrd.lz quiet splash
 ENDTEXT
 #+end_example
@@ -243,6 +237,30 @@ sudo cp /media/casper/initrd.lz /media/casper/vmlinuz /var/lib/tftpboot/Ubuntu/
 #+end_src
 
 ** Configure NFS Server to Export ISO Contents
+
+Setup Installation Source Mirrors via NFS protocol. You can also use
+http and ftp for Installation Source Mirrors. Here I have used NFS to
+export ISO contents.
+
+Edit =/etc/exports=
+
+#+begin_src sh
+sudo emacs /etc/exports
+#+end_src
+
+To look something like the following:
+
+#+begin_example
+/var/lib/tftpboot/Ubuntu/14.04/amd64 *(ro,async,no_root_squash,no_subtree_check)
+#+end_example
+
+Export and start NFS.
+
+#+begin_src sh
+sudo exportfs -a
+sudo /etc/init.d/nfs-kernel-server start
+#+end_src
+
 
 
 
