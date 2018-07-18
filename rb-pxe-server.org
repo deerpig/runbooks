@@ -33,6 +33,19 @@ bibliography:~/proj/chenla/hoard/bib.bib
 
 Install a basic PXE Server on Ubuntu Server LTS 16.04.
 
+This server isn't needed that often.  Most provisioning of new
+OpenStack compute nodes and such will be done using MAAS.  But there
+will be times when you'll need to PXE boot stand alone boxes without
+having to invoke lot's of infrastructure.  In our case, the Dell Cloud
+Servers we use can't install from a usb drive, they have to boot from
+the network.  So to build a MAAS server, which will provision and
+instal conjure-up and juju which will install and set up an OpenStack
+cluster we need to install Ubuntu on one server first.  This runbook
+describes how to set up a simple PXE server to do that.
+
+Eventually we will turn this into an ansible playbook, so that we can
+set up a temporary PXE server when the need arises in the future.
+
 ** Install Ubuntu Server
 
 Do a bog standard Install from usb.
@@ -40,26 +53,27 @@ Do a bog standard Install from usb.
 Run apt update and upgrade:
 
 #+begin_src sh
-sudo apt -y update &&
-sudo apt -y upgrade
+sudo apt-get -y update &&
+sudo apt-get -y upgrade
 #+end_src
 
 #+begin_src sh
-sudo apt install emacs24-nox
+sudo apt-get install emacs24-nox
 #+end_src
 
+Copy ssh keys so you don't have to log on when accessing the box from
+elsewhere.  If the server is on a public network, turn off password
+authentication in /etc/ssh/config. Yada Yada.
 
-** Install DHCP, TFTP and NFS:
+** Install DHCP, TFTP and NFS
 
-Install DHCP, TFTP and NFS 
-server. First you need to update your system and install all necessary
-packages.
+Install DHCP, TFTP and NFS:
 
 #+begin_src sh
 sudo apt-get install isc-dhcp-Server inetutils-inetd tftpd-hpa syslinux nfs-kernel-Server
 #+end_src
 
-
+** Configure DHCP Server
 
 
 ** Configure the Network Interface
