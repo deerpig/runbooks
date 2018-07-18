@@ -35,7 +35,6 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
 
 * Table of Contents
 
-
 ** Runbooks 
 *** Desktop
   - [[./rb-desktop-install.html][Desktop Install]] 
@@ -57,13 +56,13 @@ site on [[gh:deerpig][GitHub]], and remember, forking shall set you free!
   - [[./rb-tracker-install.html][Roundup Issue Tracker Install]]
   - [[./rb-ircd-install.org][IRCD Hybrid Install]] 
   - [[./rb-postfix-dovecot.org][Postfix & Dovecot]]
-  - [[./rb-ldap-gosa-install.org][LDAP & GOsa]]
-*** OpenShift
-  - Research and Notes
-  - OpenShift Install
-*** Ceph
-  - Research and Notes
-  - Ceph Install
+  - [[./rb-ldap-gosa-install.org][LDAP & GOsa]] 
+*** Provisioning  
+  - MAAS
+  - [[./rb-pxe-server.org][Basic PXE Server]]
+  - Repo Mirrors
+*** Orchestration
+  - Ansible
 *** GitLab
   - [[./rb-gitlab-ce-instll.org][GitLab CE Install]] 
   - [[./rb-gitlab-runner.org][GitLab Runner Install]]

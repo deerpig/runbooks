@@ -27,14 +27,25 @@
 
 ** 1. Install Required packages
 
+Set up firewalld
+
+#+begin_src sh
+sudo yum install -y curl policycoreutils-python openssh-server
+sudo systemctl enable sshd
+sudo systemctl start sshd
+sudo firewall-cmd --permanent --add-service=http
+sudo systemctl reload firewalld
+#+end_src
+
+
 Install packages required by GitLab.
 
 #+begin_src sh
-sudo apt-get -y install curl openssh-server ca-certificates postfix
+sudo apt-get -y install curl ca-certificates postfix
 #+end_src
 
 The postfix installer will popup a curses dialog and ask a
-few qustions.
+few questions.
 
 Choose =Internet Site=
 
