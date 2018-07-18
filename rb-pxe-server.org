@@ -120,6 +120,58 @@ listen for PXE clients on the network.  When it sees a box doing a
 network boot, it will send the network package that was chosen from
 the boot menu.
 
+First open:
+
+#+begin_src sh
+sudo emacs /etc/inetd.conf
+#+end_src
+
+Edit as follows:
+
+#+begin_example
+tftp dgram udp wait root /usr/sbin/in.tftpd /usr/sbin/in.tftpd -s /var/lib/tftpboot
+#+end_example
+
+Now open:
+
+#+begin_src sh
+sudo emacs /etc/default/tftpd-hpa
+#+end_src
+
+#+begin_example sh
+TFTP_USERNAME="tftp"
+TFTP_DIRECTORY="/var/lib/tftpboot"
+TFTP_ADDRESS="[:0.0.0.0:]:69"
+TFTP_OPTIONS="--secure"
+RUN_DAEMON="yes"
+OPTIONS="-l -s /var/lib/tftpboot"
+#+end_example
+
+Enable boot service for =inetd= to start on boot and start =tftpd=.
+
+#+begin_src sh
+sudo update-inetd --enable BOOT
+sudo service tftpd-hpa start
+#+end_src
+
+Check status
+
+#+begin_src sh
+sudo netstat -lu
+#+end_src
+
+You should see something like the following:
+
+#+begin_example
+Proto Recv-Q Send-Q Local Address Foreign Address State
+udp 0 0 *:tftp *:*
+#+end_example
+
+** Configure PXE boot files
+
+
+
+
 ** Configure the Network Interface
 
 Open the network =interfaces= file:
