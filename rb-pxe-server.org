@@ -1,3 +1,4 @@
+
 #   -*- mode: org; fill-column: 60 -*-
 
 #+TITLE:  Basic PXE Server on Ubuntu Server
@@ -48,29 +49,54 @@ set up a temporary PXE server when the need arises in the future.
 
 ** Install Ubuntu Server
 
-Do a bog standard minimal install of ubuntu server from a usb.
+Do a bog standard minimal install of ubuntu server from a
+usb.
 
-Run apt update and upgrade:
+** Configure the Network Interface
+
+The PXE server needs to be on a network with no other dhcp server.
+
+Open the network =interfaces= file:
 
 #+begin_src sh
-sudo apt-get -y update &&
-sudo apt-get -y upgrade
+sudo emacs /etc/network/interfaces
 #+end_src
+
+We need to set a static IP for the box.
+
+And change eth0 to whatever bizzare interface naming scheme that the
+box was installed with.
+
+
+Edit as follows:
+
+#+begin_example 
+# The loopback network interface
+auto lo
+iface lo inet loopback
+# The primary network interface
+auto eth0
+iface eth0 inet static
+address 192.168.100.105
+netmask 255.255.255.0
+gateway 192.168.1.1
+dns-nameservers 8.8.8.8
+#+end_example
+
+Restart the network
 
 #+begin_src sh
-sudo apt-get install emacs24-nox
+sudo /etc/init.d/networking restart
 #+end_src
 
-Copy ssh keys so you don't have to log on when accessing the box from
-elsewhere.  If the server is on a public network, turn off password
-authentication in /etc/ssh/config. Yada Yada.
+Run =ifconfig= to check that the changes took effect.
 
 ** Install DHCP, TFTP and NFS
 
 Install DHCP, TFTP and NFS:
 
 #+begin_src sh
-sudo apt-get install apache2 inetutils-inetd tftpd-hpa 
+sudo apt-get install apache2 inetutils-inetd tftpd-hpa isc-dhcp-server
 #+end_src
 
 ** Configure DHCP Server
@@ -259,42 +285,7 @@ sudo /etc/init.d/nfs-kernel-server start
 #+end_src
 
 
-** Configure the Network Interface
 
-Open the network =interfaces= file:
-
-#+begin_src sh
-sudo emacs /etc/network/interfaces
-#+end_src
-
-We need to set a static IP for the box.
-
-And change eth0 to whatever bizzare interface naming scheme that the
-box was installed with.
-
-
-Edit as follows:
-
-#+begin_example 
-# The loopback network interface
-auto lo
-iface lo inet loopback
-# The primary network interface
-auto eth0
-iface eth0 inet static
-address 192.168.1.20
-netmask 255.255.255.0
-gateway 192.168.1.1
-dns-nameservers 8.8.8.8
-#+end_example
-
-Restart the network
-
-#+begin_src sh
-sudo /etc/init.d/networking restart
-#+end_src
-
-Run =ifconfig= to check that the changes took effect.
 
 ** Network Boot
 
