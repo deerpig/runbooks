@@ -1,3 +1,9 @@
 * README
 
 This is a collection of runbooks for personal use and work.
+
+--- 
+
+*NOTE*: The primary repo is @ [[http://git.chenla.org/hoard/ ]] 
+Please submit pull requests and issues there.  A read
+only-mirror is maintained @ [[https://github.com/chenla/ ]]

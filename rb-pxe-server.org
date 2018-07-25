@@ -67,7 +67,6 @@ We need to set a static IP for the box.
 And change eth0 to whatever bizzare interface naming scheme that the
 box was installed with.
 
-
 Edit as follows:
 
 #+begin_example 
