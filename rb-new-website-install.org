@@ -34,7 +34,7 @@ First install Apache2 and a Virtual Host for the new site:
 
   See: [[./rb-lamp-server.org][Lamp Server Runbook]].
 
-** 2. Create A Record for DOmain
+** 2. Create A Record for Domain
 
 Second, create A record for the subdomain that points to
 site:

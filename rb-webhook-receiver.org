@@ -90,7 +90,7 @@ So the workflow is something like this:
 
 ** 1. Create a GitLab Webhook
 
-In gitlab, in project go to project --> settings --> integrations
+In gitlab go to project --> settings --> integrations
 
   - create hook for =Push= events as: http://example.com:8000
 
@@ -100,7 +100,7 @@ In gitlab, in project go to project --> settings --> integrations
  - if you don't use default names ie =id_rsa=, then you need to create
    a .ssh config file.
 
- - copy public key on GitLab in user settings --> SSH keys
+ - copy public key to GitLab in user settings --> SSH keys
 
  - ssh into server and test that the keys are working
 
@@ -131,7 +131,7 @@ We will use Shawn Sterling's Gitlab Webhook Receiver:
 SSH into your server and clone the repo:
 
 #+begin_src sh
-git@github.com:shawn-sterling/gitlab-webhook-receiver.git
+git clone git@github.com:shawn-sterling/gitlab-webhook-receiver.git
 #+end_src
 
 
