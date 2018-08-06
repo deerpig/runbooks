@@ -131,7 +131,13 @@ We will use Shawn Sterling's Gitlab Webhook Receiver:
 SSH into your server and clone the repo:
 
 #+begin_src sh
+we were using:
+
 git clone git@github.com:shawn-sterling/gitlab-webhook-receiver.git
+
+now we will try to use:
+
+https://github.com/pstauffer/gitlab-webhook-receiver
 #+end_src
 
 
@@ -139,7 +145,7 @@ git clone git@github.com:shawn-sterling/gitlab-webhook-receiver.git
 
 Edit directories in the script:
 
-*File:* gitlab-webhook-receiver.py
+*File:* config.py
 
 #+begin_example
 ############################################################                                                                                                                                   
@@ -254,6 +260,12 @@ netstat -tpln
 
 ** 7. Run the Receiver when the server boots
 
+
+new command to run:
+
+python /usr/local/bin/gitlab-webhook-receiver.py --port 8080 --cfg ./config.yaml
+
+set up service to run automatically at boot.
 
 ---
 
