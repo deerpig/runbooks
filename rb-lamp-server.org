@@ -380,5 +380,5 @@ You end up restarting apache /a lot/ when you're a sysadmin :)
 sudo systemctl restart apache2
 #+end_src
 
-`* Done
+* Done
 
