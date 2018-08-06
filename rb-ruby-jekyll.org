@@ -28,44 +28,7 @@
 The Jekyll site is notoriously misleading about how easy it
 is to install Jekyll.  There is a whole world of things they
 assume you know about the Ruby ecosystem.  They make it
-sound so easy:
-
-#+begin_quote
-apt-get install ruby ruby-gems
-gem install jekyll
-#+end_quote
-
-In the last, what, nearly ten years, that has worked for me
-2-3 times, the rest of the time has been a nightmare.  And
-it's not only me.  There are a lot of blog posts from people
-who would love to stick with Jekyll, but getting  it to run
-on your development box and your production box can be a
-/nightmare/.
-
-I was on the cusp of doing the same.  But then I realised
-that sooner or later I would have to tackle this because we
-will be using =Chef= which uses Ruby and makes the problems
-I've had installing Jekyll look trivial.
-
-So I decided to make one last go of it and see if I could
-come up with a way of installing jekyll across any of the
-desktop or server boxes that I use in development and
-production.  This file is the beginning of that process.
-
-The one thing to remember about Ruby is that you don't run
-most things as root.  Install gems as a regular user.
-
-Ruby Gems can be a real bitch to install.  
-
-*Don't Install Gems Using SUDO* If you do, it will create
-all sorts of hell for you later on.  And it's *very*
-difficult to get the system cleaned out once you've
-installed any gems using sudo.
-
-So, what to do?  Use the Ruby Version Manager (rvm) which is
-not difficult to install but it has it's issues as well and
-the rvm documentation is not as clear as I'd like.
-
+sound so easy...
 
 * Ruby
 
@@ -73,8 +36,26 @@ Install =ruby-full= which includes =ruby=, =ruby-headers= and
 =ruby gems=.
 
 #+begin_src sh
-sudo apt-get install ruby-full build-essential 
+sudo apt-get install ruby ruby-dev make build-essential
 #+end_src
+
+
+* Edit .bashrc
+
+Edit:
+
+#+begin_src sh
+emacs ~/.bashrc
+#+end_src
+
+Add the following:
+
+#+begin_example sh
+# Ruby exports
+export GEM_HOME=$HOME/gems
+export PATH=$HOME/gems/bin:$PATH
+#+end_example
+
 
 * RVM: The Ruby Version Manager
 
