@@ -264,6 +264,7 @@ netstat -tpln
 new command to run:
 
 python /usr/local/bin/gitlab-webhook-receiver.py --port 8080 --cfg ./config.yaml
+python /usr/local/bin/gitlab-webhook-receiver.py --port 8080 --cfg ./config.yaml
 
 set up service to run automatically at boot.
 

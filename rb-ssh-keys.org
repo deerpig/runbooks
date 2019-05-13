@@ -25,13 +25,22 @@
 
 *  SSH Keys (Linux)
 
-** 1. Create SSH key pair
+
+** 1. Install Openssh
+
+Check that open ssh is installed.
+
+#+begin_src sh
+sudo apt-get install openssh-server openssh-client
+#+end_src
+
+** 2. Create SSH key pair
 
 #+begin_src sh
 cd ~/
 mkdir .ssh
 cd ~/.ssh
-ssh-keygen -b 4096
+ssh-keygen -o -b 4096
 #+end_src
 
 This will create a 4096-bit RSA (and SHA256) key pair which should be
@@ -51,15 +60,26 @@ are correct.
 chmod -R go= ~/.ssh
 #+end_src
 
+
+
 *** Further Reading
 
-The page on [[https://wiki.archlinux.org/index.php/SSH_keys][SSH Keys]] the Arch Linux Wiki is excellent,
+The page on [[https://wiki.archlinux.org/index.php/SSH_keys][SSH Keys]] on the Arch Linux Wiki is excellent,
 in-depth and fully referenced.
 
 - [[https://wiki.archlinux.org/index.php/SSH_keys][SSH Keys]] | Arch Linux Wiki
 - [[https://www.howtoforge.com/linux-basics-how-to-install-ssh-keys-on-the-shell][Linux Basics: How To Create and Install SSH Keys on the Shell]]
 
-** 2. SSH Agent
+
+** 3. ssh-copy-id
+
+Copy keys to a remote server.
+
+#+begin_src sh
+ssh-copy-id -i ~/.ssh/key-name user@host
+#+end_src
+
+** 4. SSH Agent
 
 In order to be able to login to the server without using the password
 every time, use SSH Agent during that session.
@@ -69,7 +89,7 @@ ssh-agent BASH
 ssh-add ~/.ssh/<key-file>
 #+end_src
 
-** 3. Disable Password Login
+** 5. Disable Password Login
 
 Test that you can login without a password, then open:
 

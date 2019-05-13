@@ -49,11 +49,13 @@ I've found that it's often faster to download using bittorrent.
 Create a bootable USB stick:
 
 #+begin_src sh
-dd if=bl-Deuterium-amd64_20170429.iso of=/dev/sdc
+dd if=bl-Helium-amd64.iso of=/dev/sda
 #+end_src
 
 
 ** Install Some Tools
+
+Playbook: laptop-misc-tools.yml
 
 Install an odd collection of packages.  Most of these
 packages are needed to complete the installation and setup
@@ -64,7 +66,7 @@ that I didn't forget.
 #+begin_src sh
 sudo apt-get -y install wget git-core surfraw openssh-server \
 gdebi most xprintidle lxrandr dnsutils irssi libsqlite0 sqlite3 \
-net-tools
+net-tools pandoc
 #+end_src
 
 * Emacs
@@ -79,6 +81,8 @@ tried repeatedly to get the correct version.
 
 Install graphics and dev libs:
 
+Playbook: laptop-emacs-dependencies.yml
+
 #+begin_src sh
 sudo apt-get -y install libxaw7-dev libxpm-dev libpng-dev libtiff5-dev \
 libgif-dev libjpeg62-turbo-dev libgtk2.0-dev libncurses5-dev libxml2 \
@@ -87,19 +91,6 @@ libxml2-dev librsvg2-dev libgtk-3-dev libwebkitgtk-3.0-dev imagemagick
 sudo apt-get -y install libgnutls28-dev librsvg2-bin
 #+end_src
 
-Full install of texinfo, latex & tex and pandoc.  Texinfo is
-needed by emacs, this will also install pdflatex which is
-also needed by orgmode.
-
-This will take a while -- several gigabytes
-
-#+begin_src sh
-sudo apt-get -y install texinfo texlive-base texlive-bibtex-extra latexmk pandoc
-sudo apt-get -y install texlive-fonts-recommended texlive-fonts-extra
-sudo apt-get -y install texlive-latex-base texlive-latex-extra \
-texlive-latex-recommended texlive-science
-#+end_src
-  
 Install GNU-Autotools
 
 #+begin_src sh
@@ -122,6 +113,23 @@ sudo apt-get -y install libwebkit2gtk-3.0-25 libwebkit2gtk-3.0-dev
 
 #+end_src
 
+** Tex & Texinfo
+
+Full install of texinfo, latex & tex.  Texinfo is needed by
+emacs, this will also install pdflatex which is also needed
+by orgmode.
+
+Playbook: laptop-tex.yml
+
+This will take a while -- several gigabytes
+
+#+begin_src sh
+sudo apt-get -y install texinfo texlive-base texlive-bibtex-extra latexmk
+sudo apt-get -y install texlive-fonts-recommended texlive-fonts-extra
+sudo apt-get -y install texlive-latex-base texlive-latex-extra \
+texlive-latex-recommended texlive-science
+#+end_src
+  
 
 ** Build Dependencies
 
@@ -138,6 +146,8 @@ sudo apt-get -y build-dep emacs
 
 ** Download Emacs from Github
 
+Playbook: laptop-emacs.yml
+
 Download Emacs source code from Github.  Be sure to pass the "--depth
 1" flag to download just the more recent history of the files.
 
@@ -153,7 +163,7 @@ Run the autogen and configure scripts. Note that with
 installed.
 
 I tried installing with Cario support but fonts got screwed
-up as well as introducing window resdrawing problems when
+up as well as introducing window redrawing problems when
 frames were resized.
 
 #+begin_src sh
@@ -208,13 +218,18 @@ have integrated =IceWeasel= as my primary browser.
 
 :END:
 
+Playbook: firefox.yml
+
 Debian is finally including firefox again (instead of their
 iceweasel branded version of firefox).  However, the version
 included in the package is far behind the most recent.
 
 Download Firefox 51:
 
-  https://www.mozilla.org/en-US/firefox/new/?scene=2
+#+begin_src sh
+wget --content-disposition "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US"
+#+end_src
+
 
 Extract the file:
 
@@ -281,7 +296,7 @@ first line below.  It may or may not be needed.
 #+begin_src sh
 sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/firefox 100
 sudo update-alternatives --set x-www-browser /usr/bin/firefox
-sudo update-alternatives --config x-www-browser
+sudo update-alternatives --config x-www-browser  #interactive
 #+end_src
 
 ** Install Google Chrome
@@ -297,7 +312,40 @@ run on the command line:
 google-chrome
 #+end_src
 
+Or use these instructions:
+
+  https://omgfoss.com/install-google-chrome-ubuntu-18-04-lts-command-line/
+
+#+begin_src yml
+---
+- name: Build and install google chrome
+  hosts: laptop
+  sudo: true
+  tasks:
+    - name: add chromium apt-key
+      apt_key: 
+        url: https://dl.google.com/linux/linux_signing_key.pub
+        state: present 
+
+    - name: add google chrome repository
+      apt_repository: 
+        repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' 
+        state: present 
+        #filename: google-chrome
+        update_cache: yes
+
+    - name: install google-chrome
+      apt: 
+        name: google-chrome-stable
+        state: present
+        update_cache: yes
+#+end_src
+
+
 ** Configure Browsers
+
+I now use firefox sync across all boxes where I use firefox.
+
 *** Add DuckDuck Go As Default
 
  - Iceweasel: install Firefox DuckDuckGo Addon
@@ -593,7 +641,10 @@ try running the following:
 xfconf-query -c xfce-session -p /startup/ssh-agent/enabled -n -t bool -s false
 #+end_src
 
-You may have to log out or reboot for all the settings to work.
+You may have to log out or reboot for all the settings to
+work.
+
+
 ** Copy dotfiles and emacs stuff
 
 I keep most of my config files in a directory called
