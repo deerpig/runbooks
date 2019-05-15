@@ -55,6 +55,13 @@ That's all this file is.
   ;;;  https://github.com/deerpig/runbooks/blob/master/rb-bare-bones-emacs.org
   ;;;  http://git.chenla.org/deerpig-public/runbooks/blob/master/rb-bare-bones-emacs.org
   ;;;
+  ;;;  I also add the following alias in ~/.bashrc
+  ;;;
+  ;;;     alias qmacs='emacs -nw -q --load ~/.emacs.d/minmacs.el'
+  ;;;
+  ;;;  The 'q' is for quick. This opens emacs with no windows using
+  ;;;  this init file.  
+  ;;; 
   ;;;  Now for a true story:
   ;;;
   ;;;     "Daddy, is there emacs in heaven?"
