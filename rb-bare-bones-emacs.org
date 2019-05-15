@@ -1,9 +1,9 @@
 #   -*- mode: org; fill-column: 60 -*-
 
-#+TITLE: Bare Bones .emacs
+#+TITLE: Minacs: Bare Bones .emacs
 #+STARTUP: showall
 #+TOC: headlines 4
-#+PROPERTY: header-args :results drawer  :tangle .emacs.el
+#+PROPERTY: header-args :results drawer  :tangle ~/.emacs.d/minacs.el
 :PROPERTIES:
 :CUSTOM_ID: 
 :Name:      /home/deerpig/proj/deerpig/runbooks/rb-bare-bones-emacs.org
