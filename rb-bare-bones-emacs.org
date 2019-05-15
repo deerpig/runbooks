@@ -50,7 +50,7 @@ That's all this file is.
   ;;; Licence: MIT/CC BY-SA 4.0
   ;;;
   ;;; This is part of a literate program that was tangled 
-  ;;; from either of the following:
+  ;;; from one of the following repos:
   ;;;
   ;;;  https://github.com/deerpig/runbooks/blob/master/rb-bare-bones-emacs.org
   ;;;  http://git.chenla.org/deerpig-public/runbooks/blob/master/rb-bare-bones-emacs.org
