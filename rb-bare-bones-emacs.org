@@ -3,7 +3,7 @@
 #+TITLE: Minacs: Bare Bones .emacs
 #+STARTUP: showall
 #+TOC: headlines 4
-#+PROPERTY: header-args :results drawer  :tangle ~/.emacs.d/minacs.el
+#+PROPERTY: header-args :results drawer  :tangle /home/deerpig/.emacs.d/minmacs.el
 :PROPERTIES:
 :CUSTOM_ID: 
 :Name:      /home/deerpig/proj/deerpig/runbooks/rb-bare-bones-emacs.org
@@ -36,14 +36,17 @@ All I need is a very basic dotemacs that I can put on
 servers when I set them up to make remote workflow a little
 easier.
 
-That's all this file is.
+That's all this file is. 
 
 
 * Header
+:PROPERTIES:
+:ID:       c979895f-513e-433b-bff5-737b613627ef
+:END:
 
 #+begin_src emacs-lisp
   ;;; Deerpig's Barebones .emacs file.
-  ;;; (c)2017 Brad Collins, Phnom Penh.
+  ;;; (c)2017,2019 Brad Collins, Phnom Penh.
   ;;; Licence: MIT/CC BY-SA 4.0
   ;;;
   ;;; This is part of a literate program that was tangled 
@@ -71,16 +74,23 @@ That's all this file is.
 * NOX (no X-windows) Configuration
 
 ** Yes-or-no questions
+:PROPERTIES:
+:ID:       95d46e0a-133b-4195-9592-1219f9c20606
+:END:
 
 Don't require typing 'yes" or 'no'.
 
 #+begin_src emacs-lisp
+
 ;; no y-or-n questions 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 #+end_src
 
 ** Inhibit startup message
+:PROPERTIES:
+:ID:       21b8f10d-5547-49e2-aa78-a0f4ae67f843
+:END:
 
 Don't display boilerplate startup message in scratch
 buffer. This gives us a nice clean scratch buffer.
@@ -95,6 +105,9 @@ buffer. This gives us a nice clean scratch buffer.
 #+end_src
 
 ** Don't mix tabs and spaces
+:PROPERTIES:
+:ID:       c6d2356f-8d88-43a5-97ec-0077c1fe16be
+:END:
 
 I know this is a religous issue, but I've found life easier
 without tabspace characters mucking things up.
@@ -106,6 +119,9 @@ without tabspace characters mucking things up.
 #+end_src
 
 * Minimal GUI Configuration 
+:PROPERTIES:
+:ID:       62df3a5a-5914-44b7-8300-6dc4a7f40d94
+:END:
 
 The following can only be used if you are running X.  If you
 try to use them in emacs-nox, you'll get an error.
@@ -129,6 +145,9 @@ the the tool, menu, scroll bars or splash screen.
 #+end_src
 
 * End of file
+:PROPERTIES:
+:ID:       9ba513b7-b1f8-4f0b-9415-f6111705cb9a
+:END:
 
 #+begin_src emacs-lisp
 
