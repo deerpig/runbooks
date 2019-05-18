@@ -26,7 +26,6 @@
 [[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
 [[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
-
 * Introduction
 
 This file generates two ansible files:
@@ -46,7 +45,13 @@ Written for Ansible: 2.7
 
   - git pull latest version of repo
   - org tangle the file dot-xodmap.org 
-  - restart xmodmap: >xmodmap ~/.Xmodmap
+
+NOTE: restarting xmodmap using a handler command results in
+an error.  I've removed the handler as it isn't terribly
+important in a desktop environment.  When logging into the
+machine, xmodmap will load .Xmodmap if it has changed.  So
+the worst case scenario is to have to do this by hand.
+
 
 * Playbooks
 :PROPERTIES:
@@ -57,17 +62,11 @@ Written for Ansible: 2.7
 ---
 - name: Configure xmodmap
   hosts: localhost
-  #become: true
-  #become_user: deerpig
+  become: true
+  become_user: deerpig
   vars:
     home    : /home/deerpig
     rb_repo : /home/deerpig/proj/deerpig/runbooks
-  handlers:
-    - name: restart xmodmap
-      service: 
-        name: xmodmap
-        state: restarted
-      listen: "restart xmodmap"
   tasks:
   <<plays>>
 
@@ -104,7 +103,7 @@ Written for Ansible: 2.7
       command: emacs --batch -l org --eval '(org-babel-tangle-file "{{ rb_repo }}/dot-xmodmap.org")'
       args:
         removes: "{{ home }}/.Xmodmap"
-      notify: "restart xmodmap"
+
 
 
 #+end_src
