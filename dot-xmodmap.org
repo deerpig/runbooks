@@ -1,0 +1,88 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Xmodmap  | Deerpig's Dot Emacs
+#+AUTHOR: Brad Collins
+#+EMAIL: brad@chenla.la
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: header-args    :results drawer  :tangle /home/deerpig/.Xmodmap
+  :PROPERTIES:
+  :CUSTOM_ID: 
+  :Name:      /home/deerpig/.dotfiles/dot-xmodmap.org
+  :Created:   2019-05-14T08:19@Prek Leap (11.642600N-104.919210W)
+  :ID:        a2420434-b757-4539-bd6e-0ba6d55126b7
+  :VER:       611068833.564859634
+  :GEO:       48P-491193-1287029-15
+  :BXID:      pig:SYF7-6825
+  :Class:     dotemacs
+  :Type:      literate-program
+  :Status:    wip
+  :Licence:   MIT/CC BY-SA 4.0
+  :END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/class-dotemacs-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-literate%20program-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
+* Introduction: the black art of keymapping
+:PROPERTIES:
+:ID:       142f872a-c78a-446d-bfff-40c9583e0713
+:END:
+
+Remap the following keys:
+
+  - CapsLock  => Super
+  - Alt_R     => Hyper
+  - Control_R => menu  
+
+SEE:
+
+  - [[http://cs.gmu.edu/~sean/stuff/n800/keyboard/old.html][Using xmodmap]] | intro
+
+  - [[https://wiki.archlinux.org/index.php/Xmodmap][xmodmap]] | ArchWiki
+  - [[http://openbox.org/wiki/Help:Bindings][Help:Bindings]] | Openbox
+
+  - [[http://wiki.linuxquestions.org/wiki/List_of_Keysyms_Recognised_by_Xmodmap][List of Keysyms Recognised by Xmodmap]] | LQWiki
+
+ SEE: /usr/share/X11/xkb/rules/base.lst
+
+
+Helpful commands:
+
+  - =xev=: interactively press a key and see info
+  - =xmodmap -pke= : list all keybindings in xmodmap
+  - =xmodmap ~/.Xmodmap= : test and reset changes
+
+
+#+begin_src sh
+!! .Xmodmap ================================================
+!! tangled from ~/proj/deerpig/dotfiles/dot-xmodmap.org 
+!! [2019-05-14 Tue]
+
+! remap:
+!  - caps_lock to super
+!  - Control_L to menu
+!  - Alt_L     to hyper
+
+clear      lock 
+clear   control
+clear      mod1
+clear      mod2
+clear      mod3
+clear      mod4
+clear      mod5
+keycode     108 = Hyper_R
+keycode      66 = Super_L
+keycode     105 = Menu
+add     control = Control_L
+add        mod1 = Alt_L 
+add        mod2 = Num_Lock
+add        mod3 = Hyper_R
+add        mod4 = Super_L 
+add        mod5 = Mode_switch ISO_Level3_Shift
+
+#+end_src
+
