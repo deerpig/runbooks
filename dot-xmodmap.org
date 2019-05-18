@@ -59,6 +59,7 @@ Helpful commands:
 
 #+begin_src sh
 !! .Xmodmap ================================================
+!! Do Not Edit
 !! tangled from ~/proj/deerpig/dotfiles/dot-xmodmap.org 
 !! [2019-05-14 Tue]
 
