@@ -100,7 +100,7 @@ Written for Ansible: 2.7
         force: yes
         
     - name: tangle file
-      command: emacs --batch -l org --eval '{{ rb_repo }}dot-xmodmap.org'
+      command: emacs --batch -l org --eval '{{ rb_repo }}/dot-xmodmap.org'
       args:
         removes: "{{ home }}/.Xmodmap"
       notify: "restart xmodmap"
