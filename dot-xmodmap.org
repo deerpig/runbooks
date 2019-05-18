@@ -32,23 +32,43 @@
 :ID:       142f872a-c78a-446d-bfff-40c9583e0713
 :END:
 
+** Description
+
+xmodmap - utility for modifying keymaps and pointer button mappings in X.
+
+SEE =man xmodmap=
+
+** How to Use
+
+This file is for:
+
+  - Notes and information about configuring xmodmap
+  - The source for the ~/.Xmodmap config file.
+
+When this file is tangled in org-babel-tangle-file, it
+writes the contents of the src code blocks to the file
+~/.Xmodmap.
+
+An Ansible playbook is used to git pull the latest version
+of this file, tangle the file and finally restart xmodmap so
+that changes take effects.
+
+** Notes
+
 Remap the following keys:
 
   - CapsLock  => Super
   - Alt_R     => Hyper
   - Control_R => menu  
 
-SEE:
+** References
 
   - [[http://cs.gmu.edu/~sean/stuff/n800/keyboard/old.html][Using xmodmap]] | intro
-
   - [[https://wiki.archlinux.org/index.php/Xmodmap][xmodmap]] | ArchWiki
   - [[http://openbox.org/wiki/Help:Bindings][Help:Bindings]] | Openbox
-
   - [[http://wiki.linuxquestions.org/wiki/List_of_Keysyms_Recognised_by_Xmodmap][List of Keysyms Recognised by Xmodmap]] | LQWiki
 
- SEE: /usr/share/X11/xkb/rules/base.lst
-
+SEE: /usr/share/X11/xkb/rules/base.lst
 
 Helpful commands:
 
