@@ -1308,7 +1308,7 @@ default and tweak it to taste.
 
 - autostart 
   - set up screen resolution
-  - disable caps-lock key
+  - disable caps-lock key  
 - rc.xml
   - number of desktops & default desktop
   - edit keyboard shortcuts to open apps
