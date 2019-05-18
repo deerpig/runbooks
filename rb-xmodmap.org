@@ -5,7 +5,7 @@
 #+EMAIL: brad@chenla.la
 #+STARTUP: showall
 #+TOC: headlines 4
-#+PROPERTY: header-args    :results drawer  :tangle /home/deerpig/proj/playbooks/xmodmap.yml
++PROPERTY: header-args    :results drawer  :tangle /home/deerpig/proj/playbooks/xmodmap.yml
   :PROPERTIES:
   :CUSTOM_ID: 
   :Name:      /home/deerpig/proj/deerpig/runbooks/rb-xmodmap.org
@@ -28,4 +28,94 @@
 
 
 * Introduction
+
+This file generates two ansible files:
+
+The first =playbooks/pb-xmodmap.yml= is standalone playbook
+that tangles =dot-xmodmap.org= which generates a .Xmodmap in
+the home directory and then calls xmodmap to use the new
+configuration.
+
+The second is for use in the <workstation> role that
+performs a full installation of Bunsen Labs on a laptop or
+desktop.
+
+** Notes
+
+Written for Ansible: 2.7
+
+  - git pull latest version of repo
+  - org tangle the file dot-xodmap.org 
+  - restart xmodmap: >xmodmap ~/.Xmodmap
+
+* Playbooks
+:PROPERTIES:
+:ID:       c640f8af-f4e1-4461-bbdd-7b9b6a035bde
+:END:
+
+#+BEGIN_SRC yaml :session standalone :tangle /home/deerpig/proj/playbooks/pb-xmodmap.yml :noweb yes
+---
+- name: Configure xmodmap
+  hosts: localhost
+  sudo: no
+  vars:
+    home    : /home/deerpig
+    rb_repo : /home/deerpig/proj/deerpig/runbooks
+  handlers:
+    - name: restart xmodmap
+      service: 
+        name: xmodmap
+        state: restarted
+      listen: "restart xmodmap"
+  tasks:
+  <<plays>>
+
+
+#+END_SRC
+
+#+BEGIN_SRC sh :session tasks :tangle /home/deerpig/proj/playbooks/task-xmodmap.yml :noweb yes
+---
+# xmodmap tasks
+
+<<plays>>
+#+END_SRC
+
+** Playbook
+:PROPERTIES:
+:header-args: :noweb-ref plays 
+:END:
+#+RESULTS:
+
+
+#+begin_src yaml  :session standalone
+
+    - name: git pull runbooks repo
+      sudo: no
+      git:
+        repo: 'git@git.chenla.org:deerpig/runbooks.git'
+        dest: /home/deerpig/proj/deerpig/dotfiles
+        key_file: /home/deerpig/.ssh/d9d_admin
+        accept_hostkey: true
+        update: yes
+        force: yes
+        
+    - name: tangle file
+      command: emacs --batch -l org --eval '{{ rb_repo }}dot-xmodmap.org")'
+      args:
+        removes: "{{ home }}/.Xmodmap"
+      notify: "restart xmodmap"
+
+
+#+end_src
+
+** Workstation Role Tasks
+:PROPERTIES:
+:header-args: :noweb-ref plays
+:END:
+
+Now export as a task file for the <xxx> role
+
+#+begin_src sh :session tasks
+
+#+end_src
 
