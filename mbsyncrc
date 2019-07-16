@@ -1,0 +1,144 @@
+################
+# Chenla
+################
+IMAPAccount chenla
+Host imap.gmail.com
+User brad@chenla.la
+Port 993
+Pass Twattering0fbardz
+#UseIMAPS yes
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore chenla-remote
+Account chenla
+
+MaildirStore chenla-local
+Path ~/Maildir/chenla/
+Inbox ~/Maildir/chenla/inbox
+
+Channel chenla-inbox
+Master :chenla-remote:
+Slave :chenla-local:
+Patterns "INBOX" "Arch*"
+Create Both
+Expunge Both
+SyncState *
+
+Channel chenla-trash
+Master :chenla-remote:"[Chenla]/Trash"
+Slave :chenla-local:trash
+Create Both
+Expunge Both
+SyncState *
+
+Channel chenla-sent
+Master :chenla-remote:"[Chenla]/Sent Mail"
+Slave :chenla-local:sent
+Create Both
+Expunge Both
+SyncState *
+
+# GROUPS CHANNELS
+Group chenla
+Channel chenla-inbox
+Channel chenla-sent
+Channel chenla-trash
+
+################
+# Deerpig Gmail
+################
+IMAPAccount gmail
+Host imap.gmail.com
+User deerpig@gmail.com
+Port 993
+#PassCmd "gnome-keyring-query get servername_mail"
+Pass cr0nkthat#!up
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Path ~/Maildir/gmail/
+Inbox ~/Maildir/gmail/inbox
+
+Channel gmail-inbox
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "INBOX" "Arch*"
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-trash
+Master :gmail-remote:"[Gmail]/Trash"
+Slave :gmail-local:trash
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+Slave :gmail-local:sent
+Create Both
+Expunge Both
+SyncState *
+
+# GROUP CHANNELS
+Group gmail
+Channel gmail-inbox
+Channel gmail-sent
+Channel gmail-trash
+
+################
+# Pathmazing
+################
+# IMAPAccount path
+# Host imap.gmail.com
+# User brad.collins@pathmazing.com
+# Port 993
+# Pass Twattering0fbardz
+# UseIMAPS yes
+# CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# IMAPStore path-remote
+# Account path
+
+# MaildirStore path-local
+# Path ~/Maildir/path/
+# Inbox ~/Maildir/path/inbox
+
+# Channel path-inbox
+# Master :path-remote:
+# Slave :path-local:
+# Patterns "INBOX" "Arch*"
+# Create Both
+# Expunge Both
+# SyncState *
+
+# Channel path-trash
+# Master :path-remote:"[Cas]/Trash"
+# Slave :path-local:trash
+# Create Both
+# Expunge Both
+# SyncState *
+
+# Channel path-sent
+# Master :path-remote:"[Path]/Sent Mail"
+# Slave :path-local:sent
+# Create Both
+# Expunge Both
+# SyncState *
+
+# GROUPS CHANNELS
+# Group path
+# Channel path-inbox
+# Channel path-sent
+# Channel path-trash
+

@@ -1,0 +1,92 @@
+################
+# Cas Nakamori
+################
+IMAPAccount cas
+Host imap.gmail.com
+User cas.nakamori@gmail.com
+Port 993
+Pass Twattering0fbardz
+UseIMAPS yes
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore cas-remote
+Account cas
+
+MaildirStore cas-local
+Path ~/Maildir/cas/
+Inbox ~/Maildir/cas/inbox
+
+Channel cas-inbox
+Master :cas-remote:
+Slave :cas-local:
+Patterns "INBOX" "Arch*"
+Create Both
+Expunge Both
+SyncState *
+
+Channel cas-trash
+Master :cas-remote:"[Cas]/Trash"
+Slave :cas-local:trash
+Create Both
+Expunge Both
+SyncState *
+
+Channel cas-sent
+Master :cas-remote:"[Cas]/Sent Mail"
+Slave :cas-local:sent
+Create Both
+Expunge Both
+SyncState *
+
+# GROUPS CHANNELS
+Group cas
+Channel cas-inbox
+Channel cas-sent
+Channel cas-trash
+
+
+################
+# Kinto
+################
+IMAPAccount kinto
+Host mail.kinto-cloud.com
+User brad
+#Port 993
+Pass 1zm0alqp
+UseIMAPS yes
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore kinto-remote
+Account kinto
+
+MaildirStore kinto-local
+Path ~/Maildir/kinto/
+Inbox ~/Maildir/kinto/inbox
+
+Channel kinto-inbox
+Master :kinto-remote:
+Slave :kinto-local:
+Patterns "INBOX" "Arch*"
+Create Both
+Expunge Both
+SyncState *
+
+Channel kinto-trash
+Master :kinto-remote:"[Kinto]/Trash"
+Slave :kinto-local:trash
+Create Both
+Expunge Both
+SyncState *
+
+Channel kinto-sent
+Master :kinto-remote:"[Kinto]/Sent Mail"
+Slave :kinto-local:sent
+Create Both
+Expunge Both
+SyncState *
+
+# GROUPS CHANNELS
+Group kinto
+Channel kinto-inbox
+Channel kinto-sent
+Channel kinto-trash

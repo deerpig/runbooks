@@ -1,0 +1,411 @@
+
+
+
+(setq gnus-thread-hide-subtree t)
+
+(setq gnus-group-line-format "%M%S%4y: %(%g%)\n")
+;; (setq gnus-topic-line-format "")
+
+;; (setq gnus-topic-indent-level 4)
+;; %1(%1{%4i %}%)%{ %}%2(%2{%7U %}%)%{ %}%3(%3{%7y %}%)%{%* %}%4(%B%-45G%)\n")
+
+;; Try to reformat summary lines after we upgrade to 5.11
+;;(setq gnus-summary-line-format "%U%R%z%I%(%[%4L: %-20,20n%]%) %s |%D\n")
+
+ (setq gnus-summary-line-format ":%U%R %B %s %-40=|%4L |%-20,20f |%&user-date; \n")
+
+(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+
+;;(setq gnus-agent t)
+
+;;(setq sendmail-program "/usr/sbin/ssmtp")
+;;(setq sendmail-program "/usr/bin/sendmail")
+
+
+;; No HTML mail
+    (setq mm-discouraged-alternatives '("text/html" "text/richtext"))
+
+;;(setq send-mail-function 'sendmail-send-it
+ ;;     message-send-mail-function 'sendmail-send-it)
+
+;;(load "smtpmail")
+
+;;(setq mail-specify-envelope-from t
+  ;;    mail-envelope-from 'header)
+
+
+;; we substitute sendmail with msmtp
+;;(setq sendmail-program "/usr/bin/msmtp")
+;;need to tell msmtp which account we're using
+;;(setq message-sendmail-extra-arguments '("-a" "brad@chenla.org"))
+;; you might want to set the following too
+;;(setq mail-host-address "gmail.com")
+;;(setq user-full-name "Anderson Guy")
+;;(setq user-mail-address "sivaram.notthere@gmail.com")
+
+
+;; Set different from: address and sig file depending on
+;; which folder you are sending mail from.
+;;
+;; The following sets brad@chenla.org as the default,
+;; and use brad@godown.sg from the projects folder.
+
+(setq gnus-parameters
+  ;;Use notthere id for all gmane news group postings
+  '((".*"
+     (posting-style
+      (address "brad@chenla.la")
+      (name "Brad Collins")
+      (signature "Brad Collins <brad@chenla.la>\nskype|twitter: deerpig\nhttp://chenla.la")
+      ;;(body "\n\n\n sivaram\n -- ")
+      ;;(eval (setq message-sendmail-extra-arguments '("-a" "brad@chenla.la")))
+      (user-mail-address "brad@chenla.la")
+      ))
+      ;;use anotherguy id for all normal mails
+   (".*Repozit"
+     (posting-style
+      (address "deerpig@gmail.com")
+      (name "Brad Collins")
+      (signature "Brad Collins <brad@repozit.net>\nRepozit Storage Systyems - http://www.repozit.net")
+      ;;(body "\n\n\n Sivaram A\n -- \n")
+      ;;(eval (setq message-sendmail-extra-arguments '("-a" "brad@godown.org")))
+      (user-mail-address "deerpig@gmail.com")
+      ))
+
+    (".*Cas.Nakamori"
+     (posting-style
+      (address "cas.nakamori@gmail.com")
+      (name "Cassandra Nakamori")
+      (signature "Cassandra Nakamori <cas.nakamori@gmail.com>\nSan Diego\nSkype: casnakamori Twitter: casnakamori")
+      ;;(body "\n\n\n Sivaram A\n -- \n")
+      ;;(eval (setq message-sendmail-extra-arguments '("-a" "brad@godown.org")))
+      (user-mail-address "brad@godown.sg")
+      ))
+    ))
+
+;; Google
+;; (setq message-send-mail-function 'smtpmail-send-it
+;;       smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+;;       smtpmail-auth-credentials '(("smtp.gmail.com" 587 "deerpig@gmail.com" "vegetasucks"))
+;;       smtpmail-default-smtp-server "smtp.gmail.com"
+;;       smtpmail-smtp-server "smtp.gmail.com"
+;;       smtpmail-smtp-service 587
+;;       smtpmail-local-domain "chenla.la")
+
+(setq smtpmail-debug-info t)
+
+;; AuthSMTP.com
+ ;; (load "smtpmail")
+ ;; (setq smtpmail-smtp-server "mail.authsmtp.com")
+ ;; (setq smtpmail-default-smtp-server "mail.authsmtp.com")
+ ;; (setq send-mail-function 'smtpmail-send-it)
+ ;; (setq message-send-mail-function 'smtpmail-send-it)
+ ;; (setq smtpmail-smtp-service 25)
+ ;; (setq smtpmail-auth-credentials 
+ ;;     '(("mail.authsmtp.com" 25 "ac41180" "1zm0alqp")))
+
+
+
+;; with Emacs 23.1, you have to set this explicitly (in MS Windows)
+;; otherwise it tries to send through OS associated mail client
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+(setq mail-user-agent 'gnus-user-agent)
+;; we substitute sendmail with msmtp
+;; use with AuthSMTP
+;; when you upgrade the OS:
+;; yum install ssmtp
+;; replace /etc/ssmtp/ssmtp.conf with copy in ~/emacs-lisp
+;;
+(setq sendmail-program "/usr/sbin/ssmtp")
+
+;;need to tell msmtp which account we're using
+;;(setq message-sendmail-extra-arguments '("-a" "anderson"))
+;; you might want to set the following too
+;;(setq mail-host-address "chenla.la")
+;;(setq user-full-name "Brad Collins")
+;;(setq user-mail-address "brad@chenla.la")
+
+;;(setq starttls-use-gnutls t)
+;;(setq starttls-gnutls-program "gnutls-cli")
+;;(setq starttls-extra-arguments nil)
+
+;; (setq send-mail-function 'smtpmail-send-it) ; if you use `mail'
+;; (setq message-send-mail-function 'smtpmail-send-it) ; if you use message/Gnus
+;; (setq smtpmail-default-smtp-server "mail.authsmtp.com") 
+;; (setq smtpmail-local-domain "chenla.la")
+;; (setq smtpmail-sendto-domain "chenla.la")
+;; (setq smtpmail-debug-info t) ; only to debug problems
+;; (setq smtpmail-auth-credentials  ; or use ~/.authinfo
+;;       '(("mail.authsmtp.com" 25 "ac41180" "1zm0alqp")))
+
+
+;; (setq user-full-name "Brad Collins")
+;; (setq user-mail-address (concat "deerpig@" smtpmail-local-domain))
+;; (setq smtpmail-local-domain))
+
+;;(setq gnus-select-method '(nntp "news.gmane.org"))
+;;(setq gnus-select-method '(nntp "bulma.chenla.la"))
+
+(add-to-list 'gnus-secondary-select-methods '(nnml ""))
+;;(add-to-list 'gnus-secondary-select-methods '(nntp "localhost"))
+
+;(add-to-list 'gnus-secondary-select-methods '(nnslashdot ""))
+
+;--- slashdot ---
+
+;     (setq gnus-secondary-select-methods
+;           '((nnslashdot "")))
+
+
+(setq gnus-subscribe-newsgroup-method 'gnus-subscribe-topics)
+(add-hook 'gnus-group-mode-hook 'gnus-topic-mode) ;; be sure using topics
+
+;;  (setq gnus-secondary-select-methods
+;;        '((nnslashdot ""
+;;  	(nnslashdot-login-name "deerpig")
+;;  	(nnslashdot-password "vegetasucks")
+;;  	(nnslashdot-threshold "2"))))
+
+;n;(add-to-list 'gnus-secondary-select-methods '(nnslashdot ""))
+
+;;  (setq gnus-secondary-select-methods
+;;           '((nnslashdot "")))
+
+
+;; Config for calling POP3 directly
+
+;;  (eval-after-load "mail-source"
+;;    '(add-to-list 'mail-sources '(pop :server "mail.ibiblio.org"
+;;                                      :user "deerpig"
+;;                                      :port "pop3"
+;;                                      :password "1zm0alqp")))
+
+;; config for grabbing mail from a spool file.
+
+(setq mail-sources '((file :path "/var/spool/mail/deerpig")))
+
+
+;; Tell gnus which method to use for archives (nnfolder)
+ (setq gnus-message-archive-method 
+        '(nnfolder "archive"
+ 	 	  (nnfolder-directory   "~/mail/archive")
+ 		  (nnfolder-active-file "~/mail/active")
+ 		  (nnfolder-get-new-mail nil)
+ 		  (nnfolder-inhibit-expiry t)))
+;; Tell gnus into which group to store messages
+  (setq gnus-message-archive-group
+        '((if (message-news-p)
+  	     "misc-news"
+  	   (concat "mail." (format-time-string "%Y-%m" (current-time))))))
+
+;; Pull Some of the older headers when you open a group...
+
+  (setq gnus-fetch-old-headers 'some)
+
+;; archive messages M-x my-archive-article
+
+(defun my-archive-article (&optional n)
+  "Copies one or more article(s) to a corresponding `nnml:' group, e.g.
+`gnus.ding' goes to `nnml:1.gnus.ding'. And `nnml:List-gnus.ding' goes
+to `nnml:1.List-gnus-ding'.
+
+Use process marks or mark a region in the summary buffer to archive
+more then one article."
+  (interactive "P")
+  (let ((archive-name
+         (format
+          "nnml:1.%s"
+          (if (featurep 'xemacs)
+              (replace-in-string gnus-newsgroup-name "^.*:" "")
+            (replace-regexp-in-string "^.*:" "" gnus-newsgroup-name)))))
+    (gnus-summary-copy-article n archive-name)))
+
+;; use only the first match.
+
+(setq nnmail-crosspost nil)
+
+;; I don't want to see html mail unless I have to....
+
+(eval-after-load "mm-decode"
+      '(progn
+           (add-to-list 'mm-discouraged-alternatives "text/html")
+           (add-to-list 'mm-discouraged-alternatives "text/richtext")))
+
+;; Don't split files
+
+(setq message-send-mail-partially-limit nil)
+
+
+;; Splitting Methods
+
+(setq nnmail-split-methods
+  '(("duplicates" "^Gnus-Warning:.*duplicate")
+    ("Projects" "^\\(From:\\).*info@aquaresidential.com.*") ;; Kevin  Alvarez
+    ("Bounce" "^\\(From:\\).*[Pp]ostmaster@.*") ;; Bounce
+    ("RNC-Users" "^\\(To:\\|CC:\\).*rng-users@yahoogroups.com")
+    ("Spam" "^\\(From:\\).*mark zurlinton*.*")
+    ("Spam" "^\\(From:\\).*zurlinton.mar89@gmail.com*.*")
+    ("GUTPosted" "^\\(To:\\|CC:\\).*posted@*.*")
+    ("GUTVol-d" "^\\(To:\\|CC:\\).*gutvol-d@*.*")
+    ("GUTVol-p" "^\\(To:\\|CC:\\).*gutvol-p@*.*")
+    ("PG-planning" "^\\(To:\\|CC:\\).*planning@lists.pglaf.org")
+    ("PG-planning" "^\\(Subject:\\).*\\[pg-planning\\].*")
+    ("PGXML" "^\\(To:\\|CC:\\).*pgxml@*.*")
+    ("EmacsHelp" "^\\(To:\\|CC:\\).*help-gnu-emacs@*.*") 
+    ("EmacsDevel" "^\\(To:\\|CC:\\).*emacs-devel@*.*") 
+    ("EmacsDevel" "^\\(To:\\|CC:\\).*emacs-pretest-bug@gnu.org.*") 
+    ("Emacs-Wiki" "^\\(To:\\|CC:\\).*emacs-wiki-discuss@*.*") 
+    ("Emacs-Wiki" "^\\(To:\\|CC:\\).*planner-el-discuss@gna.org*.*") 
+    ("Emacs-Wiki" "^\\(To:\\|CC:\\).*muse-el-discuss@gna.org*.*") 
+    ("Org-Mode" "^\\(To:\\|CC:\\).*emacs-orgmode@gnu.org*.*") 
+    ("XML-Dev" "^\\(To:\\|CC:\\).*xml-dev@lists.xml.org.*")
+    ("Emacs-Sources" "^\\(To:\\|CC:\\).*gnu-emacs-sources@gnu.org.*")
+    ("YAML-core" "^\\(To:\\|CC:\\).*yaml-core@*.*")
+    ("GNUstep-discuss" "^\\(To:\\|CC:\\).*discuss-gnustep@gnu.org.*")
+    ("CC-licences" "^\\(To:\\|CC:\\).*cc-licenses@*.*") 
+    ("WorldNews" "^\\(From:\\).*dailyemail@bbc.co.uk") 
+    ("WorldNews" "^\\(From:\\).*@.internet.com")
+    ("WorldNews" "^\\(From:\\).*@idg.com.sg")
+    ("MARC" "^\\(To:\\).*MARC@sun8.LOC.GOV")
+    ("TechNews" "^\\(Reply-To:\\).*@nl.internet.com")
+    ("TechNews" "^\\(From:\\).*elists-admin@oreillynet.com*")
+    ("FreshMeat" "^\\(From:\\).*freshmeat-news@lists.freshmeat.net")
+    ("FriendsAndRelations" "^\\(From:\\).*Geojbc@aol.com")
+    ("FriendsAndRelations" "^\\(From:\\).*geojbc@aol.com")
+    ("FriendsAndRelations" "^\\(From:\\).*Ubudme@aol.com")
+    ("FriendsAndRelations" "^\\(From:\\).*ubudme@aol.com") ;; Pa
+    ("FriendsAndRelations" "^\\(From:\\).*kward@netvigator.com.*")
+    ("FriendsAndRelations" "^\\(From:\\).*kaward@gmail.com.*")
+    ("FriendsAndRelations" "^\\(From:\\).*kevinward@ernestmaude.com.*")
+    ("FriendsAndRelations" "^\\(From:\\).*joli@net-yan.com")
+    ("FriendsAndRelations" "^\\(From:\\).*meglomanious5@mac.com")
+    ("FriendsAndRelations" "^\\(From:\\).*wikidown@yahoo.com")    ;; ruben
+    ("FriendsAndRelations" "^\\(From:\\).*inter33usa@yahoo.com")  ;; ruben
+    ("FriendsAndRelations" "^\\(From:\\).*rseja@4cpm.com")        ;; ruben
+    ("FriendsAndRelations" "^\\(From:\\).*ruben@chenla.la")       ;; ruben
+    ("FriendsAndRelations" "^\\(From:\\).*ruben@repozit.net")     ;; ruben
+    ("FriendsAndRelations" "^\\(From:\\).*ruben@coreinterop.com") ;; ruben
+    ("FriendsAndRelations" "^\\(From:\\).*osokuma@gmail.com")     ;; ruben
+    ("FriendsAndRelations" "^\\(From:\\).*narin@repozit.net")     ;; narin
+    ("FriendsAndRelations" "^\\(From:\\).*narin@chenla.la")       ;; narin    
+    ("FriendsAndRelations" "^\\(From:\\).*evcolli@suffolk.lib.ny.us")
+    ("FriendsAndRelations" "^\\(From:\\).*ecollins@aip.org")
+    ("FriendsAndRelations" "^\\(From:\\).*bdeptola@gmail.com")    ;; ben
+    ("FriendsAndRelations" "^\\(From:\\).*jefullerton@yahoo.com") ;; jon
+    ("FriendsAndRelations" "^\\(From:\\Reply-To:\\).*liz.banbury@gmail.com")
+    ("FriendsAndRelations" "^\\(From:\\).*tataj25@yahoo.com")       ;; Da
+    ("FriendsAndRelations" "^\\(From:\\).*boblq@cox.net")           ;; Bob
+    ("FriendsAndRelations" "^\\(From:\\).*rlaquey@gmail.com")       ;; Bob
+    ("FriendsAndRelations" "^\\(From:\\).*robert.laquey@gmail.com") ;; Bob
+    ("FriendsAndRelations" "^\\(From:\\).*jolicollins@yahoo.com.hk") ;; Jo
+    ("FriendsAndRelations" "^\\(From:\\).*spitfire@san.rr.com")      ;; Jeff
+    ("FriendsAndRelations" "^\\(From:\\).*spitfireroad@gmail.com")   ;; Jeff  
+    ("FriendsAndRelations" "^\\(From:\\).*mucci625@mac.com.*")       ;; Mucci
+    ("FriendsAndRelations" "^\\(From:\\).*peacebrother@gmail.com.*") ;; Derek
+    ("FriendsAndRelations" "^\\(From:\\).*cmkzone@yahoo.com.au.*")   ;; Craig
+    ("Work" "^\\(From:\\).*jjordan@janicejordan.org.*")          ;; Janice
+    ("Work" "^\\(From:\\).*barryl@san.rr.com.*")                 ;; Barry
+    ("Work" "^\\(From:\\).*larry@kumeyaay.com.*")                ;; Larry
+    ("Work" "^\\(From:\\).*dirkholland@prodigy.net.*") ;;
+    ("Work" "^\\(From:\\).*jharaejordananderson@yahoo.com.*") ;; Jharae
+    ("Work" "^\\(From:\\).*Hunwut@aol.com.*") ;;
+    ("Work" "^\\(From:\\).*james@host45.com.*") ;; James (host45)
+    ("Work" "^\\(From:\\).*mati@host45.com.*") ;; Mati (host45)
+    ("Work" "^\\(From:\\).*kalvarez@mortgageonelending.com.*") ;; Kevin Alvarez
+    ("Work" "^\\(From:\\).*dmelton@indiangaming.org.*") ;; Dana Melton
+    ("Work" "^\\(From:\\).*jalonz@coldworld.net.*") ;; Jalon
+    ("Work" "^\\(From:\\).*info@aquaresidential.com.*") ;; Kevin  Alvarez
+    ("Work" "^\\(From:\\).*dcchan8@gmail.com.*") ;; DC Chan
+    ("Work" "^\\(From:\\).*dbear@archimuse.com.*") ;; David Bearman
+    ("Work" "^\\(From:\\).*amolina@indiangaming.org.*") ;; Angelica Molina
+    ("Work" "^\\(From:\\).*dmelton@indiangaming.org.*") ;; Dana Melton
+    ("Work" "^\\(From:\\).*chris@datacoordinator.com.*") ;; Chris Coddington
+    ("Work" "^\\(From:\\).*mmueller@indylink.org.*") ;; Mark Mueller
+    ("Arxana" "^\\(To:\\|From:\\|CC:\\).*arxana-talk@googlegroups.com*")
+    ("Work" "^\\(From:\\).*holtzermann17@gmail.com.*") ;; Joe Corneli
+    ("246FM" "^\\(From:\\).*wmoore@4cpm.com.*") 
+    ("246FM" "^\\(From:\\).*mdavis@dtl.net.*")
+    ("Chenla" "^\\(From:\\).*j.ottaway@lse.ac.uk.*")
+    ("Chenla" "^\\(From:\\).*news@pglaf.org.*")
+    ("LOC" "^\\(From:\\).*voyager@*.*" )
+    ("LOC" "^\\(From:\\).*aleph@*.*" )
+    ("LOC" "^\\(From:\\).*copac@*.*" )
+    ("Blosxom" "^\\(To:\\|CC:\\).*blosxom@yahoogroups.com.*")
+    ("OED-wotd" "^\\(From:\\).*oedwotd@OUP.COM.*" )
+    ("ODNP-lotd" "^\\(From:\\).*odnb-lotd@OUP.COM.*" )
+    ("ODNP-lotd" "^\\(From:\\).*ODNBLIFEOFTHEDAY-L@webber.uk.oup.com.*" )
+    ("ODNP-lotd" "^\\(From:\\).*oxforddnb-lotd@oup.com.*" )
+    ("Dojo-Interest" "^\\(To:\\|CC:\\).*dojo-interest@dojotoolkit.org.*")
+    ("Yahoo News" "^\\(From:\\).*Yahoo\\! Alerts*.*" )
+    ("Interesting-people" "^\\(To:\\|CC:\\).*ip@v2.listbox.com.*")
+    ("Interesting-people" "^\\(From:\\).*dave@farber.net.*")
+    ("Interesting-people" "^\\(From:\\|Reply-To:\\).*dave@farber.net.*")
+    ("ebook-community" "^\\(To:\\|CC:\\).*ebook-community@yahoogroups.com.*")
+    ("Zotero-dev" "^\\(To:\\|Reply-To:\\).*otero-dev@googlegroups.com.*")
+    ("Reon-Kadena" "^\\(To:\\|CC:\\).*Reon-Kadena@yahoogroups.com.*")
+    ("Djvu-Fonts" "^\\(To:\\|CC:\\).*dejavu-fonts@lists.sourceforge.net.*")
+    ("Thai-Visa" "^\\(From:\\).*newsletter@thaivisa.com.*")
+    ("Book-People" "^\\(To:\\|CC:\\).*bookpeople@pobox.upenn.edu.*")
+    ("Conkeror" "^\\(To:\\|CC:\\).*conkeror@mozdev.org.*")
+    ("Ibiblio" "^\\(To:\\|CC:\\).*ibiblio-announce@lists.ibiblio.org.*")
+    ("Ibiblio" "^\\(To:\\|CC:\\).*webgroup@lists.ibiblio.org.*")
+    ("Met-Art" "^\\(From:\\).*met-art.com.*")
+    ("Met-Art" "^\\(From:\\).*teen-beauty.com.*")
+    ("Book-People" "^\\(To:\\|CC:\\).*bookpeople@cs.cmu.edu.*")
+    ("Book-People" "^\\(To:\\|CC:\\).*[Bb]ookfutures@yahoogroups.com.*")
+    ("Hadoop" "^\\(To:\\|CC:\\).*hadoop-user@lucene.apache.org.*")
+    ("Hadoop" "^\\(To:\\|CC:\\).*core-user@hadoop.apache.org.*")
+    ("Hadoop" "^\\(To:\\|CC:\\).*general@hadoop.apache.org.*")
+    ("Hadoop" "^\\(To:\\|CC:\\).*common-user@hadoop.apache.org.*")
+    ("HBase" "^\\(To:\\|CC:\\).*hbase-dev@hadoop.apache.org.*")
+    ("HBase" "^\\(To:\\|CC:\\).*hbase-user@hadoop.apache.org.*")
+    ("HBase" "^\\(To:\\|CC:\\).*user@hbase.apache.org.*")   
+    ("Backstage" "^\\(To:\\|CC:\\).*backstage-developer@lists.bbc.co.uk.*")
+    ("Social-Networking" "^\\(To:\\|CC:\\).*social-network-portability@googlegroups.com.*")
+    ("Kumeyaay" "^\\(To:\\|From:\\).*wordpress@kumeyaay.com.*")
+    ("Cas.Nakamori" "^\\(To:\\|From:\\).*cas.nakamori@gmail.com.*")
+    ("CouchDV" "^\\(To:\\|From:\\).*couchdb-user@incubator.apache.org.*")
+    ("CouchDV" "^\\(To:\\|From:\\).*couchdb-dev@incubator.apache.org.*")
+    ("CouchDV" "^\\(To:\\|From:\\|Reply-To:\\).*dev@couchdb.apache.org.*")
+    ("CouchDV" "^\\(To:\\|From:\\|Reply-To:\\).*user@couchdb.apache.org.*")
+    ("Chenla" "^\\(To:\\|From:\\).*chenla-dev@googlegroups.com.*")
+    ("Chenla" "^\\(To:\\|From:\\).*chenla-talk@googlegroups.com.*")
+    ("Scheme" "^\\(To:\\|From:\\|CC:\\).*plt-scheme@list.cs.brown.edu.*")
+    ("Scheme" "^\\(To:\\|From:\\|CC:\\).*users@racket-lang.org.*")
+    ("Scheme" "^\\(To:\\|From:\\|CC:\\).*users@lists.racket-lang.org.*") 
+    ("Guile Dev" "^\\(To:\\|From:\\|CC:\\).*guile-devel@gnu.org.*")
+    ("Guile User" "^\\(To:\\|From:\\|CC:\\).*guile-user@gnu.org.*")
+    ("Sun Storage" "^\\(To:\\|From:\\|CC:\\).*storage-discuss@opensolaris.org.*")
+    ("Calacanis" "^\\(To:\\|From:\\|CC:\\).*jason@calacanis.com.*")
+    ("XDI" "^\\(To:\\|From:\\|CC:\\).*talk@lists.xdi.org.*")
+    ("Twitter" "^\\(To:\\|From:\\|CC:\\).*twitter.com.*")
+    ("Twitter" "^\\(To:\\|From:\\|CC:\\).*identi.ca.*")
+    ("FromIPod" "^\\(From:\\).*deerpig@gmail.com*")
+    ("Google Wave" "^\\(To:\\|From:\\|CC:\\).*wave-protocol@googlegroups.com.*")
+    ("Cas Nakamori" "^\\(To:\\|From:\\|CC:\\).*cas.nakamori@gmail.com*")
+    ("Domains" "^\\(To:\\|From:\\|CC:\\).*directnic.com*")
+    ("Domains" "^\\(To:\\|From:\\|CC:\\).*marcaria.com*")
+    ("Domains" "^\\(To:\\|From:\\|CC:\\).*nic.io*")
+    ("Clojure" "^\\(To:\\|From:\\|CC:\\).*clojure@googlegroups.com*")
+    ("Ding" "^\\(To:\\|CC:\\).*ding@gnus.org*")
+    ("Technonomads" "^\\(To:\\|CC:\\).*technomads@googlegroups.com*")
+    ("Repozit" "^\\(To:\\|From:\\|CC:\\).*djroberts99@cox.net*")    
+    ("Cryptography" "^\\(To:\\|From:\\|CC:\\).*cryptography@metzdowd.com*")
+    ("Inbox" "")))
+
+
+
+(require 'nnir)
+
+;; (setq gnus-secondary-select-methods
+;;       '((nnml "bulma"
+;;          (nnimap-address "localhost")
+;;          (nnir-search-engine namazu))))
+
+(setq nnir-search-engine 'namazu)
+(setq nnir-namazu-index-directory (expand-file-name "/home/deerpig/.namazu-mail"))
+;; remove-prefix requires trail /
+(setq nnir-namazu-remove-prefix (expand-file-name "/home/deerpig/Mail/"))
+(setq nnir-mail-backend gnus-select-method)
+(setq gnus-namazu-index-update-interval nil)
+(setq nnir-mail-backend (nth 0 gnus-secondary-select-methods))

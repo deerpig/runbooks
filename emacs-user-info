@@ -1,0 +1,41 @@
+;; -*- mode: emacs-lisp; fill-column: 75; comment-column: 50; -*-
+
+;; .emacs-user-info
+;; Configuration for Setting User Info Variables
+
+;; User info
+(setenv "USER" "deerpig")
+ (setq user-full-name "Brad Collins")
+ (setq user-mail-address "brad@chenla.la")
+
+;;  (setq user-work-latitude "13.53.534N")
+;;  (setq user-work-longitude "100.36.957E")
+;;  (setq user-work-elevation "5M")
+;;  (setq user-work-location-name "Sui Trong")
+
+; (setq user-work-latitude "33.44.766N")
+; (setq user-work-longitude "117.07.020E")
+; (setq user-work-elevation "125M")
+; (setq user-work-location-name "TheDogHouse")
+
+; (setq user-work-latitude "32.45.49.19N")
+; (setq user-work-longitude "117.07.24.20W")
+ ;;(setq user-work-elevation "125M")
+; (setq user-work-location-name "Adams Ave")
+
+; (setq user-work-latitude "17.391668")
+; (setq user-work-longitude "102.786117")
+
+ ;;(setq user-work-elevation "125M")
+; (setq user-work-location-name "Lertprasert House")
+
+ ;;(setq user-work-latitude "11.5733N17")
+ ;;(setq user-work-longitude "104.925295W")
+ ;;(setq user-work-elevation "125M")
+ ;;(setq user-work-location-name "Wat Phnom")
+
+ (setq user-work-latitude "11.642600N")
+ (setq user-work-longitude "104.919210W")
+ (setq user-work-location-name "Prek Leap")
+ (setq user-work-utm "48P-491193-1287029-15")
+ (setq user-work-utm-human "48P-491193mE-1287029mN-15mE")

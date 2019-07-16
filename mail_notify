@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# timestamp of previous mail sync
+NBACK=$(date +%s --date="$1 sec ago")
+# number of messages after timestamp
+NMAIL=$(mu find flag:unread maildir:/INBOX --after=$NBACK 2>/dev/null | wc -l)
+
+if [ $NMAIL -eq 1 ]
+then
+    #aplay "$HOME/.emacs.d/mail.wav" &
+    notify-send --icon=emblem-mail "1 new message"
+elif [ $NMAIL -gt 1 ]
+then
+    #aplay "$HOME/.emacs.d/mail.wav" &
+    notify-send --icon=emblem-mail "$NMAIL new messages"
+fi

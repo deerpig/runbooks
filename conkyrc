@@ -1,0 +1,113 @@
+#   -*- mode: shell-mode; -*-
+# conky configuration
+#
+# The list of variables has been removed from this file in favour
+# of keeping the documentation more maintainable.
+# Check http://conky.sf.net for an up-to-date-list.
+#
+# For ideas about how to modify conky, please see:
+# http://crunchbanglinux.org/forums/topic/59/my-conky-config/
+#
+# For help with conky, please see:
+# http://crunchbanglinux.org/forums/topic/2047/conky-help/
+#
+# Enjoy! :)
+##############################################
+# Settings
+##############################################
+background yes
+use_xft yes
+xftfont Liberation Sans:size=9
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type desktop
+#own_window_argb_visual yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 200 200
+maximum_width 200
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color 656667
+default_shade_color 000000
+default_outline_color 828282
+alignment top_right
+gap_x 50
+gap_y 50
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+mail_spool /var/spool/mail/deerpig
+
+##############################################
+#  Output
+##############################################
+TEXT
+${font Verdana:style=Bold:size=12}${color #009bf9}${alignc}${time %a %d. %b %k:%M}
+$font$color${alignc} ${tztime Asia/Bangkok  %H:%M} Phnom Penh | ${tztime America/Vancouver  %H:%M} CA
+${color #009bf9}$stippled_hr
+${color lightgrey}Processes:$color $processes  ${color grey}Running:$color $running_processes ${color lightgrey}Up:$color $uptime_short
+
+${color lightgrey}CPU Temp: $color${hwmon 0 temp 1}C ${color lightgrey}Mail: $color $mails
+
+#${color #009bf9}CPU: $cpu% ${cpubar}
+${color #009bf9}CPU0: ${cpu cpu1} ${cpubar cpu1 5 15}
+${color #009bf9}CPU1: ${cpu cpu2} ${cpubar cpu2 5 15}
+${color #009bf9}CPU2: ${cpu cpu3} ${cpubar cpu3 5 15}
+${color #009bf9}CPU3: ${cpu cpu4} ${cpubar cpu4 5 15}
+${color}Name                               CPU%
+${font Monospace:size=8}${color lightgrey}${top name 1} ${top cpu 1}
+${color lightgrey}${top name 2} ${top cpu 2}
+${color lightgrey}${top name 3} ${top cpu 3}
+${color lightgrey}${top name 4} ${top cpu 4}
+${cpugraph 40,200 009bf9 ffffff}
+ 
+$font${color #009bf9}RAM: $mem/$memmax - $memperc% ${membar}
+${color lightgrey}Swap: $swap/$swapmax - $swapperc% ${swapbar}
+#${color}Name                          CPU%    MEM%
+#${font Monospace:size=8}${color lightgrey}${top_mem name 1} ${top_mem cpu 1} ${top_mem mem 1}
+#${color lightgrey}${top_mem name 2} ${top_mem cpu 2} ${top_mem mem 2}
+#${color lightgrey}${top_mem name 3} ${top_mem cpu 3} ${top_mem mem 3}
+${memgraph 20,200 009bf9 ffffff}
+ 
+$font${color #009bf9}Connections${alignr}${color #009bf9}In:$color ${tcp_portmon 1 32767 count}  ${color #009bf9}Out:$color ${tcp_portmon 32768 61000 count}   ${color #009bf9}ALL:$color ${tcp_portmon 1 65535 count}
+${color lightgrey}$stippled_hr
+${color lightgrey}Down:$color ${downspeed eth0} ${color lightgrey} ${offset 40}Up:$color ${upspeed eth0}
+${downspeedgraph eth0 32,85 009bf9 ffffff} ${offset 20} ${upspeedgraph eth0 32,85 009bf9 ffffff}
+${color #009bf9}IPs:$color ${addr eth0} ${offset 33} ${execi 7200 ~/.conky/pub_ip.sh}
+$font${color #009bf9}$stippled_hr
+${color #009bf9}hda  : ${fs_bar /}
+  $color ${fs_free /} ${color grey} free of $color ${fs_size /} ${color grey} ($color${fs_free_perc /}%${color grey})
+${color #009bf9}Transcend: ${fs_bar /media/deerpig/Transcend}
+   $color ${fs_free /media/deerpig/Transcend} ${color grey} free of $color ${fs_size /media/deerpig/Transcend} ${color grey} ($color${fs_free_perc /media/deerpig/Transcend}%${color grey})
+${color #009bf9}Blue: ${fs_bar /media/deerpig/blue}
+   $color ${fs_free /media/deerpig/blue} ${color grey} free of $color ${fs_size /media/deerpig/ADATA} ${color grey} ($color${fs_free_perc /media/deerpig/ADATA}%${color grey})
+${color #009bf9}Green: ${fs_bar /media/deerpig/green}
+   $color ${fs_free /media/deerpig/green} ${color grey} free of $color ${fs_size /media/deerpig/Transcend} ${color grey} ($color${fs_free_perc /media/deerpig/green}%${color grey})
+${color #009bf9}Main : ${fs_bar /media/Main Volume}
+   $color ${fs_free /media/Main Volume} ${color grey} free of $color ${fs_size /media/Main Volume} ${color grey} ($color${fs_free_perc /media/Main Volume}%${color grey})
+${color #009bf9}2TB-1: ${fs_bar /media/ST-2TB-1}
+   $color ${fs_free /media/ST-2TB-1} ${color grey} free of $color ${fs_size /media/ST-2TB-1} ${color grey} ($color${fs_free_perc /media/ST-2TB-1}%${color grey})
+${color #009bf9}2TB-2: ${fs_bar /media/ST2TB-2}
+   $color ${fs_free /media/ST2TB-2} ${color grey} free of  $color ${fs_size /media/ST2TB-2} ${color grey} ($color${fs_free_perc /media/ST2TB-2}%${color grey})
+${color #009bf9}2TB-3: ${fs_bar /media/ST-2TB-3}
+   $color ${fs_free /media/ST-2TB-3} ${color grey} free of $color ${fs_size /media/ST-2TB-3} ${color grey} ($color${fs_free_perc /media/ST-2TB-3}%${color grey})
+
+${color lightgrey}sda: $color ${diskio sda} ${color lightgrey} ${alignc}sdb: $color ${diskio sdb} ${alignr}${color lightgrey}sdc: $color ${diskio sdc} 
+${color lightgrey}sdd: $color ${diskio sdd} ${alignc}${color lightgrey} ${alignr}sde: $color ${diskio sde} ${alignr}${color lightgrey} ${alignr}sdf: $color ${diskio sdf} 
+
+#${color lightgrey}hda: ${fs_used /}/${fs_size /}  ${fs_bar /}
+# ${color lightgrey}S H O R T C U T    K E Y S
+# $font${color #009bf9}$stippled_hr
+# S+Tab$alignr Client Menu
+# S+m$alignr Media Player
+
+# S+x$alignr Logout
+# PrtSc$alignr Screenshot
+
