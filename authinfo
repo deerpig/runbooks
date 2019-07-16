@@ -1,0 +1,3 @@
+machine smtp.gmail.com login brad@chenla.la port 587 password Twattering0fbardz
+machine imap.gmail.com login brad@chenla.la port 993 password Twattering0fbardz
+
